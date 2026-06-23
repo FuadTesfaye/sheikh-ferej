@@ -192,13 +192,58 @@ export type Lecture = {
   topic: string;
   duration: string;
   date: string;
-  platform: "TikTok" | "Facebook" | "Telegram";
+  platform: "TikTok" | "Facebook" | "Telegram" | "YouTube";
+  videoUrl?: string;
   description: string;
 };
 
 export const lectures: Lecture[] = [
   {
     id: "1",
+    title: "Surah Al-Imran - Part 1",
+    topic: "Tafsir",
+    duration: "45 min",
+    date: "June 20, 2026",
+    platform: "YouTube",
+    videoUrl: "https://www.youtube.com/watch?v=5hlykYaVcn4",
+    description:
+      "A deep dive into the meanings of Surah Al-Imran, covering the core themes of steadfastness and belief.",
+  },
+  {
+    id: "2",
+    title: "The Importance of Sunnah",
+    topic: "Hadith",
+    duration: "38 min",
+    date: "June 15, 2026",
+    platform: "YouTube",
+    videoUrl: "https://www.youtube.com/watch?v=5hlykYaVcn4", // Reusing for placeholder as requested
+    description:
+      "Ustaz Muhammad Ferej explains the vital role of the Sunnah in understanding the Qur'an and implementing Islam in daily life.",
+  },
+  {
+    id: "3",
+    title: "Purifying the Heart",
+    topic: "Tazkiyah",
+    duration: "52 min",
+    date: "June 10, 2026",
+    platform: "YouTube",
+    videoUrl: "https://www.youtube.com/watch?v=5hlykYaVcn4",
+    description:
+      "A lecture on the spiritual diseases that affect the heart and the classical methods for purification.",
+  },
+  {
+    id: "4",
+    title: "Stories of the Prophets",
+    topic: "Seerah",
+    duration: "41 min",
+    date: "June 05, 2026",
+    platform: "YouTube",
+    videoUrl: "https://www.youtube.com/watch?v=5hlykYaVcn4",
+    description:
+      "Lessons and reflections from the lives of the Prophets, peace be upon them, as mentioned in the Qur'an.",
+  },
+  {
+    id: "5",
     title: "The Mercy of Allah Encompasses All Things",
     topic: "Tafsir",
     duration: "32 min",
@@ -208,7 +253,7 @@ export const lectures: Lecture[] = [
       "A reflection on Surah Al-A'raf 7:156 — what it means for the believer drowning in sin, and the door that never closes.",
   },
   {
-    id: "2",
+    id: "6",
     title: "Three Habits That Soften the Hardest Heart",
     topic: "Tazkiyah",
     duration: "8 min",
@@ -218,7 +263,7 @@ export const lectures: Lecture[] = [
       "Short reminder on the practical acts of worship that, when done consistently, return life to a heart grown distant from Allah.",
   },
   {
-    id: "3",
+    id: "7",
     title: "Why Did the Sahaba Cry When They Heard the Qur'an?",
     topic: "Seerah",
     duration: "24 min",
@@ -228,7 +273,7 @@ export const lectures: Lecture[] = [
       "Examining the relationship the companions had with the words of Allah — and how we might begin to recover it.",
   },
   {
-    id: "4",
+    id: "8",
     title: "The Etiquettes of Disagreement Among Muslims",
     topic: "Fiqh",
     duration: "47 min",
@@ -238,7 +283,7 @@ export const lectures: Lecture[] = [
       "How the early scholars disagreed without breaking the bonds of brotherhood, and what we have forgotten.",
   },
   {
-    id: "5",
+    id: "9",
     title: "A Du'a for Anxiety from the Sunnah",
     topic: "Worship",
     duration: "6 min",
@@ -246,16 +291,6 @@ export const lectures: Lecture[] = [
     platform: "TikTok",
     description:
       "A short authentic supplication that the Prophet ﷺ taught for moments of distress.",
-  },
-  {
-    id: "6",
-    title: "Friday Khutbah — Holding Fast to the Rope",
-    topic: "Khutbah",
-    duration: "38 min",
-    date: "February 7, 2026",
-    platform: "Facebook",
-    description:
-      "On Surah Al-Imran 3:103 and the obligation of unity upon the truth in a fractured time.",
   },
 ];
 
