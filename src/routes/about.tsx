@@ -6,11 +6,11 @@ import scholar from "@/assets/scholar-portrait.jpg";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Ustaz Muhammad Ferej" },
+      { title: "About — Sheikh Mohammed Ferej" },
       {
         name: "description",
         content:
-          "The life, studies, and teaching of Ustaz Muhammad Ferej — Ethiopian Islamic scholar.",
+          "The life, studies, and teaching of Sheikh Mohammed Ferej — Ethiopian Islamic scholar.",
       },
     ],
   }),
@@ -25,7 +25,7 @@ function About() {
           <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-gold/30">
             <img
               src={scholar}
-              alt="Ustaz Muhammad Ferej"
+              alt="Sheikh Mohammed Ferej"
               className="w-full h-full object-cover"
             />
           </div>
@@ -38,7 +38,7 @@ function About() {
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">About the ustaz</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-gold">About the sheikh</p>
           <h1 className="font-display text-5xl md:text-6xl mt-4 leading-[1.05]">
             A teacher in the long chain of those who serve the deen.
           </h1>
@@ -46,9 +46,9 @@ function About() {
           <div className="mt-10 space-y-6 text-lg leading-[1.85] text-foreground/90">
             <p>
               <span className="font-display text-5xl float-left mr-3 leading-none text-gold">
-                U
+                S
               </span>
-              staz Muhammad Ferej is an Ethiopian Islamic scholar, teacher, and caller to Allah. He
+              heikh Mohammed Ferej is an Ethiopian Islamic scholar, teacher, and caller to Allah. He
               memorized the Qur'an in his youth and devoted his life to studying and transmitting
               the classical Islamic sciences in his homeland.
             </p>

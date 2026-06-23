@@ -39,14 +39,14 @@ function Home() {
               السلام عليكم &middot; Welcome
             </p>
             <h1 className="font-display text-5xl md:text-7xl leading-[1.02]">
-              Ustaz
-              <span className="block italic text-gold">Muhammad Ferej</span>
+              Sheikh
+              <span className="block italic text-gold">Mohammed Ferej</span>
             </h1>
             <p className="mt-6 text-xs uppercase tracking-[0.3em] text-muted-foreground">
               Ethiopian Islamic scholar &middot; Teacher of the sacred sciences
             </p>
             <p className="mt-8 text-lg text-foreground/85 max-w-xl leading-relaxed">
-              For more than two decades, Ustaz Muhammad Ferej has taught the Qur'an, Sunnah and the
+              For more than two decades, Sheikh Mohammed Ferej has taught the Qur'an, Sunnah and the
               classical Islamic sciences to students in Ethiopia and beyond. This is the home of his
               lectures, writings, and structured courses.
             </p>
@@ -55,7 +55,7 @@ function Home() {
                 Listen to lectures
               </Link>
               <Link to="/learn" className="btn-outline-gold">
-                Study with the ustaz
+                Study with the sheikh
               </Link>
             </div>
 
@@ -71,7 +71,7 @@ function Home() {
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-gold/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
               <img
                 src={scholar}
-                alt="Ustaz Muhammad Ferej"
+                alt="Sheikh Mohammed Ferej"
                 width={896}
                 height={1152}
                 className="w-full h-full object-cover"

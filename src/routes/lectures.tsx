@@ -7,10 +7,10 @@ import scholarImg from "@/assets/scholar-portrait.jpg";
 export const Route = createFileRoute("/lectures")({
   head: () => ({
     meta: [
-      { title: "Lectures — Ustaz Muhammad Ferej" },
+      { title: "Lectures — Sheikh Mohammed Ferej" },
       {
         name: "description",
-        content: "Recorded lectures, Friday khutbas and short reminders by Ustaz Muhammad Ferej.",
+        content: "Recorded lectures, Friday khutbas and short reminders by Sheikh Mohammed Ferej.",
       },
     ],
   }),
