@@ -12,4 +12,13 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  vite: {
+    // Force nitro to use the vercel preset
+    // @ts-expect-error - nitro is injected by the wrapper but not in the type definition of the wrapper's config
+    nitro: {
+      preset: "vercel",
+    },
+  },
+  // Force enable nitro for non-lovable environments (like local build)
+  nitro: true,
 });
