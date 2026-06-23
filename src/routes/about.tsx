@@ -26,7 +26,7 @@ function About() {
             <img src={scholar} alt="Sheikh Mohammed Ferej" className="w-full h-full object-cover" />
           </div>
           <p className="font-arabic text-xl text-gold-soft text-center mt-6 leading-loose">
-            وَقُل رَّبِّ زِدْنِي عِلምًا
+            وَقُل رَّبِّ زِدْنِي عِلْمًا
           </p>
           <p className="text-center text-sm text-muted-foreground italic">
             "My Lord, increase me in knowledge."
