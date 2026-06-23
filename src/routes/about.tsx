@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { biography, specialties } from "@/lib/content";
-import scholar from "@/assets/scholar-portrait.jpg";
+import scholar from "@/assets/image copy.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -23,14 +23,10 @@ function About() {
       <section className="container-prose pt-20 pb-16 grid lg:grid-cols-[1fr_1.4fr] gap-16 items-start">
         <div className="lg:sticky lg:top-28">
           <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-gold/30">
-            <img
-              src={scholar}
-              alt="Sheikh Mohammed Ferej"
-              className="w-full h-full object-cover"
-            />
+            <img src={scholar} alt="Sheikh Mohammed Ferej" className="w-full h-full object-cover" />
           </div>
           <p className="font-arabic text-xl text-gold-soft text-center mt-6 leading-loose">
-            وَقُل رَّبِّ زِدْنِي عِلْمًا
+            وَقُل رَّبِّ زِدْنِي عِلምًا
           </p>
           <p className="text-center text-sm text-muted-foreground italic">
             "My Lord, increase me in knowledge."

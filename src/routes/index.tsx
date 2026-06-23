@@ -172,11 +172,7 @@ function Home() {
               d: "የነቢዩ (ሰ.ዐ.ወ) የህይወት ታሪክ እና የልብ ንፅህና (ተዝኪያ) ትምህርቶች።",
             },
           ].map((p) => (
-            <div
-              key={p.k}
-              className="bg-background p-8 hover:bg-card/40 transition"
-              lang="am"
-            >
+            <div key={p.k} className="bg-background p-8 hover:bg-card/40 transition" lang="am">
               <span className="font-arabic text-5xl text-gold/50" lang="ar">
                 {p.ar}
               </span>

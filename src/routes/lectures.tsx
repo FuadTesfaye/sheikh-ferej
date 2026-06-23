@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { lectures, type Lecture } from "@/lib/content";
-import scholarImg from "@/assets/scholar-portrait.jpg";
+import scholarImg from "@/assets/image copy 3.png";
 
 export const Route = createFileRoute("/lectures")({
   head: () => ({
