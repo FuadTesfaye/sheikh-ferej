@@ -1,11 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { useLanguage } from "@/hooks/use-language";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Ustaz Muhammad Ferej" },
-      { name: "description", content: "Get in touch with Ustaz Muhammad Ferej." },
+      { title: "Contact — Sheikh Mohammed Ferej" },
+      { name: "description", content: "Get in touch with Sheikh Mohammed Ferej." },
     ],
   }),
   component: Contact,
@@ -33,16 +34,20 @@ const channels = [
 ];
 
 function Contact() {
+  const { language, t } = useLanguage();
   return (
     <SiteLayout>
       <section className="container-prose pt-20 pb-12">
-        <p className="text-xs uppercase tracking-[0.3em] text-gold">Get in touch</p>
+        <p className="text-xs uppercase tracking-[0.3em] text-gold">{t.getInTouch}</p>
         <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">
-          A word reaches further than we know.
+          {language === "en" ? "A word reaches further than we know." :
+           language === "am" ? "አንድ ቃል ከምንናገር በላይ ይደርሳል።" :
+           "الكلمة تصل أبعد مما نعلم."}
         </h1>
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-          Whether you have a question, a request for a lecture, or simply a salaam to send — you are
-          welcome here.
+          {language === "en" ? "Whether you have a question, a request for a lecture, or simply a salaam to send — you are welcome here." :
+           language === "am" ? "ጥያቄ ካለዎት፣ ለትምህርት ጥያቄዎት ካለዎት ወይም በቀላል ሰላም ለመላክ — እዚህ እንኳን ደህና መጡ።" :
+           "سواء كان لديك سؤال، أو طلب محاضرة، أو مجرد تحية تريد إرسالها — أنت مرحب هنا."}
         </p>
       </section>
 
@@ -51,45 +56,53 @@ function Contact() {
           className="p-8 rounded-2xl border border-border bg-card/40 space-y-5"
           onSubmit={(e) => {
             e.preventDefault();
-            alert("JazakAllahu khayran — your message has been received.");
+            alert(
+              language === "en" ? "JazakAllahu khayran — your message has been received." :
+              language === "am" ? "ጃዛካሉ ሀይራን — መልእክትዎ ተቀብሏል።" :
+              "جزاك الله خير — لقد تم استلام رسالتك."
+            );
           }}
         >
-          <Field label="Your name">
+          <Field label={language === "en" ? "Your name" : language === "am" ? "ስምዎ" : "اسمك"}>
             <input
               required
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition"
-              placeholder="Abdullah"
+              placeholder={language === "en" ? "Abdullah" : language === "am" ? "ዓብዱላሕ" : "عبد الله"}
             />
           </Field>
-          <Field label="Email">
+          <Field label={t.email}>
             <input
               type="email"
               required
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition"
-              placeholder="you@example.com"
+              placeholder={language === "en" ? "you@example.com" : language === "am" ? "you@example.com" : "you@example.com"}
             />
           </Field>
-          <Field label="Subject">
+          <Field label={language === "en" ? "Subject" : language === "am" ? "ርዕሰ ጉዳይ" : "الموضوع"}>
             <input
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition"
-              placeholder="A question on tafsir…"
+              placeholder={language === "en" ? "A question on tafsir…" : language === "am" ? "ስለ ተፍሲር ጥያቄ…" : "سؤال عن التفسير…"}
             />
           </Field>
-          <Field label="Your message">
+          <Field label={t.message}>
             <textarea
               required
               rows={6}
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition resize-none"
-              placeholder="Assalamu alaykum…"
+              placeholder={language === "en" ? "Assalamu alaykum…" : language === "am" ? "አሰላሙ ዓለይኩም…" : "السلام عليكم…"}
             />
           </Field>
           <button type="submit" className="btn-gold w-full">
-            Send message
+            {t.send}
           </button>
         </form>
 
         <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.25em] text-gold">Find the ustaz online</p>
+          <p className="text-xs uppercase tracking-[0.25em] text-gold">
+            {language === "en" ? "Find the sheikh online" :
+             language === "am" ? "ሼኩን በመስመር ላይ ይፈልጉ" :
+             "ابحث عن الشيخ على الإنترنت"}
+          </p>
           {channels.map((c) => (
             <a
               key={c.name}
@@ -114,7 +127,9 @@ function Contact() {
               وَقُولُوا لِلنَّاسِ حُسْنًا
             </p>
             <p className="mt-2 text-sm italic text-muted-foreground">
-              "And speak to people good words." — Al-Baqarah 2:83
+              {language === "en" ? '"And speak to people good words." — Al-Baqarah 2:83' :
+               language === "am" ? '"እና ለሰዎች ደስተኛ ቃላት ይናገሩ።" — አል-ባቃራ 2:83' :
+               '"وقولوا للناس حسناً." — البقرة 2:83'}
             </p>
           </div>
         </div>

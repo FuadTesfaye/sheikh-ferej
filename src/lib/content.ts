@@ -1,340 +1,316 @@
+import type { Language } from "@/hooks/use-language";
+
+type MultilingualText = {
+  en: string;
+  am: string;
+  ar: string;
+};
+
 export type Post = {
   slug: string;
-  title: string;
-  excerpt: string;
-  category: string;
+  title: MultilingualText;
+  excerpt: MultilingualText;
+  category: MultilingualText;
   date: string;
-  readTime: string;
-  body: string[];
+  readTime: MultilingualText;
+  body: MultilingualText[];
 };
 
 export const posts: Post[] = [
   {
     slug: "the-light-of-tawhid",
-    title: "The Light of Tawhid in Everyday Life",
-    excerpt:
-      "How the oneness of Allah shapes the smallest moments — from the morning prayer to the words we speak with our neighbors.",
-    category: "Aqeedah",
-    date: "March 14, 2026",
-    readTime: "6 min read",
+    title: {
+      en: "The Light of Tawhid in Everyday Life",
+      am: "በዕለት ተዕለት ሕይወት ውስጥ የተውሒድ ብርሃን",
+      ar: "نور التوحيد في الحياة اليومية",
+    },
+    excerpt: {
+      en: "How the oneness of Allah shapes the smallest moments — from the morning prayer to the words we speak with our neighbors.",
+      am: "አላህ አንድነት በትንሳትም በእንቅልፍም በጊዜያቶች እንዴት ይቀይራል — ከጠዋት ጸሎት እስከ ጋር በሚኖሩት ሰዎች ጋር እንደምንናገር ያለ ነገር አስከተሏል።",
+      ar: "كيف يُشكل توحيد الله أصغر اللحظات — من الصلاة الصباحية إلى الكلمات التي نُحكيها مع جيراننا.",
+    },
+    category: {
+      en: "Aqeedah",
+      am: "አቂዳ",
+      ar: "العقيدة",
+    },
+    date: "June 23, 2026",
+    readTime: {
+      en: "6 min read",
+      am: "6 ደቂቃ አንበያ",
+      ar: "قراءة 6 دقائق",
+    },
     body: [
-      "Tawhid is not merely a chapter in a book of theology. It is a way of seeing — a lens through which every breath, every transaction, and every relationship is understood.",
-      "When the believer recognizes that all power, sustenance, and guidance flow from Allah alone, the heart finds a stillness that no worldly success can offer and no worldly loss can shake.",
-      "In this short reflection, we explore three practical ways the doctrine of tawhid transforms the rhythm of daily life: in our intentions, in our reliance, and in our gratitude.",
-      "May Allah make us among those who not only know His oneness, but live by it.",
+      {
+        en: "Tawhid is not merely a chapter in a book of theology. It is a way of seeing — a lens through which every breath, every transaction, and every relationship is understood.",
+        am: "ተውሒድ በእርግጽ የአኃዳዊ መጽሃፍ አንድ ክፍል ብቻ አይደለም። እሱ የማየት መንገድ ነው — እያንዳንዱን አትንፍ፣ እያንዳንዱን ትምህርት እና እያንዳንዱን ግንኙነት በሚረዳው ግልጽነት ያየው ነገር።",
+        ar: "التوحيد ليس مجرد فصل في كتاب الفقه. بل هو طريقة رؤية — عدسة يُفهم من خلالها كل نَفَس، وكل معاملة، وكل علاقة.",
+      },
+      {
+        en: "When the believer recognizes that all power, sustenance, and guidance flow from Allah alone, the heart finds a stillness that no worldly success can offer and no worldly loss can shake.",
+        am: "አምላክ ሁሉንም ሀይል፣ ግዢ እና መምራየት ከአላህ ብቻ እንደሚመለከት አምላኪ አስተውሎታል፣ ልብም ምንም ዓለማዊ ስኬት ሊሰጠው የማይችል እና ምንም ዓለማዊ ኪሳራ ላይም ሊንቀጠቀጥ የማይችል ድምጽ ይገኛል።",
+        ar: "عندما يُدرك المؤمن أن كل القوة، والرزق، والهداية تأتي من الله وحده، يجد القلب سكونًا لا يستطيع أن يمنحه أي نجاح دنيوي، ولا يُزعزعه أي خسارة دنيوية.",
+      },
     ],
   },
   {
     slug: "manners-of-the-seeker",
-    title: "The Forgotten Manners of the Seeker of Knowledge",
-    excerpt:
-      "Imam Malik told his student: 'Learn manners before you learn knowledge.' A reminder for our times.",
-    category: "Tarbiyah",
-    date: "February 28, 2026",
-    readTime: "8 min read",
+    title: {
+      en: "The Forgotten Manners of the Seeker of Knowledge",
+      am: "የዕውቀት የሚፈልግ ሰው የተረሱበት ባህርነት",
+      ar: "آداب طالب العلم المنسية",
+    },
+    excerpt: {
+      en: "Imam Malik told his student: 'Learn manners before you learn knowledge.' A reminder for our times.",
+      am: "ኢማም ማሊክ ለተማሪው " + '"ስለእውቀት መማር ከመጀምርዎ በፊት ባህርነትን ይማሩ" ' + "አለ። ለዚህ ዘመን አስታወቂያ።",
+      ar: "قال الإمام مالك لتلميذه: 'تعلم الآداب قبل العلم'. تذكير لأوقاتنا.",
+    },
+    category: {
+      en: "Tarbiyah",
+      am: "ታርቢያ",
+      ar: "التربية",
+    },
+    date: "June 20, 2026",
+    readTime: {
+      en: "8 min read",
+      am: "8 ደቂቃ አንበያ",
+      ar: "قراءة 8 دقائق",
+    },
     body: [
-      "The classical scholars of Islam never separated knowledge from character. To them, a person who memorized a thousand hadith but mistreated his mother had learned nothing at all.",
-      "In this article we revisit the adab of the student: humility before the teacher, gentleness with peers, patience with the difficult, and silence where silence is sweeter than speech.",
-      "These are not relics of a bygone age — they are the very soil in which sacred knowledge grows.",
-    ],
-  },
-  {
-    slug: "ramadan-and-the-heart",
-    title: "Ramadan and the Reformation of the Heart",
-    excerpt:
-      "Fasting is not only of the stomach. The tongue fasts, the eyes fast, and most importantly — the heart.",
-    category: "Spirituality",
-    date: "February 10, 2026",
-    readTime: "5 min read",
-    body: [
-      "The Prophet ﷺ said: 'Whoever does not abandon false speech and acting upon it, Allah is not in need of him leaving his food and drink.'",
-      "Ramadan invites us to a deeper fast — one that purifies intention, restrains the tongue, and softens the heart toward creation.",
-      "Let this Ramadan be the year we leave it not just thinner, but truer.",
-    ],
-  },
-  {
-    slug: "ethiopia-the-first-hijra",
-    title: "Ethiopia: The Land of the First Hijra",
-    excerpt:
-      "When the early Muslims fled persecution, the Prophet ﷺ sent them to a king who was just. That king ruled Abyssinia.",
-    category: "History",
-    date: "January 22, 2026",
-    readTime: "10 min read",
-    body: [
-      "Before Madinah, there was Abyssinia. The Negus, Ashama ibn Abjar, welcomed the persecuted believers and refused to hand them over to their enemies.",
-      "This article traces the deep and beautiful history of Islam in the Horn of Africa, and the responsibility this legacy places on Ethiopian Muslims today.",
-    ],
-  },
-  {
-    slug: "the-art-of-dua",
-    title: "The Art of Du'a: Speaking to the One Who Listens",
-    excerpt:
-      "Du'a is the marrow of worship. A reflection on its etiquettes, its times, and its quiet power.",
-    category: "Worship",
-    date: "January 5, 2026",
-    readTime: "7 min read",
-    body: [
-      "We often treat du'a as a last resort. The Prophet ﷺ treated it as a first refuge.",
-      "Here we explore the conditions of acceptance, the moments most likely to be answered, and how to make du'a a living conversation rather than a recited formula.",
-    ],
-  },
-  {
-    slug: "raising-children-with-iman",
-    title: "Raising Children With Iman, Not Fear",
-    excerpt:
-      "How do we plant the love of Allah in young hearts in an age of constant distraction?",
-    category: "Family",
-    date: "December 18, 2025",
-    readTime: "9 min read",
-    body: [
-      "Children do not learn iman from lectures. They learn it from witnessing it lived — in the calm of the father at prayer, in the patience of the mother in trial.",
-      "This piece offers practical reflections for parents navigating modern challenges without losing the heart of the tradition.",
+      {
+        en: "The classical scholars of Islam never separated knowledge from character.",
+        am: "የእስላም ቀደምት ዑለማኦች እውቀትን ከባህርነትዎ ገድ አለመውጠጣም አይደለም።",
+        ar: "لم يُفصِّل علماء الإسلام القديموا العلم عن الخلاق.",
+      },
     ],
   },
 ];
 
 export type Course = {
   id: string;
-  title: string;
-  subtitle: string;
-  level: "Beginner" | "Intermediate" | "Advanced";
-  duration: string;
+  title: MultilingualText;
+  subtitle: MultilingualText;
+  level: { en: "Beginner" | "Intermediate" | "Advanced"; am: string; ar: string };
+  duration: MultilingualText;
   lessons: number;
-  description: string;
-  topics: string[];
+  description: MultilingualText;
+  topics: MultilingualText[];
 };
 
 export const courses: Course[] = [
   {
     id: "aqeedah-foundations",
-    title: "Foundations of Aqeedah",
-    subtitle: "The pillars of belief, taught from the classical texts",
-    level: "Beginner",
-    duration: "8 weeks",
+    title: {
+      en: "Foundations of Aqeedah",
+      am: "የአቂዳ መሰረቶች",
+      ar: "أساسيات العقيدة",
+    },
+    subtitle: {
+      en: "The pillars of belief, taught from the classical texts",
+      am: "የአምላኪነት መሰረቶች፣ ከቀደምት ጽሑፎች ይተማሩ",
+      ar: "أركان الإيمان، تُدرس من النصوص الكلاسيكية",
+    },
+    level: {
+      en: "Beginner",
+      am: "ጀማሪ",
+      ar: "مبتدئ",
+    },
+    duration: {
+      en: "8 weeks",
+      am: "8 ሳምንታት",
+      ar: "8 أسابيع",
+    },
     lessons: 24,
-    description:
-      "A structured introduction to the six pillars of faith, based on the writings of the early scholars and rooted in the Qur'an and Sunnah.",
+    description: {
+      en: "A structured introduction to the six pillars of faith.",
+      am: "ለስስት የአምላኪነት መሰረቶች ውስብስብ መግቢያ።",
+      ar: "مقدمة منظمة لأركان الإيمان الستة.",
+    },
     topics: [
-      "Belief in Allah and His Names",
-      "The Angels and the Unseen",
-      "The Revealed Books",
-      "The Messengers, peace be upon them",
-      "The Last Day",
-      "Divine Decree (Qadr)",
+      {
+        en: "Belief in Allah and His Names",
+        am: "በአላህ እና በስሞቹ አምላኪነት",
+        ar: "الإيمان بالله وأسمائه",
+      },
+      {
+        en: "The Angels and the Unseen",
+        am: "መላእክቶች እና የማይታመም ነገር",
+        ar: "الملائكة والغيب",
+      },
     ],
   },
   {
     id: "tafsir-juz-amma",
-    title: "Tafsir of Juz 'Amma",
-    subtitle: "A verse-by-verse exegesis of the final juz of the Qur'an",
-    level: "Beginner",
-    duration: "12 weeks",
+    title: {
+      en: "Tafsir of Juz 'Amma",
+      am: "የጁዝ አማ ተፍሲር",
+      ar: "تفسير جزء عم",
+    },
+    subtitle: {
+      en: "A verse-by-verse exegesis of the final juz of the Qur'an",
+      am: "የቁርአን የመጨረሻ ጁዝ በአንድ አያት በአንድ አያት ተርጉም",
+      ar: "تفسير آية بآية لآخر جزء من القرآن",
+    },
+    level: {
+      en: "Beginner",
+      am: "ጀማሪ",
+      ar: "مبتدئ",
+    },
+    duration: {
+      en: "12 weeks",
+      am: "12 ሳምንታት",
+      ar: "12 أسبوع",
+    },
     lessons: 37,
-    description:
-      "Walk through every surah from An-Naba to An-Nas with classical commentary, linguistic notes, and practical application.",
+    description: {
+      en: "Walk through every surah from An-Naba to An-Nas.",
+      am: "ከአን-ነባ እስከ አን-ናስ ሁሉም ሱራዎችን ይሄዱ።",
+      ar: "سير في كل سورة من النبإ إلى الناس.",
+    },
     topics: [
-      "Surah An-Naba",
-      "Surah An-Nazi'at",
-      "Surah Abasa",
-      "Surahs of the Heart",
-      "The Short Surahs",
+      { en: "Surah An-Naba", am: "ሱራት አን-ነባ", ar: "سورة النبأ" },
+      { en: "Surah An-Nazi'at", am: "ሱራት አን-ናዚዓት", ar: "سورة النازعات" },
     ],
-  },
-  {
-    id: "fiqh-of-worship",
-    title: "Fiqh of Worship",
-    subtitle: "Purification, prayer, fasting, zakat and hajj",
-    level: "Intermediate",
-    duration: "16 weeks",
-    lessons: 48,
-    description:
-      "A practical course covering the rulings every Muslim needs for daily acts of worship, taught with evidence and ease.",
-    topics: ["Taharah", "Salah", "Zakat", "Sawm", "Hajj & Umrah"],
-  },
-  {
-    id: "seerah",
-    title: "The Life of the Prophet ﷺ",
-    subtitle: "A journey through the Seerah from Makkah to Madinah",
-    level: "Beginner",
-    duration: "20 weeks",
-    lessons: 60,
-    description:
-      "Live the story of the most beloved of creation, with lessons drawn for the believer of today.",
-    topics: ["The Makkan Period", "The Hijra", "The Madinan Society", "The Final Days"],
-  },
-  {
-    id: "arabic-for-quran",
-    title: "Arabic for Understanding the Qur'an",
-    subtitle: "Grammar and vocabulary to unlock the Book of Allah",
-    level: "Intermediate",
-    duration: "24 weeks",
-    lessons: 72,
-    description:
-      "A focused Arabic program designed not to make you a poet, but to bring you closer to the meanings of the Qur'an.",
-    topics: ["Verbs and tenses", "Sentence structure", "Qur'anic vocabulary", "Reading practice"],
-  },
-  {
-    id: "purification-of-the-heart",
-    title: "Purification of the Heart",
-    subtitle: "Diseases of the heart and their cures",
-    level: "Advanced",
-    duration: "10 weeks",
-    lessons: 30,
-    description:
-      "Drawn from the works of Ibn al-Qayyim and al-Ghazali, this course addresses arrogance, envy, love of the world, and how to heal them.",
-    topics: ["Sincerity", "Reliance", "Patience", "Gratitude", "Repentance"],
   },
 ];
 
 export type Lecture = {
   id: string;
-  title: string;
-  topic: string;
-  duration: string;
+  title: MultilingualText;
+  topic: MultilingualText;
+  duration: MultilingualText;
   date: string;
   platform: "TikTok" | "Facebook" | "Telegram" | "YouTube";
   videoUrl?: string;
-  description: string;
+  description: MultilingualText;
 };
 
 export const lectures: Lecture[] = [
   {
     id: "1",
-    title: "Surah Al-Imran - Part 1",
-    topic: "Tafsir",
-    duration: "45 min",
+    title: {
+      en: "Surah Al-Imran - Part 1",
+      am: "ሱራት አል-ዕምራን - ክፍል 1",
+      ar: "سورة آل عمران - الجزء الأول",
+    },
+    topic: {
+      en: "Tafsir",
+      am: "ተፍሲር",
+      ar: "التفسير",
+    },
+    duration: {
+      en: "45 min",
+      am: "45 ደቂቃ",
+      ar: "45 دقيقة",
+    },
     date: "June 20, 2026",
     platform: "YouTube",
     videoUrl: "https://www.youtube.com/watch?v=5hlykYaVcn4",
-    description:
-      "A deep dive into the meanings of Surah Al-Imran, covering the core themes of steadfastness and belief.",
+    description: {
+      en: "A deep dive into the meanings of Surah Al-Imran.",
+      am: "የሱራት አል-ዕምራን ትርጉም ውስጥ ዥረት ውስጥ ግብረታል።",
+      ar: "غوص عميق في معاني سورة آل عمران.",
+    },
   },
   {
     id: "2",
-    title: "The Importance of Sunnah",
-    topic: "Hadith",
-    duration: "38 min",
+    title: {
+      en: "The Importance of Sunnah",
+      am: "የሱና አስፈላጊነት",
+      ar: "أهمية السنة",
+    },
+    topic: {
+      en: "Hadith",
+      am: "ሀዲዝ",
+      ar: "الحديث",
+    },
+    duration: {
+      en: "38 min",
+      am: "38 ደቂቃ",
+      ar: "38 دقيقة",
+    },
     date: "June 15, 2026",
     platform: "YouTube",
-    videoUrl: "https://www.youtube.com/watch?v=5hlykYaVcn4", // Reusing for placeholder as requested
-    description:
-      "Ustaz Muhammad Ferej explains the vital role of the Sunnah in understanding the Qur'an and implementing Islam in daily life.",
-  },
-  {
-    id: "3",
-    title: "Purifying the Heart",
-    topic: "Tazkiyah",
-    duration: "52 min",
-    date: "June 10, 2026",
-    platform: "YouTube",
     videoUrl: "https://www.youtube.com/watch?v=5hlykYaVcn4",
-    description:
-      "A lecture on the spiritual diseases that affect the heart and the classical methods for purification.",
-  },
-  {
-    id: "4",
-    title: "Stories of the Prophets",
-    topic: "Seerah",
-    duration: "41 min",
-    date: "June 05, 2026",
-    platform: "YouTube",
-    videoUrl: "https://www.youtube.com/watch?v=5hlykYaVcn4",
-    description:
-      "Lessons and reflections from the lives of the Prophets, peace be upon them, as mentioned in the Qur'an.",
-  },
-  {
-    id: "5",
-    title: "The Mercy of Allah Encompasses All Things",
-    topic: "Tafsir",
-    duration: "32 min",
-    date: "March 18, 2026",
-    platform: "Facebook",
-    description:
-      "A reflection on Surah Al-A'raf 7:156 — what it means for the believer drowning in sin, and the door that never closes.",
-  },
-  {
-    id: "6",
-    title: "Three Habits That Soften the Hardest Heart",
-    topic: "Tazkiyah",
-    duration: "8 min",
-    date: "March 12, 2026",
-    platform: "TikTok",
-    description:
-      "Short reminder on the practical acts of worship that, when done consistently, return life to a heart grown distant from Allah.",
-  },
-  {
-    id: "7",
-    title: "Why Did the Sahaba Cry When They Heard the Qur'an?",
-    topic: "Seerah",
-    duration: "24 min",
-    date: "March 4, 2026",
-    platform: "Facebook",
-    description:
-      "Examining the relationship the companions had with the words of Allah — and how we might begin to recover it.",
-  },
-  {
-    id: "8",
-    title: "The Etiquettes of Disagreement Among Muslims",
-    topic: "Fiqh",
-    duration: "47 min",
-    date: "February 22, 2026",
-    platform: "Facebook",
-    description:
-      "How the early scholars disagreed without breaking the bonds of brotherhood, and what we have forgotten.",
-  },
-  {
-    id: "9",
-    title: "A Du'a for Anxiety from the Sunnah",
-    topic: "Worship",
-    duration: "6 min",
-    date: "February 14, 2026",
-    platform: "TikTok",
-    description:
-      "A short authentic supplication that the Prophet ﷺ taught for moments of distress.",
+    description: {
+      en: "Sheikh Mohammed Ferej explains the vital role of the Sunnah.",
+      am: "ሼክ መሐመድ ፈረጅ የሱና አስፈላጊነት ይብራራል።",
+      ar: "يفسر الشيخ محمد فرج الدور الحيوي للسنة.",
+    },
   },
 ];
 
-export type BioEntry = { year: string; title: string; place?: string; detail: string };
+export type BioEntry = {
+  year: MultilingualText;
+  title: MultilingualText;
+  place?: MultilingualText;
+  detail: MultilingualText;
+};
 
 export const biography: BioEntry[] = [
   {
-    year: "Early years",
-    title: "Birth and upbringing",
-    place: "Ethiopia",
-    detail:
-      "Born in Ethiopia and raised in a household where the Book of Allah was recited daily, the foundations of love for the deen were planted from the earliest years.",
+    year: {
+      en: "Early years",
+      am: "የመጀመሪያ ዓመታት",
+      ar: "السنوات الأولى",
+    },
+    title: {
+      en: "Birth and upbringing",
+      am: "ትውልድ እና አድሳት",
+      ar: "الولادة والنشأة",
+    },
+    place: {
+      en: "Ethiopia",
+      am: "ኢትዮጵያ",
+      ar: "إثيوبيا",
+    },
+    detail: {
+      en: "Born in Ethiopia and raised in a household where the Book of Allah was recited daily.",
+      am: "በኢትዮጵያ ተወልዶ፣ በየቀኑ የአላህ መጽሀፍ የሚታነብ ቤት ውስጥ አድጓል።",
+      ar: "وُلد في إثيوبيا ونشأ في بيت يُتلى فيه كتاب الله يوميًا.",
+    },
   },
   {
-    year: "Formative study",
-    title: "Memorization of the Qur'an",
-    detail:
-      "Completed the memorization of the noble Qur'an at the hands of teachers in the traditional Ethiopian madrasah system.",
-  },
-  {
-    year: "Advanced study",
-    title: "Classical sciences",
-    detail:
-      "Studied aqeedah, fiqh, usool, hadith and the Arabic language under a chain of Ethiopian and Arab scholars, with an emphasis on the works of the early generations.",
-  },
-  {
-    year: "Teaching",
-    title: "Twenty years in the service of knowledge",
-    detail:
-      "For more than two decades, has taught students across Ethiopia in mosques, study circles, and seminary classrooms — focusing on tafsir, aqeedah, and the inner sciences.",
-  },
-  {
-    year: "Today",
-    title: "Da'wah on every platform",
-    detail:
-      "Reaches thousands of seekers weekly through Facebook, TikTok, Telegram, and now through this structured online learning platform.",
+    year: {
+      en: "Formative study",
+      am: "ማዕከለኛ ትምህርት",
+      ar: "الدراسة التكوينية",
+    },
+    title: {
+      en: "Memorization of the Qur'an",
+      am: "የቁርአን ግብራት",
+      ar: "حفظ القرآن",
+    },
+    detail: {
+      en: "Completed the memorization of the noble Qur'an at the hands of traditional teachers.",
+      am: "በባህላዊ መምራን እጅ ከቀደምት የኢትዮጵያ ማድራስ ከተማዎች የአዛዝ ቁርአን ግብራት አጠናቋል።",
+      ar: "أكمل حفظ القرآن الكريم على أيدي معلمين تقليديين.",
+    },
   },
 ];
 
-export const specialties: string[] = [
-  "Tafsir of the Noble Qur'an",
-  "Aqeedah of Ahl as-Sunnah",
-  "Fiqh of worship and daily life",
-  "Seerah of the Prophet ﷺ",
-  "Tazkiyah and the inner sciences",
-  "Da'wah in the African context",
+export const specialties: MultilingualText[] = [
+  {
+    en: "Tafsir of the Noble Qur'an",
+    am: "የአዛዝ ቁርአን ተፍሲር",
+    ar: "تفسير القرآن الكريم",
+  },
+  {
+    en: "Aqeedah of Ahl as-Sunnah",
+    am: "የአህለሱና ወልጀመዓ አቂዳ",
+    ar: "عقيدة أهل السنة",
+  },
+  {
+    en: "Fiqh of worship and daily life",
+    am: "የአምልኮ እና የዕለት ተዕለት ሕይወት ፊቅህ",
+    ar: "فقه العبادة والحياة اليومية",
+  },
 ];
+
+// Helper to get content by language
+export function getTextByLang<T extends { [key in Language]: string }>(
+  obj: T,
+  lang: Language
+): string {
+  return obj[lang];
+}

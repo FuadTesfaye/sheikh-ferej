@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState, useEffect, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -7,75 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Globe } from "lucide-react";
-
-type Language = "en" | "am" | "ar";
-
-interface Translation {
-  home: string;
-  about: string;
-  lectures: string;
-  writings: string;
-  learning: string;
-  contact: string;
-  beginLearning: string;
-  knowledgeIsLight: string;
-  scholarTitle: string;
-  scholarSubtitle: string;
-  revivingTradition: string;
-  explore: string;
-  follow: string;
-}
-
-const translations: Record<Language, Translation> = {
-  en: {
-    home: "Home",
-    about: "About",
-    lectures: "Lectures",
-    writings: "Writings",
-    learning: "Learning",
-    contact: "Contact",
-    beginLearning: "Begin learning",
-    knowledgeIsLight: "Knowledge is light.",
-    scholarTitle: "Sheikh Mohammed Ferej",
-    scholarSubtitle: "Islamic Scholar · Ethiopia",
-    revivingTradition:
-      "Reviving the classical tradition of Islamic learning for a new generation of Ethiopian Muslims and the worldwide ummah.",
-    explore: "Explore",
-    follow: "Follow",
-  },
-  am: {
-    home: "መነሻ",
-    about: "ስለ ሼኩ",
-    lectures: "ትምህርቶች",
-    writings: "ጽሁፎች",
-    learning: "ትምህርት",
-    contact: "እውቂያ",
-    beginLearning: "ትምህርት ጀምር",
-    knowledgeIsLight: "እውቀት ብርሃን ነው።",
-    scholarTitle: "ሼክ መሐመድ ፈረጅ",
-    scholarSubtitle: "ኢስላማዊ ምሁር · ኢትዮጵያ",
-    revivingTradition:
-      "ለአዲሱ የኢትዮጵያ ሙስሊሞች ትውልድ እና ለአለም አቀፉ ኡማ የቀደምት ኢስላማዊ የትምህርት ባህልን ማደስ።",
-    explore: "አስስ",
-    follow: "ተከተሉ",
-  },
-  ar: {
-    home: "الرئيسية",
-    about: "عن الشيخ",
-    lectures: "المحاضرات",
-    writings: "المقالات",
-    learning: "التعلم",
-    contact: "اتصل بنا",
-    beginLearning: "ابدأ التعلم",
-    knowledgeIsLight: "العلم نور.",
-    scholarTitle: "الشيخ محمد فرج",
-    scholarSubtitle: "عالم إسلامي · إثيوبيا",
-    revivingTradition:
-      "إحياء التراث التعليمي الإسلامي الكلاسيكي لجيل جديد من مسلمي إثيوبيا والأمة الإسلامية جمعاء.",
-    explore: "استكشف",
-    follow: "تابعنا",
-  },
-};
+import { LanguageProvider, useLanguage, type Language } from "@/hooks/use-language";
 
 const languages: { code: Language; label: string; flag: string }[] = [
   { code: "en", label: "English", flag: "🇺🇸" },
@@ -84,29 +16,19 @@ const languages: { code: Language; label: string; flag: string }[] = [
 ];
 
 export function SiteLayout({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Language>("en");
+  return (
+    <LanguageProvider>
+      <SiteLayoutContent>{children}</SiteLayoutContent>
+    </LanguageProvider>
+  );
+}
 
-  useEffect(() => {
-    const savedLang = localStorage.getItem("app-language") as Language;
-    if (savedLang && (["en", "am", "ar"] as const).includes(savedLang)) {
-      setLang(savedLang);
-      document.documentElement.lang = savedLang;
-    }
-  }, []);
-
-  const handleLangChange = (newLang: Language) => {
-    setLang(newLang);
-    localStorage.setItem("app-language", newLang);
-    document.documentElement.lang = newLang;
-  };
-
-  const t = translations[lang];
+function SiteLayoutContent({ children }: { children: ReactNode }) {
+  const { t, language, setLanguage } = useLanguage();
 
   return (
-    <div
-      className={`min-h-screen flex flex-col bg-background text-foreground ${lang === "ar" ? "rtl" : "ltr"}`}
-    >
-      <Header lang={lang} onLangChange={handleLangChange} t={t} />
+    <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <Header t={t} language={language} setLanguage={setLanguage} />
       <main id="main-content" className="flex-1">
         {children}
       </main>
@@ -115,13 +37,15 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   );
 }
 
-interface HeaderProps {
-  lang: Language;
-  onLangChange: (lang: Language) => void;
-  t: Translation;
-}
-
-function Header({ lang, onLangChange, t }: HeaderProps) {
+function Header({
+  t,
+  language,
+  setLanguage,
+}: {
+  t: any;
+  language: Language;
+  setLanguage: (lang: Language) => void;
+}) {
   const nav = [
     { to: "/", label: t.home, exact: true },
     { to: "/about", label: t.about, exact: false },
@@ -152,7 +76,6 @@ function Header({ lang, onLangChange, t }: HeaderProps) {
             </span>
           </span>
         </Link>
-
         <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
           {nav.map((item) => (
             <Link
@@ -172,15 +95,15 @@ function Header({ lang, onLangChange, t }: HeaderProps) {
               aria-label="Select language"
             >
               <Globe className="h-4 w-4" aria-hidden="true" />
-              <span>{languages.find((l) => l.code === lang)?.label}</span>
+              <span>{languages.find((l) => l.code === language)?.label}</span>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="bg-background border-border" align="end">
               {languages.map((l) => (
                 <DropdownMenuItem
                   key={l.code}
-                  onClick={() => onLangChange(l.code)}
+                  onClick={() => setLanguage(l.code)}
                   className={`flex items-center gap-3 cursor-pointer hover:bg-gold/10 focus:bg-gold/10 outline-none transition-colors ${
-                    lang === l.code ? "text-gold" : ""
+                    language === l.code ? "text-gold" : ""
                   }`}
                 >
                   <span aria-hidden="true">{l.flag}</span>
@@ -190,10 +113,7 @@ function Header({ lang, onLangChange, t }: HeaderProps) {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Link
-            to="/learn"
-            className="btn-gold ml-3 text-sm py-2.5 px-5 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-gold outline-none"
-          >
+          <Link to="/learn" className="btn-gold ml-3 text-sm py-2.5 px-5">
             {t.beginLearning}
           </Link>
         </nav>
@@ -202,7 +122,7 @@ function Header({ lang, onLangChange, t }: HeaderProps) {
   );
 }
 
-function Footer({ t }: { t: Translation }) {
+function Footer({ t }: { t: any }) {
   const nav = [
     { to: "/", label: t.home },
     { to: "/about", label: t.about },
