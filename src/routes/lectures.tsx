@@ -203,11 +203,11 @@ function Lectures() {
 
       <section className="container-prose py-12">
         <div className="p-8 md:p-10 rounded-2xl border border-gold/30 bg-card/40 text-center">
-          <p className="font-arabic text-2xl text-gold leading-loose">
+          <p className="font-arabic text-2xl text-gold leading-loose" lang="ar">
             بَلِّغُوا عَنِّي وَلَوْ آيَةً
           </p>
-          <p className="mt-3 text-foreground/90 italic">
-            "Convey from me, even a single verse." — Sahih al-Bukhari
+          <p className="mt-3 text-foreground/90 italic" lang="am">
+            "ከእኔ አንዲትንም አንቀጽ ቢሆን አድርሱ።" — ሶሒህ አል-ቡኻሪ
           </p>
           <p className="mt-4 text-sm text-muted-foreground">
             Share what benefits you. The reward of the one who guides is like the reward of the one

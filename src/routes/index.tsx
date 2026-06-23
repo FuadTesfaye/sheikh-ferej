@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { posts, courses, lectures } from "@/lib/content";
-import scholar from "@/assets/scholar-portrait.jpg";
+import scholar from "@/assets/image.png";
 import pattern from "@/assets/pattern-bg.jpg";
-import lectureImg from "@/assets/lecture.jpg";
+import lectureImg from "@/assets/image copy 2.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -78,11 +78,11 @@ function Home() {
               />
             </div>
             <div className="absolute -bottom-6 -left-6 hidden md:block max-w-xs p-5 rounded-xl border border-gold/40 bg-background/95 backdrop-blur shadow-soft">
-              <p className="font-arabic text-lg text-gold leading-relaxed">
+              <p className="font-arabic text-lg text-gold leading-relaxed" lang="ar">
                 وَمَنْ أَحْسَنُ قَوْلًا مِمَّنْ دَعَا إِلَى اللَّهِ
               </p>
-              <p className="text-xs italic text-muted-foreground mt-2">
-                "Who is better in speech than one who calls to Allah."
+              <p className="text-xs italic text-muted-foreground mt-2" lang="am">
+                "ወደ አላህ ከጠራ ሰው ይበልጥ ንግግሩ ያማረ ማን ነው?"
               </p>
             </div>
           </div>
@@ -92,11 +92,11 @@ function Home() {
       {/* AYAH BAND */}
       <section className="border-b border-border bg-card/30">
         <div className="container-prose py-12 text-center">
-          <p className="font-arabic text-3xl md:text-4xl text-gold leading-loose">
+          <p className="font-arabic text-3xl md:text-4xl text-gold leading-loose" lang="ar">
             إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ
           </p>
-          <p className="mt-3 text-foreground/90 italic">
-            "It is only those who have knowledge among His servants that truly fear Allah."
+          <p className="mt-3 text-foreground/90 italic" lang="am">
+            "በእውነት አላህን ከባሮቹ ውስጥ የሚፈሩት አዋቂዎቹ (ዑለማኦች) ብቻ ናቸው::"
           </p>
           <p className="mt-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
             Surah Fatir &middot; 35:28
@@ -156,12 +156,30 @@ function Home() {
         <div className="ornament-divider text-xs uppercase tracking-[0.3em]">Areas of teaching</div>
         <div className="mt-12 grid md:grid-cols-3 gap-px bg-border rounded-xl overflow-hidden border border-border">
           {[
-            { ar: "ﺍ", k: "Qur'an & Tafsir", d: "Verse-by-verse exegesis grounded in the works of the early commentators." },
-            { ar: "ﺏ", k: "Aqeedah & Fiqh", d: "The creed of Ahl as-Sunnah and the rulings of daily worship and life." },
-            { ar: "ﺝ", k: "Seerah & Tazkiyah", d: "The life of the Prophet ﷺ and the purification of the believing heart." },
+            {
+              ar: "ﺍ",
+              k: "ቁርአን እና ተፍሲር",
+              d: "በቀደምት ዑለማኦች ስራዎች ላይ የተመሰረተ የቁርአን ትንታኔ (ተፍሲር)።",
+            },
+            {
+              ar: "ﺏ",
+              k: "አቂዳ እና ፊቅህ",
+              d: "የአህለሱና ወልጀመዓ አቂዳ እና የእለት ተእለት የአምልኮ እና የህይወት ህጎች (ፊቅህ)።",
+            },
+            {
+              ar: "ﺝ",
+              k: "ሲራ እና ተዝኪያ",
+              d: "የነቢዩ (ሰ.ዐ.ወ) የህይወት ታሪክ እና የልብ ንፅህና (ተዝኪያ) ትምህርቶች።",
+            },
           ].map((p) => (
-            <div key={p.k} className="bg-background p-8 hover:bg-card/40 transition">
-              <span className="font-arabic text-5xl text-gold/50">{p.ar}</span>
+            <div
+              key={p.k}
+              className="bg-background p-8 hover:bg-card/40 transition"
+              lang="am"
+            >
+              <span className="font-arabic text-5xl text-gold/50" lang="ar">
+                {p.ar}
+              </span>
               <h3 className="font-display text-2xl mt-4 text-gold">{p.k}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.d}</p>
             </div>

@@ -33,6 +33,7 @@
   --font-display: "Cormorant Garamond", serif;
   --font-body: "Inter", sans-serif;
   --font-arabic: "Amiri", serif;
+  --font-amharic: "Noto Serif Ethiopic", serif;
   --shadow-elegant: 0 30px 80px -30px color-mix(in oklab, var(--gold) 30%, transparent);
   --shadow-soft: 0 10px 40px -20px oklch(0 0 0 / 0.4);
 }
@@ -94,6 +95,26 @@
   ::selection {
     background: var(--color-gold);
     color: var(--color-primary-foreground);
+  }
+
+  /* Support for Amharic and Arabic typography */
+  [lang="am"] {
+    font-family: var(--font-amharic), var(--font-body);
+    line-height: 1.8;
+  }
+
+  [lang="ar"],
+  .font-arabic {
+    font-family: var(--font-arabic), serif;
+    line-height: 1.6;
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* Reset direction for non-Arabic nested elements */
+  [lang="ar"] *:not([lang="ar"]) {
+    direction: ltr;
+    text-align: left;
   }
 }
 
