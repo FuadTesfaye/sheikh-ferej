@@ -40,14 +40,18 @@ function Contact() {
       <section className="container-prose pt-20 pb-12">
         <p className="text-xs uppercase tracking-[0.3em] text-gold">{t.getInTouch}</p>
         <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">
-          {language === "en" ? "A word reaches further than we know." :
-           language === "am" ? "አንድ ቃል ከምንናገር በላይ ይደርሳል።" :
-           "الكلمة تصل أبعد مما نعلم."}
+          {language === "en"
+            ? "A word reaches further than we know."
+            : language === "am"
+              ? "አንድ ቃል ከምንናገር በላይ ይደርሳል።"
+              : "الكلمة تصل أبعد مما نعلم."}
         </h1>
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-          {language === "en" ? "Whether you have a question, a request for a lecture, or simply a salaam to send — you are welcome here." :
-           language === "am" ? "ጥያቄ ካለዎት፣ ለትምህርት ጥያቄዎት ካለዎት ወይም በቀላል ሰላም ለመላክ — እዚህ እንኳን ደህና መጡ።" :
-           "سواء كان لديك سؤال، أو طلب محاضرة، أو مجرد تحية تريد إرسالها — أنت مرحب هنا."}
+          {language === "en"
+            ? "Whether you have a question, a request for a lecture, or simply a salaam to send — you are welcome here."
+            : language === "am"
+              ? "ጥያቄ ካለዎት፣ ለትምህርት ጥያቄዎት ካለዎት ወይም በቀላል ሰላም ለመላክ — እዚህ እንኳን ደህና መጡ።"
+              : "سواء كان لديك سؤال، أو طلب محاضرة، أو مجرد تحية تريد إرسالها — أنت مرحب هنا."}
         </p>
       </section>
 
@@ -57,9 +61,11 @@ function Contact() {
           onSubmit={(e) => {
             e.preventDefault();
             alert(
-              language === "en" ? "JazakAllahu khayran — your message has been received." :
-              language === "am" ? "ጃዛካሉ ሀይራን — መልእክትዎ ተቀብሏል።" :
-              "جزاك الله خير — لقد تم استلام رسالتك."
+              language === "en"
+                ? "JazakAllahu khayran — your message has been received."
+                : language === "am"
+                  ? "ጃዛካሉ ሀይራን — መልእክትዎ ተቀብሏል።"
+                  : "جزاك الله خير — لقد تم استلام رسالتك.",
             );
           }}
         >
@@ -67,7 +73,9 @@ function Contact() {
             <input
               required
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition"
-              placeholder={language === "en" ? "Abdullah" : language === "am" ? "ዓብዱላሕ" : "عبد الله"}
+              placeholder={
+                language === "en" ? "Abdullah" : language === "am" ? "ዓብዱላሕ" : "عبد الله"
+              }
             />
           </Field>
           <Field label={t.email}>
@@ -75,13 +83,25 @@ function Contact() {
               type="email"
               required
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition"
-              placeholder={language === "en" ? "you@example.com" : language === "am" ? "you@example.com" : "you@example.com"}
+              placeholder={
+                language === "en"
+                  ? "you@example.com"
+                  : language === "am"
+                    ? "you@example.com"
+                    : "you@example.com"
+              }
             />
           </Field>
           <Field label={language === "en" ? "Subject" : language === "am" ? "ርዕሰ ጉዳይ" : "الموضوع"}>
             <input
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition"
-              placeholder={language === "en" ? "A question on tafsir…" : language === "am" ? "ስለ ተፍሲር ጥያቄ…" : "سؤال عن التفسير…"}
+              placeholder={
+                language === "en"
+                  ? "A question on tafsir…"
+                  : language === "am"
+                    ? "ስለ ተፍሲር ጥያቄ…"
+                    : "سؤال عن التفسير…"
+              }
             />
           </Field>
           <Field label={t.message}>
@@ -89,7 +109,13 @@ function Contact() {
               required
               rows={6}
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition resize-none"
-              placeholder={language === "en" ? "Assalamu alaykum…" : language === "am" ? "አሰላሙ ዓለይኩም…" : "السلام عليكم…"}
+              placeholder={
+                language === "en"
+                  ? "Assalamu alaykum…"
+                  : language === "am"
+                    ? "አሰላሙ ዓለይኩም…"
+                    : "السلام عليكم…"
+              }
             />
           </Field>
           <button type="submit" className="btn-gold w-full">
@@ -99,9 +125,11 @@ function Contact() {
 
         <div className="space-y-4">
           <p className="text-xs uppercase tracking-[0.25em] text-gold">
-            {language === "en" ? "Find the sheikh online" :
-             language === "am" ? "ሼኩን በመስመር ላይ ይፈልጉ" :
-             "ابحث عن الشيخ على الإنترنت"}
+            {language === "en"
+              ? "Find the sheikh online"
+              : language === "am"
+                ? "ሼኩን በመስመር ላይ ይፈልጉ"
+                : "ابحث عن الشيخ على الإنترنت"}
           </p>
           {channels.map((c) => (
             <a
@@ -127,9 +155,11 @@ function Contact() {
               وَقُولُوا لِلنَّاسِ حُسْنًا
             </p>
             <p className="mt-2 text-sm italic text-muted-foreground">
-              {language === "en" ? '"And speak to people good words." — Al-Baqarah 2:83' :
-               language === "am" ? '"እና ለሰዎች ደስተኛ ቃላት ይናገሩ።" — አል-ባቃራ 2:83' :
-               '"وقولوا للناس حسناً." — البقرة 2:83'}
+              {language === "en"
+                ? '"And speak to people good words." — Al-Baqarah 2:83'
+                : language === "am"
+                  ? '"እና ለሰዎች ደስተኛ ቃላት ይናገሩ።" — አል-ባቃራ 2:83'
+                  : '"وقولوا للناس حسناً." — البقرة 2:83'}
             </p>
           </div>
         </div>

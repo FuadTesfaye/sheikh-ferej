@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { courses, getTextByLang } from "@/lib/content";
+import { getTextByLang } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
+import { dataService } from "@/lib/data-service";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/learn/")({
   head: () => ({
@@ -25,23 +27,32 @@ const levelTint: Record<string, string> = {
 
 function LearnIndex() {
   const { language, t } = useLanguage();
+  const [courses, setCourses] = useState(() => dataService.getCourses());
+
+  useEffect(() => {
+    const handleStorage = () => setCourses(dataService.getCourses());
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
   return (
     <SiteLayout>
       <section className="container-prose pt-20 pb-10">
         <p className="text-xs uppercase tracking-[0.3em] text-gold">
-          {language === "en" ? "The learning" :
-           language === "am" ? "ትምህርቱ" :
-           "التعلم"}
+          {language === "en" ? "The learning" : language === "am" ? "ትምህርቱ" : "التعلم"}
         </p>
         <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">
-          {language === "en" ? "A school of seekers. A path of knowledge." :
-           language === "am" ? "ለሚፈልጉ ሰዎች ትምህርት ቤት። የእውቀት መንገድ።" :
-           "مدرسة للباحثين. طريق للمعرفة."}
+          {language === "en"
+            ? "A school of seekers. A path of knowledge."
+            : language === "am"
+              ? "ለሚፈልጉ ሰዎች ትምህርት ቤት። የእውቀት መንገድ።"
+              : "مدرسة للباحثين. طريق للمعرفة."}
         </h1>
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-          {language === "en" ? "Structured courses in the classical Islamic sciences, taught with clarity for the modern seeker. Begin where you are." :
-           language === "am" ? "ለአዳዲስ ላይ የተመሰረቱ የእስላማዊ ሳይንሶች ትምህርቶች፣ ለዘመናዊ አምራክ በግልጽነት ይተማራሉ። ከእርስዎ ቦታ ይጀምሩ።" :
-           "دورات منظمة في العلوم الإسلامية الكلاسيكية، تُدرس بوضوح للباحث الحديث. ابدأ من حيث أنت."}
+          {language === "en"
+            ? "Structured courses in the classical Islamic sciences, taught with clarity for the modern seeker. Begin where you are."
+            : language === "am"
+              ? "ለአዳዲስ ላይ የተመሰረቱ የእስላማዊ ሳይንሶች ትምህርቶች፣ ለዘመናዊ አምራክ በግልጽነት ይተማራሉ። ከእርስዎ ቦታ ይጀምሩ።"
+              : "دورات منظمة في العلوم الإسلامية الكلاسيكية، تُدرس بوضوح للباحث الحديث. ابدأ من حيث أنت."}
         </p>
       </section>
 
@@ -55,9 +66,7 @@ function LearnIndex() {
               className="group relative p-8 rounded-2xl border border-border bg-gradient-to-br from-card to-card/40 hover:border-gold/60 hover:shadow-[0_30px_80px_-40px_rgba(0,0,0,0.8)] transition"
             >
               <div className="flex items-center justify-between text-xs uppercase tracking-[0.25em]">
-                <span
-                  className={`px-2.5 py-1 rounded-full border ${levelTint[c.level.en]}`}
-                >
+                <span className={`px-2.5 py-1 rounded-full border ${levelTint[c.level.en]}`}>
                   {getTextByLang(c.level, language)}
                 </span>
                 <span className="text-muted-foreground">
@@ -67,9 +76,7 @@ function LearnIndex() {
               <h2 className="font-display text-3xl mt-6 group-hover:text-gold transition">
                 {getTextByLang(c.title, language)}
               </h2>
-              <p className="mt-2 text-muted-foreground">
-                {getTextByLang(c.subtitle, language)}
-              </p>
+              <p className="mt-2 text-muted-foreground">{getTextByLang(c.subtitle, language)}</p>
 
               <ul className="mt-6 grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-muted-foreground">
                 {c.topics.slice(0, 4).map((topic) => (
@@ -82,7 +89,11 @@ function LearnIndex() {
 
               <div className="mt-8 flex items-center justify-between">
                 <span className="text-gold text-sm uppercase tracking-[0.2em]">
-                  {language === "en" ? "View course →" : language === "am" ? "ኮርሱን ይመልከቱ →" : "عرض الدورة →"}
+                  {language === "en"
+                    ? "View course →"
+                    : language === "am"
+                      ? "ኮርሱን ይመልከቱ →"
+                      : "عرض الدورة →"}
                 </span>
               </div>
             </Link>

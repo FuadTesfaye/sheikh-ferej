@@ -101,7 +101,8 @@ export const translations: Record<Language, Translation> = {
     knowledgeIsLight: "Knowledge is light.",
     scholarTitle: "Sheikh Mohammed Ferej",
     scholarSubtitle: "Islamic Scholar · Ethiopia",
-    revivingTradition: "Reviving the classical tradition of Islamic learning for a new generation of Ethiopian Muslims and the worldwide ummah.",
+    revivingTradition:
+      "Reviving the classical tradition of Islamic learning for a new generation of Ethiopian Muslims and the worldwide ummah.",
     explore: "Explore",
     follow: "Follow",
     welcome: "Welcome",
@@ -243,7 +244,8 @@ export const translations: Record<Language, Translation> = {
     knowledgeIsLight: "العلم نور.",
     scholarTitle: "الشيخ محمد فرج",
     scholarSubtitle: "عالم إسلامي · إثيوبيا",
-    revivingTradition: "إحياء التراث التعليمي الإسلامي الكلاسيكي لجيل جديد من مسلمي إثيوبيا والأمة الإسلامية جمعاء.",
+    revivingTradition:
+      "إحياء التراث التعليمي الإسلامي الكلاسيكي لجيل جديد من مسلمي إثيوبيا والأمة الإسلامية جمعاء.",
     explore: "استكشف",
     follow: "تابعنا",
     welcome: "أهلا وسهلا",

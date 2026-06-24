@@ -10,7 +10,8 @@ export const Route = createFileRoute("/about")({
       { title: "About — Sheikh Mohammed Ferej" },
       {
         name: "description",
-        content: "The life, studies, and teaching of Sheikh Mohammed Ferej — Ethiopian Islamic scholar.",
+        content:
+          "The life, studies, and teaching of Sheikh Mohammed Ferej — Ethiopian Islamic scholar.",
       },
     ],
   }),
@@ -26,7 +27,13 @@ function About() {
           <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-gold/30">
             <img
               src={scholar}
-              alt={language === "en" ? "Sheikh Mohammed Ferej" : language === "am" ? "ሼክ መሐመድ ፈረጅ" : "الشيخ محمد فرج"}
+              alt={
+                language === "en"
+                  ? "Sheikh Mohammed Ferej"
+                  : language === "am"
+                    ? "ሼክ መሐመድ ፈረጅ"
+                    : "الشيخ محمد فرج"
+              }
               className="w-full h-full object-cover"
             />
           </div>
@@ -34,19 +41,24 @@ function About() {
             وَقُل رَّبِّ زِدْنِي عِلْمًا
           </p>
           <p className="text-center text-sm text-muted-foreground italic">
-            {language === "en" ? `"My Lord, increase me in knowledge."` :
-              language === "am" ? `"እግዚአብሔሬ፣ በእውቀቴ ብጠምድርኝ።"` :
-              `"ربِّ زدني علماً."`}
+            {language === "en"
+              ? `"My Lord, increase me in knowledge."`
+              : language === "am"
+                ? `"እግዚአብሔሬ፣ በእውቀቴ ብጠምድርኝ።"`
+                : `"ربِّ زدني علماً."`}
           </p>
         </div>
 
         <div>
-          <p className="text-xs uppercase tracking-[0.3em] text-gold">{language === "en" ? "About the sheikh" :
-            language === "am" ? "ስለ ሼኩ" : "عن الشيخ"}</p>
+          <p className="text-xs uppercase tracking-[0.3em] text-gold">
+            {language === "en" ? "About the sheikh" : language === "am" ? "ስለ ሼኩ" : "عن الشيخ"}
+          </p>
           <h1 className="font-display text-5xl md:text-6xl mt-4 leading-[1.05]">
-            {language === "en" ? "A teacher in the long chain of those who serve the deen." :
-              language === "am" ? "የዲንን የሚያገለግሉ ሰዎች ረጅም ሰንሰለት ውስጥ አንድ መምሪያ።" :
-              "مدرس في السلسلة الطويلة من الذين يخدمون الدين."}
+            {language === "en"
+              ? "A teacher in the long chain of those who serve the deen."
+              : language === "am"
+                ? "የዲንን የሚያገለግሉ ሰዎች ረጅም ሰንሰለት ውስጥ አንድ መምሪያ።"
+                : "مدرس في السلسلة الطويلة من الذين يخدمون الدين."}
           </h1>
 
           <div className="mt-10 space-y-6 text-lg leading-[1.85] text-foreground/90">
@@ -54,19 +66,25 @@ function About() {
               <span className="font-display text-5xl float-left mr-3 leading-none text-gold">
                 {language === "ar" ? "الش" : "S"}
               </span>
-              {language === "en" ? "Sheikh Mohammed Ferej is an Ethiopian Islamic scholar, teacher, and caller to Allah. He memorized the Qur'an in his youth and devoted his life to studying and transmitting the classical Islamic sciences in his homeland." :
-                language === "am" ? "ሼክ መሐመድ ፈረጅ ኢትዮጵያዊ ኢስላማዊ ምሁር፣ መምሪያ እና ወደ አላህ የሚጋራ ሰው ነው። በሕፃናት ውስጥ ቁርአንን ግብርቶ በሀገሪቱ ላይ ቀደምት ኢስላማዊ ሳይንስ እንድያጠናን እንድያሰራበት ሕይወቱን ወሰደ።" :
-                "الشيخ محمد فرج عالم إسلامي إثيوبي، مدرس، وداعي إلى الله. حفظ القرآن في شبابه وت devoted حياته لدراسة ونقل العلوم الإسلامية الكلاسيكية في بلده."}
+              {language === "en"
+                ? "Sheikh Mohammed Ferej is an Ethiopian Islamic scholar, teacher, and caller to Allah. He memorized the Qur'an in his youth and devoted his life to studying and transmitting the classical Islamic sciences in his homeland."
+                : language === "am"
+                  ? "ሼክ መሐመድ ፈረጅ ኢትዮጵያዊ ኢስላማዊ ምሁር፣ መምሪያ እና ወደ አላህ የሚጋራ ሰው ነው። በሕፃናት ውስጥ ቁርአንን ግብርቶ በሀገሪቱ ላይ ቀደምት ኢስላማዊ ሳይንስ እንድያጠናን እንድያሰራበት ሕይወቱን ወሰደ።"
+                  : "الشيخ محمد فرج عالم إسلامي إثيوبي، مدرس، وداعي إلى الله. حفظ القرآن في شبابه وت devoted حياته لدراسة ونقل العلوم الإسلامية الكلاسيكية في بلده."}
             </p>
             <p>
-              {language === "en" ? "His teaching is plainspoken and rooted in evidence — drawing on tafsir, hadith, and the writings of the early scholars, while addressing the questions of the modern Muslim with mercy and clarity." :
-                language === "am" ? "ትምህርቱ ቀላል እና በ ሰምዶች ላይ የተመሰረተ ነው፣ በተፍሲር፣ በሀዲዝ እና በቀደምት ዑለማዎች ጽሑፎች ላይ እንዲሰማ በማድረግ ዘመናዊ ሙስሊምን ጥያቄዎችን በርህምነት እና በግልጽነት ይመልሳል።" :
-                "تعلمه واضح وموثوق بالدليل — يعتمد على التفسير والحديث ومقالات العلماء الأوائل، مع معالجة أسئلة المسلم الحديث بالرحمة والوضوح."}
+              {language === "en"
+                ? "His teaching is plainspoken and rooted in evidence — drawing on tafsir, hadith, and the writings of the early scholars, while addressing the questions of the modern Muslim with mercy and clarity."
+                : language === "am"
+                  ? "ትምህርቱ ቀላል እና በ ሰምዶች ላይ የተመሰረተ ነው፣ በተፍሲር፣ በሀዲዝ እና በቀደምት ዑለማዎች ጽሑፎች ላይ እንዲሰማ በማድረግ ዘመናዊ ሙስሊምን ጥያቄዎችን በርህምነት እና በግልጽነት ይመልሳል።"
+                  : "تعلمه واضح وموثوق بالدليل — يعتمد على التفسير والحديث ومقالات العلماء الأوائل، مع معالجة أسئلة المسلم الحديث بالرحمة والوضوح."}
             </p>
             <p>
-              {language === "en" ? "Today his lectures reach thousands weekly through Facebook, TikTok and Telegram, and his structured online courses welcome students from across Ethiopia and the wider ummah." :
-                language === "am" ? "ዛሬ ትምህርቶቹ በፌስቡክ፣ ቲክቶክ እና ቴሌግራም በሳምንት ላይ በሺዎች እንዲደርሱ ይችላሉ, እና በተዘጋጁ የመስመር ላይ ኮርሶቹ ከኢትዮጵያ እና ከሰባዊው ዙሪያም ተማሪዎችን ይከታተላሉ።" :
-                "اليوم تصل محاضراته الآلاف أسبوعياً عبر فيسبوك وتيكتوك وتليجرام، ودوراته الأونلاين المنظمة ترحب بالطلاب من جميع أنحاء إثيوبيا والأمة الأوسع."}
+              {language === "en"
+                ? "Today his lectures reach thousands weekly through Facebook, TikTok and Telegram, and his structured online courses welcome students from across Ethiopia and the wider ummah."
+                : language === "am"
+                  ? "ዛሬ ትምህርቶቹ በፌስቡክ፣ ቲክቶክ እና ቴሌግራም በሳምንት ላይ በሺዎች እንዲደርሱ ይችላሉ, እና በተዘጋጁ የመስመር ላይ ኮርሶቹ ከኢትዮጵያ እና ከሰባዊው ዙሪያም ተማሪዎችን ይከታተላሉ።"
+                  : "اليوم تصل محاضراته الآلاف أسبوعياً عبر فيسبوك وتيكتوك وتليجرام، ودوراته الأونلاين المنظمة ترحب بالطلاب من جميع أنحاء إثيوبيا والأمة الأوسع."}
             </p>
           </div>
 
@@ -86,7 +104,9 @@ function About() {
                     {b.place ? ` · ${getTextByLang(b.place, language)}` : ""}
                   </p>
                   <h3 className="font-display text-2xl mt-1">{getTextByLang(b.title, language)}</h3>
-                  <p className="mt-2 text-muted-foreground leading-relaxed">{getTextByLang(b.detail, language)}</p>
+                  <p className="mt-2 text-muted-foreground leading-relaxed">
+                    {getTextByLang(b.detail, language)}
+                  </p>
                 </li>
               ))}
             </ol>
@@ -95,7 +115,11 @@ function About() {
           {/* Specialties */}
           <div className="mt-20">
             <div className="ornament-divider text-xs uppercase tracking-[0.3em] justify-start">
-              {language === "en" ? "Areas of specialty" : language === "am" ? "የምርጫ ሰርቶች" : "مجالات التخصص"}
+              {language === "en"
+                ? "Areas of specialty"
+                : language === "am"
+                  ? "የምርጫ ሰርቶች"
+                  : "مجالات التخصص"}
             </div>
             <ul className="mt-8 grid sm:grid-cols-2 gap-3">
               {specialties.map((s) => (
@@ -121,42 +145,47 @@ function About() {
                   t: {
                     en: "Rooted in evidence",
                     am: "በ ሰምዶች ላይ የተመሰረተ",
-                    ar: "مؤسس بالدليل"
+                    ar: "مؤسس بالدليل",
                   },
                   d: {
                     en: "Every ruling traced to the Qur'an, the Sunnah, and the understanding of the early generations.",
                     am: "እያንዳንዱ ሕግም ወደ ቁርአን፣ ሱና እና የቀደምት ትውልድ አስተዳደግ ይመልሳል።",
-                    ar: "كل حكم يُعزى إلى القرآن والسنة وفهم السلف الصالح."
-                  }
+                    ar: "كل حكم يُعزى إلى القرآن والسنة وفهم السلف الصالح.",
+                  },
                 },
                 {
                   t: {
                     en: "Spoken with mercy",
                     am: "በርህምነት ይነገራል",
-                    ar: "مقول بالرحمة"
+                    ar: "مقول بالرحمة",
                   },
                   d: {
                     en: "Knowledge delivered with the gentleness of a teacher who remembers being a student.",
                     am: "እውቀት በተማሪነት ስለነበረ የሚያስታውስ መምሪያ ስሜት ይሰጣል።",
-                    ar: "العلم يُلقي بلطف مدرس يتذكر كونه طالباً."
-                  }
+                    ar: "العلم يُلقي بلطف مدرس يتذكر كونه طالباً.",
+                  },
                 },
                 {
                   t: {
                     en: "Lived, not only taught",
                     am: "እንደሚኖር ይሰራል ሳይቀጠር",
-                    ar: "ممارس لا مجرد تعليم"
+                    ar: "ممارس لا مجرد تعليم",
                   },
                   d: {
                     en: "The aim is transformation: worship, character, and a heart drawn to Allah.",
                     am: "እርምጃው ለውጥ ነው፡ አምልኮ፣ ባህርነት እና ወደ አላህ የሚሳብ ልብ።",
-                    ar: "الغاية هي التغيير: العبادة والخلق وقلب منجذب إلى الله."
-                  }
+                    ar: "الغاية هي التغيير: العبادة والخلق وقلب منجذب إلى الله.",
+                  },
                 },
               ].map((x) => (
-                <div key={getTextByLang(x.t, language)} className="p-6 rounded-lg border border-border bg-card/40">
+                <div
+                  key={getTextByLang(x.t, language)}
+                  className="p-6 rounded-lg border border-border bg-card/40"
+                >
                   <h4 className="font-display text-xl text-gold">{getTextByLang(x.t, language)}</h4>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{getTextByLang(x.d, language)}</p>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {getTextByLang(x.d, language)}
+                  </p>
                 </div>
               ))}
             </div>
@@ -164,12 +193,15 @@ function About() {
 
           <div className="mt-16 p-8 rounded-xl border border-gold/30 bg-card/40 text-center">
             <p className="font-arabic text-2xl text-gold leading-loose">
-              مَن سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى الْجَنَّةِ
+              مَن سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا سَهَّلَ اللَّهُ لَهُ بِهِ طَرِيقًا إِلَى
+              الْجَنَّةِ
             </p>
             <p className="mt-3 italic text-foreground/90">
-              {language === "en" ? `"Whoever travels a path seeking knowledge, Allah will make easy for him a path to Paradise."` :
-                language === "am" ? `"እውቀትን የሚፈልግ ሰው አንድ መንገድ ይዘራል፣ አላህ ለእርሱ ወደ ጀነት መንገድን ይቀላልለታል።"` :
-                `"من سلك طريقاً يلتمس فيه علماً، سهل الله له به طريقاً إلى الجنة."`}
+              {language === "en"
+                ? `"Whoever travels a path seeking knowledge, Allah will make easy for him a path to Paradise."`
+                : language === "am"
+                  ? `"እውቀትን የሚፈልግ ሰው አንድ መንገድ ይዘራል፣ አላህ ለእርሱ ወደ ጀነት መንገድን ይቀላልለታል።"`
+                  : `"من سلك طريقاً يلتمس فيه علماً، سهل الله له به طريقاً إلى الجنة."`}
             </p>
             <p className="text-xs uppercase tracking-[0.25em] text-muted-foreground mt-2">
               {t.sahihMuslim}

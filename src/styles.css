@@ -47,13 +47,13 @@
   --card-foreground: oklch(0.94 0.02 80);
   --popover: oklch(0.26 0.028 50);
   --popover-foreground: oklch(0.94 0.02 80);
-  --primary: oklch(0.78 0.13 75);   /* warm gold */
+  --primary: oklch(0.78 0.13 75); /* warm gold */
   --primary-foreground: oklch(0.2 0.02 50);
   --secondary: oklch(0.3 0.03 50);
   --secondary-foreground: oklch(0.94 0.02 80);
   --muted: oklch(0.28 0.025 50);
   --muted-foreground: oklch(0.72 0.025 70);
-  --accent: oklch(0.55 0.12 35);    /* terracotta */
+  --accent: oklch(0.55 0.12 35); /* terracotta */
   --accent-foreground: oklch(0.96 0.01 80);
   --gold: oklch(0.78 0.13 75);
   --gold-soft: oklch(0.85 0.08 80);
@@ -86,7 +86,11 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4, h5 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
     font-family: var(--font-display);
     font-weight: 500;
     letter-spacing: -0.01em;
@@ -130,7 +134,8 @@
   justify-content: center;
   gap: 1rem;
   color: var(--color-gold);
-  &::before, &::after {
+  &::before,
+  &::after {
     content: "";
     height: 1px;
     flex: 1;

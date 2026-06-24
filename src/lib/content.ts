@@ -310,7 +310,7 @@ export const specialties: MultilingualText[] = [
 // Helper to get content by language
 export function getTextByLang<T extends { [key in Language]: string }>(
   obj: T,
-  lang: Language
+  lang: Language,
 ): string {
   return obj[lang];
 }

@@ -1,28 +1,25 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { courses, getTextByLang } from "@/lib/content";
+import { getTextByLang } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
+import { dataService } from "@/lib/data-service";
 import pattern from "@/assets/pattern-bg.jpg";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/learn/$courseId")({
   head: ({ params }) => {
-    const c = courses.find((x) => x.id === params.courseId);
+    const c = dataService.getCourses().find((x) => x.id === params.courseId);
     return {
       meta: [
         { title: c ? `${getTextByLang(c.title, "en")} — Learning` : "Course" },
-        { name: "description", content: getTextByLang(c?.description ?? { en: "", am: "", ar: "" }, "en") },
+        {
+          name: "description",
+          content: getTextByLang(c?.description ?? { en: "", am: "", ar: "" }, "en"),
+        },
       ],
     };
   },
-  loader: ({ params }) => {
-    const course = courses.find((c) => c.id === params.courseId);
-    if (!course) throw notFound();
-    return { course };
-  },
   component: CourseDetail,
-  notFoundComponent: () => (
-    <CourseNotFound />
-  ),
 });
 
 function CourseNotFound() {
@@ -31,9 +28,11 @@ function CourseNotFound() {
     <SiteLayout>
       <div className="container-prose py-32 text-center">
         <p className="font-display text-3xl">
-          {language === "en" ? "Course not found" :
-           language === "am" ? "ኮርሱ አልተገኘም" :
-           "لم يتم العثور على الدورة"}
+          {language === "en"
+            ? "Course not found"
+            : language === "am"
+              ? "ኮርሱ አልተገኘም"
+              : "لم يتم العثور على الدورة"}
         </p>
         <Link to="/learn" className="btn-outline-gold mt-6 inline-flex">
           {t.allCourses}
@@ -45,7 +44,17 @@ function CourseNotFound() {
 
 function CourseDetail() {
   const { language, t } = useLanguage();
-  const { course } = Route.useLoaderData();
+  const { courseId } = Route.useParams();
+  const [courses, setCourses] = useState(() => dataService.getCourses());
+  const course = courses.find((c) => c.id === courseId);
+
+  useEffect(() => {
+    const handleStorage = () => setCourses(dataService.getCourses());
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
+  if (!course) return <CourseNotFound />;
 
   return (
     <SiteLayout>
@@ -67,9 +76,13 @@ function CourseDetail() {
             <span className="px-2.5 py-1 rounded-full border border-gold/40 text-gold">
               {getTextByLang(course.level, language)}
             </span>
-            <span className="text-muted-foreground">{getTextByLang(course.duration, language)}</span>
+            <span className="text-muted-foreground">
+              {getTextByLang(course.duration, language)}
+            </span>
             <span className="text-muted-foreground">&middot;</span>
-            <span className="text-muted-foreground">{course.lessons} {t.lessons}</span>
+            <span className="text-muted-foreground">
+              {course.lessons} {t.lessons}
+            </span>
           </div>
           <h1 className="font-display text-5xl md:text-6xl mt-6 max-w-3xl leading-[1.05]">
             {getTextByLang(course.title, language)}
@@ -82,7 +95,11 @@ function CourseDetail() {
               {language === "en" ? "Enroll now" : language === "am" ? "አሁን ይመዝገቡ" : "سجل الآن"}
             </button>
             <button className="btn-outline-gold">
-              {language === "en" ? "Preview a lesson" : language === "am" ? "አንድ ትምህርት ይመልከቱ" : "معاينة درس"}
+              {language === "en"
+                ? "Preview a lesson"
+                : language === "am"
+                  ? "አንድ ትምህርት ይመልከቱ"
+                  : "معاينة درس"}
             </button>
           </div>
         </div>
@@ -91,7 +108,11 @@ function CourseDetail() {
       <section className="container-prose grid lg:grid-cols-[2fr_1fr] gap-12 py-16">
         <div>
           <h2 className="font-display text-3xl">
-            {language === "en" ? "About this course" : language === "am" ? "ስለዚህ ኮርስ" : "حول هذه الدورة"}
+            {language === "en"
+              ? "About this course"
+              : language === "am"
+                ? "ስለዚህ ኮርስ"
+                : "حول هذه الدورة"}
           </h2>
           <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
             {getTextByLang(course.description, language)}
@@ -128,31 +149,35 @@ function CourseDetail() {
             </p>
             <p className="font-display text-2xl mt-2">Sheikh Mohammed Ferej</p>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-              {language === "en" ? "Ethiopian Islamic scholar with two decades of teaching in the sacred sciences." :
-               language === "am" ? "ኢትዮጵያዊ እስላማዊ ምሁር በሁለት አስርት ዓመታት በቅዱስ ሳይንሶች ትምህርት ያለው።" :
-               "عالم إسلامي إثيوبي بعقدين من التدريس في العلوم الشرعية."}
+              {language === "en"
+                ? "Ethiopian Islamic scholar with two decades of teaching in the sacred sciences."
+                : language === "am"
+                  ? "ኢትዮጵያዊ እስላማዊ ምሁር በሁለት አስርት ዓመታት በቅዱስ ሳይንሶች ትምህርት ያለው።"
+                  : "عالم إسلامي إثيوبي بعقدين من التدريس في العلوم الشرعية."}
             </p>
           </div>
 
           <div className="p-6 rounded-xl border border-border bg-card/40 space-y-4 text-sm">
-            <Row
-              label={t.level}
-              value={getTextByLang(course.level, language)}
-            />
+            <Row label={t.level} value={getTextByLang(course.level, language)} />
             <Row
               label={language === "en" ? "Duration" : language === "am" ? "ቀጣይነት" : "المدة"}
               value={getTextByLang(course.duration, language)}
             />
-            <Row
-              label={t.lessons}
-              value={String(course.lessons)}
-            />
+            <Row label={t.lessons} value={String(course.lessons)} />
             <Row
               label={language === "en" ? "Language" : language === "am" ? "ቋንቋ" : "اللغة"}
-              value={language === "en" ? "Amharic & Arabic" : language === "am" ? "አማርኛ & አረብኛ" : "الأمهرية والعربية"}
+              value={
+                language === "en"
+                  ? "Amharic & Arabic"
+                  : language === "am"
+                    ? "አማርኛ & አረብኛ"
+                    : "الأمهرية والعربية"
+              }
             />
             <Row
-              label={language === "en" ? "Certificate" : language === "am" ? "የምስክር ወረቀት" : "الشهادة"}
+              label={
+                language === "en" ? "Certificate" : language === "am" ? "የምስክር ወረቀት" : "الشهادة"
+              }
               value={language === "en" ? "Yes" : language === "am" ? "አዎ" : "نعم"}
             />
           </div>
@@ -162,9 +187,11 @@ function CourseDetail() {
               مَن سَلَكَ طَرِيقًا يَلْتَمِسُ فِيهِ عِلْمًا
             </p>
             <p className="text-sm italic text-muted-foreground mt-2">
-              {language === "en" ? '"Whoever travels a path seeking knowledge, Allah will make easy for him a path to Paradise." — Muslim' :
-               language === "am" ? '"እውቀትን የሚፈልግ ሰው አንድ መንገድ ይዘራል፣ አላህ ለእርሱ ወደ ጀነት መንገድ ይቀላልለታል።" — ሙስሊም' :
-               '"من سلك طريقًا يلتمس فيه علمًا، سهّل الله له به طريقًا إلى الجنة." — مسلم'}
+              {language === "en"
+                ? '"Whoever travels a path seeking knowledge, Allah will make easy for him a path to Paradise." — Muslim'
+                : language === "am"
+                  ? '"እውቀትን የሚፈልግ ሰው አንድ መንገድ ይዘራል፣ አላህ ለእርሱ ወደ ጀነት መንገድ ይቀላልለታል።" — ሙስሊም'
+                  : '"من سلك طريقًا يلتمس فيه علمًا، سهّل الله له به طريقًا إلى الجنة." — مسلم'}
             </p>
           </div>
         </aside>

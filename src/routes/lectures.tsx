@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { lectures, type Lecture } from "@/lib/content";
+import { type Lecture } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
 import scholarImg from "@/assets/image copy 3.png";
 import { getTextByLang } from "@/lib/content";
+import { dataService } from "@/lib/data-service";
 
 export const Route = createFileRoute("/lectures")({
   head: () => ({
@@ -43,7 +44,9 @@ function VideoModal({ lecture, onClose }: { lecture: Lecture; onClose: () => voi
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/20 hover:bg-background/40 text-white transition"
-          aria-label={language === "en" ? "Close video" : language === "am" ? "ቪዲዮውን ዝጋ" : "إغلاق الفيديو"}
+          aria-label={
+            language === "en" ? "Close video" : language === "am" ? "ቪዲዮውን ዝጋ" : "إغلاق الفيديو"
+          }
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -71,14 +74,18 @@ function VideoModal({ lecture, onClose }: { lecture: Lecture; onClose: () => voi
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center text-center p-8">
             <h3 className="font-display text-2xl text-gold mb-4">
-              {language === "en" ? `Video available on ${lecture.platform}` :
-               language === "am" ? `ቪዲዮው በ${lecture.platform} ላይ ይገኛል` :
-               `الفيديو متاح على ${lecture.platform}`}
+              {language === "en"
+                ? `Video available on ${lecture.platform}`
+                : language === "am"
+                  ? `ቪዲዮው በ${lecture.platform} ላይ ይገኛል`
+                  : `الفيديو متاح على ${lecture.platform}`}
             </h3>
             <p className="text-muted-foreground mb-8">
-              {language === "en" ? `This video is hosted on ${lecture.platform}. Click below to watch it there.` :
-               language === "am" ? `ይህ ቪዲዮ በ${lecture.platform} ላይ ይቀመጣል። እዚህ በታች ጠቅ ስለማየት ይጫኑ።` :
-               `هذا الفيديو مستضاف على ${lecture.platform}. انقر أدناه لمشاهدته هناك.`}
+              {language === "en"
+                ? `This video is hosted on ${lecture.platform}. Click below to watch it there.`
+                : language === "am"
+                  ? `ይህ ቪዲዮ በ${lecture.platform} ላይ ይቀመጣል። እዚህ በታች ጠቅ ስለማየት ይጫኑ።`
+                  : `هذا الفيديو مستضاف على ${lecture.platform}. انقر أدناه لمشاهدته هناك.`}
             </p>
             <a
               href={lecture.videoUrl || platformLink[lecture.platform]}
@@ -98,6 +105,13 @@ function VideoModal({ lecture, onClose }: { lecture: Lecture; onClose: () => voi
 function Lectures() {
   const { language, t } = useLanguage();
   const [activeVideo, setActiveVideo] = useState<Lecture | null>(null);
+  const [lectures, setLectures] = useState(() => dataService.getLectures());
+
+  useEffect(() => {
+    const handleStorage = () => setLectures(dataService.getLectures());
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
   const [featured, ...rest] = lectures;
 
   return (
@@ -106,19 +120,25 @@ function Lectures() {
 
       <section className="container-prose pt-20 pb-12">
         <p className="text-xs uppercase tracking-[0.3em] text-gold">
-          {language === "en" ? "Lectures & reminders" :
-           language === "am" ? "ትምህርቶች እና ማስታወሻዎች" :
-           "المحاضرات والملاحظات"}
+          {language === "en"
+            ? "Lectures & reminders"
+            : language === "am"
+              ? "ትምህርቶች እና ማስታወሻዎች"
+              : "المحاضرات والملاحظات"}
         </p>
         <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">
-          {language === "en" ? "The spoken word, recorded for the seeker." :
-           language === "am" ? "ለሚፈልግ ሰው የተቀመጠ የተናገረ ቃል።" :
-           "القول المنطوق، مسجل للباحث."}
+          {language === "en"
+            ? "The spoken word, recorded for the seeker."
+            : language === "am"
+              ? "ለሚፈልግ ሰው የተቀመጠ የተናገረ ቃል።"
+              : "القول المنطوق، مسجل للباحث."}
         </h1>
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-          {language === "en" ? "Friday khutbas, halaqas, and short reminders — drawn from over twenty years of teaching in the mosques of Ethiopia." :
-           language === "am" ? "የአርብ ቁጥብ፣ ሃላቆች እና አጭር ማስታወሻዎች — ከእስያዊያ መስጊዳዎች ውስጥ ከ20 ዓመታት በላይ የትምህርት ስራዎች መሰረት ያደረገ።" :
-           "خطب الجمع، وحلقات تذكير قصيرة — مأخوذة من أكثر من عشرين عاماً من التدريس في مساجد إثيوبيا."}
+          {language === "en"
+            ? "Friday khutbas, halaqas, and short reminders — drawn from over twenty years of teaching in the mosques of Ethiopia."
+            : language === "am"
+              ? "የአርብ ቁጥብ፣ ሃላቆች እና አጭር ማስታወሻዎች — ከእስያዊያ መስጊዳዎች ውስጥ ከ20 ዓመታት በላይ የትምህርት ስራዎች መሰረት ያደረገ።"
+              : "خطب الجمع، وحلقات تذكير قصيرة — مأخوذة من أكثر من عشرين عاماً من التدريس في مساجد إثيوبيا."}
         </p>
       </section>
 
@@ -137,7 +157,13 @@ function Lectures() {
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
             <button
               onClick={() => setActiveVideo(featured)}
-              aria-label={language === "en" ? "Play lecture" : language === "am" ? "ትምህርቱን አጫውት" : "تشغيل المحاضرة"}
+              aria-label={
+                language === "en"
+                  ? "Play lecture"
+                  : language === "am"
+                    ? "ትምህርቱን አጫውት"
+                    : "تشغيل المحاضرة"
+              }
               className="absolute inset-0 grid place-items-center"
             >
               <span className="grid place-items-center h-20 w-20 rounded-full bg-gold/90 text-primary-foreground text-3xl pl-1 shadow-2xl group-hover:scale-110 transition">
@@ -148,7 +174,9 @@ function Lectures() {
           <div className="p-8 lg:p-10 flex flex-col justify-center">
             <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em]">
               <span className="text-gold">{t.latestLecture}</span>
-              <span className="text-muted-foreground">&middot; {getTextByLang(featured.topic, language)}</span>
+              <span className="text-muted-foreground">
+                &middot; {getTextByLang(featured.topic, language)}
+              </span>
             </div>
             <h2 className="font-display text-3xl md:text-4xl mt-4 leading-tight">
               {getTextByLang(featured.title, language)}
@@ -165,7 +193,11 @@ function Lectures() {
               onClick={() => setActiveVideo(featured)}
               className="btn-outline-gold mt-8 text-sm py-2.5 px-5 self-start"
             >
-              {language === "en" ? "Watch now →" : language === "am" ? "አሁን ይመልከቱ →" : "شاهد الآن →"}
+              {language === "en"
+                ? "Watch now →"
+                : language === "am"
+                  ? "አሁን ይመልከቱ →"
+                  : "شاهد الآن →"}
             </button>
           </div>
         </div>
@@ -201,7 +233,9 @@ function Lectures() {
               </div>
               <div className="mt-5 flex items-center gap-3 text-xs uppercase tracking-[0.2em]">
                 <span className="text-gold">{getTextByLang(l.topic, language)}</span>
-                <span className="text-muted-foreground">&middot; {getTextByLang(l.duration, language)}</span>
+                <span className="text-muted-foreground">
+                  &middot; {getTextByLang(l.duration, language)}
+                </span>
               </div>
               <h3 className="font-display text-xl mt-2 group-hover:text-gold transition">
                 {getTextByLang(l.title, language)}
@@ -224,9 +258,11 @@ function Lectures() {
             "ከእኔ አንዲትንም አንቀጽ ቢሆን አድርሱ።" — ሶሒህ አል-ቡኻሪ
           </p>
           <p className="mt-4 text-sm text-muted-foreground">
-            {language === "en" ? "Share what benefits you. The reward of the one who guides is like the reward of the one who acts." :
-             language === "am" ? "ልብዎን ያደነቅዎትን አጋራም። የሚያመራው ሰው ሽርአይታ የሚያደርገውም ሰው ነው።" :
-             "شارك ما ينفعك. أجر من يهتدي كأجر من يعمل."}
+            {language === "en"
+              ? "Share what benefits you. The reward of the one who guides is like the reward of the one who acts."
+              : language === "am"
+                ? "ልብዎን ያደነቅዎትን አጋራም። የሚያመራው ሰው ሽርአይታ የሚያደርገውም ሰው ነው።"
+                : "شارك ما ينفعك. أجر من يهتدي كأجر من يعمل."}
           </p>
         </div>
       </section>

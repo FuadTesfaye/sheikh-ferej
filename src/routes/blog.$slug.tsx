@@ -1,30 +1,33 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { posts, getTextByLang } from "@/lib/content";
+import { getTextByLang } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
+import { dataService } from "@/lib/data-service";
 import tasbih from "@/assets/tasbih.jpg";
+import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/blog/$slug")({
   head: ({ params }) => {
-    const post = posts.find((p) => p.slug === params.slug);
+    // Note: This will only use the initial hardcoded data for SEO on the server
+    const post = dataService.getPosts().find((p) => p.slug === params.slug);
     return {
       meta: [
-        { title: post ? `${getTextByLang(post.title, "en")} — Sheikh Mohammed Ferej` : "Article" },
-        { name: "description", content: getTextByLang(post?.excerpt ?? { en: "", am: "", ar: "" }, "en") },
-        { property: "og:title", content: getTextByLang(post?.title ?? { en: "", am: "", ar: "" }, "en") },
-        { property: "og:description", content: getTextByLang(post?.excerpt ?? { en: "", am: "", ar: "" }, "en") },
+        {
+          name: "description",
+          content: getTextByLang(post?.excerpt ?? { en: "", am: "", ar: "" }, "en"),
+        },
+        {
+          property: "og:title",
+          content: getTextByLang(post?.title ?? { en: "", am: "", ar: "" }, "en"),
+        },
+        {
+          property: "og:description",
+          content: getTextByLang(post?.excerpt ?? { en: "", am: "", ar: "" }, "en"),
+        },
       ],
     };
   },
-  loader: ({ params }) => {
-    const post = posts.find((p) => p.slug === params.slug);
-    if (!post) throw notFound();
-    return { post };
-  },
   component: BlogPost,
-  notFoundComponent: () => (
-    <NotFoundPage />
-  ),
 });
 
 function NotFoundPage() {
@@ -33,9 +36,11 @@ function NotFoundPage() {
     <SiteLayout>
       <div className="container-prose py-32 text-center">
         <p className="font-display text-3xl">
-          {language === "en" ? "Article not found" :
-           language === "am" ? "ጽሑፉ አልተገኘም" :
-           "لم يتم العثور على المقال"}
+          {language === "en"
+            ? "Article not found"
+            : language === "am"
+              ? "ጽሑፉ አልተገኘም"
+              : "لم يتم العثور على المقال"}
         </p>
         <Link to="/blog" className="btn-outline-gold mt-6 inline-flex">
           {t.backToBlog}
@@ -47,7 +52,18 @@ function NotFoundPage() {
 
 function BlogPost() {
   const { language, t } = useLanguage();
-  const { post } = Route.useLoaderData();
+  const { slug } = Route.useParams();
+  const [posts, setPosts] = useState(() => dataService.getPosts());
+  const post = posts.find((p) => p.slug === slug);
+
+  useEffect(() => {
+    const handleStorage = () => setPosts(dataService.getPosts());
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
+  if (!post) return <NotFoundPage />;
+
   const idx = posts.findIndex((p) => p.slug === post.slug);
   const next = posts[(idx + 1) % posts.length];
 
@@ -75,7 +91,13 @@ function BlogPost() {
               {getTextByLang(post.title, language)}
             </h1>
             <div className="mt-8 flex items-center gap-4 text-sm text-muted-foreground">
-              <span>{language === "en" ? "By Sheikh Mohammed Ferej" : language === "am" ? "በሼክ መሐመድ ፈረጅ" : "بقلم الشيخ محمد فرج"}</span>
+              <span>
+                {language === "en"
+                  ? "By Sheikh Mohammed Ferej"
+                  : language === "am"
+                    ? "በሼክ መሐመድ ፈረጅ"
+                    : "بقلم الشيخ محمد فرج"}
+              </span>
               <span>&middot;</span>
               <span>{post.date}</span>
               <span>&middot;</span>
@@ -104,13 +126,13 @@ function BlogPost() {
 
           <div className="rounded-xl border border-border bg-card/40 p-8">
             <p className="text-xs uppercase tracking-[0.25em] text-gold">
-              {language === "en" ? "Continue reading" : language === "am" ? "ይቀጥሉ ለማንበት" : "استمر في القراءة"}
+              {language === "en"
+                ? "Continue reading"
+                : language === "am"
+                  ? "ይቀጥሉ ለማንበት"
+                  : "استمر في القراءة"}
             </p>
-            <Link
-              to="/blog/$slug"
-              params={{ slug: next.slug }}
-              className="group block mt-3"
-            >
+            <Link to="/blog/$slug" params={{ slug: next.slug }} className="group block mt-3">
               <h3 className="font-display text-2xl group-hover:text-gold transition">
                 {getTextByLang(next.title, language)}
               </h3>

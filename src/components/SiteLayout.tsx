@@ -1,13 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { type ReactNode } from "react";
+import { type ReactNode, useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Globe } from "lucide-react";
+import { Globe, Menu, X } from "lucide-react";
 import { LanguageProvider, useLanguage, type Language } from "@/hooks/use-language";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
 
 const languages: { code: Language; label: string; flag: string }[] = [
   { code: "en", label: "English", flag: "🇺🇸" },
@@ -42,10 +44,12 @@ function Header({
   language,
   setLanguage,
 }: {
-  t: any;
+  t: Record<string, string>;
   language: Language;
   setLanguage: (lang: Language) => void;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   const nav = [
     { to: "/", label: t.home, exact: true },
     { to: "/about", label: t.about, exact: false },
@@ -76,6 +80,8 @@ function Header({
             </span>
           </span>
         </Link>
+
+        {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
           {nav.map((item) => (
             <Link
@@ -89,40 +95,98 @@ function Header({
             </Link>
           ))}
 
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
-              aria-label="Select language"
-            >
-              <Globe className="h-4 w-4" aria-hidden="true" />
-              <span>{languages.find((l) => l.code === language)?.label}</span>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-background border-border" align="end">
-              {languages.map((l) => (
-                <DropdownMenuItem
-                  key={l.code}
-                  onClick={() => setLanguage(l.code)}
-                  className={`flex items-center gap-3 cursor-pointer hover:bg-gold/10 focus:bg-gold/10 outline-none transition-colors ${
-                    language === l.code ? "text-gold" : ""
-                  }`}
-                >
-                  <span aria-hidden="true">{l.flag}</span>
-                  <span>{l.label}</span>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <LanguageSelector language={language} setLanguage={setLanguage} />
 
           <Link to="/learn" className="btn-gold ml-3 text-sm py-2.5 px-5">
             {t.beginLearning}
           </Link>
         </nav>
+
+        {/* Mobile Navigation */}
+        <div className="flex md:hidden items-center gap-2">
+          <LanguageSelector language={language} setLanguage={setLanguage} />
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="text-gold" aria-label="Open menu">
+                <Menu className="h-6 w-6" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="right"
+              className="bg-background border-border w-[300px] sm:w-[400px]"
+            >
+              <SheetHeader>
+                <SheetTitle className="text-start font-display text-2xl text-gold">
+                  {t.scholarTitle}
+                </SheetTitle>
+              </SheetHeader>
+              <nav className="flex flex-col gap-4 mt-12" aria-label="Mobile navigation">
+                {nav.map((item) => (
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setIsOpen(false)}
+                    activeOptions={{ exact: item.exact }}
+                    className="text-lg font-display tracking-wide text-muted-foreground hover:text-gold transition py-2 border-b border-border/40"
+                    activeProps={{
+                      className:
+                        "text-lg font-display tracking-wide text-gold py-2 border-b border-border/40",
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Link
+                  to="/learn"
+                  onClick={() => setIsOpen(false)}
+                  className="btn-gold mt-6 w-full text-center"
+                >
+                  {t.beginLearning}
+                </Link>
+              </nav>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
 }
 
-function Footer({ t }: { t: any }) {
+function LanguageSelector({
+  language,
+  setLanguage,
+}: {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+}) {
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
+        aria-label="Select language"
+      >
+        <Globe className="h-4 w-4" aria-hidden="true" />
+        <span>{languages.find((l) => l.code === language)?.label}</span>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className="bg-background border-border" align="end">
+        {languages.map((l) => (
+          <DropdownMenuItem
+            key={l.code}
+            onClick={() => setLanguage(l.code)}
+            className={`flex items-center gap-3 cursor-pointer hover:bg-gold/10 focus:bg-gold/10 outline-none transition-colors ${
+              language === l.code ? "text-gold" : ""
+            }`}
+          >
+            <span aria-hidden="true">{l.flag}</span>
+            <span>{l.label}</span>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+function Footer({ t }: { t: Record<string, string> }) {
   const nav = [
     { to: "/", label: t.home },
     { to: "/about", label: t.about },
@@ -130,6 +194,7 @@ function Footer({ t }: { t: any }) {
     { to: "/blog", label: t.writings },
     { to: "/learn", label: t.learning },
     { to: "/contact", label: t.contact },
+    { to: "/admin", label: "Admin" },
   ] as const;
 
   return (
