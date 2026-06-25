@@ -6,8 +6,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Globe, Menu } from "lucide-react";
+import { Globe, Menu, LogOut } from "lucide-react";
 import { useLanguage, type Language, type Translation } from "@/hooks/use-language";
+import { useAuth } from "@/hooks/use-auth";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -19,10 +20,11 @@ const languages: { code: Language; label: string; flag: string }[] = [
 
 export function SiteLayout({ children }: { children: ReactNode }) {
   const { t, language, setLanguage } = useLanguage();
+  const { isAuthenticated, logout } = useAuth();
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <Header t={t} language={language} setLanguage={setLanguage} />
+      <Header t={t} language={language} setLanguage={setLanguage} isAuthenticated={isAuthenticated} logout={logout} />
       <main id="main-content" className="flex-1">
         {children}
       </main>
@@ -35,10 +37,14 @@ function Header({
   t,
   language,
   setLanguage,
+  isAuthenticated,
+  logout,
 }: {
   t: Translation;
   language: Language;
   setLanguage: (lang: Language) => void;
+  isAuthenticated: boolean;
+  logout: () => void;
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -87,11 +93,39 @@ function Header({
             </Link>
           ))}
 
+          {isAuthenticated && (
+            <Link
+              to="/admin"
+              className="px-4 py-2 text-sm tracking-wide text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
+              activeProps={{ className: "px-4 py-2 text-sm tracking-wide text-gold" }}
+            >
+              Admin
+            </Link>
+          )}
+
           <LanguageSelector language={language} setLanguage={setLanguage} />
 
-          <Link to="/learn" className="btn-gold ml-3 text-sm py-2.5 px-5">
-            {t.beginLearning}
-          </Link>
+          {isAuthenticated ? (
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={logout}
+              className="ml-3 text-muted-foreground hover:text-gold"
+            >
+              <LogOut className="h-4 w-4 mr-2" />
+              {t.logout}
+            </Button>
+          ) : (
+            <Link to="/login" className="btn-gold ml-3 text-sm py-2.5 px-5">
+              {t.login}
+            </Link>
+          )}
+
+          {!isAuthenticated && (
+            <Link to="/learn" className="ml-2 text-sm py-2.5 px-5 border border-gold text-gold hover:bg-gold/10 rounded-lg transition">
+              {t.beginLearning}
+            </Link>
+          )}
         </nav>
 
         {/* Mobile Navigation */}
@@ -128,13 +162,49 @@ function Header({
                     {item.label}
                   </Link>
                 ))}
-                <Link
-                  to="/learn"
-                  onClick={() => setIsOpen(false)}
-                  className="btn-gold mt-6 w-full text-center"
-                >
-                  {t.beginLearning}
-                </Link>
+                {isAuthenticated && (
+                  <Link
+                    to="/admin"
+                    onClick={() => setIsOpen(false)}
+                    className="text-lg font-display tracking-wide text-muted-foreground hover:text-gold transition py-2 border-b border-border/40"
+                    activeProps={{
+                      className:
+                        "text-lg font-display tracking-wide text-gold py-2 border-b border-border/40",
+                    }}
+                  >
+                    Admin
+                  </Link>
+                )}
+                {isAuthenticated ? (
+                  <Button
+                    variant="ghost"
+                    className="mt-4 justify-start text-muted-foreground hover:text-gold"
+                    onClick={() => {
+                      logout();
+                      setIsOpen(false);
+                    }}
+                  >
+                    <LogOut className="h-4 w-4 mr-2" />
+                    {t.logout}
+                  </Button>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      onClick={() => setIsOpen(false)}
+                      className="btn-gold mt-6 w-full text-center"
+                    >
+                      {t.login}
+                    </Link>
+                    <Link
+                      to="/learn"
+                      onClick={() => setIsOpen(false)}
+                      className="mt-2 w-full text-center border border-gold text-gold hover:bg-gold/10 rounded-lg transition py-2.5"
+                    >
+                      {t.beginLearning}
+                    </Link>
+                  </>
+                )}
               </nav>
             </SheetContent>
           </Sheet>

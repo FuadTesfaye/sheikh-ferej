@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as LecturesRouteImport } from './routes/lectures'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AdminRouteImport } from './routes/admin'
@@ -19,6 +20,11 @@ import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as LearnCourseIdRouteImport } from './routes/learn.$courseId'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LecturesRoute = LecturesRouteImport.update({
   id: '/lectures',
   path: '/lectures',
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
   '/lectures': typeof LecturesRoute
+  '/login': typeof LoginRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/learn/$courseId': typeof LearnCourseIdRoute
   '/blog/': typeof BlogIndexRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
   '/lectures': typeof LecturesRoute
+  '/login': typeof LoginRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/learn/$courseId': typeof LearnCourseIdRoute
   '/blog': typeof BlogIndexRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/contact': typeof ContactRoute
   '/lectures': typeof LecturesRoute
+  '/login': typeof LoginRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/learn/$courseId': typeof LearnCourseIdRoute
   '/blog/': typeof BlogIndexRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/contact'
     | '/lectures'
+    | '/login'
     | '/blog/$slug'
     | '/learn/$courseId'
     | '/blog/'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/contact'
     | '/lectures'
+    | '/login'
     | '/blog/$slug'
     | '/learn/$courseId'
     | '/blog'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/contact'
     | '/lectures'
+    | '/login'
     | '/blog/$slug'
     | '/learn/$courseId'
     | '/blog/'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   ContactRoute: typeof ContactRoute
   LecturesRoute: typeof LecturesRoute
+  LoginRoute: typeof LoginRoute
   BlogSlugRoute: typeof BlogSlugRoute
   LearnCourseIdRoute: typeof LearnCourseIdRoute
   BlogIndexRoute: typeof BlogIndexRoute
@@ -149,6 +162,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lectures': {
       id: '/lectures'
       path: '/lectures'
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   ContactRoute: ContactRoute,
   LecturesRoute: LecturesRoute,
+  LoginRoute: LoginRoute,
   BlogSlugRoute: BlogSlugRoute,
   LearnCourseIdRoute: LearnCourseIdRoute,
   BlogIndexRoute: BlogIndexRoute,

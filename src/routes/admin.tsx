@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { useLanguage } from "@/hooks/use-language";
+import { useAuth } from "@/hooks/use-auth";
 import { dataService } from "@/lib/data-service";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
@@ -21,6 +22,12 @@ import { getTextByLang, type Post, type Course, type Lecture } from "@/lib/conte
 
 export const Route = createFileRoute("/admin")({
   component: AdminDashboard,
+  beforeLoad: ({ navigate }) => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated") === "true";
+    if (!isAuthenticated) {
+      navigate({ to: "/login" });
+    }
+  },
 });
 
 function AdminDashboard() {

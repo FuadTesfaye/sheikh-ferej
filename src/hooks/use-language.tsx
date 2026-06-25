@@ -17,6 +17,13 @@ export interface Translation {
   revivingTradition: string;
   explore: string;
   follow: string;
+  login: string;
+  logout: string;
+  loginTitle: string;
+  password: string;
+  loginButton: string;
+  loginSuccess: string;
+  loginError: string;
 
   // Home page
   welcome: string;
@@ -78,13 +85,11 @@ export interface Translation {
   courseContent: string;
   startLearning: string;
   level: string;
-  duration: string;
   topics: string;
   begin: string;
   beginner: string;
   intermediate: string;
   advanced: string;
-  lessons: string;
   week: string;
   weeks: string;
 }
@@ -105,6 +110,14 @@ export const translations: Record<Language, Translation> = {
       "Reviving the classical tradition of Islamic learning for a new generation of Ethiopian Muslims and the worldwide ummah.",
     explore: "Explore",
     follow: "Follow",
+    login: "Login",
+    logout: "Logout",
+    loginTitle: "Admin Login",
+    email: "Email",
+    password: "Password",
+    loginButton: "Sign In",
+    loginSuccess: "Successfully logged in!",
+    loginError: "Invalid credentials. Please try admin@sheikh.com / admin123",
     welcome: "Welcome",
     yearsTeaching: "Years teaching",
     lecturesOnline: "Lectures online",
@@ -141,7 +154,6 @@ export const translations: Record<Language, Translation> = {
     allAvailableLectures: "All available lectures",
     getInTouch: "Get in touch",
     name: "Name",
-    email: "Email",
     message: "Message",
     send: "Send",
     sending: "Sending...",
@@ -176,6 +188,14 @@ export const translations: Record<Language, Translation> = {
     revivingTradition: "ለአዲሱ የኢትዮጵያ ሙስሊሞች ትውልድ እና ለአለም አቀፉ ኡማ የቀደምት ኢስላማዊ የትምህርት ባህልን ማደስ።",
     explore: "አስስ",
     follow: "ተከተሉ",
+    login: "ግባ",
+    logout: "ውጣ",
+    loginTitle: "የአድሚን ግባ",
+    email: "ኢሜይል",
+    password: "የይለፍ ቃል",
+    loginButton: "ይግቡ",
+    loginSuccess: "በተሳካ ሁኔታ ግብ ተደረገ!",
+    loginError: "የተሳሳተ መረጃ። እባክዎ admin@sheikh.com / admin123 ይሞክሩ",
     welcome: "እንኳን ደህና መጡ",
     yearsTeaching: "ዓመታት ትምህርት",
     lecturesOnline: "በመስመር ላይ ትምህርቶች",
@@ -212,7 +232,6 @@ export const translations: Record<Language, Translation> = {
     allAvailableLectures: "ሁሉም የሚገኙ ትምህርቶች",
     getInTouch: "ያግኙን",
     name: "ስም",
-    email: "ኢሜይል",
     message: "መልእክት",
     send: "ላክ",
     sending: "በመላክ ላይ...",
@@ -248,6 +267,14 @@ export const translations: Record<Language, Translation> = {
       "إحياء التراث التعليمي الإسلامي الكلاسيكي لجيل جديد من مسلمي إثيوبيا والأمة الإسلامية جمعاء.",
     explore: "استكشف",
     follow: "تابعنا",
+    login: "تسجيل الدخول",
+    logout: "تسجيل الخروج",
+    loginTitle: "تسجيل دخول المدير",
+    email: "البريد الإلكتروني",
+    password: "كلمة المرور",
+    loginButton: "تسجيل الدخول",
+    loginSuccess: "تم تسجيل الدخول بنجاح!",
+    loginError: "بيانات غير صالحة. يرجى المحاولة admin@sheikh.com / admin123",
     welcome: "أهلا وسهلا",
     yearsTeaching: "سنوات التدريس",
     lecturesOnline: "محاضرات على الإنترنت",
@@ -284,7 +311,6 @@ export const translations: Record<Language, Translation> = {
     allAvailableLectures: "جميع المحاضرات المتاحة",
     getInTouch: "تواصل معنا",
     name: "الاسم",
-    email: "البريد الإلكتروني",
     message: "الرسالة",
     send: "إرسال",
     sending: "جاري الإرسال...",
