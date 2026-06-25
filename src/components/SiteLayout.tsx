@@ -6,8 +6,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Globe, Menu, X } from "lucide-react";
-import { useLanguage, type Language } from "@/hooks/use-language";
+import { Globe, Menu } from "lucide-react";
+import { useLanguage, type Language, type Translation } from "@/hooks/use-language";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -36,7 +36,7 @@ function Header({
   language,
   setLanguage,
 }: {
-  t: Record<string, string>;
+  t: Translation;
   language: Language;
   setLanguage: (lang: Language) => void;
 }) {
@@ -178,7 +178,7 @@ function LanguageSelector({
   );
 }
 
-function Footer({ t }: { t: Record<string, string> }) {
+function Footer({ t }: { t: Translation }) {
   const nav = [
     { to: "/", label: t.home },
     { to: "/about", label: t.about },
