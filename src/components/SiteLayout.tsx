@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Globe, Menu, X } from "lucide-react";
-import { LanguageProvider, useLanguage, type Language } from "@/hooks/use-language";
+import { useLanguage, type Language } from "@/hooks/use-language";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -18,14 +18,6 @@ const languages: { code: Language; label: string; flag: string }[] = [
 ];
 
 export function SiteLayout({ children }: { children: ReactNode }) {
-  return (
-    <LanguageProvider>
-      <SiteLayoutContent>{children}</SiteLayoutContent>
-    </LanguageProvider>
-  );
-}
-
-function SiteLayoutContent({ children }: { children: ReactNode }) {
   const { t, language, setLanguage } = useLanguage();
 
   return (
