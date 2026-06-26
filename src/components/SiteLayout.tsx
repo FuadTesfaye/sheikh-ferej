@@ -6,9 +6,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Globe, Menu, LogOut } from "lucide-react";
+import { Globe, Menu, LogOut, Sun, Moon } from "lucide-react";
 import { useLanguage, type Language, type Translation } from "@/hooks/use-language";
 import { useAuth } from "@/hooks/use-auth";
+import { useTheme } from "@/hooks/use-theme";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 
@@ -24,7 +25,13 @@ export function SiteLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
-      <Header t={t} language={language} setLanguage={setLanguage} isAuthenticated={isAuthenticated} logout={logout} />
+      <Header
+        t={t}
+        language={language}
+        setLanguage={setLanguage}
+        isAuthenticated={isAuthenticated}
+        logout={logout}
+      />
       <main id="main-content" className="flex-1">
         {children}
       </main>
@@ -47,6 +54,7 @@ function Header({
   logout: () => void;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const nav = [
     { to: "/", label: t.home, exact: true },
@@ -105,6 +113,16 @@ function Header({
 
           <LanguageSelector language={language} setLanguage={setLanguage} />
 
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="text-muted-foreground hover:text-gold"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </Button>
+
           {isAuthenticated ? (
             <Button
               variant="ghost"
@@ -122,7 +140,10 @@ function Header({
           )}
 
           {!isAuthenticated && (
-            <Link to="/learn" className="ml-2 text-sm py-2 px-4 border border-gold text-gold hover:bg-gold/10 rounded-lg transition">
+            <Link
+              to="/learn"
+              className="ml-2 text-sm py-2 px-4 border border-gold text-gold hover:bg-gold/10 rounded-lg transition"
+            >
               {t.beginLearning}
             </Link>
           )}
@@ -130,6 +151,15 @@ function Header({
 
         {/* Tablet & Mobile Navigation */}
         <div className="flex lg:hidden items-center gap-2">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="text-muted-foreground hover:text-gold"
+            aria-label="Toggle theme"
+          >
+            {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </Button>
           <LanguageSelector language={language} setLanguage={setLanguage} />
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
