@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { type Lecture } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
-import scholarImg from "@/assets/image copy 3.png";
+import scholarImg from "@/assets/mic.png";
 import { getTextByLang } from "@/lib/content";
 import { dataService } from "@/lib/data-service";
 

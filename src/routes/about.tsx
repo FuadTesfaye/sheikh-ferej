@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { biography, specialties, getTextByLang } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
-import scholar from "@/assets/image copy.png";
+import scholar from "@/assets/main.png";
 
 export const Route = createFileRoute("/about")({
   head: () => ({

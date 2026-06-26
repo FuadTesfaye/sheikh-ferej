@@ -2,9 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { getTextByLang } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
-import scholar from "@/assets/image.png";
+import scholar from "@/assets/main.png";
 import pattern from "@/assets/pattern-bg.jpg";
-import lectureImg from "@/assets/image copy 2.png";
+import lectureImg from "@/assets/stage.png";
 import { dataService } from "@/lib/data-service";
 import { useEffect, useState } from "react";
 

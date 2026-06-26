@@ -59,10 +59,10 @@ function Header({
 
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
-      <div className="container-prose flex h-20 items-center justify-between">
+      <div className="container-prose flex min-h-20 items-center justify-between gap-4 py-2">
         <Link
           to="/"
-          className="flex items-center gap-3 group outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg transition"
+          className="flex items-center gap-3 group outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg transition shrink-0"
           aria-label={t.home}
         >
           <span
@@ -71,23 +71,23 @@ function Header({
           >
             ﷽
           </span>
-          <span className="flex flex-col leading-tight">
-            <span className="font-display text-xl tracking-wide">{t.scholarTitle}</span>
-            <span className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+          <span className="flex flex-col leading-tight min-w-0">
+            <span className="font-display text-xl tracking-wide truncate">{t.scholarTitle}</span>
+            <span className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground truncate">
               {t.scholarSubtitle}
             </span>
           </span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1" aria-label="Main navigation">
+        <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
           {nav.map((item) => (
             <Link
               key={item.to}
               to={item.to}
               activeOptions={{ exact: item.exact }}
-              className="px-4 py-2 text-sm tracking-wide text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
-              activeProps={{ className: "px-4 py-2 text-sm tracking-wide text-gold" }}
+              className="px-3 py-2 text-sm tracking-wide text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
+              activeProps={{ className: "px-3 py-2 text-sm tracking-wide text-gold" }}
             >
               {item.label}
             </Link>
@@ -96,8 +96,8 @@ function Header({
           {isAuthenticated && (
             <Link
               to="/admin"
-              className="px-4 py-2 text-sm tracking-wide text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
-              activeProps={{ className: "px-4 py-2 text-sm tracking-wide text-gold" }}
+              className="px-3 py-2 text-sm tracking-wide text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
+              activeProps={{ className: "px-3 py-2 text-sm tracking-wide text-gold" }}
             >
               Admin
             </Link>
@@ -110,26 +110,26 @@ function Header({
               variant="ghost"
               size="sm"
               onClick={logout}
-              className="ml-3 text-muted-foreground hover:text-gold"
+              className="ml-2 text-muted-foreground hover:text-gold"
             >
               <LogOut className="h-4 w-4 mr-2" />
               {t.logout}
             </Button>
           ) : (
-            <Link to="/login" className="btn-gold ml-3 text-sm py-2.5 px-5">
+            <Link to="/login" className="btn-gold ml-2 text-sm py-2 px-4">
               {t.login}
             </Link>
           )}
 
           {!isAuthenticated && (
-            <Link to="/learn" className="ml-2 text-sm py-2.5 px-5 border border-gold text-gold hover:bg-gold/10 rounded-lg transition">
+            <Link to="/learn" className="ml-2 text-sm py-2 px-4 border border-gold text-gold hover:bg-gold/10 rounded-lg transition">
               {t.beginLearning}
             </Link>
           )}
         </nav>
 
-        {/* Mobile Navigation */}
-        <div className="flex md:hidden items-center gap-2">
+        {/* Tablet & Mobile Navigation */}
+        <div className="flex lg:hidden items-center gap-2">
           <LanguageSelector language={language} setLanguage={setLanguage} />
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
