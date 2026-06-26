@@ -11,11 +11,11 @@ import { useEffect, useState } from "react";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sheikh Mohammed Ferej — Islamic Scholar, Lectures & Learning" },
+      { title: "Sheikh Muhammed Ferej Megeno — Islamic Scholar, Sharia Consultant & Lecturer" },
       {
         name: "description",
         content:
-          "Official site of Sheikh Mohammed Ferej, Ethiopian Islamic scholar. Lectures, writings, and structured courses in the classical Islamic sciences.",
+          "Official site of Sheikh Muhammed Ferej Megeno, Ethiopian Islamic scholar and Sharia consultant. Lectures, writings, and structured courses in the classical Islamic sciences.",
       },
     ],
   }),
@@ -67,10 +67,10 @@ function Home() {
             </p>
             <p className="mt-8 text-lg text-foreground/85 max-w-xl leading-relaxed">
               {language === "en"
-                ? "For more than two decades, Sheikh Mohammed Ferej has taught the Qur'an, Sunnah and classical Islamic sciences to students in Ethiopia and around the world. This is the home of his lectures, writings, and structured courses."
+                ? "For over 35 years, Sheikh Muhammed Ferej Megeno has taught the Qur'an, Sunnah, and classical Islamic sciences to students in Ethiopia and around the world. He serves as a Sharia consultant, TV presenter, and institutional leader."
                 : language === "am"
-                  ? "ለከ20 ዓመታት በላይ ሼክ መሐመድ ፈረጅ በኢትዮጵያ እና በዓለም ዙሪያ ተማሪዎችን ቁርአን፣ ሱና እና ቀደምት ኢስላማዊ ሳይንስ እንደማስተማር ቀድሟል። ይህ የትምህርቶቹ፣ ጽሑፎቹ እና ተቀናብሯል ኮርሶች ቤት ነው።"
-                  : "لأكثر من عقدين، درس الشيخ محمد فرج القرآن والسنة والعلوم الإسلامية الكلاسيكية لطلاب في إثيوبيا وحول العالم. هذا هو منزله المحاضرات، ومقالاته، ودوراته المنظمة."}
+                  ? "ለከ20 ዓመታት በላይ ሼክ ሙሐመድ ፈረጅ ሜጌኖ በኢትዮጵያ እና በዓለም ዙሪያ ተማሪዎችን ቁርአን፣ ሱና እና ቀደምት ኢስላማዊ ሳይንስ እንደማስተማር ቀድሟል። ይህ የትምህርቶቹ፣ ጽሑፎቹ እና ተቀናብሯል ኮርሶች ቤት ነው።"
+                  : "لأكثر من 35 عامًا، درّس الشيخ محمد فرج ميجينو ميجينو القرآن والسنة والعلوم الإسلامية الكلاسيكية. ويعمل مستشارًا شرعيًا ومقدم برامج تلفزيونية وقائدًا مؤسسيًا."}
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link to="/lectures" className="btn-gold">
@@ -82,7 +82,7 @@ function Home() {
             </div>
 
             <dl className="mt-12 grid grid-cols-3 gap-6 max-w-md border-t border-border pt-8">
-              <Stat k="20+" v={t.yearsTeaching} />
+              <Stat k="35+" v={t.yearsTeaching} />
               <Stat k="60+" v={t.lecturesOnline} />
               <Stat k="4.5K" v={t.telegramFollowers} />
             </dl>
@@ -95,10 +95,10 @@ function Home() {
                 src={scholar}
                 alt={
                   language === "en"
-                    ? "Sheikh Mohammed Ferej"
+                    ? "Sheikh Muhammed Ferej Megeno"
                     : language === "am"
-                      ? "ሼክ መሐመድ ፈረጅ"
-                      : "الشيخ محمد فرج"
+                      ? "ሼክ ሙሐመድ ፈረጅ ሜጌኖ"
+                      : "الشيخ محمد فرج ميجينو"
                 }
                 width={896}
                 height={1152}

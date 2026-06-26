@@ -7,11 +7,11 @@ import scholar from "@/assets/about.png";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Sheikh Mohammed Ferej" },
+      { title: "About — Sheikh Muhammed Ferej Megeno" },
       {
         name: "description",
         content:
-          "The life, studies, and teaching of Sheikh Mohammed Ferej — Ethiopian Islamic scholar.",
+          "The life, studies, and teaching of Sheikh Muhammed Ferej Megeno — Ethiopian Islamic scholar.",
       },
     ],
   }),
@@ -29,10 +29,10 @@ function About() {
               src={scholar}
               alt={
                 language === "en"
-                  ? "Sheikh Mohammed Ferej"
+                  ? "Sheikh Muhammed Ferej Megeno"
                   : language === "am"
-                    ? "ሼክ መሐመድ ፈረጅ"
-                    : "الشيخ محمد فرج"
+                    ? "ሼክ ሙሐመድ ፈረጅ ሜጌኖ"
+                    : "الشيخ محمد فرج ميجينو"
               }
               className="w-full h-full object-cover"
             />
@@ -67,24 +67,24 @@ function About() {
                 {language === "ar" ? "الش" : "S"}
               </span>
               {language === "en"
-                ? "Sheikh Mohammed Ferej is an Ethiopian Islamic scholar, teacher, and caller to Allah. He memorized the Qur'an in his youth and devoted his life to studying and transmitting the classical Islamic sciences in his homeland."
+                ? "Sheikh Muhammed Ferej Megeno is an Ethiopian Islamic scholar, educator, TV presenter, and Sharia consultant with over 35 years of experience in teaching, Dawah, and institutional leadership. He holds a Bachelor's degree in Sharia and Law (Islamic University of Minnesota, 2025 — Excellent Grade) and is currently completing a Master's in Islamic Studies, expected 2026."
                 : language === "am"
-                  ? "ሼክ መሐመድ ፈረጅ ኢትዮጵያዊ ኢስላማዊ ምሁር፣ መምሪያ እና ወደ አላህ የሚጋራ ሰው ነው። በሕፃናት ውስጥ ቁርአንን ግብርቶ በሀገሪቱ ላይ ቀደምት ኢስላማዊ ሳይንስ እንድያጠናን እንድያሰራበት ሕይወቱን ወሰደ።"
-                  : "الشيخ محمد فرج عالم إسلامي إثيوبي، مدرس، وداعي إلى الله. حفظ القرآن في شبابه وت devoted حياته لدراسة ونقل العلوم الإسلامية الكلاسيكية في بلده."}
+                  ? "ሼክ ሙሐመድ ፈረጅ ሜጌኖ ለ35 ዓመታት በላይ በትምህርት፣ በዳዕዋ እና በተቋማዊ አመራር ልምድ ያለው ኢትዮጵያዊ ኢስላማዊ ምሁር፣ አስተማሪ፣ የቲቪ አቅራቢ እና የሸሪዓ አማካሪ ነው። በሸሪዓ እና ሕግ የባችለር ዲግሪ ተሸልሟል (2025 — ልዕለ ደረጃ) እና ለ2026 የሚጠበቅ ማስተርስ ዲግሪ በማጠናቀቅ ላይ ነው።"
+                  : "الشيخ محمد فرج ميجينو ميجينو عالم إسلامي إثيوبي ومربٍّ ومقدم تلفزيوني ومستشار شرعي بخبرة تزيد على 35 عامًا في التدريس والدعوة والقيادة المؤسسية. يحمل بكالوريوس الشريعة والقانون (جامعة مينيسوتا الإسلامية، 2025 — امتياز) ويُكمل حاليًا ماجستيرًا في الدراسات الإسلامية متوقع 2026."}
             </p>
             <p>
               {language === "en"
-                ? "His teaching is plainspoken and rooted in evidence — drawing on tafsir, hadith, and the writings of the early scholars, while addressing the questions of the modern Muslim with mercy and clarity."
+                ? "Since 2023, he serves as Sharia Consultant at Wegagen Bank, providing Sharia advisory and auditing for Islamic banking windows and digital Islamic finance. He is a certified Sharia Auditor and Controller (AAOIFI Diploma, 2023 — Excellent Grade). He also presents religious programs on Africa TV, Zawiya TV, Noor Al-Huda TV, and government channels since 2008."
                 : language === "am"
-                  ? "ትምህርቱ ቀላል እና በ ሰምዶች ላይ የተመሰረተ ነው፣ በተፍሲር፣ በሀዲዝ እና በቀደምት ዑለማዎች ጽሑፎች ላይ እንዲሰማ በማድረግ ዘመናዊ ሙስሊምን ጥያቄዎችን በርህምነት እና በግልጽነት ይመልሳል።"
-                  : "تعلمه واضح وموثوق بالدليل — يعتمد على التفسير والحديث ومقالات العلماء الأوائل، مع معالجة أسئلة المسلم الحديث بالرحمة والوضوح."}
+                  ? "ከ2023 ጀምሮ በወጋጌን ባንክ የሸሪዓ አማካሪ ሆኖ ያገለግላል፤ ለኢስላማዊ ባንኪንግ ግንባሮች እና ዲጂታል ኢስላማዊ ፋይናንስ የሸሪዓ ምክርና ኦዲት ይሰጣል። የAAOIFI ዲፕሎማ (2023 — ልዕለ ደረጃ) ያለው የሸሪዓ ኦዲተርና ተቆጣጣሪ ሰርቲፋይድ ነው። ከ2008 ጀምሮ በአፍሪካ ቲቪ፣ ዘዊያ ቲቪ፣ ኑር አልሁዳ ቲቪ እና የመንግሥት ቻናሎች ላይ ሃይማኖታዊ ፕሮግራሞችን ያቀርባል።"
+                  : "منذ 2023 يعمل مستشارًا شرعيًا في بنك ويغاجين، يُقدم الاستشارات والمراجعات الشرعية لنوافذ المصرفية الإسلامية والتمويل الإسلامي الرقمي. حاصل على دبلوم أيوفي 2023 بامتياز كمراجع ومراقب شرعي معتمد. كما يُقدم برامج دينية على قناة أفريكا وزاوية ونور الهدى وقنوات حكومية منذ 2008."}
             </p>
             <p>
               {language === "en"
-                ? "Today his lectures reach thousands weekly through Facebook, TikTok and Telegram, and his structured online courses welcome students from across Ethiopia and the wider ummah."
+                ? "Since 2003, he has supervised charitable projects and coordinated preachers at Al-Ansar Dawah Center. He co-translated the 'Summary Interpretation of the Holy Quran' into Amharic and has published analytical articles on social media for 15+ years. He is President of Al-Fajr Islamic Foundation and a member of the African Scholars Union, Addis Ababa Dawah Committee, and Al-Bir Society."
                 : language === "am"
-                  ? "ዛሬ ትምህርቶቹ በፌስቡክ፣ ቲክቶክ እና ቴሌግራም በሳምንት ላይ በሺዎች እንዲደርሱ ይችላሉ, እና በተዘጋጁ የመስመር ላይ ኮርሶቹ ከኢትዮጵያ እና ከሰባዊው ዙሪያም ተማሪዎችን ይከታተላሉ።"
-                  : "اليوم تصل محاضراته الآلاف أسبوعياً عبر فيسبوك وتيكتوك وتليجرام، ودوراته الأونلاين المنظمة ترحب بالطلاب من جميع أنحاء إثيوبيا والأمة الأوسع."}
+                  ? "ከ2003 ጀምሮ በአል-አንሰር ዳዕዋ ማዕከል በበጎ አድራጎት ፕሮጀክቶች ላይ ይቆጣጠራል፤ ሰባኪያንን ያቀናጃል። 'ቅዱስ ቁርአን ማጠቃለያ ትርጉም'ን ወደ አማርኛ ተተርጉሟል፤ ለ15+ ዓመታት ትንታኔያዊ ጽሁፎችን አሳትሟል። የአል-ፈጅር ኢስላማዊ ፋውንዴሽን ፕሬዝደንት፣ የአፍሪካ ዑለማዎች ህብረት አባል፣ የአዲስ አበባ ዳዕዋ ኮሚቴ አባልና የአል-ቢር ማህበር አባል ነው።"
+                  : "منذ 2003 يُشرف على المشاريع الخيرية وينسق الدعاة في مركز الأنصار للدعوة. شارك في ترجمة 'مختصر تفسير القرآن الكريم' إلى اللغة الأمهرية، وينشر مقالات تحليلية على وسائل التواصل الاجتماعي منذ أكثر من 15 عامًا. رئيس جمعية الفجر الإسلامية وعضو في اتحاد علماء أفريقيا ولجنة الدعوة بمجلس مدينة أديس أبابا وجمعية البر."}
             </p>
           </div>
 

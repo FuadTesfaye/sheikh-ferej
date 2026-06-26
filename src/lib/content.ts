@@ -233,9 +233,9 @@ export const lectures: Lecture[] = [
     platform: "YouTube",
     videoUrl: "https://www.youtube.com/watch?v=5hlykYaVcn4",
     description: {
-      en: "Sheikh Mohammed Ferej explains the vital role of the Sunnah.",
-      am: "ሼክ መሐመድ ፈረጅ የሱና አስፈላጊነት ይብራራል።",
-      ar: "يفسر الشيخ محمد فرج الدور الحيوي للسنة.",
+      en: "Sheikh Muhammed Ferej Megeno explains the vital role of the Sunnah.",
+      am: "ሼክ ሙሐመድ ፈረጅ ሜጌኖ የሱና አስፈላጊነት ይብራራል።",
+      ar: "يفسر الشيخ محمد فرج ميجينو الدور الحيوي للسنة.",
     },
   },
 ];
@@ -249,62 +249,84 @@ export type BioEntry = {
 
 export const biography: BioEntry[] = [
   {
-    year: {
-      en: "Early years",
-      am: "የመጀመሪያ ዓመታት",
-      ar: "السنوات الأولى",
-    },
-    title: {
-      en: "Birth and upbringing",
-      am: "ትውልድ እና አድሳት",
-      ar: "الولادة والنشأة",
-    },
-    place: {
-      en: "Ethiopia",
-      am: "ኢትዮጵያ",
-      ar: "إثيوبيا",
-    },
+    year: { en: "Early years", am: "የቀደምት ዓመታት", ar: "السنوات الأولى" },
+    title: { en: "Birth & General Education", am: "ትውልድ እና አጠቃላይ ትምህርት", ar: "الولادة والتعليم العام" },
+    place: { en: "Silti & Jimma, Ethiopia", am: "ሲልጢ እና ጅማ፣ ኢትዮጵያ", ar: "سيلتي وجيما، إثيوبيا" },
     detail: {
-      en: "Born in Ethiopia and raised in a household where the Book of Allah was recited daily.",
-      am: "በኢትዮጵያ ተወልዶ፣ በየቀኑ የአላህ መጽሀፍ የሚታነብ ቤት ውስጥ አድጓል።",
-      ar: "وُلد في إثيوبيا ونشأ في بيت يُتلى فيه كتاب الله يوميًا.",
+      en: "Primary school in Alcho; Middle and High school in Jimma. Studied Shafi'i jurisprudence, Tafsir, Hadith, Usul al-Fiqh, and Arabic linguistics under senior local scholars in the Silti and Jimma regions.",
+      am: "የመጀመሪያ ደረጃ ትምህርቱን አልቾ ውስጥ፣ ሁለተኛ ደረጃ እና ሁለተኛ ደረጃ ትምህርቱን ደግሞ ጅማ ውስጥ ተከታትሏል። በሲልጢ እና ጅማ ክልሎች ውስጥ ከሽማግሌ ምሁራን ሥር የሻፊዒ ፊቅህ፣ ተፍሲር፣ ሀዲዝ፣ ኡሱልና ዐረብኛ ቋንቋ ተምሯል።",
+      ar: "التحق بالمدرسة الابتدائية في ألتشو، والمتوسطة والثانوية في جيما. درس الفقه الشافعي والتفسير والحديث وأصول الفقه وعلوم العربية على يد كبار العلماء المحليين في منطقتي سيلتي وجيما.",
     },
   },
   {
-    year: {
-      en: "Formative study",
-      am: "ማዕከለኛ ትምህርት",
-      ar: "الدراسة التكوينية",
-    },
-    title: {
-      en: "Memorization of the Qur'an",
-      am: "የቁርአን ግብራት",
-      ar: "حفظ القرآن",
-    },
+    year: { en: "2001 (1422H)", am: "2001 (1422 ሂ)", ar: "2001 (1422هـ)" },
+    title: { en: "Diploma in Islamic Sciences", am: "ዲፕሎማ ኢስላማዊ ሳይንሶች", ar: "دبلوم في العلوم الإسلامية" },
+    place: { en: "Al-Ansar Sharia Institute, Ethiopia", am: "አል-አንሰር ሼሪዓ ኢንስቲቲዩት", ar: "معهد الأنصار الشرعي" },
     detail: {
-      en: "Completed the memorization of the noble Qur'an at the hands of traditional teachers.",
-      am: "በባህላዊ መምራን እጅ ከቀደምት የኢትዮጵያ ማድራስ ከተማዎች የአዛዝ ቁርአን ግብራት አጠናቋል።",
-      ar: "أكمل حفظ القرآن الكريم على أيدي معلمين تقليديين.",
+      en: "Graduated with Excellent Grade from Ansar Dawah and Education Center — Al-Ansar Sharia Institute.",
+      am: "ከአንሰር ዳዕዋ እና ትምህርት ማዕከል — አል-አንሰር ሼሪዓ ኢንስቲቲዩት በልዕለ ደረጃ ተመርቋል።",
+      ar: "تخرج بامتياز من مركز الأنصار للدعوة والتعليم — معهد الأنصار الشرعي.",
+    },
+  },
+  {
+    year: { en: "2004", am: "2004", ar: "2004" },
+    title: { en: "Diploma in Management", am: "ዲፕሎማ በዴሞክራሲ አስተዳደር", ar: "دبلوم في الإدارة" },
+    place: { en: "Noor Salam Academic College", am: "ኑር ሰላም አካዳሚክ ኮሌጅ", ar: "كلية نور السلام الأكاديمية" },
+    detail: {
+      en: "Completed a Diploma in Management at Noor Salam Academic College.",
+      am: "በኑር ሰላም አካዳሚክ ኮሌጅ የአስተዳደር ዲፕሎማ ተጠናቀቀ።",
+      ar: "أتم دبلوم الإدارة في كلية نور السلام الأكاديمية.",
+    },
+  },
+  {
+    year: { en: "2008 (1429H)", am: "2008 (1429 ሂ)", ar: "2008 (1429هـ)" },
+    title: { en: "Diploma in Arabic Language", am: "ዲፕሎማ ዐረብኛ ቋንቋ", ar: "دبلوم في اللغة العربية" },
+    place: { en: "Khartoum International Arabic Institute / Sindbad Center, Addis Ababa", am: "ካርቱም ዓለም አቀፍ የዐረብኛ ቋንቋ ኢንስቲቲዩት", ar: "معهد الخرطوم الدولي للغة العربية / مركز سندباد، أديس أبابا" },
+    detail: {
+      en: "Completed an Arabic Language Diploma at the Khartoum International Arabic Institute, in collaboration with the Sindbad Center, Addis Ababa.",
+      am: "በካርቱም ዓለም አቀፍ የዐረብኛ ቋንቋ ኢንስቲቲዩት፣ ከአዲስ አበባ ሲንድባድ ማዕከል ጋር በትብብር የዐረብኛ ቋንቋ ዲፕሎማ ጨርሷል።",
+      ar: "أتم دبلوم اللغة العربية في معهد الخرطوم الدولي للغة العربية بالتعاون مع مركز سندباد، أديس أبابا.",
+    },
+  },
+  {
+    year: { en: "2023", am: "2023", ar: "2023" },
+    title: { en: "Diploma in Sharia Standards (AAOIFI)", am: "ዲፕሎማ ሼሪዓ ደረጃዎች (AAOIFI)", ar: "دبلوم في معايير الشريعة (أيوفي)" },
+    place: { en: "Max Breg Foundation", am: "ማክስ ብሬግ ፋውንዴሽን", ar: "مؤسسة ماكس بريغ" },
+    detail: {
+      en: "Certified Sharia Auditor and Controller — Excellent Grade. Qualified to provide Sharia advisory and auditing for Islamic banking and digital Islamic finance frameworks.",
+      am: "የሼሪዓ ኦዲተር እና ተቆጣጣሪ ሰርቲፊኬት — ልዕለ ደረጃ። ለኢስላማዊ ባንኪንግ እና ዲጂታል ኢስላማዊ ፋይናንስ ማዕቀፎች የሼሪዓ ምክር እና ኦዲት ለማቅረብ ብቃት አለው።",
+      ar: "مراجع ومراقب شرعي معتمد — بامتياز. مؤهل لتقديم الاستشارات والمراجعات الشرعية للبنوك الإسلامية وأطر التمويل الإسلامي الرقمي.",
+    },
+  },
+  {
+    year: { en: "2025", am: "2025", ar: "2025" },
+    title: { en: "Bachelor's in Sharia and Law", am: "ባቸለር ዲግሪ ሼሪዓ እና ሕግ", ar: "بكالوريوس الشريعة والقانون" },
+    place: { en: "Islamic University of Minnesota", am: "የሚኔሶታ ኢስላማዊ ዩኒቨርሲቲ", ar: "جامعة مينيسوتا الإسلامية" },
+    detail: {
+      en: "Graduated with Excellent Grade in Sharia and Law from the Islamic University of Minnesota.",
+      am: "ከሚኔሶታ ኢስላማዊ ዩኒቨርሲቲ ሼሪዓ እና ሕግ ፋኩልቲ ልዕለ ደረጃ ተመርቋል።",
+      ar: "تخرج بامتياز في الشريعة والقانون من جامعة مينيسوتا الإسلامية.",
+    },
+  },
+  {
+    year: { en: "2026 (Expected)", am: "2026 (የሚጠበቅ)", ar: "2026 (متوقع)" },
+    title: { en: "Master's in Islamic Studies", am: "ማስተርስ ዲግሪ ኢስላማዊ ጥናቶች", ar: "ماجستير في الدراسات الإسلامية" },
+    place: { en: "Islamic University of Minnesota", am: "የሚኔሶታ ኢስላማዊ ዩኒቨርሲቲ", ar: "جامعة مينيسوتا الإسلامية" },
+    detail: {
+      en: "Currently completing a Master's degree in Islamic Studies — expected graduation with distinction in 2026.",
+      am: "በ2026 ከፍተኛ ደረጃ ይጠናቀቃል ተብሎ ሲጠበቅ፣ በኢስላማዊ ጥናቶች ማስተርስ ዲግሪ በሂደት ላይ ነው።",
+      ar: "يُكمل حالياً درجة الماجستير في الدراسات الإسلامية — متوقع التخرج بامتياز عام 2026.",
     },
   },
 ];
 
 export const specialties: MultilingualText[] = [
-  {
-    en: "Tafsir of the Noble Qur'an",
-    am: "የአዛዝ ቁርአን ተፍሲር",
-    ar: "تفسير القرآن الكريم",
-  },
-  {
-    en: "Aqeedah of Ahl as-Sunnah",
-    am: "የአህለሱና ወልጀመዓ አቂዳ",
-    ar: "عقيدة أهل السنة",
-  },
-  {
-    en: "Fiqh of worship and daily life",
-    am: "የአምልኮ እና የዕለት ተዕለት ሕይወት ፊቅህ",
-    ar: "فقه العبادة والحياة اليومية",
-  },
+  { en: "Tafsir & Quranic Exegesis", am: "ተፍሲርና የቁርአን ትርጓሜ", ar: "التفسير وعلوم القرآن" },
+  { en: "Shafi'i Jurisprudence (Fiqh)", am: "የሻፊዒ ፊቅህ", ar: "الفقه الشافعي" },
+  { en: "Hadith & Islamic Sciences", am: "ሀዲዝ እና ኢስላማዊ ሳይንሶች", ar: "الحديث والعلوم الإسلامية" },
+  { en: "Sharia Auditing & Islamic Finance", am: "ሼሪዓ ኦዲቲንግ እና ኢስላማዊ ፋይናንስ", ar: "المراجعة الشرعية والتمويل الإسلامي" },
+  { en: "Dawah & Institutional Leadership", am: "ዳዕዋ እና ተቋማዊ አመራር", ar: "الدعوة والقيادة المؤسسية" },
+  { en: "Arabic Language & Translation", am: "ዐረብኛ ቋንቋ እና ትርጉም", ar: "اللغة العربية والترجمة" },
 ];
 
 // Helper to get content by language

@@ -5,8 +5,8 @@ import { useLanguage } from "@/hooks/use-language";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Sheikh Mohammed Ferej" },
-      { name: "description", content: "Get in touch with Sheikh Mohammed Ferej." },
+      { title: "Contact — Sheikh Muhammed Ferej Megeno" },
+      { name: "description", content: "Get in touch with Sheikh Muhammed Ferej Megeno." },
     ],
   }),
   component: Contact,
@@ -131,6 +131,21 @@ function Contact() {
                 ? "ሼኩን በመስመር ላይ ይፈልጉ"
                 : "ابحث عن الشيخ على الإنترنت"}
           </p>
+          <div className="grid gap-3 p-5 rounded-xl border border-border bg-card/40">
+            <a href="tel:00251911855488" className="flex items-center gap-3 text-sm hover:text-gold transition">
+              <span className="text-gold">📞</span>
+              <span>00251911855488</span>
+            </a>
+            <a href="mailto:abuhafsah77@gmail.com" className="flex items-center gap-3 text-sm hover:text-gold transition">
+              <span className="text-gold">✉</span>
+              <span>abuhafsah77@gmail.com</span>
+            </a>
+            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+              <span className="text-gold">◎</span>
+              <span>Addis Ababa, Ethiopia</span>
+            </div>
+          </div>
+
           {channels.map((c) => (
             <a
               key={c.name}
