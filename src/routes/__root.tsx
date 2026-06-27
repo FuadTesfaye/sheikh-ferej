@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 
 import appCss from "../styles.css?url";
 import "@/i18n";
+import { I18nProvider } from "@/components/I18nProvider";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { AuthProvider } from "../hooks/use-auth";
 import { Toaster } from "@/components/ui/sonner";
@@ -79,13 +80,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ustaz Muhammad Ferej — Islamic Scholar, Writings & Learning" },
+      { title: "Sheikh Muhammed Ferej Megeno — Islamic Scholar, Writings & Learning" },
       {
         name: "description",
         content:
-          "The official site of Ustaz Muhammad Ferej: reflections, writings, and structured Islamic courses rooted in the classical tradition.",
+          "The official site of Sheikh Muhammed Ferej Megeno: reflections, writings, and structured Islamic courses rooted in the classical tradition.",
       },
-      { property: "og:title", content: "Ustaz Muhammad Ferej — Islamic Scholar" },
+      { property: "og:title", content: "Sheikh Muhammed Ferej Megeno — Islamic Scholar" },
       {
         property: "og:description",
         content: "Reflections, writings, and structured Islamic courses.",
@@ -111,11 +112,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         {children}
         <Scripts />
       </body>
@@ -128,11 +129,13 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-        <Toaster />
-      </AuthProvider>
+      <I18nProvider>
+        <AuthProvider>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+          <Toaster />
+        </AuthProvider>
+      </I18nProvider>
     </QueryClientProvider>
   );
 }

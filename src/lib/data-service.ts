@@ -1,4 +1,4 @@
-import { posts, courses, lectures, type Post, type Course, type Lecture } from "./content";
+import { posts, courses, lectures, type Post, type Course, type Lecture, type MultilingualText } from "./content";
 
 const STORAGE_KEYS = {
   POSTS: "sheikh_posts",
@@ -23,9 +23,61 @@ function setStorageItem<T>(key: string, value: T) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+function normalizeText(obj: Partial<MultilingualText> & Record<string, string>): MultilingualText {
+  const en = obj.en ?? "";
+  return {
+    en,
+    am: obj.am ?? en,
+    ar: obj.ar ?? en,
+    om: obj.om ?? en,
+  };
+}
+
+function normalizePost(post: Post): Post {
+  return {
+    ...post,
+    title: normalizeText(post.title),
+    excerpt: normalizeText(post.excerpt),
+    category: normalizeText(post.category),
+    readTime: normalizeText(post.readTime),
+    body: post.body.map((p) => normalizeText(p)),
+  };
+}
+
+function normalizeCourse(course: Course): Course {
+  return {
+    ...course,
+    title: normalizeText(course.title),
+    subtitle: normalizeText(course.subtitle),
+    level: {
+      en: course.level.en,
+      am: course.level.am ?? course.level.en,
+      ar: course.level.ar ?? course.level.en,
+      om: course.level.om ?? course.level.en,
+    },
+    duration: normalizeText(course.duration),
+    description: normalizeText(course.description),
+    topics: course.topics.map((t) => normalizeText(t)),
+  };
+}
+
+function normalizeLecture(lecture: Lecture): Lecture {
+  return {
+    ...lecture,
+    title: normalizeText(lecture.title),
+    topic: normalizeText(lecture.topic),
+    duration: normalizeText(lecture.duration),
+    description: normalizeText(lecture.description),
+  };
+}
+
+function normalizeList<T>(items: T[], normalize: (item: T) => T): T[] {
+  return items.map(normalize);
+}
+
 export const dataService = {
   // Posts
-  getPosts: () => getStorageItem<Post[]>(STORAGE_KEYS.POSTS, posts),
+  getPosts: () => normalizeList(getStorageItem<Post[]>(STORAGE_KEYS.POSTS, posts), normalizePost),
   savePost: (post: Post) => {
     const currentPosts = dataService.getPosts();
     const index = currentPosts.findIndex((p) => p.slug === post.slug);
@@ -42,7 +94,7 @@ export const dataService = {
   },
 
   // Courses
-  getCourses: () => getStorageItem<Course[]>(STORAGE_KEYS.COURSES, courses),
+  getCourses: () => normalizeList(getStorageItem<Course[]>(STORAGE_KEYS.COURSES, courses), normalizeCourse),
   saveCourse: (course: Course) => {
     const currentCourses = dataService.getCourses();
     const index = currentCourses.findIndex((c) => c.id === course.id);
@@ -59,7 +111,8 @@ export const dataService = {
   },
 
   // Lectures
-  getLectures: () => getStorageItem<Lecture[]>(STORAGE_KEYS.LECTURES, lectures),
+  getLectures: () =>
+    normalizeList(getStorageItem<Lecture[]>(STORAGE_KEYS.LECTURES, lectures), normalizeLecture),
   saveLecture: (lecture: Lecture) => {
     const currentLectures = dataService.getLectures();
     const index = currentLectures.findIndex((l) => l.id === lecture.id);
