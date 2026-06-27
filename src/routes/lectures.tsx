@@ -44,9 +44,7 @@ function VideoModal({ lecture, onClose }: { lecture: Lecture; onClose: () => voi
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/20 hover:bg-background/40 text-white transition"
-          aria-label={
-            language === "en" ? "Close video" : language === "am" ? "ቪዲዮውን ዝጋ" : "إغلاق الفيديو"
-          }
+          aria-label={t("common.closeVideo")}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -74,18 +72,10 @@ function VideoModal({ lecture, onClose }: { lecture: Lecture; onClose: () => voi
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center text-center p-8">
             <h3 className="font-display text-2xl text-gold mb-4">
-              {language === "en"
-                ? `Video available on ${lecture.platform}`
-                : language === "am"
-                  ? `ቪዲዮው በ${lecture.platform} ላይ ይገኛል`
-                  : `الفيديو متاح على ${lecture.platform}`}
+              {t("lectures.videoAvailableOn", { platform: lecture.platform })}
             </h3>
             <p className="text-muted-foreground mb-8">
-              {language === "en"
-                ? `This video is hosted on ${lecture.platform}. Click below to watch it there.`
-                : language === "am"
-                  ? `ይህ ቪዲዮ በ${lecture.platform} ላይ ይቀመጣል። እዚህ በታች ጠቅ ስለማየት ይጫኑ።`
-                  : `هذا الفيديو مستضاف على ${lecture.platform}. انقر أدناه لمشاهدته هناك.`}
+              {t("lectures.videoHostedOn", { platform: lecture.platform })}
             </p>
             <a
               href={lecture.videoUrl || platformLink[lecture.platform]}
@@ -93,7 +83,7 @@ function VideoModal({ lecture, onClose }: { lecture: Lecture; onClose: () => voi
               rel="noreferrer"
               className="btn-gold"
             >
-              {t.watchOn} {lecture.platform}
+              {t("lectures.watchOn")} {lecture.platform}
             </a>
           </div>
         )}
@@ -120,29 +110,14 @@ function Lectures() {
 
       <section className="container-prose pt-20 pb-12">
         <p className="text-xs uppercase tracking-[0.3em] text-gold">
-          {language === "en"
-            ? "Lectures & reminders"
-            : language === "am"
-              ? "ትምህርቶች እና ማስታወሻዎች"
-              : "المحاضرات والملاحظات"}
+          {t("lectures.lecturesAndReminders")}
         </p>
-        <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">
-          {language === "en"
-            ? "The spoken word, recorded for the seeker."
-            : language === "am"
-              ? "ለሚፈልግ ሰው የተቀመጠ የተናገረ ቃል።"
-              : "القول المنطوق، مسجل للباحث."}
-        </h1>
+        <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">{t("lectures.hero")}</h1>
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-          {language === "en"
-            ? "Friday khutbas, halaqas, and short reminders — drawn from over twenty years of teaching in the mosques of Ethiopia."
-            : language === "am"
-              ? "የአርብ ቁጥብ፣ ሃላቆች እና አጭር ማስታወሻዎች — ከእስያዊያ መስጊዳዎች ውስጥ ከ20 ዓመታት በላይ የትምህርት ስራዎች መሰረት ያደረገ።"
-              : "خطب الجمع، وحلقات تذكير قصيرة — مأخوذة من أكثر من عشرين عاماً من التدريس في مساجد إثيوبيا."}
+          {t("lectures.subhero")}
         </p>
       </section>
 
-      {/* Featured */}
       <section className="container-prose py-8">
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8 rounded-2xl overflow-hidden border border-gold/30 bg-card/40">
           <div
@@ -157,13 +132,7 @@ function Lectures() {
             <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-background/20 to-transparent" />
             <button
               onClick={() => setActiveVideo(featured)}
-              aria-label={
-                language === "en"
-                  ? "Play lecture"
-                  : language === "am"
-                    ? "ትምህርቱን አጫውት"
-                    : "تشغيل المحاضرة"
-              }
+              aria-label={t("lectures.playLecture")}
               className="absolute inset-0 grid place-items-center"
             >
               <span className="grid place-items-center h-20 w-20 rounded-full bg-gold/90 text-primary-foreground text-3xl pl-1 shadow-2xl group-hover:scale-110 transition">
@@ -173,7 +142,7 @@ function Lectures() {
           </div>
           <div className="p-8 lg:p-10 flex flex-col justify-center">
             <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em]">
-              <span className="text-gold">{t.latestLecture}</span>
+              <span className="text-gold">{t("home.latestLecture")}</span>
               <span className="text-muted-foreground">
                 &middot; {getTextByLang(featured.topic, language)}
               </span>
@@ -193,20 +162,15 @@ function Lectures() {
               onClick={() => setActiveVideo(featured)}
               className="btn-outline-gold mt-8 text-sm py-2.5 px-5 self-start"
             >
-              {language === "en"
-                ? "Watch now →"
-                : language === "am"
-                  ? "አሁን ይመልከቱ →"
-                  : "شاهد الآن →"}
+              {t("common.watchNow")}
             </button>
           </div>
         </div>
       </section>
 
-      {/* Archive */}
       <section className="container-prose py-16">
         <div className="ornament-divider text-xs uppercase tracking-[0.3em]">
-          {language === "en" ? "The archive" : language === "am" ? "ማህደር" : "الأرشيف"}
+          {t("lectures.archiveLabel")}
         </div>
         <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {rest.map((l) => (
@@ -254,16 +218,8 @@ function Lectures() {
           <p className="font-arabic text-2xl text-gold leading-loose" lang="ar">
             بَلِّغُوا عَنِّي وَلَوْ آيَةً
           </p>
-          <p className="mt-3 text-foreground/90 italic" lang="am">
-            "ከእኔ አንዲትንም አንቀጽ ቢሆን አድርሱ።" — ሶሒህ አል-ቡኻሪ
-          </p>
-          <p className="mt-4 text-sm text-muted-foreground">
-            {language === "en"
-              ? "Share what benefits you. The reward of the one who guides is like the reward of the one who acts."
-              : language === "am"
-                ? "ልብዎን ያደነቅዎትን አጋራም። የሚያመራው ሰው ሽርአይታ የሚያደርገውም ሰው ነው።"
-                : "شارك ما ينفعك. أجر من يهتدي كأجر من يعمل."}
-          </p>
+          <p className="mt-3 text-foreground/90 italic">{t("lectures.bukhariQuote")}</p>
+          <p className="mt-4 text-sm text-muted-foreground">{t("lectures.shareMessage")}</p>
         </div>
       </section>
     </SiteLayout>

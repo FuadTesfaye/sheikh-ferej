@@ -34,24 +34,14 @@ const channels = [
 ];
 
 function Contact() {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   return (
     <SiteLayout>
       <section className="container-prose pt-20 pb-12">
-        <p className="text-xs uppercase tracking-[0.3em] text-gold">{t.getInTouch}</p>
-        <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">
-          {language === "en"
-            ? "A word reaches further than we know."
-            : language === "am"
-              ? "አንድ ቃል ከምንናገር በላይ ይደርሳል።"
-              : "الكلمة تصل أبعد مما نعلم."}
-        </h1>
+        <p className="text-xs uppercase tracking-[0.3em] text-gold">{t("contact.getInTouch")}</p>
+        <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">{t("contact.hero")}</h1>
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-          {language === "en"
-            ? "Whether you have a question, a request for a lecture, or simply a salaam to send — you are welcome here."
-            : language === "am"
-              ? "ጥያቄ ካለዎት፣ ለትምህርት ጥያቄዎት ካለዎት ወይም በቀላል ሰላም ለመላክ — እዚህ እንኳን ደህና መጡ።"
-              : "سواء كان لديك سؤال، أو طلب محاضرة، أو مجرد تحية تريد إرسالها — أنت مرحب هنا."}
+          {t("contact.subhero")}
         </p>
       </section>
 
@@ -60,77 +50,45 @@ function Contact() {
           className="p-8 rounded-2xl border border-border bg-card/40 space-y-5"
           onSubmit={(e) => {
             e.preventDefault();
-            alert(
-              language === "en"
-                ? "JazakAllahu khayran — your message has been received."
-                : language === "am"
-                  ? "ጃዛካሉ ሀይራን — መልእክትዎ ተቀብሏል።"
-                  : "جزاك الله خير — لقد تم استلام رسالتك.",
-            );
+            alert(t("contact.messageReceived"));
           }}
         >
-          <Field label={language === "en" ? "Your name" : language === "am" ? "ስምዎ" : "اسمك"}>
+          <Field label={t("contact.yourName")}>
             <input
               required
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition"
-              placeholder={
-                language === "en" ? "Abdullah" : language === "am" ? "ዓብዱላሕ" : "عبد الله"
-              }
+              placeholder={t("contact.namePlaceholder")}
             />
           </Field>
-          <Field label={t.email}>
+          <Field label={t("auth.email")}>
             <input
               type="email"
               required
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition"
-              placeholder={
-                language === "en"
-                  ? "you@example.com"
-                  : language === "am"
-                    ? "you@example.com"
-                    : "you@example.com"
-              }
+              placeholder="you@example.com"
             />
           </Field>
-          <Field label={language === "en" ? "Subject" : language === "am" ? "ርዕሰ ጉዳይ" : "الموضوع"}>
+          <Field label={t("contact.subjectLabel")}>
             <input
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition"
-              placeholder={
-                language === "en"
-                  ? "A question on tafsir…"
-                  : language === "am"
-                    ? "ስለ ተፍሲር ጥያቄ…"
-                    : "سؤال عن التفسير…"
-              }
+              placeholder={t("contact.subjectPlaceholder")}
             />
           </Field>
-          <Field label={t.message}>
+          <Field label={t("contact.message")}>
             <textarea
               required
               rows={6}
               className="w-full bg-background/60 border border-border rounded-md px-4 py-3 focus:outline-none focus:border-gold transition resize-none"
-              placeholder={
-                language === "en"
-                  ? "Assalamu alaykum…"
-                  : language === "am"
-                    ? "አሰላሙ ዓለይኩም…"
-                    : "السلام عليكم…"
-              }
+              placeholder={t("contact.messagePlaceholder")}
             />
           </Field>
           <button type="submit" className="btn-gold w-full">
-            {t.send}
+            {t("contact.send")}
           </button>
         </form>
 
         <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.25em] text-gold">
-            {language === "en"
-              ? "Find the sheikh online"
-              : language === "am"
-                ? "ሼኩን በመስመር ላይ ይፈልጉ"
-                : "ابحث عن الشيخ على الإنترنت"}
-          </p>
+          <p className="text-xs uppercase tracking-[0.25em] text-gold">{t("contact.findOnline")}</p>
           <div className="grid gap-3 p-5 rounded-xl border border-border bg-card/40">
             <a href="tel:00251911855488" className="flex items-center gap-3 text-sm hover:text-gold transition">
               <span className="text-gold">📞</span>
@@ -142,7 +100,7 @@ function Contact() {
             </a>
             <div className="flex items-center gap-3 text-sm text-muted-foreground">
               <span className="text-gold">◎</span>
-              <span>Addis Ababa, Ethiopia</span>
+              <span>{t("contact.location")}</span>
             </div>
           </div>
 
@@ -169,13 +127,7 @@ function Contact() {
             <p className="font-arabic text-2xl text-gold leading-loose">
               وَقُولُوا لِلنَّاسِ حُسْنًا
             </p>
-            <p className="mt-2 text-sm italic text-muted-foreground">
-              {language === "en"
-                ? '"And speak to people good words." — Al-Baqarah 2:83'
-                : language === "am"
-                  ? '"እና ለሰዎች ደስተኛ ቃላት ይናገሩ።" — አል-ባቃራ 2:83'
-                  : '"وقولوا للناس حسناً." — البقرة 2:83'}
-            </p>
+            <p className="mt-2 text-sm italic text-muted-foreground">{t("contact.speakGoodWords")}</p>
           </div>
         </div>
       </section>

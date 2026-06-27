@@ -23,10 +23,10 @@ function LoginPage() {
     e.preventDefault();
     const success = login(email, password);
     if (success) {
-      toast.success(t.loginSuccess);
+      toast.success(t("auth.loginSuccess"));
       navigate({ to: "/admin" });
     } else {
-      toast.error(t.loginError);
+      toast.error(t("auth.loginError"));
     }
   };
 
@@ -36,14 +36,14 @@ function LoginPage() {
         <Card className="w-full max-w-md bg-card border-border">
           <CardHeader>
             <CardTitle className="font-display text-2xl text-gold text-center">
-              {t.loginTitle}
+              {t("auth.loginTitle")}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="text-xs uppercase tracking-wider text-muted-foreground block mb-2">
-                  {t.email}
+                  {t("auth.email")}
                 </label>
                 <Input
                   type="email"
@@ -55,7 +55,7 @@ function LoginPage() {
               </div>
               <div>
                 <label className="text-xs uppercase tracking-wider text-muted-foreground block mb-2">
-                  {t.password}
+                  {t("auth.password")}
                 </label>
                 <Input
                   type="password"
@@ -66,7 +66,7 @@ function LoginPage() {
                 />
               </div>
               <Button type="submit" className="w-full bg-gold text-primary-foreground hover:bg-gold/90">
-                {t.loginButton}
+                {t("auth.loginButton")}
               </Button>
             </form>
           </CardContent>

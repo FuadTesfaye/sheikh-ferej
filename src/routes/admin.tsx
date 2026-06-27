@@ -31,7 +31,7 @@ export const Route = createFileRoute("/admin")({
 });
 
 function AdminDashboard() {
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
   const [posts, setPosts] = useState(() => dataService.getPosts());
   const [courses, setCourses] = useState(() => dataService.getCourses());
   const [lectures, setLectures] = useState(() => dataService.getLectures());
@@ -64,7 +64,7 @@ function AdminDashboard() {
   };
 
   const handleDeletePost = (slug: string) => {
-    if (confirm("Are you sure you want to delete this post?")) {
+    if (confirm(t("admin.deleteConfirm"))) {
       dataService.deletePost(slug);
       refreshData();
     }
@@ -74,9 +74,9 @@ function AdminDashboard() {
     <SiteLayout>
       <div className="container-prose py-12">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="font-display text-4xl text-gold">Admin Dashboard (Mock)</h1>
+          <h1 className="font-display text-4xl text-gold">{t("admin.dashboard")}</h1>
           <Link to="/" className="text-sm text-gold hover:underline">
-            Back to Site
+            {t("admin.backToSite")}
           </Link>
         </div>
 
@@ -84,13 +84,13 @@ function AdminDashboard() {
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/90 backdrop-blur-sm overflow-y-auto">
             <Card className="w-full max-w-2xl bg-card border-border">
               <CardHeader>
-                <CardTitle>Edit Post</CardTitle>
+                <CardTitle>{t("admin.editPost")}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs uppercase tracking-wider text-muted-foreground">
-                      Title (EN)
+                      {t("admin.titleEn")}
                     </label>
                     <Input
                       value={editingPost.title.en}
@@ -104,7 +104,7 @@ function AdminDashboard() {
                   </div>
                   <div>
                     <label className="text-xs uppercase tracking-wider text-muted-foreground">
-                      Category (EN)
+                      {t("admin.categoryEn")}
                     </label>
                     <Input
                       value={editingPost.category.en}
@@ -119,7 +119,7 @@ function AdminDashboard() {
                 </div>
                 <div>
                   <label className="text-xs uppercase tracking-wider text-muted-foreground">
-                    Excerpt (EN)
+                    {t("admin.excerptEn")}
                   </label>
                   <Textarea
                     value={editingPost.excerpt.en}
@@ -133,13 +133,13 @@ function AdminDashboard() {
                 </div>
                 <div className="flex justify-end gap-2 pt-4">
                   <Button variant="ghost" onClick={() => setEditingPost(null)}>
-                    Cancel
+                    {t("common.cancel")}
                   </Button>
                   <Button
                     className="bg-gold text-primary-foreground"
                     onClick={() => handleSavePost(editingPost)}
                   >
-                    Save Changes
+                    {t("common.saveChanges")}
                   </Button>
                 </div>
               </CardContent>
@@ -151,47 +151,74 @@ function AdminDashboard() {
 
         <Tabs defaultValue="posts" className="w-full">
           <TabsList className="grid w-full grid-cols-3 bg-card border border-border">
-            <TabsTrigger value="posts">Posts</TabsTrigger>
-            <TabsTrigger value="courses">Courses</TabsTrigger>
-            <TabsTrigger value="lectures">Lectures</TabsTrigger>
+            <TabsTrigger value="posts">{t("admin.posts")}</TabsTrigger>
+            <TabsTrigger value="courses">{t("admin.courses")}</TabsTrigger>
+            <TabsTrigger value="lectures">{t("admin.lectures")}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="posts" className="mt-6">
             <Card className="bg-card border-border">
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>Blog Posts</CardTitle>
+                <CardTitle>{t("admin.blogPosts")}</CardTitle>
                 <Button
                   variant="outline"
                   className="border-gold text-gold hover:bg-gold/10"
                   onClick={() => {
                     const newPost: Post = {
                       slug: `new-post-${Date.now()}`,
-                      title: { en: "New Post", am: "አዲስ ጽሑፍ", ar: "مقال جديد" },
-                      excerpt: { en: "Excerpt", am: "ማጠቃለያ", ar: "مقتطف" },
-                      category: { en: "General", am: "ጠቅላላ", ar: "عام" },
+                      title: {
+                        en: "New Post",
+                        am: "አዲስ ጽሑፍ",
+                        ar: "مقال جديد",
+                        om: "Barreeffama Haaraa",
+                      },
+                      excerpt: {
+                        en: "Excerpt",
+                        am: "ማጠቃለያ",
+                        ar: "مقتطف",
+                        om: "Cuunfaa",
+                      },
+                      category: {
+                        en: "General",
+                        am: "ጠቅላላ",
+                        ar: "عام",
+                        om: "Waliigalaa",
+                      },
                       date: new Date().toLocaleDateString("en-US", {
                         month: "long",
                         day: "numeric",
                         year: "numeric",
                       }),
-                      readTime: { en: "5 min read", am: "5 ደቂቃ", ar: "5 دقائق" },
-                      body: [{ en: "Post content...", am: "የጽሑፍ ይዘት...", ar: "محتوى المقال..." }],
+                      readTime: {
+                        en: "5 min read",
+                        am: "5 ደቂቃ",
+                        ar: "5 دقائق",
+                        om: "daqiiqaa 5 dubbisuu",
+                      },
+                      body: [
+                        {
+                          en: "Post content...",
+                          am: "የጽሑፍ ይዘት...",
+                          ar: "محتوى المقال...",
+                          om: "Qabiyyee barreeffamaa...",
+                        },
+                      ],
                     };
                     dataService.savePost(newPost);
                     refreshData();
                   }}
                 >
-                  <Plus className="h-4 w-4 mr-2" /> Add Post
+                  <Plus className="h-4 w-4 mr-2" /> {t("admin.addPost")}
                 </Button>
               </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>
                     <TableRow className="border-border">
-                      <TableHead>Title</TableHead>
-                      <TableHead>Category</TableHead>
-                      <TableHead>Date</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
+                      <TableHead>{t("common.title")}</TableHead>
+                      <TableHead>{t("admin.category")}</TableHead>
+                      <TableHead>{t("common.date")}</TableHead>
+                      <TableHead className="text-right">{t("common.actions")}</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -233,36 +260,68 @@ function AdminDashboard() {
           <TabsContent value="courses" className="mt-6">
             <Card className="bg-card border-border">
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>Courses</CardTitle>
+                <CardTitle>{t("admin.courses")}</CardTitle>
                 <Button
                   variant="outline"
                   className="border-gold text-gold hover:bg-gold/10"
                   onClick={() => {
                     const newCourse: Course = {
                       id: `course-${Date.now()}`,
-                      title: { en: "New Course", am: "አዲስ ኮርስ", ar: "دورة جديدة" },
-                      subtitle: { en: "Subtitle", am: "ንዑስ ርዕስ", ar: "عنوان فرعي" },
-                      level: { en: "Beginner", am: "ጀማሪ", ar: "مبتدئ" },
-                      duration: { en: "4 weeks", am: "4 ሳምንታት", ar: "4 أسابيع" },
+                      title: {
+                        en: "New Course",
+                        am: "አዲስ ኮርስ",
+                        ar: "دورة جديدة",
+                        om: "Koorsii Haaraa",
+                      },
+                      subtitle: {
+                        en: "Subtitle",
+                        am: "ንዑስ ርዕስ",
+                        ar: "عنوان فرعي",
+                        om: "Mata-duree gadi aanaa",
+                      },
+                      level: {
+                        en: "Beginner",
+                        am: "ጀማሪ",
+                        ar: "مبتدئ",
+                        om: "Jalqabaa",
+                      },
+                      duration: {
+                        en: "4 weeks",
+                        am: "4 ሳምንታት",
+                        ar: "4 أسابيع",
+                        om: "torbee 4",
+                      },
                       lessons: 10,
-                      description: { en: "Description", am: "መግለጫ", ar: "وصف" },
-                      topics: [{ en: "Topic 1", am: "ርዕስ 1", ar: "موضوع 1" }],
+                      description: {
+                        en: "Description",
+                        am: "መግለጫ",
+                        ar: "وصف",
+                        om: "Ibsa",
+                      },
+                      topics: [
+                        {
+                          en: "Topic 1",
+                          am: "ርዕስ 1",
+                          ar: "موضوع 1",
+                          om: "Mata-duree 1",
+                        },
+                      ],
                     };
                     dataService.saveCourse(newCourse);
                     refreshData();
                   }}
                 >
-                  <Plus className="h-4 w-4 mr-2" /> Add Course
+                  <Plus className="h-4 w-4 mr-2" /> {t("admin.addCourse")}
                 </Button>
               </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>
                     <TableRow className="border-border">
-                      <TableHead>Title</TableHead>
-                      <TableHead>Level</TableHead>
-                      <TableHead>Lessons</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
+                      <TableHead>{t("common.title")}</TableHead>
+                      <TableHead>{t("admin.level")}</TableHead>
+                      <TableHead>{t("admin.lessons")}</TableHead>
+                      <TableHead className="text-right">{t("common.actions")}</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>
@@ -297,39 +356,59 @@ function AdminDashboard() {
           <TabsContent value="lectures" className="mt-6">
             <Card className="bg-card border-border">
               <CardHeader className="flex flex-row items-center justify-between">
-                <CardTitle>Lectures</CardTitle>
+                <CardTitle>{t("admin.lectures")}</CardTitle>
                 <Button
                   variant="outline"
                   className="border-gold text-gold hover:bg-gold/10"
                   onClick={() => {
                     const newLecture: Lecture = {
                       id: `lecture-${Date.now()}`,
-                      title: { en: "New Lecture", am: "አዲስ ትምህርት", ar: "محاضرة جديدة" },
-                      topic: { en: "Topic", am: "ርዕስ", ar: "موضوع" },
-                      duration: { en: "30 min", am: "30 ደቂቃ", ar: "30 دقيقة" },
+                      title: {
+                        en: "New Lecture",
+                        am: "አዲስ ትምህርት",
+                        ar: "محاضرة جديدة",
+                        om: "Barnoota Haaraa",
+                      },
+                      topic: {
+                        en: "Topic",
+                        am: "ርዕስ",
+                        ar: "موضوع",
+                        om: "Mata-duree",
+                      },
+                      duration: {
+                        en: "30 min",
+                        am: "30 ደቂቃ",
+                        ar: "30 دقيقة",
+                        om: "daqiiqaa 30",
+                      },
                       date: new Date().toLocaleDateString("en-US", {
                         month: "long",
                         day: "numeric",
                         year: "numeric",
                       }),
                       platform: "YouTube",
-                      description: { en: "Description", am: "መግለጫ", ar: "وصف" },
+                      description: {
+                        en: "Description",
+                        am: "መግለጫ",
+                        ar: "وصف",
+                        om: "Ibsa",
+                      },
                     };
                     dataService.saveLecture(newLecture);
                     refreshData();
                   }}
                 >
-                  <Plus className="h-4 w-4 mr-2" /> Add Lecture
+                  <Plus className="h-4 w-4 mr-2" /> {t("admin.addLecture")}
                 </Button>
               </CardHeader>
               <CardContent>
                 <Table>
                   <TableHeader>
                     <TableRow className="border-border">
-                      <TableHead>Title</TableHead>
-                      <TableHead>Platform</TableHead>
-                      <TableHead>Date</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
+                      <TableHead>{t("common.title")}</TableHead>
+                      <TableHead>{t("admin.platform")}</TableHead>
+                      <TableHead>{t("common.date")}</TableHead>
+                      <TableHead className="text-right">{t("common.actions")}</TableHead>
                     </TableRow>
                   </TableHeader>
                   <TableBody>

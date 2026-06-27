@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Globe, Menu, LogOut, Sun, Moon } from "lucide-react";
-import { useLanguage, type Language, type Translation } from "@/hooks/use-language";
+import { useLanguage, type Language } from "@/hooks/use-language";
 import { useAuth } from "@/hooks/use-auth";
 import { useTheme } from "@/hooks/use-theme";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
@@ -24,9 +24,21 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   const { t, language, setLanguage } = useLanguage();
   const { isAuthenticated, logout } = useAuth();
 
+  const nav = [
+    { to: "/", label: t("nav.home"), exact: true },
+    { to: "/about", label: t("nav.about"), exact: false },
+    { to: "/lectures", label: t("nav.lectures"), exact: false },
+    { to: "/blog", label: t("nav.writings"), exact: false },
+    { to: "/learn", label: t("nav.learning"), exact: false },
+    { to: "/contact", label: t("nav.contact"), exact: false },
+  ] as const;
+
+  const footerNav = [...nav, { to: "/admin", label: t("nav.admin"), exact: false }] as const;
+
   return (
     <div className="min-h-screen flex flex-col bg-background text-foreground">
       <Header
+        nav={nav}
         t={t}
         language={language}
         setLanguage={setLanguage}
@@ -36,19 +48,21 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <main id="main-content" className="flex-1">
         {children}
       </main>
-      <Footer t={t} />
+      <Footer t={t} nav={footerNav} />
     </div>
   );
 }
 
 function Header({
+  nav,
   t,
   language,
   setLanguage,
   isAuthenticated,
   logout,
 }: {
-  t: Translation;
+  nav: readonly { to: string; label: string; exact: boolean }[];
+  t: (key: string) => string;
   language: Language;
   setLanguage: (lang: Language) => void;
   isAuthenticated: boolean;
@@ -57,22 +71,13 @@ function Header({
   const [isOpen, setIsOpen] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  const nav = [
-    { to: "/", label: t.home, exact: true },
-    { to: "/about", label: t.about, exact: false },
-    { to: "/lectures", label: t.lectures, exact: false },
-    { to: "/blog", label: t.writings, exact: false },
-    { to: "/learn", label: t.learning, exact: false },
-    { to: "/contact", label: t.contact, exact: false },
-  ] as const;
-
   return (
     <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
       <div className="container-prose flex min-h-20 items-center justify-between gap-4 py-2">
         <Link
           to="/"
           className="flex items-center gap-3 group outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg transition shrink-0"
-          aria-label={t.home}
+          aria-label={t("nav.home")}
         >
           <span
             className="grid place-items-center h-10 w-10 rounded-full border border-gold/60 text-gold font-display text-xl group-hover:bg-gold/10 transition"
@@ -81,15 +86,16 @@ function Header({
             ﷽
           </span>
           <span className="flex flex-col leading-tight min-w-0">
-            <span className="font-display text-xl tracking-wide truncate">{t.scholarTitle}</span>
+            <span className="font-display text-xl tracking-wide truncate">
+              {t("common.scholarTitle")}
+            </span>
             <span className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground truncate">
-              {t.scholarSubtitle}
+              {t("common.scholarSubtitle")}
             </span>
           </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
+        <nav className="hidden lg:flex items-center gap-1" aria-label={t("a11y.mainNavigation")}>
           {nav.map((item) => (
             <Link
               key={item.to}
@@ -108,18 +114,18 @@ function Header({
               className="px-3 py-2 text-sm tracking-wide text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
               activeProps={{ className: "px-3 py-2 text-sm tracking-wide text-gold" }}
             >
-              Admin
+              {t("nav.admin")}
             </Link>
           )}
 
-          <LanguageSelector language={language} setLanguage={setLanguage} />
+          <LanguageSelector language={language} setLanguage={setLanguage} t={t} />
 
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="text-muted-foreground hover:text-gold"
-            aria-label="Toggle theme"
+            aria-label={t("a11y.toggleTheme")}
           >
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
@@ -132,11 +138,11 @@ function Header({
               className="ml-2 text-muted-foreground hover:text-gold"
             >
               <LogOut className="h-4 w-4 mr-2" />
-              {t.logout}
+              {t("nav.logout")}
             </Button>
           ) : (
             <Link to="/login" className="btn-gold ml-2 text-sm py-2 px-4">
-              {t.login}
+              {t("nav.login")}
             </Link>
           )}
 
@@ -145,26 +151,25 @@ function Header({
               to="/learn"
               className="ml-2 text-sm py-2 px-4 border border-gold text-gold hover:bg-gold/10 rounded-lg transition"
             >
-              {t.beginLearning}
+              {t("nav.beginLearning")}
             </Link>
           )}
         </nav>
 
-        {/* Tablet & Mobile Navigation */}
         <div className="flex lg:hidden items-center gap-2">
           <Button
             variant="ghost"
             size="icon"
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
             className="text-muted-foreground hover:text-gold"
-            aria-label="Toggle theme"
+            aria-label={t("a11y.toggleTheme")}
           >
             {theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
           </Button>
-          <LanguageSelector language={language} setLanguage={setLanguage} />
+          <LanguageSelector language={language} setLanguage={setLanguage} t={t} />
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className="text-gold" aria-label="Open menu">
+              <Button variant="ghost" size="icon" className="text-gold" aria-label={t("a11y.openMenu")}>
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
@@ -174,10 +179,10 @@ function Header({
             >
               <SheetHeader>
                 <SheetTitle className="text-start font-display text-2xl text-gold">
-                  {t.scholarTitle}
+                  {t("common.scholarTitle")}
                 </SheetTitle>
               </SheetHeader>
-              <nav className="flex flex-col gap-4 mt-12" aria-label="Mobile navigation">
+              <nav className="flex flex-col gap-4 mt-12" aria-label={t("a11y.mobileNavigation")}>
                 {nav.map((item) => (
                   <Link
                     key={item.to}
@@ -203,7 +208,7 @@ function Header({
                         "text-lg font-display tracking-wide text-gold py-2 border-b border-border/40",
                     }}
                   >
-                    Admin
+                    {t("nav.admin")}
                   </Link>
                 )}
                 {isAuthenticated ? (
@@ -216,7 +221,7 @@ function Header({
                     }}
                   >
                     <LogOut className="h-4 w-4 mr-2" />
-                    {t.logout}
+                    {t("nav.logout")}
                   </Button>
                 ) : (
                   <>
@@ -225,14 +230,14 @@ function Header({
                       onClick={() => setIsOpen(false)}
                       className="btn-gold mt-6 w-full text-center"
                     >
-                      {t.login}
+                      {t("nav.login")}
                     </Link>
                     <Link
                       to="/learn"
                       onClick={() => setIsOpen(false)}
                       className="mt-2 w-full text-center border border-gold text-gold hover:bg-gold/10 rounded-lg transition py-2.5"
                     >
-                      {t.beginLearning}
+                      {t("nav.beginLearning")}
                     </Link>
                   </>
                 )}
@@ -248,15 +253,17 @@ function Header({
 function LanguageSelector({
   language,
   setLanguage,
+  t,
 }: {
   language: Language;
   setLanguage: (lang: Language) => void;
+  t: (key: string) => string;
 }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
         className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
-        aria-label="Select language"
+        aria-label={t("a11y.selectLanguage")}
       >
         <Globe className="h-4 w-4" aria-hidden="true" />
         <span>{languages.find((l) => l.code === language)?.label}</span>
@@ -279,29 +286,25 @@ function LanguageSelector({
   );
 }
 
-function Footer({ t }: { t: Translation }) {
-  const nav = [
-    { to: "/", label: t.home },
-    { to: "/about", label: t.about },
-    { to: "/lectures", label: t.lectures },
-    { to: "/blog", label: t.writings },
-    { to: "/learn", label: t.learning },
-    { to: "/contact", label: t.contact },
-    { to: "/admin", label: "Admin" },
-  ] as const;
-
+function Footer({
+  t,
+  nav,
+}: {
+  t: (key: string) => string;
+  nav: readonly { to: string; label: string; exact: boolean }[];
+}) {
   return (
     <footer className="mt-24 border-t border-border/60 bg-card/30">
       <div className="container-prose py-16 grid md:grid-cols-3 gap-12 text-start">
         <div className="flex flex-col gap-4">
-          <p className="font-display text-2xl text-gold">{t.scholarTitle}</p>
+          <p className="font-display text-2xl text-gold">{t("common.scholarTitle")}</p>
           <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
-            {t.revivingTradition}
+            {t("common.revivingTradition")}
           </p>
         </div>
         <div>
           <h2 className="text-xs uppercase tracking-[0.25em] text-gold/80 mb-6 font-semibold">
-            {t.explore}
+            {t("nav.explore")}
           </h2>
           <ul className="space-y-3 text-sm">
             {nav.map((n) => (
@@ -318,7 +321,7 @@ function Footer({ t }: { t: Translation }) {
         </div>
         <div>
           <h2 className="text-xs uppercase tracking-[0.25em] text-gold/80 mb-6 font-semibold">
-            {t.follow}
+            {t("nav.follow")}
           </h2>
           <ul className="space-y-3 text-sm">
             {[
@@ -345,7 +348,7 @@ function Footer({ t }: { t: Translation }) {
       </div>
       <div className="border-t border-border/60 py-8 text-center text-xs text-muted-foreground">
         <p>
-          &copy; {new Date().getFullYear()} {t.scholarTitle}. {t.knowledgeIsLight}
+          &copy; {new Date().getFullYear()} {t("common.scholarTitle")}. {t("common.knowledgeIsLight")}
         </p>
       </div>
     </footer>

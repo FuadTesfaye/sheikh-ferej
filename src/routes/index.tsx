@@ -22,6 +22,12 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
+const teachingAreas = [
+  { ar: "ﺍ", key: "quranTafsir" },
+  { ar: "ﺏ", key: "aqeedahFiqh" },
+  { ar: "ﺝ", key: "seerahTazkiyah" },
+] as const;
+
 function Home() {
   const { language, t } = useLanguage();
   const [posts, setPosts] = useState(() => dataService.getPosts());
@@ -44,7 +50,6 @@ function Home() {
 
   return (
     <SiteLayout>
-      {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-border">
         <div
           className="absolute inset-0 opacity-[0.06] bg-cover bg-center pointer-events-none"
@@ -53,38 +58,28 @@ function Home() {
         />
         <div className="container-prose relative grid lg:grid-cols-[1.1fr_1fr] gap-16 items-center pt-20 pb-24">
           <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-gold mb-6">
-              {language === "ar" ? "السلام عليكم" : "السلام عليكم · Welcome"}
-            </p>
+            <p className="text-xs uppercase tracking-[0.35em] text-gold">{t("home.assalamuAlaykum")}</p>
             <h1 className="font-display text-5xl md:text-7xl leading-[1.02]">
-              {language === "ar" ? "الشيخ" : "Sheikh"}
-              <span className="block italic text-gold">
-                {language === "ar" ? "محمد فرج" : "Mohammed Ferej"}
-              </span>
+              {t("home.sheikh")}
+              <span className="block italic text-gold">{t("home.mohammedFerej")}</span>
             </h1>
             <p className="mt-6 text-xs uppercase tracking-[0.2em] text-muted-foreground">
-              {language === "am" ? "ኢትዮጵያዊ ኢስላማዊ ምሁር · ቅዱስ ሳይንስ መምሪያ" : t.islamicScholar}
+              {t("home.subtitle")}
             </p>
-            <p className="mt-8 text-lg text-foreground/85 max-w-xl leading-relaxed">
-              {language === "en"
-                ? "For over 35 years, Sheikh Muhammed Ferej Megeno has taught the Qur'an, Sunnah, and classical Islamic sciences to students in Ethiopia and around the world. He serves as a Sharia consultant, TV presenter, and institutional leader."
-                : language === "am"
-                  ? "ለከ20 ዓመታት በላይ ሼክ ሙሐመድ ፈረጅ ሜጌኖ በኢትዮጵያ እና በዓለም ዙሪያ ተማሪዎችን ቁርአን፣ ሱና እና ቀደምት ኢስላማዊ ሳይንስ እንደማስተማር ቀድሟል። ይህ የትምህርቶቹ፣ ጽሑፎቹ እና ተቀናብሯል ኮርሶች ቤት ነው።"
-                  : "لأكثر من 35 عامًا، درّس الشيخ محمد فرج ميجينو ميجينو القرآن والسنة والعلوم الإسلامية الكلاسيكية. ويعمل مستشارًا شرعيًا ومقدم برامج تلفزيونية وقائدًا مؤسسيًا."}
-            </p>
+            <p className="mt-8 text-lg text-foreground/85 max-w-xl leading-relaxed">{t("home.bio")}</p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link to="/lectures" className="btn-gold">
-                {t.listenToLectures}
+                {t("home.listenToLectures")}
               </Link>
               <Link to="/learn" className="btn-outline-gold">
-                {t.studyWithTheSheikh}
+                {t("home.studyWithTheSheikh")}
               </Link>
             </div>
 
             <dl className="mt-12 grid grid-cols-3 gap-6 max-w-md border-t border-border pt-8">
-              <Stat k="35+" v={t.yearsTeaching} />
-              <Stat k="60+" v={t.lecturesOnline} />
-              <Stat k="4.5K" v={t.telegramFollowers} />
+              <Stat k="35+" v={t("home.yearsTeaching")} />
+              <Stat k="60+" v={t("home.lecturesOnline")} />
+              <Stat k="4.5K" v={t("home.telegramFollowers")} />
             </dl>
           </div>
 
@@ -93,13 +88,7 @@ function Home() {
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-gold/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
               <img
                 src={scholar}
-                alt={
-                  language === "en"
-                    ? "Sheikh Muhammed Ferej Megeno"
-                    : language === "am"
-                      ? "ሼክ ሙሐመድ ፈረጅ ሜጌኖ"
-                      : "الشيخ محمد فرج ميجينو"
-                }
+                alt={t("home.scholarImageAlt")}
                 width={896}
                 height={1152}
                 className="w-full h-full object-cover"
@@ -109,42 +98,32 @@ function Home() {
               <p className="font-arabic text-lg text-gold leading-relaxed" lang="ar">
                 وَمَنْ أَحْسَنُ قَوْلًا مِمَّنْ دَعَا إِلَى اللَّهِ
               </p>
-              <p className="text-xs italic text-muted-foreground mt-2" lang="am">
-                "ወደ አላህ ከጠራ ሰው ይበልጥ ንግግሩ ያማረ ማን ነው?"
-              </p>
+              <p className="text-xs italic text-muted-foreground mt-2">{t("home.ayahCallToAllah")}</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Ayah Band */}
       <section className="border-b border-border bg-card/30">
         <div className="container-prose py-12 text-center">
           <p className="font-arabic text-3xl md:text-4xl text-gold leading-loose" lang="ar">
             إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ
           </p>
-          <p className="mt-3 text-foreground/90 italic" lang="am">
-            "በእውነት አላህን ከባሮቹ ውስጥ የሚፈሩት አዋቂዎች (ዑለማኦች) ብቻ ናቸው::"
-          </p>
+          <p className="mt-3 text-foreground/90 italic">{t("home.ayahAlFatir")}</p>
           <p className="mt-2 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-            {language === "en"
-              ? "Surah Fatir · 35:28"
-              : language === "am"
-                ? "ሱራት ፋጥር · 35:28"
-                : "سورة فاطر · 35:28"}
+            {t("home.surahFatirRef")}
           </p>
         </div>
       </section>
 
-      {/* Latest Lecture */}
       <section className="container-prose py-20">
         <div className="flex items-end justify-between gap-6 mb-10 flex-wrap">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">{t.fromTheMinbar}</p>
-            <h2 className="font-display text-4xl md:text-5xl mt-3">{t.latestLecture}</h2>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold">{t("home.fromTheMinbar")}</p>
+            <h2 className="font-display text-4xl md:text-5xl mt-3">{t("home.latestLecture")}</h2>
           </div>
           <Link to="/lectures" className="btn-outline-gold text-sm py-2.5 px-5">
-            {t.allLectures} →
+            {t("home.allLectures")} →
           </Link>
         </div>
 
@@ -184,64 +163,29 @@ function Home() {
         </Link>
       </section>
 
-      {/* Teaching Areas */}
       <section className="container-prose py-12">
         <div className="ornament-divider text-xs uppercase tracking-[0.3em]">
-          {t.areasOfTeaching}
+          {t("home.areasOfTeaching")}
         </div>
         <div className="mt-12 grid md:grid-cols-3 gap-px bg-border rounded-xl overflow-hidden border border-border">
-          {[
-            {
-              ar: "ﺍ",
-              am: "ቁርአን እና ተፍሲር",
-              en: "Quran & Tafsir",
-              desc: {
-                en: "Exegesis of the Quran based on the works of the early scholars.",
-                am: "በቀደምት ዑለማኦች ስራዎች ላይ የተመሰረተ የቁርአን ትንታኔ (ተፍሲር)።",
-                ar: "تفسير القرآن على أساس عمل العلماء الأوائل.",
-              },
-            },
-            {
-              ar: "ﺏ",
-              am: "አቂዳ እና ፊቅህ",
-              en: "Aqeedah & Fiqh",
-              desc: {
-                en: "Belief of Ahl as-Sunnah and the rules of worship and daily life.",
-                am: "የአህለሱና ወልጀመዓ አቂዳ እና የእለት ተእለት የአምልኮ እና የህይወት ህጎች (ፊቅህ)።",
-                ar: "عقيدة أهل السنة وأحكام العبادة والحياة اليومية.",
-              },
-            },
-            {
-              ar: "ﺝ",
-              am: "ሲራ እና ተዝኪያ",
-              en: "Seerah & Tazkiyah",
-              desc: {
-                en: "Life of the Prophet (SAW) and purification of the heart.",
-                am: "የነቢዩ (ሰ.ዐ.ወ) የህይወት ታሪክ እና የልብ ንፅህና (ተዝኪያ) ትምህርቶች።",
-                ar: "سيرة النبي صلى الله عليه وسلم وتزكية النفس.",
-              },
-            },
-          ].map((p, idx) => (
-            <div key={idx} className="bg-background p-8 hover:bg-card/40 transition">
+          {teachingAreas.map((p) => (
+            <div key={p.key} className="bg-background p-8 hover:bg-card/40 transition">
               <span className="font-arabic text-5xl text-gold/50" lang="ar">
                 {p.ar}
               </span>
-              <h3 className="font-display text-2xl mt-4 text-gold">
-                {getTextByLang({ en: p.en, am: p.am, ar: p.am }, language)}
-              </h3>
+              <h3 className="font-display text-2xl mt-4 text-gold">{t(`home.${p.key}`)}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
-                {getTextByLang(p.desc, language)}
+                {t(`home.${p.key}Desc`)}
               </p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Featured Course */}
       <section className="container-prose py-20">
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">{t.featuredCourse}</p>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold">{t("home.featuredCourse")}</p>
             <h2 className="font-display text-4xl md:text-5xl mt-3">
               {getTextByLang(featuredCourse.title, language)}
             </h2>
@@ -254,7 +198,7 @@ function Home() {
               <span>{getTextByLang(featuredCourse.duration, language)}</span>
               <span>·</span>
               <span>
-                {featuredCourse.lessons} {t.lessons}
+                {featuredCourse.lessons} {t("home.lessons")}
               </span>
             </div>
             <Link
@@ -262,7 +206,7 @@ function Home() {
               params={{ courseId: featuredCourse.id }}
               className="btn-gold mt-8"
             >
-              {t.enterTheCourse}
+              {t("home.enterTheCourse")}
             </Link>
           </div>
           <ul className="grid sm:grid-cols-2 gap-3">
@@ -281,15 +225,14 @@ function Home() {
         </div>
       </section>
 
-      {/* Recent Posts */}
       <section className="container-prose py-20 border-t border-border">
         <div className="flex items-end justify-between gap-6 mb-12 flex-wrap">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">{t.recentWritings}</p>
-            <h2 className="font-display text-4xl md:text-5xl mt-3">{t.fromTheDesk}</h2>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold">{t("home.recentWritings")}</p>
+            <h2 className="font-display text-4xl md:text-5xl mt-3">{t("home.fromTheDesk")}</h2>
           </div>
           <Link to="/blog" className="btn-outline-gold text-sm py-2.5 px-5">
-            {t.allWritings} →
+            {t("home.allWritings")} →
           </Link>
         </div>
         <ul className="divide-y divide-border border-y border-border">

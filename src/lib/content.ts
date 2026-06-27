@@ -1,9 +1,10 @@
-import type { Language } from "@/hooks/use-language";
+import type { Language } from "@/i18n";
 
-type MultilingualText = {
+export type MultilingualText = {
   en: string;
   am: string;
   ar: string;
+  om: string;
 };
 
 export type Post = {
@@ -23,33 +24,39 @@ export const posts: Post[] = [
       en: "The Light of Tawhid in Everyday Life",
       am: "በዕለት ተዕለት ሕይወት ውስጥ የተውሒድ ብርሃን",
       ar: "نور التوحيد في الحياة اليومية",
+      om: "Ifa Tawhiidaa Jireenya Guyyaa Guyyaa Keessatti",
     },
     excerpt: {
       en: "How the oneness of Allah shapes the smallest moments — from the morning prayer to the words we speak with our neighbors.",
       am: "አላህ አንድነት በትንሳትም በእንቅልፍም በጊዜያቶች እንዴት ይቀይራል — ከጠዋት ጸሎት እስከ ጋር በሚኖሩት ሰዎች ጋር እንደምንናገር ያለ ነገር አስከተሏል።",
       ar: "كيف يُشكل توحيد الله أصغر اللحظات — من الصلاة الصباحية إلى الكلمات التي نُحكيها مع جيراننا.",
+      om: "Tokkummaan Allaah yeroo xiqqoo akkamitti jijjiiru — salaata ganamaa irraa hanga dubbii jiraattonni wajjin nu dubbannuutti.",
     },
     category: {
       en: "Aqeedah",
       am: "አቂዳ",
       ar: "العقيدة",
+      om: "Aqeedaa",
     },
     date: "June 23, 2026",
     readTime: {
       en: "6 min read",
       am: "6 ደቂቃ አንበያ",
       ar: "قراءة 6 دقائق",
+      om: "daqiiqaa 6 dubbisuu",
     },
     body: [
       {
         en: "Tawhid is not merely a chapter in a book of theology. It is a way of seeing — a lens through which every breath, every transaction, and every relationship is understood.",
         am: "ተውሒድ በእርግጽ የአኃዳዊ መጽሃፍ አንድ ክፍል ብቻ አይደለም። እሱ የማየት መንገድ ነው — እያንዳንዱን አትንፍ፣ እያንዳንዱን ትምህርት እና እያንዳንዱን ግንኙነት በሚረዳው ግልጽነት ያየው ነገር።",
         ar: "التوحيد ليس مجرد فصل في كتاب الفقه. بل هو طريقة رؤية — عدسة يُفهم من خلالها كل نَفَس، وكل معاملة، وكل علاقة.",
+        om: "Tawhiidin kutaa kitaaba te'oloojii qofa miti. Karaa ilaaluu dha — fuula hunda, daldala hunda, fi hariiroo hunda ittiin hubatamu.",
       },
       {
         en: "When the believer recognizes that all power, sustenance, and guidance flow from Allah alone, the heart finds a stillness that no worldly success can offer and no worldly loss can shake.",
         am: "አምላክ ሁሉንም ሀይል፣ ግዢ እና መምራየት ከአላህ ብቻ እንደሚመለከት አምላኪ አስተውሎታል፣ ልብም ምንም ዓለማዊ ስኬት ሊሰጠው የማይችል እና ምንም ዓለማዊ ኪሳራ ላይም ሊንቀጠቀጥ የማይችል ድምጽ ይገኛል።",
         ar: "عندما يُدرك المؤمن أن كل القوة، والرزق، والهداية تأتي من الله وحده، يجد القلب سكونًا لا يستطيع أن يمنحه أي نجاح دنيوي، ولا يُزعزعه أي خسارة دنيوية.",
+        om: "Amanaan sun yeroo humna, nyaata, fi qajeelfannoo hundi Allaah qofa irraa akka dhufu hubatu, onni nagaa argata kan milkaa'ina addunyaa kennuu hin dandeenye fi kan kufaatii addunyaa hin raafu.",
       },
     ],
   },
@@ -59,28 +66,33 @@ export const posts: Post[] = [
       en: "The Forgotten Manners of the Seeker of Knowledge",
       am: "የዕውቀት የሚፈልግ ሰው የተረሱበት ባህርነት",
       ar: "آداب طالب العلم المنسية",
+      om: "Amala Barataa Beekumsaa Dagatame",
     },
     excerpt: {
       en: "Imam Malik told his student: 'Learn manners before you learn knowledge.' A reminder for our times.",
-      am: "ኢማም ማሊክ ለተማሪው " + '"ስለእውቀት መማር ከመጀምርዎ በፊት ባህርነትን ይማሩ" ' + "አለ። ለዚህ ዘመን አስታወቂያ።",
+      am: "ኢማም ማሊክ ለተማሪው \"ስለእውቀት መማር ከመጀምርዎ በፊት ባህርነትን ይማሩ\" አለ። ለዚህ ዘመን አስታወቂያ።",
       ar: "قال الإمام مالك لتلميذه: 'تعلم الآداب قبل العلم'. تذكير لأوقاتنا.",
+      om: "Imaam Maalik barataa isaaf: 'Beekumsa dura amala baradhu' jedhe. Yaadachiisa yeroo keenyaaf.",
     },
     category: {
       en: "Tarbiyah",
       am: "ታርቢያ",
       ar: "التربية",
+      om: "Tarbiyaa",
     },
     date: "June 20, 2026",
     readTime: {
       en: "8 min read",
       am: "8 ደቂቃ አንበያ",
       ar: "قراءة 8 دقائق",
+      om: "daqiiqaa 8 dubbisuu",
     },
     body: [
       {
         en: "The classical scholars of Islam never separated knowledge from character.",
         am: "የእስላም ቀደምት ዑለማኦች እውቀትን ከባህርነትዎ ገድ አለመውጠጣም አይደለም።",
         ar: "لم يُفصِّل علماء الإسلام القديموا العلم عن الخلاق.",
+        om: "Aalimota Islaamaa durii beekumsa fi amala gonkumaa hin addaan baafne.",
       },
     ],
   },
@@ -90,7 +102,7 @@ export type Course = {
   id: string;
   title: MultilingualText;
   subtitle: MultilingualText;
-  level: { en: "Beginner" | "Intermediate" | "Advanced"; am: string; ar: string };
+  level: { en: "Beginner" | "Intermediate" | "Advanced"; am: string; ar: string; om: string };
   duration: MultilingualText;
   lessons: number;
   description: MultilingualText;
@@ -104,38 +116,45 @@ export const courses: Course[] = [
       en: "Foundations of Aqeedah",
       am: "የአቂዳ መሰረቶች",
       ar: "أساسيات العقيدة",
+      om: "Bu'uuraalee Aqeedaa",
     },
     subtitle: {
       en: "The pillars of belief, taught from the classical texts",
       am: "የአምላኪነት መሰረቶች፣ ከቀደምት ጽሑፎች ይተማሩ",
       ar: "أركان الإيمان، تُدرس من النصوص الكلاسيكية",
+      om: "Bu'uuraalee amantii, barreeffama sirnaa irraa barsiifaman",
     },
     level: {
       en: "Beginner",
       am: "ጀማሪ",
       ar: "مبتدئ",
+      om: "Jalqabaa",
     },
     duration: {
       en: "8 weeks",
       am: "8 ሳምንታት",
       ar: "8 أسابيع",
+      om: "torbee 8",
     },
     lessons: 24,
     description: {
       en: "A structured introduction to the six pillars of faith.",
       am: "ለስስት የአምላኪነት መሰረቶች ውስብስብ መግቢያ።",
       ar: "مقدمة منظمة لأركان الإيمان الستة.",
+      om: "Seensa sirnaa bu'uuraalee amantii jahaa.",
     },
     topics: [
       {
         en: "Belief in Allah and His Names",
         am: "በአላህ እና በስሞቹ አምላኪነት",
         ar: "الإيمان بالله وأسمائه",
+        om: "Amanama Allaahii fi Maqaa Isa",
       },
       {
         en: "The Angels and the Unseen",
         am: "መላእክቶች እና የማይታመም ነገር",
         ar: "الملائكة والغيب",
+        om: "Malaa'ikota fi Dhokataa",
       },
     ],
   },
@@ -145,31 +164,46 @@ export const courses: Course[] = [
       en: "Tafsir of Juz 'Amma",
       am: "የጁዝ አማ ተፍሲር",
       ar: "تفسير جزء عم",
+      om: "Tafsiira Juuz 'Ammaa",
     },
     subtitle: {
       en: "A verse-by-verse exegesis of the final juz of the Qur'an",
       am: "የቁርአን የመጨረሻ ጁዝ በአንድ አያት በአንድ አያት ተርጉም",
       ar: "تفسير آية بآية لآخر جزء من القرآن",
+      om: "Hiikaa aayyaa aayyaan Juuz dhumaa Qur'aanaa",
     },
     level: {
       en: "Beginner",
       am: "ጀማሪ",
       ar: "مبتدئ",
+      om: "Jalqabaa",
     },
     duration: {
       en: "12 weeks",
       am: "12 ሳምንታት",
       ar: "12 أسبوع",
+      om: "torbee 12",
     },
     lessons: 37,
     description: {
       en: "Walk through every surah from An-Naba to An-Nas.",
       am: "ከአን-ነባ እስከ አን-ናስ ሁሉም ሱራዎችን ይሄዱ።",
       ar: "سير في كل سورة من النبإ إلى الناس.",
+      om: "Suuraa hunda An-Nabaa irraa hanga An-Naas deemi.",
     },
     topics: [
-      { en: "Surah An-Naba", am: "ሱራት አን-ነባ", ar: "سورة النبأ" },
-      { en: "Surah An-Nazi'at", am: "ሱራት አን-ናዚዓት", ar: "سورة النازعات" },
+      {
+        en: "Surah An-Naba",
+        am: "ሱራት አን-ነባ",
+        ar: "سورة النبأ",
+        om: "Suuraa An-Nabaa",
+      },
+      {
+        en: "Surah An-Nazi'at",
+        am: "ሱራት አን-ናዚዓት",
+        ar: "سورة النازعات",
+        om: "Suuraa An-Naazi'aat",
+      },
     ],
   },
 ];
@@ -192,16 +226,19 @@ export const lectures: Lecture[] = [
       en: "Surah Al-Imran - Part 1",
       am: "ሱራት አል-ዕምራን - ክፍል 1",
       ar: "سورة آل عمران - الجزء الأول",
+      om: "Suuraa Al-Iimraan - Kutaa 1",
     },
     topic: {
       en: "Tafsir",
       am: "ተፍሲር",
       ar: "التفسير",
+      om: "Tafsiira",
     },
     duration: {
       en: "45 min",
       am: "45 ደቂቃ",
       ar: "45 دقيقة",
+      om: "daqiiqaa 45",
     },
     date: "June 20, 2026",
     platform: "YouTube",
@@ -210,6 +247,7 @@ export const lectures: Lecture[] = [
       en: "A deep dive into the meanings of Surah Al-Imran.",
       am: "የሱራት አል-ዕምራን ትርጉም ውስጥ ዥረት ውስጥ ግብረታል።",
       ar: "غوص عميق في معاني سورة آل عمران.",
+      om: "Hiikaa gadi fagoo Suuraa Al-Iimraan.",
     },
   },
   {
@@ -218,16 +256,19 @@ export const lectures: Lecture[] = [
       en: "The Importance of Sunnah",
       am: "የሱና አስፈላጊነት",
       ar: "أهمية السنة",
+      om: "Barbaachisummaa Sunnataa",
     },
     topic: {
       en: "Hadith",
       am: "ሀዲዝ",
       ar: "الحديث",
+      om: "Hadiisa",
     },
     duration: {
       en: "38 min",
       am: "38 ደቂቃ",
       ar: "38 دقيقة",
+      om: "daqiiqaa 38",
     },
     date: "June 15, 2026",
     platform: "YouTube",
@@ -236,6 +277,7 @@ export const lectures: Lecture[] = [
       en: "Sheikh Muhammed Ferej Megeno explains the vital role of the Sunnah.",
       am: "ሼክ ሙሐመድ ፈረጅ ሜጌኖ የሱና አስፈላጊነት ይብራራል።",
       ar: "يفسر الشيخ محمد فرج ميجينو الدور الحيوي للسنة.",
+      om: "Sheekh Muhammed Ferej Megeno gahee jireenyaa Sunnataa ibsa.",
     },
   },
 ];
@@ -249,90 +291,209 @@ export type BioEntry = {
 
 export const biography: BioEntry[] = [
   {
-    year: { en: "Early years", am: "የቀደምት ዓመታት", ar: "السنوات الأولى" },
-    title: { en: "Birth & General Education", am: "ትውልድ እና አጠቃላይ ትምህርት", ar: "الولادة والتعليم العام" },
-    place: { en: "Silti & Jimma, Ethiopia", am: "ሲልጢ እና ጅማ፣ ኢትዮጵያ", ar: "سيلتي وجيما، إثيوبيا" },
+    year: {
+      en: "Early years",
+      am: "የቀደምት ዓመታት",
+      ar: "السنوات الأولى",
+      om: "Waggaa jalqabaa",
+    },
+    title: {
+      en: "Birth & General Education",
+      am: "ትውልድ እና አጠቃላይ ትምህርት",
+      ar: "الولادة والتعليم العام",
+      om: "Dhaloota fi Barnoota Waliigalaa",
+    },
+    place: {
+      en: "Silti & Jimma, Ethiopia",
+      am: "ሲልጢ እና ጅማ፣ ኢትዮጵያ",
+      ar: "سيلتي وجيما، إثيوبيا",
+      om: "Siltii fi Jimmaa, Itoophiyaa",
+    },
     detail: {
       en: "Primary school in Alcho; Middle and High school in Jimma. Studied Shafi'i jurisprudence, Tafsir, Hadith, Usul al-Fiqh, and Arabic linguistics under senior local scholars in the Silti and Jimma regions.",
       am: "የመጀመሪያ ደረጃ ትምህርቱን አልቾ ውስጥ፣ ሁለተኛ ደረጃ እና ሁለተኛ ደረጃ ትምህርቱን ደግሞ ጅማ ውስጥ ተከታትሏል። በሲልጢ እና ጅማ ክልሎች ውስጥ ከሽማግሌ ምሁራን ሥር የሻፊዒ ፊቅህ፣ ተፍሲር፣ ሀዲዝ፣ ኡሱልና ዐረብኛ ቋንቋ ተምሯል።",
       ar: "التحق بالمدرسة الابتدائية في ألتشو، والمتوسطة والثانوية في جيما. درس الفقه الشافعي والتفسير والحديث وأصول الفقه وعلوم العربية على يد كبار العلماء المحليين في منطقتي سيلتي وجيما.",
+      om: "Mana barumsaa jalqabaa Alchoo keessatti; giddu galeessa fi ol'aanaa Jimmaa keessatti. Fiqhii Shaafi'ii, Tafsiira, Hadiisa, Usool al-Fiqh, fi afaan Arabaa aalimota naannoo Siltii fi Jimmaa jalatti barate.",
     },
   },
   {
-    year: { en: "2001 (1422H)", am: "2001 (1422 ሂ)", ar: "2001 (1422هـ)" },
-    title: { en: "Diploma in Islamic Sciences", am: "ዲፕሎማ ኢስላማዊ ሳይንሶች", ar: "دبلوم في العلوم الإسلامية" },
-    place: { en: "Al-Ansar Sharia Institute, Ethiopia", am: "አል-አንሰር ሼሪዓ ኢንስቲቲዩት", ar: "معهد الأنصار الشرعي" },
+    year: { en: "2001 (1422H)", am: "2001 (1422 ሂ)", ar: "2001 (1422هـ)", om: "2001 (1422H)" },
+    title: {
+      en: "Diploma in Islamic Sciences",
+      am: "ዲፕሎማ ኢስላማዊ ሳይንሶች",
+      ar: "دبلوم في العلوم الإسلامية",
+      om: "Diploomaa Saayinsii Islaamaa",
+    },
+    place: {
+      en: "Al-Ansar Sharia Institute, Ethiopia",
+      am: "አል-አንሰር ሼሪዓ ኢንስቲቲዩት",
+      ar: "معهد الأنصار الشرعي",
+      om: "Iddoo Barnootaa Shari'aa Al-Ansar",
+    },
     detail: {
       en: "Graduated with Excellent Grade from Ansar Dawah and Education Center — Al-Ansar Sharia Institute.",
       am: "ከአንሰር ዳዕዋ እና ትምህርት ማዕከል — አል-አንሰር ሼሪዓ ኢንስቲቲዩት በልዕለ ደረጃ ተመርቋል።",
       ar: "تخرج بامتياز من مركز الأنصار للدعوة والتعليم — معهد الأنصار الشرعي.",
+      om: "Giddugala Da'awaa fi Barnootaa Ansar — Iddoo Barnootaa Shari'aa Al-Ansar irraa sadarkaa gaarii wajjin eebifame.",
     },
   },
   {
-    year: { en: "2004", am: "2004", ar: "2004" },
-    title: { en: "Diploma in Management", am: "ዲፕሎማ በዴሞክራሲ አስተዳደር", ar: "دبلوم في الإدارة" },
-    place: { en: "Noor Salam Academic College", am: "ኑር ሰላም አካዳሚክ ኮሌጅ", ar: "كلية نور السلام الأكاديمية" },
+    year: { en: "2004", am: "2004", ar: "2004", om: "2004" },
+    title: {
+      en: "Diploma in Management",
+      am: "ዲፕሎማ በዴሞክራሲ አስተዳደር",
+      ar: "دبلوم في الإدارة",
+      om: "Diploomaa Bulchiinsaa",
+    },
+    place: {
+      en: "Noor Salam Academic College",
+      am: "ኑር ሰላም አካዳሚክ ኮሌጅ",
+      ar: "كلية نور السلام الأكاديمية",
+      om: "Koolleejii Akaadaamii Noor Salam",
+    },
     detail: {
       en: "Completed a Diploma in Management at Noor Salam Academic College.",
       am: "በኑር ሰላም አካዳሚክ ኮሌጅ የአስተዳደር ዲፕሎማ ተጠናቀቀ።",
       ar: "أتم دبلوم الإدارة في كلية نور السلام الأكاديمية.",
+      om: "Diploomaa Bulchiinsaa Koolleejii Akaadaamii Noor Salam keessatti xumure.",
     },
   },
   {
-    year: { en: "2008 (1429H)", am: "2008 (1429 ሂ)", ar: "2008 (1429هـ)" },
-    title: { en: "Diploma in Arabic Language", am: "ዲፕሎማ ዐረብኛ ቋንቋ", ar: "دبلوم في اللغة العربية" },
-    place: { en: "Khartoum International Arabic Institute / Sindbad Center, Addis Ababa", am: "ካርቱም ዓለም አቀፍ የዐረብኛ ቋንቋ ኢንስቲቲዩት", ar: "معهد الخرطوم الدولي للغة العربية / مركز سندباد، أديس أبابا" },
+    year: { en: "2008 (1429H)", am: "2008 (1429 ሂ)", ar: "2008 (1429هـ)", om: "2008 (1429H)" },
+    title: {
+      en: "Diploma in Arabic Language",
+      am: "ዲፕሎማ ዐረብኛ ቋንቋ",
+      ar: "دبلوم في اللغة العربية",
+      om: "Diploomaa Afaan Arabaa",
+    },
+    place: {
+      en: "Khartoum International Arabic Institute / Sindbad Center, Addis Ababa",
+      am: "ካርቱም ዓለም አቀፍ የዐረብኛ ቋንቋ ኢንስቲቲዩት",
+      ar: "معهد الخرطوم الدولي للغة العربية / مركز سندباد، أديس أبابا",
+      om: "Iddoo Barnootaa Afaan Arabaa Addunyaa Khartuum / Giddugala Sindbad, Addis Ababa",
+    },
     detail: {
       en: "Completed an Arabic Language Diploma at the Khartoum International Arabic Institute, in collaboration with the Sindbad Center, Addis Ababa.",
       am: "በካርቱም ዓለም አቀፍ የዐረብኛ ቋንቋ ኢንስቲቲዩት፣ ከአዲስ አበባ ሲንድባድ ማዕከል ጋር በትብብር የዐረብኛ ቋንቋ ዲፕሎማ ጨርሷል።",
       ar: "أتم دبلوم اللغة العربية في معهد الخرطوم الدولي للغة العربية بالتعاون مع مركز سندباد، أديس أبابا.",
+      om: "Diploomaa Afaan Arabaa Iddoo Barnootaa Afaan Arabaa Addunyaa Khartuum, waliin hojii Giddugala Sindbad Addis Ababa wajjin xumure.",
     },
   },
   {
-    year: { en: "2023", am: "2023", ar: "2023" },
-    title: { en: "Diploma in Sharia Standards (AAOIFI)", am: "ዲፕሎማ ሼሪዓ ደረጃዎች (AAOIFI)", ar: "دبلوم في معايير الشريعة (أيوفي)" },
-    place: { en: "Max Breg Foundation", am: "ማክስ ብሬግ ፋውንዴሽን", ar: "مؤسسة ماكس بريغ" },
+    year: { en: "2023", am: "2023", ar: "2023", om: "2023" },
+    title: {
+      en: "Diploma in Sharia Standards (AAOIFI)",
+      am: "ዲፕሎማ ሼሪዓ ደረጃዎች (AAOIFI)",
+      ar: "دبلوم في معايير الشريعة (أيوفي)",
+      om: "Diploomaa Sadarkaa Shari'aa (AAOIFI)",
+    },
+    place: {
+      en: "Max Breg Foundation",
+      am: "ማክስ ብሬግ ፋውንዴሽን",
+      ar: "مؤسسة ماكس بريغ",
+      om: "Iddoo Hundee Max Breg",
+    },
     detail: {
       en: "Certified Sharia Auditor and Controller — Excellent Grade. Qualified to provide Sharia advisory and auditing for Islamic banking and digital Islamic finance frameworks.",
-      am: "የሼሪዓ ኦዲተር እና ተቆጣጣሪ ሰርቲፊኬት — ልዕለ ደረጃ። ለኢስላማዊ ባንኪንግ እና ዲጂታል ኢስላማዊ ፋይናንስ ማዕቀፎች የሼሪዓ ምክር እና ኦዲት ለማቅረብ ብቃት አለው።",
+      am: "የሼሪዓ ኦዲተር እና ተቆጣጣሪ ሰርቲፊኬት — ልዕለ ደረጃ። ለኢስላማዊ ባንኪንግ እና ዲጂታል ኢስላማዊ ፋይናንስ ማዕቀፎች የሸሪዓ ምክር እና ኦዲት ለማቅረብ ብቃት አለው።",
       ar: "مراجع ومراقب شرعي معتمد — بامتياز. مؤهل لتقديم الاستشارات والمراجعات الشرعية للبنوك الإسلامية وأطر التمويل الإسلامي الرقمي.",
+      om: "Odiitera fi To'ataa Shari'aa mirkanaa'e — Sadarkaa Gaarii. Gorsa fi odiitii Shari'aa baankii Islaamaa fi faayinaansii dijitaalaa Islaamaaf kennuuf dandeettii qaba.",
     },
   },
   {
-    year: { en: "2025", am: "2025", ar: "2025" },
-    title: { en: "Bachelor's in Sharia and Law", am: "ባቸለር ዲግሪ ሼሪዓ እና ሕግ", ar: "بكالوريوس الشريعة والقانون" },
-    place: { en: "Islamic University of Minnesota", am: "የሚኔሶታ ኢስላማዊ ዩኒቨርሲቲ", ar: "جامعة مينيسوتا الإسلامية" },
+    year: { en: "2025", am: "2025", ar: "2025", om: "2025" },
+    title: {
+      en: "Bachelor's in Sharia and Law",
+      am: "ባቸለር ዲግሪ ሼሪዓ እና ሕግ",
+      ar: "بكالوريوس الشريعة والقانون",
+      om: "Digriiilaayii Shari'aa fi Seeraa",
+    },
+    place: {
+      en: "Islamic University of Minnesota",
+      am: "የሚኔሶታ ኢስላማዊ ዩኒቨርሲቲ",
+      ar: "جامعة مينيسوتا الإسلامية",
+      om: "Jaamacaa Islaamaa Minnesota",
+    },
     detail: {
       en: "Graduated with Excellent Grade in Sharia and Law from the Islamic University of Minnesota.",
       am: "ከሚኔሶታ ኢስላማዊ ዩኒቨርሲቲ ሼሪዓ እና ሕግ ፋኩልቲ ልዕለ ደረጃ ተመርቋል።",
       ar: "تخرج بامتياز في الشريعة والقانون من جامعة مينيسوتا الإسلامية.",
+      om: "Jaamacaa Islaamaa Minnesota irraa Shari'aa fi Seeraa sadarkaa gaarii wajjin eebifame.",
     },
   },
   {
-    year: { en: "2026 (Expected)", am: "2026 (የሚጠበቅ)", ar: "2026 (متوقع)" },
-    title: { en: "Master's in Islamic Studies", am: "ማስተርስ ዲግሪ ኢስላማዊ ጥናቶች", ar: "ماجستير في الدراسات الإسلامية" },
-    place: { en: "Islamic University of Minnesota", am: "የሚኔሶታ ኢስላማዊ ዩኒቨርሲቲ", ar: "جامعة مينيسوتا الإسلامية" },
+    year: {
+      en: "2026 (Expected)",
+      am: "2026 (የሚጠበቅ)",
+      ar: "2026 (متوقع)",
+      om: "2026 (Eegama)",
+    },
+    title: {
+      en: "Master's in Islamic Studies",
+      am: "ማስተርስ ዲግሪ ኢስላማዊ ጥናቶች",
+      ar: "ماجستير في الدراسات الإسلامية",
+      om: "Maastarsii Qorannoo Islaamaa",
+    },
+    place: {
+      en: "Islamic University of Minnesota",
+      am: "የሚኔሶታ ኢስላማዊ ዩኒቨርሲቲ",
+      ar: "جامعة مينيسوتا الإسلامية",
+      om: "Jaamacaa Islaamaa Minnesota",
+    },
     detail: {
       en: "Currently completing a Master's degree in Islamic Studies — expected graduation with distinction in 2026.",
       am: "በ2026 ከፍተኛ ደረጃ ይጠናቀቃል ተብሎ ሲጠበቅ፣ በኢስላማዊ ጥናቶች ማስተርስ ዲግሪ በሂደት ላይ ነው።",
       ar: "يُكمل حالياً درجة الماجستير في الدراسات الإسلامية — متوقع التخرج بامتياز عام 2026.",
+      om: "Amma digrii Maastarsii Qorannoo Islaamaa xumuraa jira — eebifamni sadarkaa ol'aanaa wajjin 2026 eegama.",
     },
   },
 ];
 
 export const specialties: MultilingualText[] = [
-  { en: "Tafsir & Quranic Exegesis", am: "ተፍሲርና የቁርአን ትርጓሜ", ar: "التفسير وعلوم القرآن" },
-  { en: "Shafi'i Jurisprudence (Fiqh)", am: "የሻፊዒ ፊቅህ", ar: "الفقه الشافعي" },
-  { en: "Hadith & Islamic Sciences", am: "ሀዲዝ እና ኢስላማዊ ሳይንሶች", ar: "الحديث والعلوم الإسلامية" },
-  { en: "Sharia Auditing & Islamic Finance", am: "ሼሪዓ ኦዲቲንግ እና ኢስላማዊ ፋይናንስ", ar: "المراجعة الشرعية والتمويل الإسلامي" },
-  { en: "Dawah & Institutional Leadership", am: "ዳዕዋ እና ተቋማዊ አመራር", ar: "الدعوة والقيادة المؤسسية" },
-  { en: "Arabic Language & Translation", am: "ዐረብኛ ቋንቋ እና ትርጉም", ar: "اللغة العربية والترجمة" },
+  {
+    en: "Tafsir & Quranic Exegesis",
+    am: "ተፍሲርና የቁርአን ትርጓሜ",
+    ar: "التفسير وعلوم القرآن",
+    om: "Tafsiira fi Hiikaa Qur'aanaa",
+  },
+  {
+    en: "Shafi'i Jurisprudence (Fiqh)",
+    am: "የሻፊዒ ፊቅህ",
+    ar: "الفقه الشافعي",
+    om: "Fiqhii Shaafi'ii",
+  },
+  {
+    en: "Hadith & Islamic Sciences",
+    am: "ሀዲዝ እና ኢስላማዊ ሳይንሶች",
+    ar: "الحديث والعلوم الإسلامية",
+    om: "Hadiisa fi Saayinsii Islaamaa",
+  },
+  {
+    en: "Sharia Auditing & Islamic Finance",
+    am: "ሼሪዓ ኦዲቲንግ እና ኢስላማዊ ፋይናንስ",
+    ar: "المراجعة الشرعية والتمويل الإسلامي",
+    om: "Odiitii Shari'aa fi Faayinaansii Islaamaa",
+  },
+  {
+    en: "Dawah & Institutional Leadership",
+    am: "ዳዕዋ እና ተቋማዊ አመራር",
+    ar: "الدعوة والقيادة المؤسسية",
+    om: "Da'awaa fi Hoogganummaa Dhaabbilee",
+  },
+  {
+    en: "Arabic Language & Translation",
+    am: "ዐረብኛ ቋንቋ እና ትርጉም",
+    ar: "اللغة العربية والترجمة",
+    om: "Afaan Arabaa fi Hiikaa",
+  },
 ];
 
-// Helper to get content by language
-export function getTextByLang<T extends { [key in Language]: string }>(
-  obj: T,
-  lang: Language,
-): string {
-  return obj[lang];
+export function getTextByLang(obj: MultilingualText, lang: string): string {
+  const key = lang as Language;
+  if (key in obj && obj[key]) return obj[key];
+  return obj.en;
+}
+
+export function emptyMultilingualText(): MultilingualText {
+  return { en: "", am: "", ar: "", om: "" };
 }

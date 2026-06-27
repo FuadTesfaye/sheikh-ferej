@@ -1,6 +1,6 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { getTextByLang } from "@/lib/content";
+import { getTextByLang, emptyMultilingualText } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
 import { dataService } from "@/lib/data-service";
 import tasbih from "@/assets/tasbih.jpg";
@@ -8,21 +8,21 @@ import { useEffect, useState } from "react";
 
 export const Route = createFileRoute("/blog/$slug")({
   head: ({ params }) => {
-    // Note: This will only use the initial hardcoded data for SEO on the server
     const post = dataService.getPosts().find((p) => p.slug === params.slug);
+    const empty = emptyMultilingualText();
     return {
       meta: [
         {
           name: "description",
-          content: getTextByLang(post?.excerpt ?? { en: "", am: "", ar: "" }, "en"),
+          content: getTextByLang(post?.excerpt ?? empty, "en"),
         },
         {
           property: "og:title",
-          content: getTextByLang(post?.title ?? { en: "", am: "", ar: "" }, "en"),
+          content: getTextByLang(post?.title ?? empty, "en"),
         },
         {
           property: "og:description",
-          content: getTextByLang(post?.excerpt ?? { en: "", am: "", ar: "" }, "en"),
+          content: getTextByLang(post?.excerpt ?? empty, "en"),
         },
       ],
     };
@@ -31,19 +31,13 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 function NotFoundPage() {
-  const { language, t } = useLanguage();
+  const { t } = useLanguage();
   return (
     <SiteLayout>
       <div className="container-prose py-32 text-center">
-        <p className="font-display text-3xl">
-          {language === "en"
-            ? "Article not found"
-            : language === "am"
-              ? "ጽሑፉ አልተገኘም"
-              : "لم يتم العثور على المقال"}
-        </p>
+        <p className="font-display text-3xl">{t("blog.articleNotFound")}</p>
         <Link to="/blog" className="btn-outline-gold mt-6 inline-flex">
-          {t.backToBlog}
+          {t("blog.backToBlog")}
         </Link>
       </div>
     </SiteLayout>
@@ -82,7 +76,7 @@ function BlogPost() {
               to="/blog"
               className="text-xs uppercase tracking-[0.25em] text-gold hover:text-gold-soft"
             >
-              ← {t.allWritings}
+              ← {t("home.allWritings")}
             </Link>
             <p className="mt-8 text-xs uppercase tracking-[0.3em] text-gold">
               {getTextByLang(post.category, language)}
@@ -91,13 +85,7 @@ function BlogPost() {
               {getTextByLang(post.title, language)}
             </h1>
             <div className="mt-8 flex items-center gap-4 text-sm text-muted-foreground">
-              <span>
-                {language === "en"
-                  ? "By Sheikh Mohammed Ferej"
-                  : language === "am"
-                    ? "በሼክ መሐመድ ፈረጅ"
-                    : "بقلم الشيخ محمد فرج"}
-              </span>
+              <span>{t("blog.byAuthor")}</span>
               <span>&middot;</span>
               <span>{post.date}</span>
               <span>&middot;</span>
@@ -126,11 +114,7 @@ function BlogPost() {
 
           <div className="rounded-xl border border-border bg-card/40 p-8">
             <p className="text-xs uppercase tracking-[0.25em] text-gold">
-              {language === "en"
-                ? "Continue reading"
-                : language === "am"
-                  ? "ይቀጥሉ ለማንበት"
-                  : "استمر في القراءة"}
+              {t("blog.continueReading")}
             </p>
             <Link to="/blog/$slug" params={{ slug: next.slug }} className="group block mt-3">
               <h3 className="font-display text-2xl group-hover:text-gold transition">

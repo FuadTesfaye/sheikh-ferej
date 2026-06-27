@@ -34,25 +34,14 @@ function LearnIndex() {
     window.addEventListener("storage", handleStorage);
     return () => window.removeEventListener("storage", handleStorage);
   }, []);
+
   return (
     <SiteLayout>
       <section className="container-prose pt-20 pb-10">
-        <p className="text-xs uppercase tracking-[0.3em] text-gold">
-          {language === "en" ? "The learning" : language === "am" ? "ትምህርቱ" : "التعلم"}
-        </p>
-        <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">
-          {language === "en"
-            ? "A school of seekers. A path of knowledge."
-            : language === "am"
-              ? "ለሚፈልጉ ሰዎች ትምህርት ቤት። የእውቀት መንገድ።"
-              : "مدرسة للباحثين. طريق للمعرفة."}
-        </h1>
+        <p className="text-xs uppercase tracking-[0.3em] text-gold">{t("learn.label")}</p>
+        <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">{t("learn.hero")}</h1>
         <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-          {language === "en"
-            ? "Structured courses in the classical Islamic sciences, taught with clarity for the modern seeker. Begin where you are."
-            : language === "am"
-              ? "ለአዳዲስ ላይ የተመሰረቱ የእስላማዊ ሳይንሶች ትምህርቶች፣ ለዘመናዊ አምራክ በግልጽነት ይተማራሉ። ከእርስዎ ቦታ ይጀምሩ።"
-              : "دورات منظمة في العلوم الإسلامية الكلاسيكية، تُدرس بوضوح للباحث الحديث. ابدأ من حيث أنت."}
+          {t("learn.subhero")}
         </p>
       </section>
 
@@ -70,7 +59,7 @@ function LearnIndex() {
                   {getTextByLang(c.level, language)}
                 </span>
                 <span className="text-muted-foreground">
-                  {c.lessons} {t.lessons} &middot; {getTextByLang(c.duration, language)}
+                  {c.lessons} {t("home.lessons")} &middot; {getTextByLang(c.duration, language)}
                 </span>
               </div>
               <h2 className="font-display text-3xl mt-6 group-hover:text-gold transition">
@@ -89,11 +78,7 @@ function LearnIndex() {
 
               <div className="mt-8 flex items-center justify-between">
                 <span className="text-gold text-sm uppercase tracking-[0.2em]">
-                  {language === "en"
-                    ? "View course →"
-                    : language === "am"
-                      ? "ኮርሱን ይመልከቱ →"
-                      : "عرض الدورة →"}
+                  {t("common.viewCourse")}
                 </span>
               </div>
             </Link>
