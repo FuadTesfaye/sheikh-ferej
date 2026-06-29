@@ -129,7 +129,11 @@
     "listenOn": "ይድምጉ",
     "duration": "ቀጣይነት",
     "play": "አጫወት",
-    "bukhariQuote": "\"ከእኔ አንዲትንም አንቀጽ ቢሆን አድርሱ።\" — ሶሒህ አል-ቡኻሪ"
+    "bukhariQuote": "\"ከእኔ አንዲትንም አንቀጽ ቢሆን አድርሱ።\" — ሶሒህ አል-ቡኻሪ",
+    "audioSeriesLabel": "የድምጽ ትምህርቶች",
+    "localVideosLabel": "የተቀዳ ቪዲዮዎች",
+    "shortReminders": "አጭር ማስታወሻዎች",
+    "listenNow": "ያዳምጡ"
   },
   "blog": {
     "label": "ጽሁፎች",

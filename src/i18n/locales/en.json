@@ -129,7 +129,11 @@
     "listenOn": "Listen on",
     "duration": "Duration",
     "play": "Play",
-    "bukhariQuote": "\"Convey from me even if it is one verse.\" — Sahih al-Bukhari"
+    "bukhariQuote": "\"Convey from me even if it is one verse.\" — Sahih al-Bukhari",
+    "audioSeriesLabel": "Audio lessons",
+    "localVideosLabel": "Recorded reminders",
+    "shortReminders": "Short reminders",
+    "listenNow": "Listen"
   },
   "blog": {
     "label": "The writings",

@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { Headphones, Video } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { type Lecture } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
 import scholarImg from "@/assets/mic.png";
 import { getTextByLang } from "@/lib/content";
 import { dataService } from "@/lib/data-service";
+import { AudioPlayer } from "@/components/AudioPlayer";
+import { VideoModal as LocalVideoModal } from "@/components/VideoPlayer";
+import { kitabTawhidSeries, localVideos, type LocalVideoItem } from "@/lib/media";
 
 export const Route = createFileRoute("/lectures")({
   head: () => ({
@@ -34,9 +38,17 @@ function getYouTubeEmbedUrl(url: string) {
   return match ? `https://www.youtube.com/embed/${match[1]}?autoplay=1` : null;
 }
 
-function VideoModal({ lecture, onClose }: { lecture: Lecture; onClose: () => void }) {
+function LectureVideoModal({ lecture, onClose }: { lecture: Lecture; onClose: () => void }) {
   const { language, t } = useLanguage();
   const embedUrl = lecture.videoUrl ? getYouTubeEmbedUrl(lecture.videoUrl) : null;
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [onClose]);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/90 backdrop-blur-sm animate-in fade-in duration-300">
@@ -95,7 +107,9 @@ function VideoModal({ lecture, onClose }: { lecture: Lecture; onClose: () => voi
 function Lectures() {
   const { language, t } = useLanguage();
   const [activeVideo, setActiveVideo] = useState<Lecture | null>(null);
+  const [activeLocalVideo, setActiveLocalVideo] = useState<LocalVideoItem | null>(null);
   const [lectures, setLectures] = useState(() => dataService.getLectures());
+  const [activeAudioId, setActiveAudioId] = useState<string | null>(null);
 
   useEffect(() => {
     const handleStorage = () => setLectures(dataService.getLectures());
@@ -106,7 +120,14 @@ function Lectures() {
 
   return (
     <SiteLayout>
-      {activeVideo && <VideoModal lecture={activeVideo} onClose={() => setActiveVideo(null)} />}
+      {activeVideo && <LectureVideoModal lecture={activeVideo} onClose={() => setActiveVideo(null)} />}
+      {activeLocalVideo && (
+        <LocalVideoModal
+          src={activeLocalVideo.src}
+          title={getTextByLang(activeLocalVideo.title, language)}
+          onClose={() => setActiveLocalVideo(null)}
+        />
+      )}
 
       <section className="container-prose pt-20 pb-12">
         <p className="text-xs uppercase tracking-[0.3em] text-gold">
@@ -165,6 +186,96 @@ function Lectures() {
               {t("common.watchNow")}
             </button>
           </div>
+        </div>
+      </section>
+
+      <section className="container-prose py-12">
+        <div className="flex items-center gap-3 mb-8">
+          <Headphones className="h-5 w-5 text-gold" />
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold">
+              {t("lectures.audioSeriesLabel")}
+            </p>
+            <h2 className="font-display text-3xl mt-1">
+              {getTextByLang(kitabTawhidSeries[0].series, language)}
+            </h2>
+          </div>
+        </div>
+        <div className="grid gap-4">
+          {kitabTawhidSeries.map((item) => (
+            <div key={item.id}>
+              {activeAudioId === item.id ? (
+                <AudioPlayer
+                  src={item.src}
+                  title={getTextByLang(item.title, language)}
+                  subtitle={getTextByLang(item.series, language)}
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setActiveAudioId(item.id)}
+                  className="w-full flex items-center gap-4 p-4 rounded-xl border border-border bg-card/40 hover:border-gold/50 hover:bg-card/60 transition text-left group"
+                >
+                  <span className="shrink-0 grid place-items-center h-12 w-12 rounded-full bg-gold/15 text-gold group-hover:bg-gold group-hover:text-primary-foreground transition-colors">
+                    <Headphones className="h-5 w-5" />
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-gold/80">
+                      {getTextByLang(item.series, language)}
+                    </p>
+                    <p className="font-display text-lg truncate">
+                      {getTextByLang(item.title, language)}
+                    </p>
+                  </div>
+                  <span className="shrink-0 text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-gold transition">
+                    {t("lectures.listenNow")}
+                  </span>
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="container-prose py-12">
+        <div className="flex items-center gap-3 mb-8">
+          <Video className="h-5 w-5 text-gold" />
+          <div>
+            <p className="text-xs uppercase tracking-[0.3em] text-gold">
+              {t("lectures.localVideosLabel")}
+            </p>
+            <h2 className="font-display text-3xl mt-1">{t("lectures.shortReminders")}</h2>
+          </div>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {localVideos.map((video) => (
+            <button
+              key={video.id}
+              type="button"
+              onClick={() => setActiveLocalVideo(video)}
+              className="group text-left rounded-xl border border-border bg-card/40 overflow-hidden hover:border-gold/50 transition"
+            >
+              <div className="aspect-video relative bg-gradient-to-br from-gold/20 via-accent/15 to-background grid place-items-center overflow-hidden">
+                <img
+                  src={scholarImg}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-50 transition-opacity grayscale"
+                />
+                <span className="relative z-10 grid place-items-center h-14 w-14 rounded-full bg-gold/90 text-primary-foreground shadow-xl group-hover:scale-110 transition-transform">
+                  <Video className="h-6 w-6" />
+                </span>
+              </div>
+              <div className="p-5">
+                <div className="flex items-center gap-2 text-xs uppercase tracking-[0.2em]">
+                  <span className="text-gold">{getTextByLang(video.topic, language)}</span>
+                  <span className="text-muted-foreground">&middot; {video.date}</span>
+                </div>
+                <h3 className="font-display text-xl mt-2 group-hover:text-gold transition">
+                  {getTextByLang(video.title, language)}
+                </h3>
+              </div>
+            </button>
+          ))}
         </div>
       </section>
 

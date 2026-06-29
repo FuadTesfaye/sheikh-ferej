@@ -7,6 +7,23 @@ export type MultilingualText = {
   om: string;
 };
 
+export type ContentBlock =
+  | { type: "paragraph"; text: MultilingualText }
+  | { type: "heading"; text: MultilingualText }
+  | {
+      type: "hadith";
+      arabic: string;
+      amharic: string;
+      source?: MultilingualText;
+    }
+  | {
+      type: "dua";
+      arabic: string;
+      amharic: string;
+      label?: MultilingualText;
+    }
+  | { type: "divider" };
+
 export type Post = {
   slug: string;
   title: MultilingualText;
@@ -15,9 +32,196 @@ export type Post = {
   date: string;
   readTime: MultilingualText;
   body: MultilingualText[];
+  blocks?: ContentBlock[];
 };
 
 export const posts: Post[] = [
+  {
+    slug: "do-not-anger-allah-for-people",
+    title: {
+      en: "Do Not Feed People While Angering Allah",
+      am: "ለሰው ብለህ አላህን አታበላሽ",
+      ar: "لا تُرضِ الناس بسخط الله",
+      om: "Namootaaf Allaah aarsitee Hin Gargaarin",
+    },
+    excerpt: {
+      en: "Whoever seeks Allah's pleasure even if people are displeased, Allah will be pleased with him and make people pleased with him.",
+      am: "ሰዎች ቢቆጡም እንኳ የአላህን ውዴታ የያስቀደመ ሰው፣ አላህ ይወደዋል።",
+      ar: "من التمس رضا الله بسخط الناس، رضي الله عنه وأرضى عنه الناس.",
+      om: "Kan rakkina namootaa wajjin rakkoo Allaah barbaade, Allaah isa irraa gammada.",
+    },
+    category: {
+      en: "Hadith",
+      am: "ሀዲዝ",
+      ar: "الحديث",
+      om: "Hadiisa",
+    },
+    date: "June 26, 2026",
+    readTime: {
+      en: "3 min read",
+      am: "3 ደቂቃ አንበያ",
+      ar: "قراءة 3 دقائق",
+      om: "daqiiqaa 3 dubbisuu",
+    },
+    body: [],
+    blocks: [
+      {
+        type: "hadith",
+        arabic:
+          "عَنْ عَائِشَةَ رَضِيَ اللَّهُ عَنْهَا أَنَّ النَّبِيَّ ﷺ قَالَ: «مَنِ الْتَمَسَ رِضَى اللَّهِ بِسَخَطِ النَّاسِ، رَضِيَ اللَّهُ عَنْهُ وَأَرْضَى عَنْهُ النَّاسَ، وَمَنِ الْتَمَسَ رِضَا النَّاسِ بِسَخَطِ اللَّهِ، سَخِطَ اللَّهُ عَلَيْهِ وَأَسْخَطَ عَلَيْهِ النَّاسَ»",
+        amharic:
+          "ከዓኢሻ (ረዲየላሁ ዐንሃ) እንደተላለፈው የአላህ መልክተኛ ﷺ እንዲህ ብለዋል «ሰዎች ቢቆጡም እንኳ የአላህን ውዴታ የያስቀደመ ሰው፣ አላህ ይወደዋል ፤ ሰዎችንም እርሱን እንዲወዱ ያደርጋቸዋል። በአንጻሩ አላህን በማስቆጣት የሰዎችን ውዴታ የፈለገ ሰው ግን፣ አላህ በእርሱ ላይ ይቆጣል፤ ሰዎችም በእርሱ ላይ እንዲቆጡና እንዲጠሉት ያደርጋቸዋል።»",
+        source: {
+          en: "Narrated by Ibn Hibban in his Sahih",
+          am: "ኢብኑ ሒባን ዘግበውታል",
+          ar: "رواه ابن حبان في صحيحه",
+          om: "Ibn Hibbaan Sahihiisa keessatti galmeeffame",
+        },
+      },
+    ],
+  },
+  {
+    slug: "salawat-on-friday",
+    title: {
+      en: "The Virtue of Salawat on the Prophet — Friday & Its Night",
+      am: "የጁምዓ ቀንና ሌሊት በነቢዩ ላይ ሰለዋት የማውረድ ትሩፋት",
+      ar: "فضل الصلاة على النبي يوم الجمعة وليلته",
+      om: "Fayidaa Salaataa Nabiyyii Guyyaa Jimaataa fi Halkan Isaatti",
+    },
+    excerpt: {
+      en: "Increase your salawat upon the Prophet ﷺ on Friday and its night — for every salawah, Allah sends ten blessings upon you.",
+      am: "በዓርብ ቀንና በዓርብ ሌሊት በነቢዩ ﷺ ላይ ሰለዋትን አብዙ።",
+      ar: "أكثروا الصلاة على النبي ﷺ يوم الجمعة وليلة الجمعة.",
+      om: "Guyyaa Jimaataa fi halkan isaa irratti Nabiyyii irratti salaata baay'isi.",
+    },
+    category: {
+      en: "Dhikr",
+      am: "ዝክር",
+      ar: "الذكر",
+      om: "Dhikrii",
+    },
+    date: "June 26, 2026",
+    readTime: {
+      en: "5 min read",
+      am: "5 ደቂቃ አንበያ",
+      ar: "قراءة 5 دقائق",
+      om: "daqiiqaa 5 dubbisuu",
+    },
+    body: [],
+    blocks: [
+      {
+        type: "hadith",
+        arabic:
+          "قَالَ النَّبِيُّ ﷺ: «أَكْثِرُوا الصَّلَاةَ عَلَيَّ يَوْمَ الْجُمُعَةِ وَلَيْلَةَ الْجُمُعَةِ، فَمَنْ صَلَّى عَلَيَّ صَلَاةً صَلَّى اللَّهُ عَلَيْهِ بِهَا عَشْرًا»",
+        amharic:
+          "ነቢዩ ﷺ እንዲህ ብለዋል፦ \"በዓርብ ቀንና በዓርብ ሌሊት በእኔ ላይ ሰለዋትን አብዙ፤ በእኔ ላይ አንድ ጊዜ ሰለዋት ያወረደ አላህ በእርሱ ላይ አስር ጊዜ እዝነቱን ያወርዳል።\"",
+        source: {
+          en: "Narrated by Al-Bayhaqi",
+          am: "አል-በይሀቂ",
+          ar: "أخرجه البيهقي",
+          om: "Al-Bayhaqi galmeeffame",
+        },
+      },
+      {
+        type: "hadith",
+        arabic:
+          "قَالَ ﷺ: «أَكْثِرُوا عَلَيَّ مِنَ الصَّلَاةِ يَوْمَ الْجُمُعَةِ؛ فَإِنَّ صَلَاةَ أُمَّتِي تُعْرَضُ عَلَيَّ فِي كُلِّ يَوْمِ جُمُعَةٍ»",
+        amharic:
+          "ነቢዩ ﷺ እንዲህ ብለዋል፦ \"በዓርብ ቀን በእኔ ላይ ሰለዋትን አብዙ፤ የኡመቴ ሰለዋት በየሳምንቱ ዓርብ ለእኔ ይቀርብልኛልና።\"",
+        source: {
+          en: "Narrated by Al-Bayhaqi",
+          am: "አል-በይሀቂ",
+          ar: "أخرجه البيهقي",
+          om: "Al-Bayhaqi galmeeffame",
+        },
+      },
+      { type: "divider" },
+      {
+        type: "heading",
+        text: {
+          en: "The Preferred Formula of Salawat",
+          am: "በላጩ የሰለዋት አባባል",
+          ar: "الصيغة المفضلة للصلاة على النبي",
+          om: "Akkaataa Salaataa Filatamaa",
+        },
+      },
+      {
+        type: "paragraph",
+        text: {
+          en: "This is the formula the Prophet ﷺ taught his companions. (Agreed upon by Bukhari and Muslim)",
+          am: "ይህች ነቢዩ ﷺ ለሶሃቦቻቸው ያስተማሯት በላጭ ሰለዋት። (ቡኻሪና ሙስሊም የተስማሙበት)",
+          ar: "وهي الصيغة التي علّمها النبي ﷺ لأصحابه. (متفق عليه — البخاري ومسلم)",
+          om: "Kun akkaataa Nabiyyichi ﷺ asxaabota isaa barsiisan dha. (Bukhaarii fi Muslim waliin galmeessan)",
+        },
+      },
+      {
+        type: "dua",
+        label: {
+          en: "The Salawat Ibrahimiyyah",
+          am: "የሰለዋት ኢብራሂም",
+          ar: "الصلاة الإبراهيمية",
+          om: "Salaataa Ibraahiim",
+        },
+        arabic:
+          "اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",
+        amharic:
+          "አላህ ሆይ! በኢብራሂምና በኢብራሂም ቤተሰቦች ላይ እዝነትህን እንዳወረድክ ሁሉ በሙሐመድና በሙሐመድ ቤተሰቦች ላይ እዝነትህን አውርድ፤ አንተ ምስጉንና የላቅክ ነህና። አላህ ሆይ! በኢብራሂምና በኢብራሂም ቤተሰቦች ላይ በረከትህን እንደባረክክ ሁሉ በሙሐመድና በሙሐመድ ቤተሰቦች ላይ በረከትህን አውርድ፤ አንተ ምስጉንና የላቅክ ነህና።",
+      },
+    ],
+  },
+  {
+    slug: "guard-against-the-fire",
+    title: {
+      en: "Guard Against the Fire — Even with Half a Date",
+      am: "እሳትን ተከላከሉ — በግማሽ ተምርም",
+      ar: "اتقوا النار ولو بشق تمرة",
+      om: "Ibidda Of Eegaa — Walakkaa Tamariin",
+    },
+    excerpt: {
+      en: "The Messenger of Allah ﷺ taught us to protect ourselves from the Fire through charity, and if unable, through a kind word.",
+      am: "የአላህ መልክተኛ ﷺ እሳትን በመለገስ ቢሆን እንኳ እንድንተኩላት ያስተምሩናል።",
+      ar: "علّمنا رسول الله ﷺ أن نتقي النار ولو بشق تمرة.",
+      om: "Ergamaan Allaah ﷺ ibidda of eeguu barsiisan — walakkaa tamariin illee.",
+    },
+    category: {
+      en: "Hadith",
+      am: "ሀዲዝ",
+      ar: "الحديث",
+      om: "Hadiisa",
+    },
+    date: "June 26, 2026",
+    readTime: {
+      en: "2 min read",
+      am: "2 ደቂቃ አንበያ",
+      ar: "قراءة دقيقتين",
+      om: "daqiiqaa 2 dubbisuu",
+    },
+    body: [],
+    blocks: [
+      {
+        type: "paragraph",
+        text: {
+          en: "The Messenger of Allah (peace and blessings be upon him) said:",
+          am: "የአላህ መልክተኛ (ሰለላሁ ዐለይሂ ወሰለም) እንዲህ ብለዋል፦",
+          ar: "قال رسول الله ﷺ:",
+          om: "Ergamaan Allaah (nagaa fi rahmatni isatti haa jiraatan) jedhan:",
+        },
+      },
+      {
+        type: "hadith",
+        arabic:
+          "عَنْ عَدِيِّ بْنِ حَاتِمٍ رَضِيَ اللَّهُ عَنْهُ قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ: «اتَّقُوا النَّارَ وَلَوْ بِشِقِّ تَمْرَةٍ، فَمَنْ لَمْ يَجِدْ فَبِكَلِمَةٍ طَيِّبَةٍ»",
+        amharic:
+          "«የተምር ስንጣቂ በመለገስም ቢሆን እሳትን (ጀሀነምን) ተከላከሉ፤ ይህንን ያላገኘ ሰው ግን በመልካም ንግግር (ራሱን ከእሳት ይጠብቅ)።»",
+        source: {
+          en: "Agreed upon (Bukhari & Muslim)",
+          am: "ቡኻሪና ሙስሊም የተስማሙበት",
+          ar: "متفق عليه",
+          om: "Waliin galmeessan (Bukhaarii fi Muslim)",
+        },
+      },
+    ],
+  },
   {
     slug: "the-light-of-tawhid",
     title: {

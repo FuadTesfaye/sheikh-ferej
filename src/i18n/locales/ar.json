@@ -129,7 +129,11 @@
     "listenOn": "استمع على",
     "duration": "المدة",
     "play": "تشغيل",
-    "bukhariQuote": "\"بلغوا عني ولو آية.\" — صحيح البخاري"
+    "bukhariQuote": "\"بلغوا عني ولو آية.\" — صحيح البخاري",
+    "audioSeriesLabel": "دروس صوتية",
+    "localVideosLabel": "تذكيرات مسجلة",
+    "shortReminders": "تذكيرات قصيرة",
+    "listenNow": "استمع"
   },
   "blog": {
     "label": "المقالات",

@@ -129,7 +129,11 @@
     "listenOn": "Irratti caqasaa",
     "duration": "Yeroo",
     "play": "Taphadhu",
-    "bukhariQuote": "\"Ani irraa ayya tokkoos ta'e haa himattu.\" — Sahiih al-Bukhaarii"
+    "bukhariQuote": "\"Ani irraa ayya tokkoos ta'e haa himattu.\" — Sahiih al-Bukhaarii",
+    "audioSeriesLabel": "Barnoota sagalee",
+    "localVideosLabel": "Yaadachiisaalee galmeeffaman",
+    "shortReminders": "Yaadachiisaalee gabaabaa",
+    "listenNow": "Caqasi"
   },
   "blog": {
     "label": "Barreeffama",

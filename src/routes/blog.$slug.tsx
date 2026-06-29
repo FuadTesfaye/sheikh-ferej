@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { dataService } from "@/lib/data-service";
 import tasbih from "@/assets/tasbih.jpg";
 import { useEffect, useState } from "react";
+import { PostContent } from "@/components/PostContent";
 
 export const Route = createFileRoute("/blog/$slug")({
   head: ({ params }) => {
@@ -95,20 +96,24 @@ function BlogPost() {
         </header>
 
         <div className="container-prose py-16 max-w-3xl">
-          <div className="space-y-6 text-lg leading-[1.85] text-foreground/90">
-            {post.body.map((para, i: number) => (
-              <p
-                key={i}
-                className={
-                  i === 0
-                    ? "first-letter:font-display first-letter:text-6xl first-letter:text-gold first-letter:float-left first-letter:mr-3 first-letter:leading-none"
-                    : ""
-                }
-              >
-                {getTextByLang(para, language)}
-              </p>
-            ))}
-          </div>
+          {post.blocks && post.blocks.length > 0 ? (
+            <PostContent blocks={post.blocks} />
+          ) : (
+            <div className="space-y-6 text-lg leading-[1.85] text-foreground/90">
+              {post.body.map((para, i: number) => (
+                <p
+                  key={i}
+                  className={
+                    i === 0
+                      ? "first-letter:font-display first-letter:text-6xl first-letter:text-gold first-letter:float-left first-letter:mr-3 first-letter:leading-none"
+                      : ""
+                  }
+                >
+                  {getTextByLang(para, language)}
+                </p>
+              ))}
+            </div>
+          )}
 
           <div className="ornament-divider my-16" />
 

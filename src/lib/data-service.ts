@@ -49,6 +49,18 @@ function normalizePost(post: Post): Post {
     category: normalizeText(post.category),
     readTime: normalizeText(post.readTime),
     body: post.body.map((p) => normalizeText(p)),
+    blocks: post.blocks?.map((block) => {
+      if (block.type === "paragraph" || block.type === "heading") {
+        return { ...block, text: normalizeText(block.text) };
+      }
+      if (block.type === "hadith" && block.source) {
+        return { ...block, source: normalizeText(block.source) };
+      }
+      if (block.type === "dua" && block.label) {
+        return { ...block, label: normalizeText(block.label) };
+      }
+      return block;
+    }),
   };
 }
 
