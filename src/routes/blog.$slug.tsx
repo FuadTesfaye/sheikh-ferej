@@ -72,20 +72,20 @@ function BlogPost() {
             className="absolute inset-0 w-full h-full object-cover opacity-20"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-          <div className="container-prose relative py-24 max-w-3xl">
+          <div className="container-prose relative py-12 sm:py-16 md:py-24 max-w-3xl">
             <Link
               to="/blog"
-              className="text-xs uppercase tracking-[0.25em] text-gold hover:text-gold-soft"
+              className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-gold hover:text-gold-soft"
             >
               ← {t("home.allWritings")}
             </Link>
-            <p className="mt-8 text-xs uppercase tracking-[0.3em] text-gold">
+            <p className="mt-6 sm:mt-8 section-label">
               {getTextByLang(post.category, language)}
             </p>
-            <h1 className="font-display text-4xl md:text-6xl mt-4 leading-[1.05]">
+            <h1 className="page-title mt-3 sm:mt-4">
               {getTextByLang(post.title, language)}
             </h1>
-            <div className="mt-8 flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs sm:text-sm text-muted-foreground">
               <span>{t("blog.byAuthor")}</span>
               <span>&middot;</span>
               <span>{post.date}</span>
@@ -95,7 +95,7 @@ function BlogPost() {
           </div>
         </header>
 
-        <div className="container-prose py-16 max-w-3xl">
+        <div className="container-prose py-10 sm:py-12 md:py-16 max-w-3xl">
           {post.blocks && post.blocks.length > 0 ? (
             <PostContent blocks={post.blocks} />
           ) : (
@@ -105,7 +105,7 @@ function BlogPost() {
                   key={i}
                   className={
                     i === 0
-                      ? "first-letter:font-display first-letter:text-6xl first-letter:text-gold first-letter:float-left first-letter:mr-3 first-letter:leading-none"
+                      ? "first-letter:font-display first-letter:text-4xl sm:first-letter:text-6xl first-letter:text-gold first-letter:float-left first-letter:mr-2 sm:first-letter:mr-3 first-letter:leading-none"
                       : ""
                   }
                 >
@@ -115,9 +115,9 @@ function BlogPost() {
             </div>
           )}
 
-          <div className="ornament-divider my-16" />
+          <div className="ornament-divider my-10 sm:my-16" />
 
-          <div className="rounded-xl border border-border bg-card/40 p-8">
+          <div className="rounded-xl border border-border bg-card/40 p-5 sm:p-6 md:p-8">
             <p className="text-xs uppercase tracking-[0.25em] text-gold">
               {t("blog.continueReading")}
             </p>

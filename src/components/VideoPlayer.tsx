@@ -188,7 +188,7 @@ export function VideoModal({ src, title, onClose }: VideoModalProps) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/90 backdrop-blur-sm animate-in fade-in duration-300"
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-background/90 backdrop-blur-sm animate-in fade-in duration-300"
       onClick={onClose}
     >
       <div
@@ -198,7 +198,7 @@ export function VideoModal({ src, title, onClose }: VideoModalProps) {
         <button
           type="button"
           onClick={onClose}
-          className="absolute -top-12 right-0 z-10 p-2 rounded-full text-muted-foreground hover:text-gold transition"
+          className="absolute -top-10 sm:-top-12 right-0 z-10 p-2 rounded-full text-muted-foreground hover:text-gold transition"
           aria-label="Close"
         >
           <X className="h-6 w-6" />

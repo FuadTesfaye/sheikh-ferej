@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { SectionHeader, WritingListItem } from "@/components/PageLayout";
 import { getTextByLang } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
 import scholar from "@/assets/main.png";
@@ -56,36 +57,36 @@ function Home() {
           style={{ backgroundImage: `url(${pattern})` }}
           aria-hidden
         />
-        <div className="container-prose relative grid lg:grid-cols-[1.1fr_1fr] gap-16 items-center pt-20 pb-24">
-          <div>
-            <p className="text-xs uppercase tracking-[0.35em] text-gold">{t("home.assalamuAlaykum")}</p>
-            <h1 className="font-display text-5xl md:text-7xl leading-[1.02]">
+        <div className="container-prose relative grid lg:grid-cols-[1.1fr_1fr] gap-8 md:gap-12 lg:gap-16 items-center pt-12 sm:pt-16 md:pt-20 pb-16 sm:pb-20 md:pb-24">
+          <div className="order-2 lg:order-1">
+            <p className="section-label">{t("home.assalamuAlaykum")}</p>
+            <h1 className="page-title mt-3 sm:mt-4">
               {t("home.sheikh")}
               <span className="block italic text-gold">{t("home.mohammedFerej")}</span>
             </h1>
-            <p className="mt-6 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            <p className="mt-4 sm:mt-6 text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] text-muted-foreground">
               {t("home.subtitle")}
             </p>
-            <p className="mt-8 text-lg text-foreground/85 max-w-xl leading-relaxed">{t("home.bio")}</p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link to="/lectures" className="btn-gold">
+            <p className="mt-6 sm:mt-8 text-base sm:text-lg text-foreground/85 max-w-xl leading-relaxed">{t("home.bio")}</p>
+            <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+              <Link to="/lectures" className="btn-gold w-full sm:w-auto text-center">
                 {t("home.listenToLectures")}
               </Link>
-              <Link to="/learn" className="btn-outline-gold">
+              <Link to="/learn" className="btn-outline-gold w-full sm:w-auto text-center">
                 {t("home.studyWithTheSheikh")}
               </Link>
             </div>
 
-            <dl className="mt-12 grid grid-cols-3 gap-6 max-w-md border-t border-border pt-8">
+            <dl className="mt-8 sm:mt-12 grid grid-cols-3 gap-3 sm:gap-6 max-w-md border-t border-border pt-6 sm:pt-8">
               <Stat k="35+" v={t("home.yearsTeaching")} />
               <Stat k="60+" v={t("home.lecturesOnline")} />
               <Stat k="4.5K" v={t("home.telegramFollowers")} />
             </dl>
           </div>
 
-          <div className="relative">
-            <div className="absolute -inset-8 rounded-full bg-gold/10 blur-3xl" aria-hidden />
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border border-gold/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
+          <div className="relative order-1 lg:order-2 max-w-md mx-auto lg:max-w-none w-full">
+            <div className="absolute -inset-4 sm:-inset-8 rounded-full bg-gold/10 blur-3xl" aria-hidden />
+            <div className="relative aspect-[4/5] max-h-[70vh] sm:max-h-none rounded-2xl overflow-hidden border border-gold/30 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)]">
               <img
                 src={scholar}
                 alt={t("home.scholarImageAlt")}
@@ -94,7 +95,7 @@ function Home() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -left-6 hidden md:block max-w-xs p-5 rounded-xl border border-gold/40 bg-background/95 backdrop-blur shadow-soft">
+            <div className="absolute -bottom-4 -left-2 sm:-bottom-6 sm:-left-6 hidden sm:block max-w-[calc(100%-1rem)] sm:max-w-xs p-4 sm:p-5 rounded-xl border border-gold/40 bg-background/95 backdrop-blur shadow-soft">
               <p className="font-arabic text-lg text-gold leading-relaxed" lang="ar">
                 وَمَنْ أَحْسَنُ قَوْلًا مِمَّنْ دَعَا إِلَى اللَّهِ
               </p>
@@ -105,8 +106,8 @@ function Home() {
       </section>
 
       <section className="border-b border-border bg-card/30">
-        <div className="container-prose py-12 text-center">
-          <p className="font-arabic text-3xl md:text-4xl text-gold leading-loose" lang="ar">
+        <div className="container-prose py-8 sm:py-10 md:py-12 text-center px-2">
+          <p className="font-arabic text-2xl sm:text-3xl md:text-4xl text-gold leading-loose" lang="ar">
             إِنَّمَا يَخْشَى اللَّهَ مِنْ عِبَادِهِ الْعُلَمَاءُ
           </p>
           <p className="mt-3 text-foreground/90 italic">{t("home.ayahAlFatir")}</p>
@@ -116,22 +117,23 @@ function Home() {
         </div>
       </section>
 
-      <section className="container-prose py-20">
-        <div className="flex items-end justify-between gap-6 mb-10 flex-wrap">
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">{t("home.fromTheMinbar")}</p>
-            <h2 className="font-display text-4xl md:text-5xl mt-3">{t("home.latestLecture")}</h2>
-          </div>
-          <Link to="/lectures" className="btn-outline-gold text-sm py-2.5 px-5">
-            {t("home.allLectures")} →
-          </Link>
-        </div>
+      <section className="container-prose section-y">
+        <SectionHeader
+          label={t("home.fromTheMinbar")}
+          title={t("home.latestLecture")}
+          action={
+            <Link to="/lectures" className="btn-outline-gold text-sm py-2 px-4 sm:px-5 w-full sm:w-auto text-center">
+              {t("home.allLectures")} →
+            </Link>
+          }
+          className="mb-8 sm:mb-10"
+        />
 
         <Link
           to="/lectures"
-          className="group grid md:grid-cols-[1.2fr_1fr] gap-8 rounded-2xl border border-border hover:border-gold/60 overflow-hidden bg-card/40 transition"
+          className="group grid md:grid-cols-[1.2fr_1fr] gap-0 md:gap-8 rounded-2xl border border-border hover:border-gold/60 overflow-hidden bg-card/40 transition"
         >
-          <div className="relative aspect-video md:aspect-auto min-h-[280px]">
+          <div className="relative aspect-video md:aspect-auto md:min-h-[280px]">
             <img
               src={lectureImg}
               alt={getTextByLang(latestLecture.title, language)}
@@ -145,12 +147,12 @@ function Home() {
               </span>
             </span>
           </div>
-          <div className="p-8 flex flex-col justify-center">
-            <div className="text-xs uppercase tracking-[0.25em] text-gold">
+          <div className="p-5 sm:p-6 md:p-8 flex flex-col justify-center">
+            <div className="text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-gold">
               {getTextByLang(latestLecture.topic, language)} ·{" "}
               {getTextByLang(latestLecture.duration, language)}
             </div>
-            <h3 className="font-display text-3xl mt-3 group-hover:text-gold transition">
+            <h3 className="font-display text-2xl sm:text-3xl mt-2 sm:mt-3 group-hover:text-gold transition">
               {getTextByLang(latestLecture.title, language)}
             </h3>
             <p className="mt-3 text-muted-foreground leading-relaxed">
@@ -163,17 +165,17 @@ function Home() {
         </Link>
       </section>
 
-      <section className="container-prose py-12">
-        <div className="ornament-divider text-xs uppercase tracking-[0.3em]">
+      <section className="container-prose section-y">
+        <div className="ornament-divider section-label">
           {t("home.areasOfTeaching")}
         </div>
-        <div className="mt-12 grid md:grid-cols-3 gap-px bg-border rounded-xl overflow-hidden border border-border">
+        <div className="mt-8 sm:mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-px bg-border rounded-xl overflow-hidden border border-border">
           {teachingAreas.map((p) => (
-            <div key={p.key} className="bg-background p-8 hover:bg-card/40 transition">
-              <span className="font-arabic text-5xl text-gold/50" lang="ar">
+            <div key={p.key} className="bg-background p-6 sm:p-8 hover:bg-card/40 transition">
+              <span className="font-arabic text-4xl sm:text-5xl text-gold/50" lang="ar">
                 {p.ar}
               </span>
-              <h3 className="font-display text-2xl mt-4 text-gold">{t(`home.${p.key}`)}</h3>
+              <h3 className="font-display text-xl sm:text-2xl mt-3 sm:mt-4 text-gold">{t(`home.${p.key}`)}</h3>
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
                 {t(`home.${p.key}Desc`)}
               </p>
@@ -182,17 +184,17 @@ function Home() {
         </div>
       </section>
 
-      <section className="container-prose py-20">
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center">
+      <section className="container-prose section-y">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-8 md:gap-12 items-center">
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">{t("home.featuredCourse")}</p>
-            <h2 className="font-display text-4xl md:text-5xl mt-3">
+            <p className="section-label">{t("home.featuredCourse")}</p>
+            <h2 className="section-title mt-2 sm:mt-3">
               {getTextByLang(featuredCourse.title, language)}
             </h2>
-            <p className="mt-4 text-muted-foreground leading-relaxed">
+            <p className="mt-3 sm:mt-4 text-muted-foreground leading-relaxed text-sm sm:text-base">
               {getTextByLang(featuredCourse.description, language)}
             </p>
-            <div className="mt-6 flex items-center gap-4 text-xs uppercase tracking-[0.25em] text-muted-foreground">
+            <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-2 sm:gap-4 text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em] text-muted-foreground">
               <span className="text-gold">{getTextByLang(featuredCourse.level, language)}</span>
               <span>·</span>
               <span>{getTextByLang(featuredCourse.duration, language)}</span>
@@ -204,7 +206,7 @@ function Home() {
             <Link
               to="/learn/$courseId"
               params={{ courseId: featuredCourse.id }}
-              className="btn-gold mt-8"
+              className="btn-gold mt-6 sm:mt-8 w-full sm:w-auto text-center"
             >
               {t("home.enterTheCourse")}
             </Link>
@@ -225,43 +227,30 @@ function Home() {
         </div>
       </section>
 
-      <section className="container-prose py-20 border-t border-border">
-        <div className="flex items-end justify-between gap-6 mb-12 flex-wrap">
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">{t("home.recentWritings")}</p>
-            <h2 className="font-display text-4xl md:text-5xl mt-3">{t("home.fromTheDesk")}</h2>
-          </div>
-          <Link to="/blog" className="btn-outline-gold text-sm py-2.5 px-5">
-            {t("home.allWritings")} →
-          </Link>
-        </div>
+      <section className="container-prose section-y border-t border-border">
+        <SectionHeader
+          label={t("home.recentWritings")}
+          title={t("home.fromTheDesk")}
+          action={
+            <Link to="/blog" className="btn-outline-gold text-sm py-2 px-4 sm:px-5 w-full sm:w-auto text-center">
+              {t("home.allWritings")} →
+            </Link>
+          }
+          className="mb-8 sm:mb-12"
+        />
         <ul className="divide-y divide-border border-y border-border">
           {recentPosts.map((p, i) => (
-            <li key={p.slug}>
-              <Link
-                to="/blog/$slug"
-                params={{ slug: p.slug }}
-                className="group grid md:grid-cols-[60px_140px_1fr_auto] gap-6 items-start py-6 px-2 hover:bg-card/40 transition"
-              >
-                <span className="font-display text-3xl text-gold/50">
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="text-xs uppercase tracking-[0.25em] text-gold pt-2">
-                  {getTextByLang(p.category, language)}
-                </span>
-                <div>
-                  <h3 className="font-display text-2xl group-hover:text-gold transition">
-                    {getTextByLang(p.title, language)}
-                  </h3>
-                  <p className="mt-1 text-sm text-muted-foreground line-clamp-2 max-w-2xl">
-                    {getTextByLang(p.excerpt, language)}
-                  </p>
-                </div>
-                <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground pt-2 whitespace-nowrap">
-                  {p.date}
-                </span>
-              </Link>
-            </li>
+            <WritingListItem
+              key={p.slug}
+              index={i}
+              category={getTextByLang(p.category, language)}
+              title={getTextByLang(p.title, language)}
+              excerpt={getTextByLang(p.excerpt, language)}
+              date={p.date}
+              readTime={getTextByLang(p.readTime, language)}
+              slug={p.slug}
+              LinkComponent={Link}
+            />
           ))}
         </ul>
       </section>
@@ -271,9 +260,9 @@ function Home() {
 
 function Stat({ k, v }: { k: string; v: string }) {
   return (
-    <div>
-      <dt className="font-display text-3xl text-gold">{k}</dt>
-      <dd className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">{v}</dd>
+    <div className="min-w-0">
+      <dt className="font-display text-2xl sm:text-3xl text-gold">{k}</dt>
+      <dd className="text-[10px] sm:text-xs uppercase tracking-[0.15em] sm:tracking-[0.2em] text-muted-foreground mt-1 leading-snug">{v}</dd>
     </div>
   );
 }

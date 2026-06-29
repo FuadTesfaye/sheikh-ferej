@@ -72,22 +72,22 @@ function AdminDashboard() {
 
   return (
     <SiteLayout>
-      <div className="container-prose py-12">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="font-display text-4xl text-gold">{t("admin.dashboard")}</h1>
+      <div className="container-prose py-8 sm:py-12">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
+          <h1 className="font-display text-3xl sm:text-4xl text-gold">{t("admin.dashboard")}</h1>
           <Link to="/" className="text-sm text-gold hover:underline">
             {t("admin.backToSite")}
           </Link>
         </div>
 
         {editingPost && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/90 backdrop-blur-sm overflow-y-auto">
-            <Card className="w-full max-w-2xl bg-card border-border">
+          <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center p-3 sm:p-4 bg-background/90 backdrop-blur-sm overflow-y-auto">
+            <Card className="w-full max-w-2xl bg-card border-border my-4 sm:my-0">
               <CardHeader>
                 <CardTitle>{t("admin.editPost")}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="text-xs uppercase tracking-wider text-muted-foreground">
                       {t("admin.titleEn")}
@@ -150,15 +150,15 @@ function AdminDashboard() {
         {/* Similar modals for Course and Lecture could be added here */}
 
         <Tabs defaultValue="posts" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 bg-card border border-border">
-            <TabsTrigger value="posts">{t("admin.posts")}</TabsTrigger>
-            <TabsTrigger value="courses">{t("admin.courses")}</TabsTrigger>
-            <TabsTrigger value="lectures">{t("admin.lectures")}</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-3 bg-card border border-border h-auto p-1">
+            <TabsTrigger value="posts" className="text-xs sm:text-sm py-2">{t("admin.posts")}</TabsTrigger>
+            <TabsTrigger value="courses" className="text-xs sm:text-sm py-2">{t("admin.courses")}</TabsTrigger>
+            <TabsTrigger value="lectures" className="text-xs sm:text-sm py-2">{t("admin.lectures")}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="posts" className="mt-6">
             <Card className="bg-card border-border">
-              <CardHeader className="flex flex-row items-center justify-between">
+              <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <CardTitle>{t("admin.blogPosts")}</CardTitle>
                 <Button
                   variant="outline"
@@ -211,11 +211,11 @@ function AdminDashboard() {
                   <Plus className="h-4 w-4 mr-2" /> {t("admin.addPost")}
                 </Button>
               </CardHeader>
-              <CardContent>
+              <CardContent className="overflow-x-auto">
                 <Table>
                   <TableHeader>
                     <TableRow className="border-border">
-                      <TableHead>{t("common.title")}</TableHead>
+                      <TableHead className="min-w-[140px]">{t("common.title")}</TableHead>
                       <TableHead>{t("admin.category")}</TableHead>
                       <TableHead>{t("common.date")}</TableHead>
                       <TableHead className="text-right">{t("common.actions")}</TableHead>
@@ -259,7 +259,7 @@ function AdminDashboard() {
 
           <TabsContent value="courses" className="mt-6">
             <Card className="bg-card border-border">
-              <CardHeader className="flex flex-row items-center justify-between">
+              <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <CardTitle>{t("admin.courses")}</CardTitle>
                 <Button
                   variant="outline"
@@ -314,11 +314,11 @@ function AdminDashboard() {
                   <Plus className="h-4 w-4 mr-2" /> {t("admin.addCourse")}
                 </Button>
               </CardHeader>
-              <CardContent>
+              <CardContent className="overflow-x-auto">
                 <Table>
                   <TableHeader>
                     <TableRow className="border-border">
-                      <TableHead>{t("common.title")}</TableHead>
+                      <TableHead className="min-w-[140px]">{t("common.title")}</TableHead>
                       <TableHead>{t("admin.level")}</TableHead>
                       <TableHead>{t("admin.lessons")}</TableHead>
                       <TableHead className="text-right">{t("common.actions")}</TableHead>
@@ -355,7 +355,7 @@ function AdminDashboard() {
 
           <TabsContent value="lectures" className="mt-6">
             <Card className="bg-card border-border">
-              <CardHeader className="flex flex-row items-center justify-between">
+              <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <CardTitle>{t("admin.lectures")}</CardTitle>
                 <Button
                   variant="outline"
@@ -401,11 +401,11 @@ function AdminDashboard() {
                   <Plus className="h-4 w-4 mr-2" /> {t("admin.addLecture")}
                 </Button>
               </CardHeader>
-              <CardContent>
+              <CardContent className="overflow-x-auto">
                 <Table>
                   <TableHeader>
                     <TableRow className="border-border">
-                      <TableHead>{t("common.title")}</TableHead>
+                      <TableHead className="min-w-[140px]">{t("common.title")}</TableHead>
                       <TableHead>{t("admin.platform")}</TableHead>
                       <TableHead>{t("common.date")}</TableHead>
                       <TableHead className="text-right">{t("common.actions")}</TableHead>

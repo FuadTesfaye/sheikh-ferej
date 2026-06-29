@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Headphones, Video } from "lucide-react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { PageHero } from "@/components/PageLayout";
 import { type Lecture } from "@/lib/content";
 import { useLanguage } from "@/hooks/use-language";
 import scholarImg from "@/assets/mic.png";
@@ -51,8 +52,8 @@ function LectureVideoModal({ lecture, onClose }: { lecture: Lecture; onClose: ()
   }, [onClose]);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/90 backdrop-blur-sm animate-in fade-in duration-300">
-      <div className="relative w-full max-w-5xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl border border-gold/20">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-background/90 backdrop-blur-sm animate-in fade-in duration-300">
+      <div className="relative w-full max-w-5xl aspect-video bg-black rounded-xl sm:rounded-2xl overflow-hidden shadow-2xl border border-gold/20">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/20 hover:bg-background/40 text-white transition"
@@ -129,20 +130,16 @@ function Lectures() {
         />
       )}
 
-      <section className="container-prose pt-20 pb-12">
-        <p className="text-xs uppercase tracking-[0.3em] text-gold">
-          {t("lectures.lecturesAndReminders")}
-        </p>
-        <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">{t("lectures.hero")}</h1>
-        <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-          {t("lectures.subhero")}
-        </p>
-      </section>
+      <PageHero
+        label={t("lectures.lecturesAndReminders")}
+        title={t("lectures.hero")}
+        description={t("lectures.subhero")}
+      />
 
-      <section className="container-prose py-8">
-        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-8 rounded-2xl overflow-hidden border border-gold/30 bg-card/40">
+      <section className="container-prose pb-8 sm:pb-12">
+        <div className="grid lg:grid-cols-[1.3fr_1fr] gap-0 lg:gap-8 rounded-2xl overflow-hidden border border-gold/30 bg-card/40">
           <div
-            className="relative aspect-video lg:aspect-auto min-h-[320px] group cursor-pointer"
+            className="relative aspect-video lg:aspect-auto lg:min-h-[280px] group cursor-pointer"
             onClick={() => setActiveVideo(featured)}
           >
             <img
@@ -156,19 +153,19 @@ function Lectures() {
               aria-label={t("lectures.playLecture")}
               className="absolute inset-0 grid place-items-center"
             >
-              <span className="grid place-items-center h-20 w-20 rounded-full bg-gold/90 text-primary-foreground text-3xl pl-1 shadow-2xl group-hover:scale-110 transition">
+              <span className="grid place-items-center h-14 w-14 sm:h-20 sm:w-20 rounded-full bg-gold/90 text-primary-foreground text-2xl sm:text-3xl pl-1 shadow-2xl group-hover:scale-110 transition">
                 ▶
               </span>
             </button>
           </div>
-          <div className="p-8 lg:p-10 flex flex-col justify-center">
-            <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em]">
+          <div className="p-5 sm:p-6 md:p-8 lg:p-10 flex flex-col justify-center">
+            <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-[10px] sm:text-xs uppercase tracking-[0.2em] sm:tracking-[0.25em]">
               <span className="text-gold">{t("home.latestLecture")}</span>
               <span className="text-muted-foreground">
                 &middot; {getTextByLang(featured.topic, language)}
               </span>
             </div>
-            <h2 className="font-display text-3xl md:text-4xl mt-4 leading-tight">
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl mt-3 sm:mt-4 leading-tight">
               {getTextByLang(featured.title, language)}
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed">
@@ -181,7 +178,7 @@ function Lectures() {
             </div>
             <button
               onClick={() => setActiveVideo(featured)}
-              className="btn-outline-gold mt-8 text-sm py-2.5 px-5 self-start"
+              className="btn-outline-gold mt-6 sm:mt-8 text-sm py-2 px-4 sm:px-5 self-start w-full sm:w-auto text-center"
             >
               {t("common.watchNow")}
             </button>
@@ -189,14 +186,12 @@ function Lectures() {
         </div>
       </section>
 
-      <section className="container-prose py-12">
-        <div className="flex items-center gap-3 mb-8">
-          <Headphones className="h-5 w-5 text-gold" />
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">
-              {t("lectures.audioSeriesLabel")}
-            </p>
-            <h2 className="font-display text-3xl mt-1">
+      <section className="container-prose section-y">
+        <div className="flex items-start sm:items-center gap-3 mb-6 sm:mb-8">
+          <Headphones className="h-5 w-5 text-gold shrink-0 mt-0.5 sm:mt-0" />
+          <div className="min-w-0">
+            <p className="section-label">{t("lectures.audioSeriesLabel")}</p>
+            <h2 className="section-title mt-1">
               {getTextByLang(kitabTawhidSeries[0].series, language)}
             </h2>
           </div>
@@ -214,20 +209,22 @@ function Lectures() {
                 <button
                   type="button"
                   onClick={() => setActiveAudioId(item.id)}
-                  className="w-full flex items-center gap-4 p-4 rounded-xl border border-border bg-card/40 hover:border-gold/50 hover:bg-card/60 transition text-left group"
+                  className="w-full flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 p-4 rounded-xl border border-border bg-card/40 hover:border-gold/50 hover:bg-card/60 transition text-left group"
                 >
-                  <span className="shrink-0 grid place-items-center h-12 w-12 rounded-full bg-gold/15 text-gold group-hover:bg-gold group-hover:text-primary-foreground transition-colors">
+                  <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+                  <span className="shrink-0 grid place-items-center h-11 w-11 sm:h-12 sm:w-12 rounded-full bg-gold/15 text-gold group-hover:bg-gold group-hover:text-primary-foreground transition-colors">
                     <Headphones className="h-5 w-5" />
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="text-[10px] uppercase tracking-[0.25em] text-gold/80">
                       {getTextByLang(item.series, language)}
                     </p>
-                    <p className="font-display text-lg truncate">
+                    <p className="font-display text-base sm:text-lg truncate">
                       {getTextByLang(item.title, language)}
                     </p>
                   </div>
-                  <span className="shrink-0 text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-gold transition">
+                  </div>
+                  <span className="shrink-0 text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground group-hover:text-gold transition sm:ml-auto">
                     {t("lectures.listenNow")}
                   </span>
                 </button>
@@ -237,17 +234,15 @@ function Lectures() {
         </div>
       </section>
 
-      <section className="container-prose py-12">
-        <div className="flex items-center gap-3 mb-8">
-          <Video className="h-5 w-5 text-gold" />
-          <div>
-            <p className="text-xs uppercase tracking-[0.3em] text-gold">
-              {t("lectures.localVideosLabel")}
-            </p>
-            <h2 className="font-display text-3xl mt-1">{t("lectures.shortReminders")}</h2>
+      <section className="container-prose section-y">
+        <div className="flex items-start sm:items-center gap-3 mb-6 sm:mb-8">
+          <Video className="h-5 w-5 text-gold shrink-0 mt-0.5 sm:mt-0" />
+          <div className="min-w-0">
+            <p className="section-label">{t("lectures.localVideosLabel")}</p>
+            <h2 className="section-title mt-1">{t("lectures.shortReminders")}</h2>
           </div>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {localVideos.map((video) => (
             <button
               key={video.id}
@@ -279,16 +274,16 @@ function Lectures() {
         </div>
       </section>
 
-      <section className="container-prose py-16">
-        <div className="ornament-divider text-xs uppercase tracking-[0.3em]">
+      <section className="container-prose section-y">
+        <div className="ornament-divider section-label">
           {t("lectures.archiveLabel")}
         </div>
-        <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="mt-8 sm:mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {rest.map((l) => (
             <div
               key={l.id}
               onClick={() => setActiveVideo(l)}
-              className="group block p-6 rounded-xl border border-border bg-card/40 hover:border-gold/60 transition cursor-pointer"
+              className="group block p-4 sm:p-6 rounded-xl border border-border bg-card/40 hover:border-gold/60 transition cursor-pointer"
             >
               <div className="aspect-video rounded-lg bg-gradient-to-br from-gold/20 via-accent/15 to-background grid place-items-center relative overflow-hidden">
                 <img
@@ -296,7 +291,7 @@ function Lectures() {
                   alt={getTextByLang(l.title, language)}
                   className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:opacity-60 transition-opacity grayscale"
                 />
-                <span className="font-arabic text-7xl text-gold/40 group-hover:text-gold/70 transition relative z-10">
+                <span className="font-arabic text-5xl sm:text-7xl text-gold/40 group-hover:text-gold/70 transition relative z-10">
                   ﷲ
                 </span>
                 <span className="absolute bottom-3 right-3 grid place-items-center h-10 w-10 rounded-full bg-gold/90 text-primary-foreground pl-0.5 group-hover:scale-110 transition z-10">
@@ -324,9 +319,9 @@ function Lectures() {
         </div>
       </section>
 
-      <section className="container-prose py-12">
-        <div className="p-8 md:p-10 rounded-2xl border border-gold/30 bg-card/40 text-center">
-          <p className="font-arabic text-2xl text-gold leading-loose" lang="ar">
+      <section className="container-prose pb-12 sm:pb-16 md:pb-20">
+        <div className="p-5 sm:p-8 md:p-10 rounded-2xl border border-gold/30 bg-card/40 text-center">
+          <p className="font-arabic text-xl sm:text-2xl text-gold leading-loose" lang="ar">
             بَلِّغُوا عَنِّي وَلَوْ آيَةً
           </p>
           <p className="mt-3 text-foreground/90 italic">{t("lectures.bukhariQuote")}</p>

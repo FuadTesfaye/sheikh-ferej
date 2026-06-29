@@ -14,9 +14,9 @@ function HadithBlock({
   return (
     <blockquote className="relative rounded-2xl border border-gold/30 bg-card/50 overflow-hidden">
       <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-gold via-gold/60 to-gold/20" />
-      <div className="p-6 md:p-8 space-y-5">
+      <div className="p-4 sm:p-5 md:p-6 space-y-4 sm:space-y-5">
         <p
-          className="font-arabic text-2xl md:text-3xl leading-[2] text-foreground text-right"
+          className="font-arabic text-lg sm:text-2xl md:text-3xl leading-[1.9] sm:leading-[2] text-foreground text-right break-words"
           lang="ar"
           dir="rtl"
         >
@@ -49,7 +49,7 @@ function DuaBlock({
         <p className="text-xs uppercase tracking-[0.3em] text-gold text-center">{label}</p>
       )}
       <p
-        className="font-arabic text-xl md:text-2xl leading-[2.2] text-foreground text-center"
+        className="font-arabic text-base sm:text-xl md:text-2xl leading-[2] sm:leading-[2.2] text-foreground text-center break-words"
         lang="ar"
         dir="rtl"
       >

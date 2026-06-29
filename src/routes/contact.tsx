@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
+import { PageHero } from "@/components/PageLayout";
 import { useLanguage } from "@/hooks/use-language";
 
 export const Route = createFileRoute("/contact")({
@@ -37,17 +38,11 @@ function Contact() {
   const { t } = useLanguage();
   return (
     <SiteLayout>
-      <section className="container-prose pt-20 pb-12">
-        <p className="text-xs uppercase tracking-[0.3em] text-gold">{t("contact.getInTouch")}</p>
-        <h1 className="font-display text-5xl md:text-6xl mt-4 max-w-3xl">{t("contact.hero")}</h1>
-        <p className="mt-6 text-lg text-muted-foreground max-w-2xl leading-relaxed">
-          {t("contact.subhero")}
-        </p>
-      </section>
+      <PageHero label={t("contact.getInTouch")} title={t("contact.hero")} description={t("contact.subhero")} />
 
-      <section className="container-prose grid lg:grid-cols-2 gap-10 py-12">
+      <section className="container-prose grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 pb-12 sm:pb-16 md:pb-20">
         <form
-          className="p-8 rounded-2xl border border-border bg-card/40 space-y-5"
+          className="p-5 sm:p-6 md:p-8 rounded-2xl border border-border bg-card/40 space-y-4 sm:space-y-5 order-2 lg:order-1"
           onSubmit={(e) => {
             e.preventDefault();
             alert(t("contact.messageReceived"));
@@ -87,9 +82,9 @@ function Contact() {
           </button>
         </form>
 
-        <div className="space-y-4">
-          <p className="text-xs uppercase tracking-[0.25em] text-gold">{t("contact.findOnline")}</p>
-          <div className="grid gap-3 p-5 rounded-xl border border-border bg-card/40">
+        <div className="space-y-3 sm:space-y-4 order-1 lg:order-2">
+          <p className="section-label">{t("contact.findOnline")}</p>
+          <div className="grid gap-3 p-4 sm:p-5 rounded-xl border border-border bg-card/40">
             <a href="tel:00251911855488" className="flex items-center gap-3 text-sm hover:text-gold transition">
               <span className="text-gold">📞</span>
               <span>00251911855488</span>
@@ -110,21 +105,21 @@ function Contact() {
               href={c.href}
               target="_blank"
               rel="noreferrer"
-              className="group flex items-center gap-5 p-6 rounded-xl border border-border bg-card/40 hover:border-gold/60 transition"
+              className="group flex items-center gap-4 sm:gap-5 p-4 sm:p-6 rounded-xl border border-border bg-card/40 hover:border-gold/60 transition"
             >
-              <span className="grid place-items-center h-14 w-14 rounded-full border border-gold/40 text-gold text-2xl font-display group-hover:bg-gold/10 transition">
+              <span className="grid place-items-center h-12 w-12 sm:h-14 sm:w-14 rounded-full border border-gold/40 text-gold text-xl sm:text-2xl font-display group-hover:bg-gold/10 transition shrink-0">
                 {c.sym}
               </span>
-              <div className="flex-1">
-                <p className="font-display text-xl">{c.name}</p>
-                <p className="text-sm text-muted-foreground">{c.handle}</p>
+              <div className="flex-1 min-w-0">
+                <p className="font-display text-lg sm:text-xl">{c.name}</p>
+                <p className="text-sm text-muted-foreground truncate">{c.handle}</p>
               </div>
-              <span className="text-gold opacity-0 group-hover:opacity-100 transition">→</span>
+              <span className="text-gold opacity-0 group-hover:opacity-100 transition hidden sm:inline">→</span>
             </a>
           ))}
 
-          <div className="p-6 rounded-xl border border-gold/30 bg-gradient-to-br from-card to-card/40 mt-6">
-            <p className="font-arabic text-2xl text-gold leading-loose">
+          <div className="p-5 sm:p-6 rounded-xl border border-gold/30 bg-gradient-to-br from-card to-card/40 mt-4 sm:mt-6">
+            <p className="font-arabic text-xl sm:text-2xl text-gold leading-loose" lang="ar">
               وَقُولُوا لِلنَّاسِ حُسْنًا
             </p>
             <p className="mt-2 text-sm italic text-muted-foreground">{t("contact.speakGoodWords")}</p>

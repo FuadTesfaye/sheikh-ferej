@@ -32,7 +32,7 @@ function LoginPage() {
 
   return (
     <SiteLayout>
-      <div className="container-prose py-16 flex items-center justify-center">
+      <div className="container-prose min-h-[60vh] py-10 sm:py-16 flex items-center justify-center">
         <Card className="w-full max-w-md bg-card border-border">
           <CardHeader>
             <CardTitle className="font-display text-2xl text-gold text-center">

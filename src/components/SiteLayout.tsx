@@ -72,30 +72,30 @@ function Header({
   const { theme, setTheme } = useTheme();
 
   return (
-    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60">
-      <div className="container-prose flex min-h-20 items-center justify-between gap-4 py-2">
+    <header className="sticky top-0 z-40 backdrop-blur-md bg-background/80 border-b border-border/60 supports-[backdrop-filter]:bg-background/70">
+      <div className="container-prose flex min-h-16 sm:min-h-20 items-center justify-between gap-2 sm:gap-4 py-2">
         <Link
           to="/"
-          className="flex items-center gap-3 group outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg transition shrink-0"
+          className="flex items-center gap-2 sm:gap-3 group outline-none focus-visible:ring-2 focus-visible:ring-gold rounded-lg transition min-w-0"
           aria-label={t("nav.home")}
         >
           <span
-            className="grid place-items-center h-10 w-10 rounded-full border border-gold/60 text-gold font-display text-xl group-hover:bg-gold/10 transition"
+            className="grid place-items-center h-9 w-9 sm:h-10 sm:w-10 rounded-full border border-gold/60 text-gold font-display text-lg sm:text-xl group-hover:bg-gold/10 transition shrink-0"
             aria-hidden="true"
           >
             ﷽
           </span>
           <span className="flex flex-col leading-tight min-w-0">
-            <span className="font-display text-xl tracking-wide truncate">
+            <span className="font-display text-base sm:text-xl tracking-wide truncate">
               {t("common.scholarTitle")}
             </span>
-            <span className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground truncate">
+            <span className="hidden sm:block text-[10px] sm:text-[11px] uppercase tracking-[0.15em] sm:tracking-[0.2em] text-muted-foreground truncate max-w-[10rem] sm:max-w-none">
               {t("common.scholarSubtitle")}
             </span>
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1" aria-label={t("a11y.mainNavigation")}>
+        <nav className="hidden xl:flex items-center gap-0.5" aria-label={t("a11y.mainNavigation")}>
           {nav.map((item) => (
             <Link
               key={item.to}
@@ -156,7 +156,7 @@ function Header({
           )}
         </nav>
 
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex xl:hidden items-center gap-1 sm:gap-2">
           <Button
             variant="ghost"
             size="icon"
@@ -175,7 +175,7 @@ function Header({
             </SheetTrigger>
             <SheetContent
               side="right"
-              className="bg-background border-border w-[300px] sm:w-[400px]"
+              className="bg-background border-border w-[min(100vw-2rem,400px)]"
             >
               <SheetHeader>
                 <SheetTitle className="text-start font-display text-2xl text-gold">
@@ -262,11 +262,11 @@ function LanguageSelector({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        className="flex items-center gap-2 px-4 py-2 text-sm text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
+        className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-4 py-2 text-sm text-muted-foreground hover:text-gold transition outline-none focus-visible:text-gold"
         aria-label={t("a11y.selectLanguage")}
       >
-        <Globe className="h-4 w-4" aria-hidden="true" />
-        <span>{languages.find((l) => l.code === language)?.label}</span>
+        <Globe className="h-4 w-4 shrink-0" aria-hidden="true" />
+        <span className="hidden sm:inline">{languages.find((l) => l.code === language)?.label}</span>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="bg-background border-border" align="end">
         {languages.map((l) => (
@@ -294,8 +294,8 @@ function Footer({
   nav: readonly { to: string; label: string; exact: boolean }[];
 }) {
   return (
-    <footer className="mt-24 border-t border-border/60 bg-card/30">
-      <div className="container-prose py-16 grid md:grid-cols-3 gap-12 text-start">
+    <footer className="mt-12 sm:mt-16 md:mt-24 border-t border-border/60 bg-card/30">
+      <div className="container-prose py-10 sm:py-12 md:py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-10 md:gap-12 text-start">
         <div className="flex flex-col gap-4">
           <p className="font-display text-2xl text-gold">{t("common.scholarTitle")}</p>
           <p className="text-sm text-muted-foreground max-w-xs leading-relaxed">
@@ -346,7 +346,7 @@ function Footer({
           </ul>
         </div>
       </div>
-      <div className="border-t border-border/60 py-8 text-center text-xs text-muted-foreground">
+      <div className="border-t border-border/60 py-6 sm:py-8 text-center text-xs text-muted-foreground px-4">
         <p>
           &copy; {new Date().getFullYear()} {t("common.scholarTitle")}. {t("common.knowledgeIsLight")}
         </p>

@@ -85,8 +85,8 @@ export function AudioPlayer({ src, title, subtitle, compact, className }: AudioP
   return (
     <div
       className={cn(
-        "rounded-xl border border-gold/25 bg-card/60 backdrop-blur-sm",
-        compact ? "p-4" : "p-5",
+        "rounded-xl border border-gold/25 bg-card/60 backdrop-blur-sm w-full min-w-0",
+        compact ? "p-3 sm:p-4" : "p-4 sm:p-5",
         className,
       )}
     >
@@ -107,14 +107,14 @@ export function AudioPlayer({ src, title, subtitle, compact, className }: AudioP
         </div>
       )}
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         <button
           type="button"
           onClick={togglePlay}
           aria-label={playing ? "Pause" : "Play"}
-          className="shrink-0 grid place-items-center h-11 w-11 rounded-full bg-gold text-primary-foreground shadow-md hover:bg-gold-soft transition-colors"
+          className="shrink-0 grid place-items-center h-10 w-10 sm:h-11 sm:w-11 rounded-full bg-gold text-primary-foreground shadow-md hover:bg-gold-soft transition-colors"
         >
-          {playing ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5 ml-0.5" />}
+          {playing ? <Pause className="h-4 w-4 sm:h-5 sm:w-5" /> : <Play className="h-4 w-4 sm:h-5 sm:w-5 ml-0.5" />}
         </button>
 
         <div className="flex-1 min-w-0 space-y-1.5">

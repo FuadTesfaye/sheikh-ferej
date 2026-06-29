@@ -60,7 +60,7 @@ function CourseDetail() {
           aria-hidden
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 to-background" />
-        <div className="container-prose relative py-20">
+        <div className="container-prose relative py-12 sm:py-16 md:py-20">
           <Link
             to="/learn"
             className="text-xs uppercase tracking-[0.25em] text-gold hover:text-gold-soft"
@@ -79,50 +79,50 @@ function CourseDetail() {
               {course.lessons} {t("home.lessons")}
             </span>
           </div>
-          <h1 className="font-display text-5xl md:text-6xl mt-6 max-w-3xl leading-[1.05]">
+          <h1 className="page-title mt-4 sm:mt-6">
             {getTextByLang(course.title, language)}
           </h1>
-          <p className="mt-4 text-xl text-muted-foreground max-w-2xl">
+          <p className="mt-3 sm:mt-4 text-lg sm:text-xl text-muted-foreground max-w-2xl">
             {getTextByLang(course.subtitle, language)}
           </p>
-          <div className="mt-10 flex flex-wrap gap-4">
-            <button className="btn-gold">{t("learn.enrollNow")}</button>
-            <button className="btn-outline-gold">{t("learn.previewLesson")}</button>
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+            <button className="btn-gold w-full sm:w-auto">{t("learn.enrollNow")}</button>
+            <button className="btn-outline-gold w-full sm:w-auto">{t("learn.previewLesson")}</button>
           </div>
         </div>
       </section>
 
-      <section className="container-prose grid lg:grid-cols-[2fr_1fr] gap-12 py-16">
-        <div>
-          <h2 className="font-display text-3xl">{t("learn.aboutThisCourse")}</h2>
-          <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+      <section className="container-prose grid lg:grid-cols-[2fr_1fr] gap-8 md:gap-12 py-10 sm:py-12 md:py-16">
+        <div className="min-w-0 order-2 lg:order-1">
+          <h2 className="section-title">{t("learn.aboutThisCourse")}</h2>
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
             {getTextByLang(course.description, language)}
           </p>
 
-          <h3 className="font-display text-2xl mt-12 text-gold">{t("learn.curriculum")}</h3>
-          <ol className="mt-6 space-y-3">
+          <h3 className="font-display text-xl sm:text-2xl mt-10 sm:mt-12 text-gold">{t("learn.curriculum")}</h3>
+          <ol className="mt-4 sm:mt-6 space-y-2 sm:space-y-3">
             {course.topics.map((topic, i: number) => (
               <li
                 key={getTextByLang(topic, language)}
-                className="flex items-center gap-5 p-5 rounded-lg border border-border bg-card/40 hover:border-gold/40 transition"
+                className="flex items-center gap-3 sm:gap-5 p-4 sm:p-5 rounded-lg border border-border bg-card/40 hover:border-gold/40 transition"
               >
-                <span className="font-display text-2xl text-gold w-10 shrink-0">
+                <span className="font-display text-xl sm:text-2xl text-gold w-8 sm:w-10 shrink-0">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <div className="flex-1">
-                  <p className="font-display text-xl">{getTextByLang(topic, language)}</p>
+                <div className="flex-1 min-w-0">
+                  <p className="font-display text-lg sm:text-xl leading-snug">{getTextByLang(topic, language)}</p>
                   <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground mt-1">
                     {t("learn.module")} {i + 1}
                   </p>
                 </div>
-                <span className="text-gold text-xl">▸</span>
+                <span className="text-gold text-lg sm:text-xl shrink-0 hidden sm:block">▸</span>
               </li>
             ))}
           </ol>
         </div>
 
-        <aside className="space-y-6 lg:sticky lg:top-28 self-start">
-          <div className="p-6 rounded-xl border border-gold/30 bg-card/60">
+        <aside className="space-y-4 sm:space-y-6 lg:sticky lg:top-28 self-start order-1 lg:order-2">
+          <div className="p-5 sm:p-6 rounded-xl border border-gold/30 bg-card/60">
             <p className="text-xs uppercase tracking-[0.25em] text-gold">{t("learn.instructor")}</p>
             <p className="font-display text-2xl mt-2">{t("home.mohammedFerej")}</p>
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
