@@ -1,4 +1,12 @@
-import { posts, courses, lectures, type Post, type Course, type Lecture, type MultilingualText } from "./content";
+import {
+  posts,
+  courses,
+  lectures,
+  type Post,
+  type Course,
+  type Lecture,
+  type MultilingualText,
+} from "./content";
 
 const STORAGE_KEYS = {
   POSTS: "sheikh_posts",
@@ -94,7 +102,8 @@ export const dataService = {
   },
 
   // Courses
-  getCourses: () => normalizeList(getStorageItem<Course[]>(STORAGE_KEYS.COURSES, courses), normalizeCourse),
+  getCourses: () =>
+    normalizeList(getStorageItem<Course[]>(STORAGE_KEYS.COURSES, courses), normalizeCourse),
   saveCourse: (course: Course) => {
     const currentCourses = dataService.getCourses();
     const index = currentCourses.findIndex((c) => c.id === course.id);
