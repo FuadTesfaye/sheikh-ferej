@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "about": "ስለ",
+    "lectures": "ትምህርቶች",
+    "knowledge": "እውቀት",
+    "articles": "ጽሑፎች",
+    "fatwas": "ፈትዋዎች",
+    "courses": "ኮርሶች",
+    "series": "ተከታታይ",
+    "library": "ቤተ መጻሕፍት",
+    "events": "ክስተቶች",
+    "ask": "ሼኩን ይጠይቁ",
+    "media": "ሚዲያ",
+    "contact": "አድራሻ",
+    "journey": "ጉዞ",
+    "qualifications": "የትምህርት ደረጃዎች",
+    "search": "ፈልግ",
+    "menu": "ማውጫ"
+  },
+  "home": {
+    "exploreLectures": "ትምህርቶችን ያስሱ",
+    "aboutScholar": "ስለ ምሁሩ",
+    "featuredLecture": "የተመረጠ ትምህርት",
+    "latestLectures": "አዳዲስ ትምህርቶች",
+    "latestArticles": "አዳዲስ ጽሑፎች",
+    "upcomingEvents": "መጪ ክስተቶች",
+    "viewAll": "ሁሉንም ይመልከቱ"
+  },
+  "lectures": {
+    "title": "ትምህርቶች",
+    "search": "ትምህርቶችን ይፈልጉ...",
+    "all": "ሁሉንም",
+    "loadMore": "ተጨማሪ ጫን",
+    "backToAll": "ወደ ሁሉም ትምህርቶች",
+    "summary": "ማጠቃለያ",
+    "transcript": "ጽሑፍ",
+    "relatedLectures": "ተዛማጅ ትምህርቶች",
+    "partOfSeries": "የተከታታይ ክፍል",
+    "previous": "ያለፈው",
+    "next": "ቀጣይ"
+  },
+  "articles": {
+    "title": "ጽሑፎች",
+    "featured": "የተመረጠ ጽሑፍ",
+    "latest": "አዳዲስ ጽሑፎች",
+    "readingTime": "የ{minutes} ደቂቃ ንባብ"
+  },
+  "fatwas": {
+    "title": "ፈትዋዎች",
+    "search": "ጥያቄ ይፈልጉ...",
+    "question": "ጥያቄ",
+    "answer": "መልስ"
+  },
+  "series": {
+    "title": "ተከታታይ",
+    "lessons": "{count} ትምህርቶች"
+  },
+  "courses": {
+    "title": "ኮርሶች",
+    "enrollmentOpen": "ምዝገባ ክፍት ነው",
+    "enrollmentClosed": "ምዝገባ ተዘግቷል",
+    "syllabus": "ስርዓተ ትምህርት"
+  },
+  "library": {
+    "title": "ቤተ መጻሕፍት",
+    "search": "ቤተ መጻሕፍትን ይፈልጉ...",
+    "books": "መጻሕፍት",
+    "documents": "ሰነዶች",
+    "references": "ማጣቀሻዎች",
+    "read": "አንብብ",
+    "download": "አውርድ"
+  },
+  "events": {
+    "title": "ክስተቶች",
+    "upcoming": "መጪ",
+    "past": "ያለፉ ክስተቶች",
+    "details": "ዝርዝሮች",
+    "inPerson": "በአካል",
+    "online": "በመስመር ላይ",
+    "hybrid": "ቅልቅል",
+    "registrationRequired": "ምዝገባ ያስፈልጋል",
+    "seatsAvailable": "{count} ወንበሮች ይገኛሉ"
+  },
+  "ask": {
+    "title": "ሼኩን ይጠይቁ",
+    "questionLabel": "ጥያቄዎ",
+    "questionPlaceholder": "ጥያቄዎን እዚህ ይፃፉ...",
+    "nameLabel": "ስም",
+    "namePlaceholder": "ስምዎ (አማራጭ)",
+    "emailLabel": "ኢሜል",
+    "emailPlaceholder": "your@email.com (አማራጭ)",
+    "submit": "ጥያቄውን ላክ",
+    "submitting": "በመላክ ላይ...",
+    "success": "ጥያቄዎ ደርሷል::",
+    "reference": "ማጣቀሻ"
+  },
+  "search": {
+    "title": "ፈልግ",
+    "placeholder": "ቡንያንን ይፈልጉ...",
+    "results": "ውጤቶች",
+    "noResults": "ምንም ውጤት አልተገኘም::",
+    "all": "ሁሉንም"
+  },
+  "common": {
+    "backTo": "ወደ {page} ተመለስ",
+    "noContent": "ምንም {type} እስካሁን አልታተመም::",
+    "unavailable": "ይህ ይዘት ለጊዜው አይገኝም::",
+    "tryAgain": "እንደገና ሞክር",
+    "copyright": "© {year} {name}። መብቱ በህግ የተጠበቀ ነው።"
+  },
+  "about": {
+    "title": "ስለ",
+    "biography": "የህይወት ታሪክ",
+    "languages": "ቋንቋዎች",
+    "location": "አካባቢ"
+  },
+  "contact": {
+    "title": "አድራሻ",
+    "followUs": "በማህበራዊ ሚዲያ ይከታተሉን",
+    "askQuestion": "ጥያቄ አለዎት? ሼኩን በቀጥታ ይጠይቁ::"
+  }
+}

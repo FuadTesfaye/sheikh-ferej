@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "about": "About",
+    "lectures": "Lectures",
+    "knowledge": "Knowledge",
+    "articles": "Articles",
+    "fatwas": "Fatwas",
+    "courses": "Courses",
+    "series": "Series",
+    "library": "Library",
+    "events": "Events",
+    "ask": "Ask the Sheikh",
+    "media": "Media",
+    "contact": "Contact",
+    "journey": "Journey",
+    "qualifications": "Qualifications",
+    "search": "Search",
+    "menu": "Menu"
+  },
+  "home": {
+    "exploreLectures": "Explore Lectures",
+    "aboutScholar": "About the Scholar",
+    "featuredLecture": "Featured Lecture",
+    "latestLectures": "Latest Lectures",
+    "latestArticles": "Latest Articles",
+    "upcomingEvents": "Upcoming Events",
+    "viewAll": "View all"
+  },
+  "lectures": {
+    "title": "Lectures",
+    "search": "Search lectures...",
+    "all": "All",
+    "loadMore": "Load more",
+    "backToAll": "All Lectures",
+    "summary": "Summary",
+    "transcript": "Transcript",
+    "relatedLectures": "Related Lectures",
+    "partOfSeries": "Part of",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "articles": {
+    "title": "Articles",
+    "featured": "Featured Article",
+    "latest": "Latest Articles",
+    "readingTime": "{minutes} min read"
+  },
+  "fatwas": {
+    "title": "Fatwas",
+    "search": "Search a question...",
+    "question": "Question",
+    "answer": "Answer"
+  },
+  "series": {
+    "title": "Series",
+    "lessons": "{count} Lessons"
+  },
+  "courses": {
+    "title": "Courses",
+    "enrollmentOpen": "Enrollment Open",
+    "enrollmentClosed": "Enrollment Closed",
+    "syllabus": "Syllabus"
+  },
+  "library": {
+    "title": "Library",
+    "search": "Search library...",
+    "books": "Books",
+    "documents": "Documents",
+    "references": "References",
+    "read": "Read",
+    "download": "Download"
+  },
+  "events": {
+    "title": "Events",
+    "upcoming": "Upcoming",
+    "past": "Past Events",
+    "details": "Details",
+    "inPerson": "In Person",
+    "online": "Online",
+    "hybrid": "Hybrid",
+    "registrationRequired": "Registration required",
+    "seatsAvailable": "{count} seats available"
+  },
+  "ask": {
+    "title": "Ask the Sheikh",
+    "questionLabel": "Your Question",
+    "questionPlaceholder": "Type your question here...",
+    "nameLabel": "Name",
+    "namePlaceholder": "Your name (optional)",
+    "emailLabel": "Email",
+    "emailPlaceholder": "your@email.com (optional)",
+    "submit": "Submit Question",
+    "submitting": "Submitting...",
+    "success": "Your question has been received.",
+    "reference": "Reference"
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search Bunyan...",
+    "results": "Results",
+    "noResults": "No results found.",
+    "all": "All"
+  },
+  "common": {
+    "backTo": "Back to {page}",
+    "noContent": "No {type} have been published yet.",
+    "unavailable": "This content is temporarily unavailable.",
+    "tryAgain": "Try again",
+    "copyright": "© {year} {name}. All rights reserved."
+  },
+  "about": {
+    "title": "About",
+    "biography": "Biography",
+    "languages": "Languages",
+    "location": "Location"
+  },
+  "contact": {
+    "title": "Contact",
+    "followUs": "Follow on social media",
+    "askQuestion": "Have a question? Ask the Sheikh directly."
+  }
+}

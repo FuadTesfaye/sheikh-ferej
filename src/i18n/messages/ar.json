@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "about": "حول",
+    "lectures": "المحاضرات",
+    "knowledge": "المعرفة",
+    "articles": "المقالات",
+    "fatwas": "الفتاوى",
+    "courses": "الدورات",
+    "series": "السلاسل",
+    "library": "المكتبة",
+    "events": "الفعاليات",
+    "ask": "اسأل الشيخ",
+    "media": "الوسائط",
+    "contact": "اتصل بنا",
+    "journey": "المسيرة",
+    "qualifications": "المؤهلات",
+    "search": "بحث",
+    "menu": "القائمة"
+  },
+  "home": {
+    "exploreLectures": "استكشف المحاضرات",
+    "aboutScholar": "عن العالم",
+    "featuredLecture": "محاضرة مميزة",
+    "latestLectures": "أحدث المحاضرات",
+    "latestArticles": "أحدث المقالات",
+    "upcomingEvents": "الفعاليات القادمة",
+    "viewAll": "عرض الكل"
+  },
+  "lectures": {
+    "title": "المحاضرات",
+    "search": "البحث في المحاضرات...",
+    "all": "الكل",
+    "loadMore": "تحميل المزيد",
+    "backToAll": "جميع المحاضرات",
+    "summary": "ملخص",
+    "transcript": "النص",
+    "relatedLectures": "محاضرات ذات صلة",
+    "partOfSeries": "جزء من",
+    "previous": "السابق",
+    "next": "التالي"
+  },
+  "articles": {
+    "title": "المقالات",
+    "featured": "مقال مميز",
+    "latest": "أحدث المقالات",
+    "readingTime": "{minutes} دقيقة للقراءة"
+  },
+  "fatwas": {
+    "title": "الفتاوى",
+    "search": "ابحث عن سؤال...",
+    "question": "السؤال",
+    "answer": "الجواب"
+  },
+  "series": {
+    "title": "السلاسل",
+    "lessons": "{count} دروس"
+  },
+  "courses": {
+    "title": "الدورات",
+    "enrollmentOpen": "التسجيل مفتوح",
+    "enrollmentClosed": "التسجيل مغلق",
+    "syllabus": "المنهج"
+  },
+  "library": {
+    "title": "المكتبة",
+    "search": "البحث في المكتبة...",
+    "books": "الكتب",
+    "documents": "الوثائق",
+    "references": "المراجع",
+    "read": "اقرأ",
+    "download": "تنزيل"
+  },
+  "events": {
+    "title": "الفعاليات",
+    "upcoming": "القادمة",
+    "past": "السابقة",
+    "details": "التفاصيل",
+    "inPerson": "حضوري",
+    "online": "عبر الإنترنت",
+    "hybrid": "مدمج",
+    "registrationRequired": "التسجيل مطلوب",
+    "seatsAvailable": "{count} مقاعد متاحة"
+  },
+  "ask": {
+    "title": "اسأل الشيخ",
+    "questionLabel": "سؤالك",
+    "questionPlaceholder": "اكتب سؤالك هنا...",
+    "nameLabel": "الاسم",
+    "namePlaceholder": "اسمك (اختياري)",
+    "emailLabel": "البريد الإلكتروني",
+    "emailPlaceholder": "your@email.com (اختياري)",
+    "submit": "أرسل السؤال",
+    "submitting": "جاري الإرسال...",
+    "success": "تم استلام سؤالك.",
+    "reference": "المرجع"
+  },
+  "search": {
+    "title": "بحث",
+    "placeholder": "ابحث في بنيان...",
+    "results": "النتائج",
+    "noResults": "لا توجد نتائج.",
+    "all": "الكل"
+  },
+  "common": {
+    "backTo": "العودة إلى {page}",
+    "noContent": "لم يتم نشر أي {type} بعد.",
+    "unavailable": "هذا المحتوى غير متاح مؤقتاً.",
+    "tryAgain": "حاول مرة أخرى",
+    "copyright": "© {year} {name}. جميع الحقوق محفوظة."
+  },
+  "about": {
+    "title": "حول",
+    "biography": "السيرة الذاتية",
+    "languages": "اللغات",
+    "location": "الموقع"
+  },
+  "contact": {
+    "title": "اتصل بنا",
+    "followUs": "تابعنا على وسائل التواصل الاجتماعي",
+    "askQuestion": "لديك سؤال؟ اسأل الشيخ مباشرة."
+  }
+}

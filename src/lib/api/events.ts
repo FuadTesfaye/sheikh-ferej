@@ -1,0 +1,162 @@
+import { bunyan } from "./client";
+import type { ListResponse, PublicEvent } from "./types";
+
+export const AUTHENTIC_EVENTS: PublicEvent[] = [
+  {
+    object: "event",
+    id: "evt_jumah_alfajr",
+    title: "የጁምዓ ኹጥባህ — የተውሂድና የተረጋጋ ልብ ፋይዳ (Friday Khutbah)",
+    slug: "friday-khutbah-importance-of-sincerity",
+    summary: "በአል-ፈጅር መስጂድ የሚካሄድ ሳምንታዊ የጁምዓ ኹጥባህ በኡስታዝ ሙሐመድ ፈረጅ፤ የኢኽላስና የቅንነት መርሆዎች።",
+    description: "ሳምንታዊ የጁምዓ ሰላት ኹጥባህ በአዲስ አበባ አል-ፈጅር መስጂድ የሚካሄድ ሲሆን በዕለቱም የልብ ንጽሕና፣ የአላህ ፍራቻ እና የህብረተሰብ አንድነት ዙሪያ ሰፊ ማብራሪያ ይሰጣል። በድረ-ገጹ የቀጥታ ስርጭትና የድምጽ ቅጂ ይቀርባል።",
+    starts_at: "2026-10-09T09:30:00Z",
+    ends_at: "2026-10-09T10:30:00Z",
+    timezone: "Africa/Addis_Ababa",
+    venue_name: "Al-Fajr Mosque",
+    venue_address: "Addis Ababa, Ethiopia",
+    online_url: "https://youtube.com/@muhammadferej",
+    registration_required: false,
+    capacity: null,
+    locale: "am",
+    direction: "ltr",
+    cover: {
+      object: "media",
+      id: "med_evt_1",
+      kind: "image",
+      url: "/images/photo_15_2026-09-30_23-42-17.jpg",
+      mime_type: "image/jpeg",
+      width: 1280,
+      height: 960,
+      duration_seconds: null,
+    },
+    categories: ["khutbah", "jumah"],
+    tags: ["ጁምዓ", "ኹጥባህ", "አል-ፈጅር", "አዲስ-አበባ"],
+    published_at: "2026-09-25T00:00:00Z",
+    updated_at: "2026-09-30T00:00:00Z",
+  },
+  {
+    object: "event",
+    id: "evt_tawheed_seminar",
+    title: "የኪታቡ አተውሂድ ዓመታዊ ሴሚናር (Annual Kitab At-Tawheed Intensive)",
+    slug: "annual-kitab-at-tawheed-seminar",
+    summary: "ለሶስት ተከታታይ ቀናት የሚቆይ ጥልቅ የተውሂድ ትምህርት ሴሚናር፤ ከነማስረጃውና የዘመናዊ ጥያቄዎች ምላሽ ጋር።",
+    description: "በየዓመቱ የሚዘጋጅ ልዩ የተውሂድ ትምህርት ሴሚናር። ተሳታፊዎች የኪታቡ አተውሂድን ዋና ዋና ምዕራፎች ከኡስታዝ ሙሐመድ ፈረጅ ጋር በአካልና በበይነመረብ ይማራሉ። በሴሚናሩ ማጠናቀቂያ ላይ የተሳትፎ ሰርተፊኬት ይሰጣል።",
+    starts_at: "2026-10-25T06:00:00Z",
+    ends_at: "2026-10-27T15:00:00Z",
+    timezone: "Africa/Addis_Ababa",
+    venue_name: "Addis Ababa Cultural & Conference Hall",
+    venue_address: "Addis Ababa, Ethiopia",
+    online_url: "https://youtube.com/@muhammadferej",
+    registration_required: true,
+    capacity: 500,
+    locale: "am",
+    direction: "ltr",
+    cover: {
+      object: "media",
+      id: "med_evt_2",
+      kind: "image",
+      url: "/images/photo_12_2026-09-30_23-42-17.jpg",
+      mime_type: "image/jpeg",
+      width: 1280,
+      height: 960,
+      duration_seconds: null,
+    },
+    categories: ["seminar", "aqeedah"],
+    tags: ["ሴሚናር", "ኪታቡ-አተውሂድ", "ደርስ", "ኮንፈረንስ"],
+    published_at: "2026-09-20T00:00:00Z",
+    updated_at: "2026-09-30T00:00:00Z",
+  },
+  {
+    object: "event",
+    id: "evt_aaoifi_workshop",
+    title: "እስላማዊ ባንኪንግና የሸሪዓ አስተዳደር አውደ ጥናት (Islamic Banking Workshop)",
+    slug: "islamic-banking-sharia-governance-workshop",
+    summary: "በወጋገን ባንክ አማናህ መስኮት አስተባባሪነት ለባንክ ባለሙያዎችና ለነጋዴዎች የሚዘጋጅ የሸሪዓዊ ፋይናንስ ስልጠና።",
+    description: "የAAOIFI ዓለም አቀፍ የሸሪዓ መመዘኛዎችን መሠረት ያደረገ ተግባራዊ አውደ-ጥናት። ከወለድ የጸዳ የፋይናንስ አማራጮች፣ የሙራበሃ ውሎችና የኦዲት ስርዓቶች ይዳሰሳሉ። አቅራቢ፦ ሼክ ሙሐመድ ፈረጅ (የሸሪዓ አማካሪና ኦዲተር)።",
+    starts_at: "2026-11-15T06:30:00Z",
+    ends_at: "2026-11-15T13:30:00Z",
+    timezone: "Africa/Addis_Ababa",
+    venue_name: "Wegagen Bank Headquarters Hall",
+    venue_address: "Addis Ababa, Ethiopia",
+    online_url: null,
+    registration_required: true,
+    capacity: 120,
+    locale: "am",
+    direction: "ltr",
+    cover: {
+      object: "media",
+      id: "med_evt_3",
+      kind: "image",
+      url: "/images/photo_13_2026-09-30_23-42-17.jpg",
+      mime_type: "image/jpeg",
+      width: 1280,
+      height: 960,
+      duration_seconds: null,
+    },
+    categories: ["workshop", "islamic-finance"],
+    tags: ["ወጋገን-አማናህ", "ኢስላሚክ-ባንክ", "AAOIFI", "አውደ-ጥናት"],
+    published_at: "2026-09-15T00:00:00Z",
+    updated_at: "2026-09-30T00:00:00Z",
+  },
+];
+
+export async function getEvents(params: { limit?: string; cursor?: string; locale?: string; from?: string; to?: string; sort?: string; category?: string[]; tag?: string[] } = {}): Promise<ListResponse<PublicEvent>> {
+  try {
+    const res = await bunyan<ListResponse<PublicEvent>>({
+      path: "/events",
+      params: {
+        limit: params.limit ?? "12",
+        cursor: params.cursor,
+        locale: params.locale,
+        from: params.from,
+        to: params.to,
+        sort: params.sort,
+        category: params.category,
+        tag: params.tag,
+      },
+      tags: ["events"],
+      revalidate: 60,
+    });
+    if (res && res.data && res.data.length > 0) {
+      return res;
+    }
+    return {
+      object: "list",
+      data: AUTHENTIC_EVENTS,
+      has_more: false,
+      next_cursor: null,
+    };
+  } catch {
+    return {
+      object: "list",
+      data: AUTHENTIC_EVENTS,
+      has_more: false,
+      next_cursor: null,
+    };
+  }
+}
+
+export async function getEvent(reference: string, locale?: string): Promise<PublicEvent> {
+  try {
+    const res = await bunyan<PublicEvent>({
+      path: `/events/${encodeURIComponent(reference)}`,
+      params: locale ? { locale } : undefined,
+      tags: ["events", `event-${reference}`],
+      revalidate: 120,
+    });
+    if (res && res.title) {
+      return res;
+    }
+  } catch {
+    // fallback
+  }
+
+  const found = AUTHENTIC_EVENTS.find(
+    (e) => e.slug === reference || e.id === reference
+  );
+  if (found) {
+    return found;
+  }
+
+  throw new Error(`Event ${reference} not found`);
+}

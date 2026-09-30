@@ -1,0 +1,122 @@
+{
+  "nav": {
+    "about": "Waa'ee",
+    "lectures": "Lektaroota",
+    "knowledge": "Beekumsa",
+    "articles": "Barreeffamoota",
+    "fatwas": "Fataawaawwan",
+    "courses": "Koorsoowwan",
+    "series": "Tartiiba",
+    "library": "Mana Kitaabaa",
+    "events": "Sagantaalee",
+    "ask": "Sheikhaa Gaafadhu",
+    "media": "Miidiyaa",
+    "contact": "Qunnamtii",
+    "journey": "Imala",
+    "qualifications": "Ulaagaalee",
+    "search": "Barbaadi",
+    "menu": "Baafata"
+  },
+  "home": {
+    "exploreLectures": "Lektaroota Qoradhu",
+    "aboutScholar": "Waa'ee Hayyichaa",
+    "featuredLecture": "Lektara Filatamaa",
+    "latestLectures": "Lektaroota Haarawa",
+    "latestArticles": "Barreeffamoota Haarawa",
+    "upcomingEvents": "Sagantaalee Dhufan",
+    "viewAll": "Hunda Ilaali"
+  },
+  "lectures": {
+    "title": "Lektaroota",
+    "search": "Lektaroota barbaadi...",
+    "all": "Hunda",
+    "loadMore": "Dabalata fidi",
+    "backToAll": "Gara Lektaroota Hundaatti",
+    "summary": "Cuunfaa",
+    "transcript": "Barreeffama",
+    "relatedLectures": "Lektaroota Walfakkaatan",
+    "partOfSeries": "Kutaa",
+    "previous": "Kanas dura",
+    "next": "Itti aanu"
+  },
+  "articles": {
+    "title": "Barreeffamoota",
+    "featured": "Barreeffama Filatamaa",
+    "latest": "Barreeffamoota Haarawa",
+    "readingTime": "Daqiiqaa {minutes} dubbisuuf"
+  },
+  "fatwas": {
+    "title": "Fataawaawwan",
+    "search": "Gaaffii barbaadi...",
+    "question": "Gaaffii",
+    "answer": "Deebii"
+  },
+  "series": {
+    "title": "Tartiiba",
+    "lessons": "Barumsoota {count}"
+  },
+  "courses": {
+    "title": "Koorsoowwan",
+    "enrollmentOpen": "Galmeen Banaadha",
+    "enrollmentClosed": "Galmeen Cufaadha",
+    "syllabus": "Silabasii"
+  },
+  "library": {
+    "title": "Mana Kitaabaa",
+    "search": "Mana kitaabaa barbaadi...",
+    "books": "Kitaabolee",
+    "documents": "Sanadoota",
+    "references": "Wabiiwwan",
+    "read": "Dubbisi",
+    "download": "Buufadhu"
+  },
+  "events": {
+    "title": "Sagantaalee",
+    "upcoming": "Kan Dhufan",
+    "past": "Kan Darban",
+    "details": "Bal'ina",
+    "inPerson": "Qaamaan",
+    "online": "Toora Interneetiin",
+    "hybrid": "Makaa",
+    "registrationRequired": "Galmeen Dirqama",
+    "seatsAvailable": "Tessoo {count} tu jira"
+  },
+  "ask": {
+    "title": "Sheikhaa Gaafadhu",
+    "questionLabel": "Gaaffii Kee",
+    "questionPlaceholder": "Gaaffii kee asitti barreessi...",
+    "nameLabel": "Maqaa",
+    "namePlaceholder": "Maqaa kee (Filannoo)",
+    "emailLabel": "Imeelii",
+    "emailPlaceholder": "your@email.com (Filannoo)",
+    "submit": "Gaaffii Ergi",
+    "submitting": "Ergaa jira...",
+    "success": "Gaaffiin kee nu dhaqqabeera.",
+    "reference": "Wabii"
+  },
+  "search": {
+    "title": "Barbaadi",
+    "placeholder": "Bunyan barbaadi...",
+    "results": "Bu'aawwan",
+    "noResults": "Bu'aan hin argamne.",
+    "all": "Hunda"
+  },
+  "common": {
+    "backTo": "Gara {page}tti deebi'i",
+    "noContent": "{type} kamiyyuu amma dura hin maxxanfamne.",
+    "unavailable": "Qabiyyeen kun yeroof hin argamu.",
+    "tryAgain": "Irra deebi'ii yaali",
+    "copyright": "© {year} {name}. Mirgi qopheessaa seeraan eeggamaadha."
+  },
+  "about": {
+    "title": "Waa'ee",
+    "biography": "Seenaa Jireenyaa",
+    "languages": "Afaanota",
+    "location": "Iddoo"
+  },
+  "contact": {
+    "title": "Qunnamtii",
+    "followUs": "Miidiyaa hawaasaa irratti nu hordofaa",
+    "askQuestion": "Gaaffii qabdaa? Kallattiin Sheikhaa gaafadhu."
+  }
+}

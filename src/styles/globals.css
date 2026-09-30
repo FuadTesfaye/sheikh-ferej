@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #FAF8F5;
+  --color-surface-2: #F5F0EB;
+  --color-surface-3: #EDE6DD;
+  --color-surface-card: #FFFFFF;
+
+  --color-text: #2D3436;
+  --color-text-secondary: #636E72;
+  --color-text-tertiary: #9DA3A7;
+  --color-text-inverse: #FFFFFF;
+
+  --color-accent: #1B5E20;
+  --color-accent-hover: #2E7D32;
+  --color-accent-muted: #E8F5E9;
+
+  --color-brass: #B8860B;
+  --color-brass-muted: #FFF8E1;
+
+  --color-border: #E0D8CE;
+  --color-border-light: #EDE6DD;
+
+  --font-heading: "Manrope", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-arabic: "Amiri", "Noto Naskh Arabic", serif;
+  --font-ethiopic: "Noto Sans Ethiopic", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL Arabic */
+[dir="rtl"] body,
+[dir="rtl"] .font-body {
+  font-family: var(--font-arabic);
+}
+
+/* Amharic */
+[lang="am"] body,
+[lang="am"] .font-body {
+  font-family: var(--font-ethiopic);
+}
+
+/* Focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 3px;
+}
+
+/* Typography utilities */
+.prose-scholarly {
+  font-family: var(--font-body);
+  line-height: 1.8;
+  letter-spacing: -0.01em;
+}
+
+.prose-scholarly h1,
+.prose-scholarly h2,
+.prose-scholarly h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.prose-scholarly p {
+  margin-bottom: 1.5em;
+}
