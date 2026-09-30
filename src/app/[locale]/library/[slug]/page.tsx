@@ -1,9 +1,20 @@
 import { setRequestLocale } from 'next-intl/server';
-import { getLibraryItem } from '@/lib/api/library';
+import { getLibraryItem, AUTHENTIC_BOOKS } from '@/lib/api/library';
 import { Link } from '@/i18n/navigation';
 import { notFound } from 'next/navigation';
 import { Download, ExternalLink, ArrowLeft, Bookmark } from 'lucide-react';
 import type { PublicBook } from '@/lib/api/types';
+
+export async function generateStaticParams() {
+  const locales = ["en", "ar", "am", "om"];
+  const params: { locale: string; slug: string }[] = [];
+  for (const locale of locales) {
+    for (const b of AUTHENTIC_BOOKS) {
+      params.push({ locale, slug: b.slug });
+    }
+  }
+  return params;
+}
 
 export default async function LibraryItemPage(props: { params: Promise<{ locale: string, slug: string }> }) {
   const params = await props.params;
@@ -18,10 +29,10 @@ export default async function LibraryItemPage(props: { params: Promise<{ locale:
   if (!item) return notFound();
 
   return (
-    <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <article className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <Link href="/library" className="inline-flex items-center text-sm font-medium text-[#636E72] hover:text-[#1B5E20] transition-colors mb-8">
         <ArrowLeft className="w-4 h-4 mr-2" />
-        Back to Library
+        Back to Library & Kitab Archives
       </Link>
 
       <div className="grid grid-cols-1 md:grid-cols-[300px_1fr] gap-10 lg:gap-16">

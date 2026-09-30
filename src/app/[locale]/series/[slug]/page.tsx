@@ -1,4 +1,4 @@
-import { getSeriesDetail } from "@/lib/api/series";
+import { getSeriesDetail, AUTHENTIC_SERIES } from "@/lib/api/series";
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
@@ -9,6 +9,20 @@ import { Metadata } from "next";
 
 interface SeriesDetailPageProps {
   params: Promise<{ locale: string; slug: string }>;
+}
+
+export async function generateStaticParams() {
+  const locales = ["en", "ar", "am", "om"];
+  const params: { locale: string; slug: string }[] = [];
+  for (const locale of locales) {
+    for (const ser of AUTHENTIC_SERIES) {
+      params.push({ locale, slug: ser.slug });
+      if (ser.id && ser.id !== ser.slug) {
+        params.push({ locale, slug: ser.id });
+      }
+    }
+  }
+  return params;
 }
 
 export async function generateMetadata({ params }: SeriesDetailPageProps): Promise<Metadata> {
@@ -46,7 +60,7 @@ export default async function SeriesDetailPage({ params }: SeriesDetailPageProps
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] py-8 md:py-16">
-      <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <Link 
           href="/series" 
           className="inline-flex items-center gap-2 text-sm font-medium text-[#636E72] hover:text-[#1B5E20] transition-colors mb-8"

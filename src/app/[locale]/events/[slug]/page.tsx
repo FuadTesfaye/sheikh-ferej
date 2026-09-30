@@ -1,8 +1,19 @@
 import { setRequestLocale } from 'next-intl/server';
-import { getEvent } from '@/lib/api/events';
+import { getEvent, AUTHENTIC_EVENTS } from '@/lib/api/events';
 import { Link } from '@/i18n/navigation';
 import { notFound } from 'next/navigation';
 import { Calendar, MapPin, Video, Clock, ArrowLeft, Users, Info } from 'lucide-react';
+
+export async function generateStaticParams() {
+  const locales = ["en", "ar", "am", "om"];
+  const params: { locale: string; slug: string }[] = [];
+  for (const locale of locales) {
+    for (const ev of AUTHENTIC_EVENTS) {
+      params.push({ locale, slug: ev.slug });
+    }
+  }
+  return params;
+}
 
 export default async function EventItemPage(props: { params: Promise<{ locale: string, slug: string }> }) {
   const params = await props.params;
@@ -22,10 +33,10 @@ export default async function EventItemPage(props: { params: Promise<{ locale: s
   const isOnline = !!event.online_url;
 
   return (
-    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <article className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <Link href="/events" className="inline-flex items-center text-sm font-medium text-[#636E72] hover:text-[#1B5E20] transition-colors mb-8">
         <ArrowLeft className="w-4 h-4 mr-2" />
-        Back to Schedule
+        Back to Events Schedule
       </Link>
 
       <div className="bg-white border border-[#E0D8CE] rounded-md overflow-hidden">

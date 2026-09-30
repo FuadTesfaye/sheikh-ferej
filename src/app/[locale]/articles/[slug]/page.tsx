@@ -1,9 +1,20 @@
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { getArticle } from "@/lib/api/articles";
+import { getArticle, AUTHENTIC_ARTICLES } from "@/lib/api/articles";
 import { formatDate } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+
+export async function generateStaticParams() {
+  const locales = ["en", "ar", "am", "om"];
+  const params: { locale: string; slug: string }[] = [];
+  for (const locale of locales) {
+    for (const art of AUTHENTIC_ARTICLES) {
+      params.push({ locale, slug: art.slug });
+    }
+  }
+  return params;
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, locale: string }> }): Promise<Metadata> {
   const { slug, locale } = await params;
@@ -36,13 +47,13 @@ export default async function ArticlePage({
   }
 
   return (
-    <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <article className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <div className="mb-10">
         <Link 
           href="/articles" 
           className="inline-flex items-center text-sm font-medium text-[#636E72] hover:text-[#1B5E20] transition-colors"
         >
-          &larr; All Articles
+          &larr; All Articles & Hadith Studies
         </Link>
       </div>
 

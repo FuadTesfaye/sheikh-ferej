@@ -1,9 +1,20 @@
 import { setRequestLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { getCourse } from "@/lib/api/courses";
+import { getCourse, AUTHENTIC_COURSES } from "@/lib/api/courses";
 import { formatDuration } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+
+export async function generateStaticParams() {
+  const locales = ["en", "ar", "am", "om"];
+  const params: { locale: string; slug: string }[] = [];
+  for (const locale of locales) {
+    for (const c of AUTHENTIC_COURSES) {
+      params.push({ locale, slug: c.slug });
+    }
+  }
+  return params;
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, locale: string }> }): Promise<Metadata> {
   const { slug, locale } = await params;
@@ -38,13 +49,13 @@ export default async function CoursePage({
   const lessons = course.lessons || [];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
       <div className="mb-8">
         <Link 
           href="/courses" 
           className="inline-flex items-center text-sm font-medium text-[#636E72] hover:text-[#1B5E20] transition-colors"
         >
-          &larr; All Courses
+          &larr; All Courses & Syllabi
         </Link>
       </div>
 

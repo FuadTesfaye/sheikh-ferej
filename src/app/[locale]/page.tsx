@@ -108,7 +108,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
     const sections = profile.sections;
 
     if (sections.lectures) {
-      const res = await getLectures({ limit: "12", locale });
+      const res = await getLectures({ limit: "20", locale });
       latestLectures = res?.data || [];
     }
     if (sections.articles) {
@@ -261,7 +261,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {videoLectures.slice(1, 4).map((lec) => (
+          {videoLectures.slice(1, 7).map((lec) => (
             <div key={lec.id} className="border border-[#E0D8CE] rounded-[6px] overflow-hidden bg-white shadow-sm flex flex-col group hover:border-[#1B5E20] transition-colors">
               <div className="aspect-video bg-[#2D3436] relative">
                 <LecturePlayer media={lec.media} title={lec.title} coverUrl={lec.cover?.url} />

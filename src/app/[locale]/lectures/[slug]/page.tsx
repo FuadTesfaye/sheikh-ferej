@@ -1,4 +1,4 @@
-import { getLecture, getLectures } from "@/lib/api/lectures";
+import { getLecture, getLectures, AUTHENTIC_LECTURES } from "@/lib/api/lectures";
 import { setRequestLocale } from "next-intl/server";
 import { LecturePlayer } from "@/components/lectures/lecture-player";
 import { LectureTranscript } from "@/components/lectures/lecture-transcript";
@@ -10,6 +10,17 @@ import { Metadata } from "next";
 
 interface LectureDetailPageProps {
   params: Promise<{ locale: string; slug: string }>;
+}
+
+export async function generateStaticParams() {
+  const locales = ["en", "ar", "am", "om"];
+  const params: { locale: string; slug: string }[] = [];
+  for (const locale of locales) {
+    for (const lec of AUTHENTIC_LECTURES) {
+      params.push({ locale, slug: lec.slug });
+    }
+  }
+  return params;
 }
 
 export async function generateMetadata({ params }: LectureDetailPageProps): Promise<Metadata> {
@@ -55,13 +66,13 @@ export default async function LectureDetailPage({ params }: LectureDetailPagePro
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] py-8 md:py-16">
-      <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+      <div className="container mx-auto px-4 md:px-6 max-w-6xl">
         <Link 
           href="/lectures" 
           className="inline-flex items-center gap-2 text-sm font-medium text-[#636E72] hover:text-[#1B5E20] transition-colors mb-8"
         >
           <ArrowLeft className="w-4 h-4" />
-          All Lectures
+          All Lectures & Discourses
         </Link>
 
         <div className="bg-white border border-[#E0D8CE] rounded-md p-6 md:p-8 mb-8">
