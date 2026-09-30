@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: SeriesDetailPageProps): Promi
   try {
     const series = await getSeriesDetail(slug, locale);
     return {
-      title: `${series.title} - Sheikh Muhammed Hamdu`,
+      title: `${series.title} - Sheikh Muhammed Ferej Megeno`,
       description: series.description || `Study the ${series.title} series`,
     };
   } catch (error) {

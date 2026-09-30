@@ -59,6 +59,16 @@ export function buildNavigation(sections?: Partial<SectionMap> | null): NavItem[
     nav.push({ key: "events", href: "/events", labelKey: "nav.events" });
   }
 
+  const more = buildMoreItems(sections);
+  if (more.length > 0) {
+    nav.push({
+      key: "more",
+      href: "#",
+      labelKey: "nav.more",
+      children: more,
+    });
+  }
+
   return nav;
 }
 

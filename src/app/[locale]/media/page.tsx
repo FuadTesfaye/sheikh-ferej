@@ -1,6 +1,7 @@
 import { setRequestLocale } from 'next-intl/server';
 import { getMedia } from '@/lib/api/media';
 import { Link } from '@/i18n/navigation';
+import { MediaCard } from '@/components/media/media-card';
 import { PlayCircle, Headphones, Image as ImageIcon, FileText, Download, ExternalLink } from 'lucide-react';
 
 interface MediaPageProps {
@@ -113,63 +114,9 @@ export default async function MediaPage({ params, searchParams }: MediaPageProps
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-         {media.map((item) => (
-             <div key={item.id} className="group flex flex-col bg-white rounded-md border border-[#E0D8CE] overflow-hidden hover:border-[#1B5E20] hover:shadow-sm transition-all duration-200">
-                <div className="aspect-video bg-[#2D3436] relative flex items-center justify-center overflow-hidden">
-                   {item.thumbnail_url ? (
-                     <img src={item.thumbnail_url} alt={item.title} className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
-                   ) : (
-                     <div className="text-white/20">
-                        {item.kind === 'video' && <PlayCircle className="w-16 h-16" />}
-                        {item.kind === 'audio' && <Headphones className="w-16 h-16" />}
-                        {item.kind === 'image' && <ImageIcon className="w-16 h-16" />}
-                        {item.kind === 'document' && <FileText className="w-16 h-16" />}
-                     </div>
-                   )}
-                   <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-sm text-xs font-semibold text-white flex items-center gap-1.5 uppercase tracking-wide">
-                     {item.kind === 'video' && <PlayCircle className="w-3.5 h-3.5" />}
-                     {item.kind === 'audio' && <Headphones className="w-3.5 h-3.5" />}
-                     {item.kind === 'image' && <ImageIcon className="w-3.5 h-3.5" />}
-                     {item.kind === 'document' && <FileText className="w-3.5 h-3.5" />}
-                     <span>{item.kind === 'image' ? 'photo' : item.kind}</span>
-                   </div>
-                </div>
-                <div className="p-5 flex flex-col flex-grow bg-[#FAF8F5]/30">
-                   <h3 className="font-heading font-bold text-lg text-[#2D3436] mb-2 line-clamp-2 group-hover:text-[#1B5E20] transition-colors">
-                     {item.title}
-                   </h3>
-                   <p className="text-sm text-[#636E72] line-clamp-2 mb-4 font-body">
-                     {item.description || 'Scholarly resource from the official archive.'}
-                   </p>
-                   <div className="mt-auto pt-4 border-t border-[#E0D8CE]">
-                     {item.url ? (
-                       <a
-                         href={item.url}
-                         target="_blank"
-                         rel="noopener noreferrer"
-                         className="text-sm font-bold text-[#1B5E20] hover:text-[#B8860B] transition-colors uppercase tracking-wider inline-flex items-center gap-1.5"
-                       >
-                         {item.kind === 'document' ? (
-                           <>
-                             <Download className="w-4 h-4" /> Download PDF
-                           </>
-                         ) : item.kind === 'audio' ? (
-                           <>
-                             <Headphones className="w-4 h-4" /> Listen Audio
-                           </>
-                         ) : (
-                           <>
-                             <ExternalLink className="w-4 h-4" /> View Full Resolution
-                           </>
-                         )}
-                       </a>
-                     ) : (
-                       <span className="text-xs text-[#636E72] uppercase tracking-wider">Archived</span>
-                     )}
-                   </div>
-                </div>
-             </div>
-         ))}
+        {media.map((item) => (
+          <MediaCard key={item.id} item={item} />
+        ))}
       </div>
 
       {media.length === 0 && (

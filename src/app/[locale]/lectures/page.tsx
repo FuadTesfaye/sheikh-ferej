@@ -23,6 +23,8 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
   const sort = typeof resolvedSearchParams.sort === "string" ? resolvedSearchParams.sort : undefined;
   const cursor = typeof resolvedSearchParams.cursor === "string" ? resolvedSearchParams.cursor : undefined;
 
+  const format = typeof resolvedSearchParams.format === "string" ? resolvedSearchParams.format : "all";
+
   let lecturesResponse = { data: [] as PublicLecture[], has_more: false, next_cursor: null as string | null };
   let categories = [] as any[];
 
@@ -43,18 +45,55 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
     console.error("Failed to load lectures:", err);
   }
 
-  const lectures = lecturesResponse.data || [];
+  const allLectures = lecturesResponse.data || [];
+  const lectures = allLectures.filter((lec) => {
+    if (format === "video") return Boolean(lec.media?.video);
+    if (format === "audio") return Boolean(lec.media?.audio && !lec.media?.video);
+    return true;
+  });
 
   return (
     <div className="min-h-screen bg-[#FAF8F5] py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="mb-12 space-y-4">
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-[#2D3436]">
-            Lectures
-          </h1>
-          <p className="text-lg text-[#636E72] max-w-2xl font-body">
-            Explore the comprehensive collection of sermons, lessons, and scholarly discourses.
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+            <div>
+              <h1 className="font-heading text-4xl md:text-5xl font-bold text-[#2D3436]">
+                Lectures & Discourses
+              </h1>
+              <p className="text-lg text-[#636E72] max-w-2xl font-body mt-2">
+                Explore the comprehensive collection of sermons, Kitab At-Tawheed audio curriculum, and televised video discourses.
+              </p>
+            </div>
+            
+            {/* Format Filter Tabs */}
+            <div className="inline-flex rounded-lg bg-white border border-[#E0D8CE] p-1 shadow-sm shrink-0">
+              <Link
+                href={`/lectures${categorySlug ? `?category=${categorySlug}` : ""}`}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+                  format === "all" ? "bg-[#1B5E20] text-white" : "text-[#636E72] hover:text-[#2D3436]"
+                }`}
+              >
+                All ({allLectures.length})
+              </Link>
+              <Link
+                href={`/lectures?format=video${categorySlug ? `&category=${categorySlug}` : ""}`}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                  format === "video" ? "bg-red-600 text-white" : "text-[#636E72] hover:text-[#2D3436]"
+                }`}
+              >
+                <Video className="w-3.5 h-3.5" /> Videos ({allLectures.filter(l => Boolean(l.media?.video)).length})
+              </Link>
+              <Link
+                href={`/lectures?format=audio${categorySlug ? `&category=${categorySlug}` : ""}`}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                  format === "audio" ? "bg-[#1B5E20] text-white" : "text-[#636E72] hover:text-[#2D3436]"
+                }`}
+              >
+                <AudioLines className="w-3.5 h-3.5" /> Audio ({allLectures.filter(l => !l.media?.video).length})
+              </Link>
+            </div>
+          </div>
         </div>
 
         <div className="mb-8">
@@ -64,13 +103,13 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
         {lectures.length === 0 ? (
           <div className="text-center py-20 bg-white border border-[#E0D8CE] rounded-md">
             <h3 className="font-heading text-xl text-[#2D3436] mb-2">No lectures found</h3>
-            <p className="text-[#636E72]">Try adjusting your filters to find what you're looking for.</p>
+            <p className="text-[#636E72]">Try adjusting your format or category filters.</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {lectures.map((lecture: PublicLecture) => (
               <Link key={lecture.id} href={`/lectures/${lecture.slug}`} className="group flex flex-col h-full bg-white border border-[#E0D8CE] rounded-md overflow-hidden hover:border-[#1B5E20] hover:shadow-sm transition-all">
-                <div className="relative aspect-video bg-[#E0D8CE] overflow-hidden">
+                <div className="relative aspect-video bg-[#2D3436] overflow-hidden">
                   {lecture.cover?.url ? (
                     <Image
                       src={lecture.cover.url}
@@ -91,13 +130,27 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
                       {formatDuration(lecture.duration_seconds)}
                     </div>
                   )}
+                  {lecture.media?.video && (
+                    <div className="absolute top-3 left-3 bg-red-600 text-white text-[11px] font-bold px-2 py-0.5 rounded shadow">
+                      HD Video
+                    </div>
+                  )}
                 </div>
                 
                 <div className="p-6 flex flex-col flex-grow">
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-center justify-between gap-3 mb-3">
                     {lecture.categories && lecture.categories.length > 0 && (
                       <span className="text-xs font-semibold text-[#1B5E20] uppercase tracking-wider capitalize">
                         {lecture.categories[0]}
+                      </span>
+                    )}
+                    {lecture.media?.video ? (
+                      <span className="text-xs font-bold text-red-600 flex items-center gap-1">
+                        <Video className="w-3.5 h-3.5" /> Watch
+                      </span>
+                    ) : (
+                      <span className="text-xs font-bold text-[#1B5E20] flex items-center gap-1">
+                        <AudioLines className="w-3.5 h-3.5" /> Listen
                       </span>
                     )}
                   </div>
@@ -107,14 +160,19 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
                   </h3>
                   
                   {lecture.summary && (
-                    <p className="text-sm text-[#636E72] line-clamp-3 mb-4 font-body">
+                    <p className="text-sm text-[#636E72] line-clamp-3 mb-4 font-body leading-relaxed">
                       {lecture.summary}
                     </p>
                   )}
                   
-                  <div className="mt-auto pt-4 border-t border-[#FAF8F5] flex items-center text-sm text-[#636E72]">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    {lecture.published_at ? formatDate(lecture.published_at) : 'Date unavailable'}
+                  <div className="mt-auto pt-4 border-t border-[#FAF8F5] flex items-center justify-between text-sm text-[#636E72]">
+                    <div className="flex items-center">
+                      <Calendar className="w-4 h-4 mr-2" />
+                      {lecture.published_at ? formatDate(lecture.published_at) : 'Date unavailable'}
+                    </div>
+                    <span className="text-xs font-bold text-[#1B5E20] group-hover:underline">
+                      Open &rarr;
+                    </span>
                   </div>
                 </div>
               </Link>

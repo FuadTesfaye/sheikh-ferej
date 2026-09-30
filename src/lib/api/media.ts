@@ -99,6 +99,35 @@ export async function getMedia(params?: { locale?: string }): Promise<MediaItem[
       });
     }
 
+    // Facebook Official Video Broadcasts
+    const FACEBOOK_VIDEOS = [
+      {
+        id: "facebook-video-1",
+        title: "የጁምዓ ኹጥባና ሳምንታዊ ምክር — ኦፊሴላዊ የፌስቡክ ስርጭት (Facebook)",
+        url: "https://web.facebook.com/p/Ustaz-Muhammad-ferej-100064605885257/?_rdc=1&_rdr#",
+        thumbnail_url: "/images/photo_4_2026-09-30_23-42-17.jpg",
+        description: "ከኡስታዝ ሙሐመድ ፈረጅ ኦፊሴላዊ የፌስቡክ ገጽ (330,000+ ተከታዮች) የተላለፈ የቀጥታ የጁምዓ መልእክት።",
+      },
+      {
+        id: "facebook-video-2",
+        title: "የረመዳን ዝግጅትና የዒባዳ ማነቃቂያ ፕሮግራም (Facebook Live)",
+        url: "https://web.facebook.com/p/Ustaz-Muhammad-ferej-100064605885257/?_rdc=1&_rdr#",
+        thumbnail_url: "/images/photo_12_2026-09-30_23-42-17.jpg",
+        description: "የቀጥታ ስርጭት ውይይት እና ለተመልካቾች የቀረበ ጥያቄና መልስ በፌስቡክ።",
+      },
+    ];
+
+    for (const fb of FACEBOOK_VIDEOS) {
+      items.push({
+        id: fb.id,
+        title: fb.title,
+        kind: "video",
+        url: fb.url,
+        thumbnail_url: fb.thumbnail_url,
+        description: fb.description,
+      });
+    }
+
     // Official Photographs
     PHOTO_FILES.forEach((file, idx) => {
       items.push({

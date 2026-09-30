@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: LectureDetailPageProps): Prom
   try {
     const lecture = await getLecture(slug, locale);
     return {
-      title: `${lecture.title} - Sheikh Muhammed Hamdu`,
+      title: `${lecture.title} - Sheikh Muhammed Ferej Megeno`,
       description: lecture.summary || `Listen to ${lecture.title}`,
     };
   } catch (error) {

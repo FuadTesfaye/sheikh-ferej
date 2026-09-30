@@ -21,16 +21,30 @@ const DEFAULT_SECTIONS: SectionMap = {
 
 const FALLBACK_PROFILE: PublicProfile = {
   object: "profile",
-  id: "",
-  name: "Sheikh Muhammed Hamdu",
-  headline: "Islamic Scholar & Teacher",
-  biography: null,
-  languages: ["ar", "am", "en"],
+  id: "sheikh-ferej",
+  name: "Sheikh Muhammed Ferej Megeno",
+  headline: "Islamic Scholar, Educator & Sharia Consultant",
+  biography: "Sheikh Muhammed Ferej Megeno (الشيخ محمد فرج مجنو) is an Ethiopian Islamic scholar, educator, and certified Sharia consultant with over 35 years of service in Islamic education, institutional leadership, and Dawah.",
+  languages: ["ar", "am", "en", "om"],
   locale: "en",
   direction: "ltr",
-  photo: null,
+  photo: {
+    object: "media",
+    id: "med_portrait",
+    kind: "image",
+    url: "/images/sheikh-portrait.jpg",
+    mime_type: "image/jpeg",
+    width: 1280,
+    height: 1280,
+    duration_seconds: null,
+  },
   sections: DEFAULT_SECTIONS,
-  socials: {},
+  socials: {
+    youtube: "https://www.youtube.com/playlist?list=PLzRqlK40SdT6R8jYsWIxMf44Hdl8q3pt3",
+    tiktok: "https://www.tiktok.com/@ustazmuhammadferej0",
+    facebook: "https://web.facebook.com/p/Ustaz-Muhammad-ferej-100064605885257/?_rdc=1&_rdr#",
+    telegram: "https://t.me/ustazmuhammadferej",
+  },
   updated_at: new Date().toISOString(),
 };
 
