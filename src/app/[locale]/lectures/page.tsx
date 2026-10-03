@@ -67,10 +67,10 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
             </div>
             
             {/* Format Filter Tabs */}
-            <div className="inline-flex rounded-lg bg-white border border-[#E0D8CE] p-1 shadow-sm shrink-0">
+            <div className="inline-flex rounded-lg bg-white border border-[#E0D8CE] p-1 shadow-sm shrink-0 overflow-x-auto max-w-full">
               <Link
                 href={`/lectures${categorySlug ? `?category=${categorySlug}` : ""}`}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all whitespace-nowrap ${
                   format === "all" ? "bg-[#1B5E20] text-white" : "text-[#636E72] hover:text-[#2D3436]"
                 }`}
               >
@@ -78,7 +78,7 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
               </Link>
               <Link
                 href={`/lectures?format=video${categorySlug ? `&category=${categorySlug}` : ""}`}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   format === "video" ? "bg-red-600 text-white" : "text-[#636E72] hover:text-[#2D3436]"
                 }`}
               >
@@ -86,7 +86,7 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
               </Link>
               <Link
                 href={`/lectures?format=audio${categorySlug ? `&category=${categorySlug}` : ""}`}
-                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 ${
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all flex items-center gap-1.5 whitespace-nowrap ${
                   format === "audio" ? "bg-[#1B5E20] text-white" : "text-[#636E72] hover:text-[#2D3436]"
                 }`}
               >
@@ -106,7 +106,7 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
             <p className="text-[#636E72]">Try adjusting your format or category filters.</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {lectures.map((lecture: PublicLecture) => (
               <Link key={lecture.id} href={`/lectures/${lecture.slug}`} className="group flex flex-col h-full bg-white border border-[#E0D8CE] rounded-md overflow-hidden hover:border-[#1B5E20] hover:shadow-sm transition-all">
                 <div className="relative aspect-video bg-[#2D3436] overflow-hidden">
@@ -125,19 +125,19 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
                     </div>
                   )}
                   {lecture.duration_seconds && (
-                    <div className="absolute bottom-3 right-3 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded backdrop-blur-sm flex items-center gap-1">
+                    <div className="absolute bottom-3 end-3 bg-black/70 text-white text-xs font-medium px-2 py-1 rounded backdrop-blur-sm flex items-center gap-1">
                       <Clock className="w-3 h-3" />
                       {formatDuration(lecture.duration_seconds)}
                     </div>
                   )}
                   {lecture.media?.video && (
-                    <div className="absolute top-3 left-3 bg-red-600 text-white text-[11px] font-bold px-2 py-0.5 rounded shadow">
+                    <div className="absolute top-3 start-3 bg-red-600 text-white text-[11px] font-bold px-2 py-0.5 rounded shadow">
                       HD Video
                     </div>
                   )}
                 </div>
                 
-                <div className="p-6 flex flex-col flex-grow">
+                <div className="p-5 sm:p-6 flex flex-col flex-grow">
                   <div className="flex items-center justify-between gap-3 mb-3">
                     {lecture.categories && lecture.categories.length > 0 && (
                       <span className="text-xs font-semibold text-[#1B5E20] uppercase tracking-wider capitalize">
@@ -155,19 +155,19 @@ export default async function LecturesPage({ params, searchParams }: LecturesPag
                     )}
                   </div>
                   
-                  <h3 className="font-heading text-xl font-bold text-[#2D3436] mb-3 group-hover:text-[#1B5E20] transition-colors line-clamp-2">
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-[#2D3436] mb-3 group-hover:text-[#1B5E20] transition-colors line-clamp-2 break-words">
                     {lecture.title}
                   </h3>
                   
                   {lecture.summary && (
-                    <p className="text-sm text-[#636E72] line-clamp-3 mb-4 font-body leading-relaxed">
+                    <p className="text-sm text-[#636E72] line-clamp-3 mb-4 font-body leading-relaxed break-words">
                       {lecture.summary}
                     </p>
                   )}
                   
                   <div className="mt-auto pt-4 border-t border-[#FAF8F5] flex items-center justify-between text-sm text-[#636E72]">
-                    <div className="flex items-center">
-                      <Calendar className="w-4 h-4 mr-2" />
+                    <div className="flex items-center text-xs sm:text-sm">
+                      <Calendar className="w-4 h-4 me-2" />
                       {lecture.published_at ? formatDate(lecture.published_at) : 'Date unavailable'}
                     </div>
                     <span className="text-xs font-bold text-[#1B5E20] group-hover:underline">

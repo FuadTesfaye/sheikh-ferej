@@ -77,12 +77,12 @@ export default async function ArticlePage({
           )}
         </div>
         
-        <h1 className="font-heading text-4xl sm:text-5xl font-bold text-[#2D3436] leading-tight mb-8">
+        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-[#2D3436] leading-tight mb-6 sm:mb-8 break-words">
           {article.title}
         </h1>
 
         {article.cover && (
-          <div className="w-full aspect-[21/9] relative rounded-[4px] overflow-hidden bg-[#FAF8F5] border border-[#E0D8CE] mb-12">
+          <div className="w-full aspect-[16/9] sm:aspect-[21/9] relative rounded-[4px] overflow-hidden bg-[#FAF8F5] border border-[#E0D8CE] mb-8 sm:mb-12">
             <img 
               src={article.cover.url} 
               alt={article.title} 
@@ -94,12 +94,12 @@ export default async function ArticlePage({
 
       {article.body && (
         <div 
-          className="prose prose-lg max-w-none prose-scholarly text-[#2D3436] prose-headings:font-heading prose-headings:text-[#2D3436] prose-a:text-[#1B5E20] prose-a:no-underline hover:prose-a:underline"
+          className="prose prose-lg max-w-none prose-scholarly text-[#2D3436] prose-headings:font-heading prose-headings:text-[#2D3436] prose-a:text-[#1B5E20] prose-a:no-underline hover:prose-a:underline break-words"
           dangerouslySetInnerHTML={{ __html: article.body }}
         />
       )}
 
-      <footer className="mt-16 pt-8 border-t border-[#E0D8CE] flex items-center justify-between">
+      <footer className="mt-16 pt-8 border-t border-[#E0D8CE] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div className="flex gap-4">
           <span className="text-[#2D3436] font-semibold">Share:</span>
           {/* Implement actual share links if needed */}

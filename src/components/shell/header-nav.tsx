@@ -11,7 +11,7 @@ export default function HeaderNav({ items }: { items: NavItem[] }) {
   const pathname = usePathname();
   
   return (
-    <nav className="flex items-center space-x-6">
+    <nav className="flex items-center gap-5 lg:gap-6">
       {items.map((item, idx) => {
         const hasChildren = item.children && item.children.length > 0;
         const isChildActive = hasChildren && item.children?.some(c => 
@@ -77,11 +77,11 @@ function DropdownNavItem({ item, isActive, label, alignEnd }: { item: NavItem, i
         aria-expanded={isOpen}
       >
         {label}
-        <ChevronDown className={`ml-1 w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`ms-1 w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
       </button>
 
       {isOpen && (
-        <div className={`absolute top-full ${alignEnd ? 'right-0' : 'left-0'} mt-2 w-52 rounded-md bg-[#FAF8F5] shadow-lg border border-[#E0D8CE] py-1.5 z-50`}>
+        <div className={`absolute top-full ${alignEnd ? 'end-0' : 'start-0'} mt-2 w-52 rounded-md bg-[#FAF8F5] shadow-lg border border-[#E0D8CE] py-1.5 z-50`}>
           {item.children?.map((child) => {
             const isChildActive = pathname === child.href;
             return (

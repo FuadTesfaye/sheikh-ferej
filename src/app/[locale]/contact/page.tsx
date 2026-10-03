@@ -22,13 +22,13 @@ export default async function ContactPage(props: { params: Promise<{ locale: str
         </p>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16">
-        <div className="bg-[#FAF8F5] border border-[#E0D8CE] p-8 rounded-lg">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:gap-16">
+        <div className="bg-[#FAF8F5] border border-[#E0D8CE] p-5 sm:p-8 rounded-lg">
           <h2 className="text-2xl font-heading font-bold text-[#2D3436] mb-6">Direct Channels</h2>
           
           <div className="space-y-6">
              <div className="flex items-start">
-               <div className="w-10 h-10 rounded-full bg-white border border-[#E0D8CE] flex items-center justify-center shrink-0 mr-4 shadow-sm">
+               <div className="w-10 h-10 rounded-full bg-white border border-[#E0D8CE] flex items-center justify-center shrink-0 me-4 shadow-sm">
                   <MapPin className="w-5 h-5 text-[#1B5E20]" />
                </div>
                <div>
@@ -39,7 +39,7 @@ export default async function ContactPage(props: { params: Promise<{ locale: str
              </div>
              
              <div className="flex items-start">
-               <div className="w-10 h-10 rounded-full bg-white border border-[#E0D8CE] flex items-center justify-center shrink-0 mr-4 shadow-sm">
+               <div className="w-10 h-10 rounded-full bg-white border border-[#E0D8CE] flex items-center justify-center shrink-0 me-4 shadow-sm">
                   <MessageSquare className="w-5 h-5 text-[#1B5E20]" />
                </div>
                <div>
@@ -68,7 +68,7 @@ export default async function ContactPage(props: { params: Promise<{ locale: str
                   rel="noopener noreferrer"
                   className="flex items-center p-4 border border-[#E0D8CE] rounded hover:border-[#1B5E20] hover:bg-[#FAF8F5] transition-colors group"
                 >
-                  <div className="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#E0D8CE] flex items-center justify-center mr-3 group-hover:bg-[#1B5E20] group-hover:text-white transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#E0D8CE] flex items-center justify-center me-3 group-hover:bg-[#1B5E20] group-hover:text-white transition-colors">
                     <Globe className="w-4 h-4" />
                   </div>
                   <span className="font-bold text-[#2D3436] capitalize">{social.platform}</span>

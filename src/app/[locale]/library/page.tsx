@@ -33,11 +33,11 @@ export default async function LibraryPage(props: { params: Promise<{ locale: str
                {item.cover?.url ? (
                  <img src={item.cover.url} alt={item.title} className="w-full h-full object-cover rounded shadow-sm" />
                ) : (
-                 <div className="w-full h-full bg-[#2D3436] rounded shadow-md flex items-center justify-center p-4 text-center border-l-8 border-[#1B5E20]">
+                 <div className="w-full h-full bg-[#2D3436] rounded shadow-md flex items-center justify-center p-4 text-center border-s-8 border-[#1B5E20]">
                     <span className="text-white font-heading font-medium opacity-80 group-hover:opacity-100 transition-opacity">{item.title}</span>
                  </div>
                )}
-               <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-semibold text-[#1B5E20] shadow-sm flex items-center gap-1">
+               <div className="absolute top-3 end-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-semibold text-[#1B5E20] shadow-sm flex items-center gap-1">
                  {item.kind === 'book' && <Book className="w-3 h-3" />}
                  {item.kind === 'document' && <FileText className="w-3 h-3" />}
                  {item.kind === 'recommended_text' && <Bookmark className="w-3 h-3" />}
@@ -45,7 +45,7 @@ export default async function LibraryPage(props: { params: Promise<{ locale: str
                </div>
             </div>
             <div className="p-5 flex flex-col flex-grow">
-              <h3 className="font-heading font-bold text-lg text-[#2D3436] mb-2 line-clamp-2 group-hover:text-[#1B5E20] transition-colors">
+              <h3 className="font-heading font-bold text-lg text-[#2D3436] mb-2 line-clamp-2 group-hover:text-[#1B5E20] transition-colors break-words">
                 {item.title}
               </h3>
               {item.author && (

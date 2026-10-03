@@ -15,7 +15,7 @@ export function MobileMenuButton() {
   return (
     <button 
       onClick={toggle}
-      className="p-2 -mr-2 text-[#636E72] hover:text-[#2D3436] transition-colors"
+      className="p-2 -me-2 text-[#636E72] hover:text-[#2D3436] transition-colors"
       aria-label="Open menu"
     >
       <Menu className="w-6 h-6" />
@@ -91,7 +91,7 @@ export default function MobileNav({ open, onClose, mainItems, moreItems, locale,
       <div 
         ref={drawerRef}
         tabIndex={-1}
-        className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-[#FAF8F5] pb-6 shadow-xl outline-none transition-transform"
+        className="relative ms-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-[#FAF8F5] pb-6 shadow-xl outline-none transition-transform"
       >
         <div className="flex items-center justify-between px-4 py-5 border-b border-[#E0D8CE]">
           <span className="font-heading text-lg font-bold text-[#2D3436] truncate px-2">
@@ -132,7 +132,7 @@ export default function MobileNav({ open, onClose, mainItems, moreItems, locale,
                       </Link>
                     )}
                     {item.children && item.children.length > 0 && (
-                      <div className="flex flex-col pl-3 mt-1 space-y-1 border-l-2 border-[#E0D8CE] ml-2">
+                      <div className="flex flex-col ps-3 mt-1 space-y-1 border-s-2 border-[#E0D8CE] ms-2">
                         {item.children.map((child) => {
                           const isChildActive = pathname === child.href;
                           return (

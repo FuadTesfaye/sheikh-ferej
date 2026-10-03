@@ -38,7 +38,7 @@ export default async function QualificationsPage({ params }: { params: Promise<{
           const config = typeConfig[qual.type] || typeConfig.other;
 
           return (
-            <div key={qual.id} className="bg-white border border-[#E0D8CE] rounded-[4px] p-6 hover:shadow-sm transition-shadow">
+            <div key={qual.id} className="bg-white border border-[#E0D8CE] rounded-[4px] p-5 sm:p-6 hover:shadow-sm transition-shadow">
               <div className="flex justify-between items-start mb-4">
                 <span className={`px-2.5 py-1 text-xs font-medium rounded-full border ${config.color}`}>
                   {config.label}
@@ -48,15 +48,15 @@ export default async function QualificationsPage({ params }: { params: Promise<{
                 </span>
               </div>
               
-              <h3 className="font-heading text-xl font-semibold text-[#2D3436] mb-2">
+              <h3 className="font-heading text-lg sm:text-xl font-semibold text-[#2D3436] mb-2 break-words">
                 {qual.title}
               </h3>
               
-              <p className="text-[#B8860B] font-medium text-sm mb-4 pb-4 border-b border-[#E0D8CE]">
+              <p className="text-[#B8860B] font-medium text-sm mb-4 pb-4 border-b border-[#E0D8CE] break-words">
                 {qual.issuer}
               </p>
               
-              <p className="text-[#636E72] leading-relaxed">
+              <p className="text-[#636E72] leading-relaxed text-sm sm:text-base break-words">
                 {qual.description}
               </p>
             </div>

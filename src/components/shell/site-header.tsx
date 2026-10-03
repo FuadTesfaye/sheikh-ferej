@@ -25,25 +25,25 @@ export function SiteHeader({ profile, navigation, mainItems, moreItems = [], loc
   return (
     <>
       <header className="sticky top-0 z-40 w-full bg-[#FAF8F5]/95 backdrop-blur-sm border-b border-[#E0D8CE]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex-shrink-0">
-            <Link href="/" className="font-heading text-xl font-bold text-[#2D3436]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2">
+          <div className="flex-1 min-w-0 me-2 sm:me-4">
+            <Link href="/" className="font-heading text-base sm:text-xl font-bold text-[#2D3436] truncate block max-w-[210px] sm:max-w-none">
               {profile.name}
             </Link>
           </div>
           
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8 shrink-0">
             <HeaderNav items={items} />
             
-            <div className="flex items-center space-x-4 border-l border-[#E0D8CE] pl-4 ml-4">
+            <div className="flex items-center gap-3 sm:gap-4 border-s border-[#E0D8CE] ps-4 ms-2">
               <CommandSearch />
               <LocaleSwitcher />
             </div>
           </div>
 
           {/* Mobile Nav Toggle */}
-          <div className="flex md:hidden items-center space-x-2">
+          <div className="flex md:hidden items-center gap-1 sm:gap-2 shrink-0">
             <Link href="/search" className="p-2 text-[#636E72] hover:text-[#2D3436] transition-colors" aria-label="Search">
               <Search className="w-5 h-5" />
             </Link>

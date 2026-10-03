@@ -84,10 +84,10 @@ export function SiteFooter({ profile, navItems, locale = 'en' }: SiteFooterProps
   return (
     <footer className="w-full bg-[#F4F1EB] border-t border-[#E0D8CE] mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
           {/* Column 1: Scholar Name & Info */}
-          <div className="lg:col-span-2 flex flex-col space-y-4">
-            <Link href="/" className="font-heading text-xl font-bold text-[#2D3436] hover:text-[#1B5E20] transition-colors">
+          <div className="sm:col-span-2 lg:col-span-2 flex flex-col space-y-4">
+            <Link href="/" className="font-heading text-xl font-bold text-[#2D3436] hover:text-[#1B5E20] transition-colors break-words">
               {profile.name}
             </Link>
             {profile.headline && (
@@ -177,11 +177,11 @@ export function SiteFooter({ profile, navItems, locale = 'en' }: SiteFooterProps
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-[#E0D8CE] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 pt-8 border-t border-[#E0D8CE] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-start">
           <p className="font-body text-xs text-[#636E72]">
             © {currentYear} {profile.name}. All rights reserved.
           </p>
-          <div className="flex items-center gap-6 text-xs text-[#636E72]">
+          <div className="flex flex-wrap justify-center sm:justify-start items-center gap-4 sm:gap-6 text-xs text-[#636E72]">
             <Link href="/about" className="hover:text-[#1B5E20] transition-colors">Biography</Link>
             <Link href="/library/kitab-at-tawheed" className="hover:text-[#1B5E20] transition-colors">Kitab At-Tawheed</Link>
             <Link href="/contact" className="hover:text-[#1B5E20] transition-colors">Contact</Link>

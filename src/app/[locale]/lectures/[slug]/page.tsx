@@ -75,7 +75,7 @@ export default async function LectureDetailPage({ params }: LectureDetailPagePro
           All Lectures & Discourses
         </Link>
 
-        <div className="bg-white border border-[#E0D8CE] rounded-md p-6 md:p-8 mb-8">
+        <div className="bg-white border border-[#E0D8CE] rounded-md p-5 sm:p-6 md:p-8 mb-8">
           <div className="mb-8">
             <div className="flex flex-wrap items-center gap-4 text-sm text-[#636E72] mb-4">
               {lecture.categories && lecture.categories.length > 0 && (
@@ -98,7 +98,7 @@ export default async function LectureDetailPage({ params }: LectureDetailPagePro
               )}
             </div>
 
-            <h1 className="font-heading text-3xl md:text-4xl font-bold text-[#2D3436] mb-4 leading-tight">
+            <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#2D3436] mb-4 leading-tight break-words">
               {lecture.title}
             </h1>
 
@@ -129,7 +129,7 @@ export default async function LectureDetailPage({ params }: LectureDetailPagePro
           </div>
 
           {lecture.summary && (
-            <div className="prose prose-[#2D3436] max-w-none font-body mb-10">
+            <div className="prose prose-[#2D3436] max-w-none font-body mb-10 break-words">
               <h2 className="text-xl font-heading font-semibold text-[#2D3436] mb-3">Overview</h2>
               <p className="text-[#636E72] leading-relaxed">{lecture.summary}</p>
             </div>
@@ -143,7 +143,7 @@ export default async function LectureDetailPage({ params }: LectureDetailPagePro
         {relatedLectures.length > 0 && (
           <div className="mt-16">
             <h2 className="font-heading text-2xl font-bold text-[#2D3436] mb-6">Related Lectures</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {relatedLectures.map((related: PublicLecture) => (
                 <Link key={related.id} href={`/lectures/${related.slug}`} className="group bg-white border border-[#E0D8CE] rounded-md p-4 hover:border-[#1B5E20] transition-colors">
                   <h3 className="font-heading text-lg font-bold text-[#2D3436] group-hover:text-[#1B5E20] line-clamp-2 mb-2">

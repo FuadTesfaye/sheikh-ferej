@@ -33,34 +33,34 @@ export default async function EventItemPage(props: { params: Promise<{ locale: s
   const isOnline = !!event.online_url;
 
   return (
-    <article className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+    <article className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-16">
       <Link href="/events" className="inline-flex items-center text-sm font-medium text-[#636E72] hover:text-[#1B5E20] transition-colors mb-8">
-        <ArrowLeft className="w-4 h-4 mr-2" />
+        <ArrowLeft className="w-4 h-4 me-2 rtl:rotate-180" />
         Back to Events Schedule
       </Link>
 
       <div className="bg-white border border-[#E0D8CE] rounded-md overflow-hidden">
-        <div className="p-8 md:p-12 border-b border-[#E0D8CE]">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[#2D3436] mb-6 leading-tight">
+        <div className="p-5 sm:p-8 md:p-12 border-b border-[#E0D8CE]">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-heading font-bold text-[#2D3436] mb-6 leading-tight break-words">
                 {event.title}
             </h1>
             
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8 text-[#636E72]">
                <div className="flex items-center">
-                  <Calendar className="w-5 h-5 mr-3 text-[#1B5E20]" />
+                  <Calendar className="w-5 h-5 me-3 text-[#1B5E20]" />
                   <span className="font-medium text-[#2D3436]">{formattedDate}</span>
                </div>
                <div className="flex items-center">
-                  <Clock className="w-5 h-5 mr-3 text-[#1B5E20]" />
+                  <Clock className="w-5 h-5 me-3 text-[#1B5E20]" />
                   <span className="font-medium text-[#2D3436]">{timeStr}</span>
                </div>
             </div>
         </div>
 
-        <div className="bg-[#FAF8F5] p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-[#E0D8CE]">
+        <div className="bg-[#FAF8F5] p-5 sm:p-8 md:p-12 grid grid-cols-1 md:grid-cols-2 gap-8 border-b border-[#E0D8CE]">
            <div>
               <h3 className="text-sm font-bold text-[#636E72] uppercase tracking-wider mb-4 flex items-center">
-                 {isOnline ? <Video className="w-4 h-4 mr-2" /> : <MapPin className="w-4 h-4 mr-2" />}
+                 {isOnline ? <Video className="w-4 h-4 me-2" /> : <MapPin className="w-4 h-4 me-2" />}
                  Location
               </h3>
               <p className="text-lg font-medium text-[#2D3436] mb-1">
@@ -77,7 +77,7 @@ export default async function EventItemPage(props: { params: Promise<{ locale: s
            
            <div>
               <h3 className="text-sm font-bold text-[#636E72] uppercase tracking-wider mb-4 flex items-center">
-                 <Users className="w-4 h-4 mr-2" />
+                 <Users className="w-4 h-4 me-2" />
                  Attendance
               </h3>
               {event.capacity && (
@@ -85,7 +85,7 @@ export default async function EventItemPage(props: { params: Promise<{ locale: s
               )}
               {event.registration_required ? (
                  <div className="mt-3 bg-[#FFF8E1] border border-[#B8860B] text-[#B8860B] p-3 rounded flex items-start text-sm">
-                    <Info className="w-4 h-4 mr-2 shrink-0 mt-0.5" />
+                    <Info className="w-4 h-4 me-2 shrink-0 mt-0.5" />
                     <span>Registration is required to attend this event. Please secure your spot.</span>
                  </div>
               ) : (
@@ -94,9 +94,9 @@ export default async function EventItemPage(props: { params: Promise<{ locale: s
            </div>
         </div>
 
-        <div className="p-8 md:p-12">
+        <div className="p-5 sm:p-8 md:p-12">
             <h3 className="text-xl font-heading font-bold text-[#2D3436] mb-6">About this event</h3>
-            <div className="prose prose-lg prose-headings:font-heading prose-headings:text-[#2D3436] prose-p:text-[#2D3436]/80 max-w-none font-body">
+            <div className="prose prose-lg prose-headings:font-heading prose-headings:text-[#2D3436] prose-p:text-[#2D3436]/80 max-w-none font-body break-words">
                 {event.description || event.summary}
             </div>
         </div>

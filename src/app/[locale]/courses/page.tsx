@@ -49,7 +49,7 @@ export default async function CoursesPage({
                         </span>
                       </div>
                     )}
-                    <div className="absolute top-4 right-4">
+                    <div className="absolute top-4 end-4">
                       {course.enrolment_open ? (
                         <span className="bg-white/90 backdrop-blur text-[#1B5E20] font-semibold px-3 py-1 rounded-[4px] text-xs shadow-sm border border-[#E0D8CE]">
                           Enrollment Open
@@ -76,7 +76,7 @@ export default async function CoursesPage({
                       </div>
                     </div>
                     
-                    <h3 className="font-heading text-xl font-bold text-[#2D3436] mb-3 group-hover:text-[#1B5E20] transition-colors line-clamp-2">
+                    <h3 className="font-heading text-xl font-bold text-[#2D3436] mb-3 group-hover:text-[#1B5E20] transition-colors line-clamp-2 break-words">
                       {course.title}
                     </h3>
                     

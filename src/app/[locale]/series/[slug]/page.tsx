@@ -80,18 +80,18 @@ export default async function SeriesDetailPage({ params }: SeriesDetailPageProps
               />
             </div>
           )}
-          <div className="p-6 md:p-10">
+          <div className="p-5 sm:p-6 md:p-10">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#FAF8F5] border border-[#E0D8CE] text-[#B8860B] rounded-full text-xs font-medium mb-4">
               <Layers className="w-3.5 h-3.5" />
               Series • {series.lecture_count || lectures.length} Lessons
             </div>
             
-            <h1 className="font-heading text-3xl md:text-4xl font-bold text-[#2D3436] mb-4">
+            <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl font-bold text-[#2D3436] mb-4 break-words">
               {series.title}
             </h1>
             
             {series.description && (
-              <p className="text-lg text-[#636E72] leading-relaxed font-body">
+              <p className="text-base sm:text-lg text-[#636E72] leading-relaxed font-body break-words">
                 {series.description}
               </p>
             )}
@@ -117,30 +117,30 @@ export default async function SeriesDetailPage({ params }: SeriesDetailPageProps
                     href={`/lectures/${lecture.slug}`}
                     className="flex flex-col sm:flex-row items-start sm:items-center p-4 md:p-6 hover:bg-[#FAF8F5] transition-colors group"
                   >
-                    <div className="flex items-center gap-4 w-full">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FAF8F5] border border-[#E0D8CE] flex items-center justify-center text-[#2D3436] font-heading font-bold text-sm group-hover:bg-[#1B5E20] group-hover:text-white group-hover:border-[#1B5E20] transition-colors">
+                    <div className="flex items-center gap-3 sm:gap-4 w-full">
+                      <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FAF8F5] border border-[#E0D8CE] flex items-center justify-center text-[#2D3436] font-heading font-bold text-xs sm:text-sm group-hover:bg-[#1B5E20] group-hover:text-white group-hover:border-[#1B5E20] transition-colors">
                         {formattedNumber}
                       </div>
                       
-                      <div className="flex-grow">
-                        <h3 className="font-heading text-lg font-semibold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors">
+                      <div className="flex-grow min-w-0">
+                        <h3 className="font-heading text-base sm:text-lg font-semibold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors break-words">
                           {lecture.title}
                         </h3>
                         {lecture.summary && (
-                          <p className="text-sm text-[#636E72] line-clamp-1 mt-1">
+                          <p className="text-xs sm:text-sm text-[#636E72] line-clamp-1 mt-1 break-words">
                             {lecture.summary}
                           </p>
                         )}
                       </div>
 
-                      <div className="flex-shrink-0 flex items-center gap-6 text-[#636E72]">
+                      <div className="flex-shrink-0 flex items-center gap-3 sm:gap-6 text-[#636E72]">
                         {lecture.duration_seconds && (
                           <div className="hidden sm:flex items-center gap-1.5 text-sm">
                             <Clock className="w-4 h-4" />
                             {formatDuration(lecture.duration_seconds)}
                           </div>
                         )}
-                        <PlayCircle className="w-8 h-8 text-[#E0D8CE] group-hover:text-[#1B5E20] transition-colors" />
+                        <PlayCircle className="w-7 h-7 sm:w-8 sm:h-8 text-[#E0D8CE] group-hover:text-[#1B5E20] transition-colors" />
                       </div>
                     </div>
                   </Link>

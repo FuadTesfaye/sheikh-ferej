@@ -61,7 +61,7 @@ export default async function CoursePage({
 
       <header className="mb-12 border border-[#E0D8CE] rounded-[4px] overflow-hidden bg-white shadow-sm">
         <div className="md:flex">
-          <div className="md:w-2/5 aspect-[4/3] relative bg-[#FAF8F5] border-b md:border-b-0 md:border-r border-[#E0D8CE]">
+          <div className="md:w-2/5 aspect-[4/3] relative bg-[#FAF8F5] border-b md:border-b-0 md:border-e border-[#E0D8CE]">
             {course.cover ? (
               <img 
                 src={course.cover.url} 
@@ -70,13 +70,13 @@ export default async function CoursePage({
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center p-6 text-center">
-                <span className="font-heading font-bold text-[#B8860B] text-2xl">
+                <span className="font-heading font-bold text-[#B8860B] text-2xl break-words">
                   {course.title}
                 </span>
               </div>
             )}
           </div>
-          <div className="p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
+          <div className="p-5 sm:p-6 md:p-8 md:w-3/5 flex flex-col justify-center">
             <div className="flex items-center gap-3 mb-4">
               {course.enrolment_open ? (
                 <span className="bg-[#1B5E20] text-white font-semibold px-3 py-1 rounded-[4px] text-xs">
@@ -92,12 +92,12 @@ export default async function CoursePage({
               </span>
             </div>
             
-            <h1 className="font-heading text-3xl font-bold text-[#2D3436] mb-4">
+            <h1 className="font-heading text-2xl sm:text-3xl font-bold text-[#2D3436] mb-4 break-words">
               {course.title}
             </h1>
             
             {course.summary && (
-              <p className="text-[#636E72] text-lg">
+              <p className="text-[#636E72] text-base sm:text-lg break-words">
                 {course.summary}
               </p>
             )}
@@ -106,7 +106,7 @@ export default async function CoursePage({
       </header>
 
       {course.description && (
-        <section className="mb-12 prose prose-lg max-w-none text-[#2D3436]">
+        <section className="mb-12 prose prose-lg max-w-none text-[#2D3436] break-words">
           <h2 className="font-heading text-2xl font-bold text-[#2D3436] mb-4 border-b border-[#E0D8CE] pb-2">
             Course Description
           </h2>
@@ -115,7 +115,7 @@ export default async function CoursePage({
       )}
 
       {course.slug === "comprehensive-kitab-at-tawheed" && (
-        <div className="mb-10 bg-emerald-50/60 border border-[#1B5E20]/30 rounded-[4px] p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="mb-10 bg-emerald-50/60 border border-[#1B5E20]/30 rounded-[4px] p-5 sm:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <h3 className="font-heading font-bold text-lg text-[#1B5E20] mb-1">
               Accompanying Audio Lessons & Classical PDF
@@ -156,23 +156,23 @@ export default async function CoursePage({
         {lessons.length > 0 ? (
           <div className="space-y-4">
             {lessons.map((lesson, index) => (
-              <div key={lesson.id} className="border border-[#E0D8CE] bg-white rounded-[4px] p-5 shadow-sm flex gap-4 hover:border-[#1B5E20] transition-colors">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#FAF8F5] border border-[#E0D8CE] flex items-center justify-center font-heading font-bold text-[#2D3436]">
+              <div key={lesson.id} className="border border-[#E0D8CE] bg-white rounded-[4px] p-4 sm:p-5 shadow-sm flex gap-3 sm:gap-4 hover:border-[#1B5E20] transition-colors">
+                <div className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FAF8F5] border border-[#E0D8CE] flex items-center justify-center font-heading font-bold text-[#2D3436] text-xs sm:text-sm">
                   {lesson.position ?? (index + 1)}
                 </div>
-                <div className="flex-grow">
-                  <div className="flex justify-between items-start gap-4 mb-2">
-                    <h3 className="font-heading font-semibold text-lg text-[#2D3436]">
+                <div className="flex-grow min-w-0">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-4 mb-2">
+                    <h3 className="font-heading font-semibold text-base sm:text-lg text-[#2D3436] break-words">
                       {lesson.title}
                     </h3>
                     {lesson.duration_seconds && (
-                      <span className="text-[#636E72] text-xs font-medium whitespace-nowrap bg-[#FAF8F5] px-2 py-1 rounded-[4px] border border-[#E0D8CE]">
+                      <span className="self-start sm:self-auto text-[#636E72] text-xs font-medium whitespace-nowrap bg-[#FAF8F5] px-2 py-0.5 sm:py-1 rounded-[4px] border border-[#E0D8CE] shrink-0">
                         {formatDuration(lesson.duration_seconds)}
                       </span>
                     )}
                   </div>
                   {lesson.summary && (
-                    <p className="text-[#636E72] text-sm">
+                    <p className="text-[#636E72] text-xs sm:text-sm break-words">
                       {lesson.summary}
                     </p>
                   )}

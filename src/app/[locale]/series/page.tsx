@@ -57,7 +57,7 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
                     </div>
                   )}
                   {s.lecture_count !== undefined && (
-                    <div className="absolute top-3 right-3 bg-[#1B5E20] text-white text-xs font-medium px-2.5 py-1.5 rounded flex items-center gap-1.5 shadow-sm">
+                    <div className="absolute top-3 end-3 bg-[#1B5E20] text-white text-xs font-medium px-2.5 py-1.5 rounded flex items-center gap-1.5 shadow-sm">
                       <LibraryBig className="w-3.5 h-3.5" />
                       {s.lecture_count} Lessons
                     </div>
@@ -65,7 +65,7 @@ export default async function SeriesPage({ params }: SeriesPageProps) {
                 </div>
                 
                 <div className="p-6 flex flex-col flex-grow">
-                  <h3 className="font-heading text-xl font-bold text-[#2D3436] mb-3 group-hover:text-[#1B5E20] transition-colors">
+                  <h3 className="font-heading text-xl font-bold text-[#2D3436] mb-3 group-hover:text-[#1B5E20] transition-colors break-words">
                     {s.title}
                   </h3>
                   

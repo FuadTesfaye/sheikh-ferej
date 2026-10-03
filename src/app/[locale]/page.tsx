@@ -24,7 +24,7 @@ function LectureCard({ lecture }: { lecture: PublicLecture }) {
             </div>
           )}
           {isVideo && (
-            <div className="absolute top-2 right-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow flex items-center gap-1">
+            <div className="absolute top-2 end-2 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow flex items-center gap-1">
               <span>▶</span> HD Video
             </div>
           )}
@@ -42,7 +42,7 @@ function LectureCard({ lecture }: { lecture: PublicLecture }) {
               </span>
             )}
           </div>
-          <h3 className="font-heading font-semibold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors line-clamp-2">
+          <h3 className="font-heading font-semibold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors line-clamp-2 break-words">
             {lecture.title}
           </h3>
         </div>
@@ -59,7 +59,7 @@ function ArticleCard({ article }: { article: PublicArticle }) {
           <span className="font-semibold text-[#1B5E20] uppercase tracking-wider">{article.categories?.[0] || "Article"}</span>
           <span>{article.reading_minutes ? `${article.reading_minutes} min read` : "Authentic Text"}</span>
         </div>
-        <h3 className="font-heading font-semibold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors line-clamp-2">
+        <h3 className="font-heading font-semibold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors line-clamp-2 break-words">
           {article.title}
         </h3>
         <p className="text-[#636E72] text-sm line-clamp-3 flex-1 leading-relaxed">{article.summary}</p>
@@ -76,12 +76,12 @@ function EventCard({ event }: { event: PublicEvent }) {
   return (
     <Link href={`/events/${event.slug}`} className="block group">
       <div className="border border-[#E0D8CE] rounded-[4px] overflow-hidden bg-white flex hover:shadow-sm hover:border-[#1B5E20] transition-all">
-        <div className="bg-[#FAF8F5] border-r border-[#E0D8CE] px-4 py-4 flex flex-col items-center justify-center min-w-[80px]">
+        <div className="bg-[#FAF8F5] border-e border-[#E0D8CE] px-4 py-4 flex flex-col items-center justify-center min-w-[80px]">
           <span className="text-[#1B5E20] font-bold text-xl">{date.getDate()}</span>
           <span className="text-[#636E72] text-xs uppercase tracking-wider">{date.toLocaleString('default', { month: 'short' })}</span>
         </div>
-        <div className="p-4 space-y-1 flex-1">
-          <h3 className="font-heading font-semibold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors line-clamp-1">
+        <div className="p-4 space-y-1 flex-1 min-w-0">
+          <h3 className="font-heading font-semibold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors line-clamp-1 break-words">
             {event.title}
           </h3>
           {event.venue_name && (
@@ -170,7 +170,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       {/* Featured Lecture / Video Discourse */}
       {featuredLecture && (
         <section className="py-12 border-b border-[#E0D8CE]">
-          <div className="flex justify-between items-end mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2 sm:gap-4">
             <div>
               <span className="text-xs uppercase font-bold text-[#1B5E20] tracking-wider">Featured Broadcast</span>
               <h2 className="font-heading text-2xl md:text-3xl font-bold text-[#2D3436]">Watch & Listen</h2>
@@ -183,8 +183,8 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             <div className="lg:w-7/12 aspect-video bg-[#2D3436] relative flex items-center justify-center">
               <LecturePlayer media={featuredLecture.media} title={featuredLecture.title} coverUrl={featuredLecture.cover?.url} />
             </div>
-            <div className="p-6 md:p-8 flex flex-col justify-center lg:w-5/12 space-y-4">
-              <div className="flex gap-2">
+            <div className="p-5 sm:p-6 md:p-8 flex flex-col justify-center lg:w-5/12 space-y-4">
+              <div className="flex flex-wrap gap-2">
                 {featuredLecture.categories && featuredLecture.categories.length > 0 && (
                   <span className="px-3 py-1 text-xs rounded-full bg-[#FAF8F5] text-[#1B5E20] border border-[#E0D8CE] font-semibold uppercase tracking-wider">
                     {featuredLecture.categories[0]}
@@ -199,18 +199,18 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   HD Video
                 </span>
               </div>
-              <h3 className="font-heading text-2xl md:text-3xl font-bold text-[#2D3436]">
+              <h3 className="font-heading text-xl sm:text-2xl md:text-3xl font-bold text-[#2D3436] break-words">
                 {featuredLecture.title}
               </h3>
               {featuredLecture.summary && (
-                <p className="text-[#636E72] line-clamp-3 text-base leading-relaxed">
+                <p className="text-[#636E72] line-clamp-3 text-sm sm:text-base leading-relaxed break-words">
                   {featuredLecture.summary}
                 </p>
               )}
               <div className="pt-2">
                 <Link
                   href={`/lectures/${featuredLecture.slug}`}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-[#1B5E20] text-white font-semibold text-sm hover:bg-[#154a19] transition-colors shadow-sm"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-[#1B5E20] text-white font-semibold text-sm hover:bg-[#154a19] transition-colors shadow-sm text-center"
                 >
                   Full Lesson Transcript & Notes &rarr;
                 </Link>
@@ -254,13 +254,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
             >
               YouTube Playlist
             </a>
-            <Link href="/media" className="text-[#1B5E20] hover:text-[#B8860B] font-medium text-sm transition-colors ml-2">
+            <Link href="/media" className="text-[#1B5E20] hover:text-[#B8860B] font-medium text-sm transition-colors ms-2">
               All Media &rarr;
             </Link>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {videoLectures.slice(1, 7).map((lec) => (
             <div key={lec.id} className="border border-[#E0D8CE] rounded-[6px] overflow-hidden bg-white shadow-sm flex flex-col group hover:border-[#1B5E20] transition-colors">
               <div className="aspect-video bg-[#2D3436] relative">
@@ -271,11 +271,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                   <span className="font-semibold text-[#1B5E20] uppercase tracking-wider">{lec.categories?.[0] || "Discourse"}</span>
                   {lec.duration_seconds && <span>{formatDuration(lec.duration_seconds)}</span>}
                 </div>
-                <h3 className="font-heading font-bold text-lg text-[#2D3436] group-hover:text-[#1B5E20] transition-colors line-clamp-2 mb-2">
+                <h3 className="font-heading font-bold text-lg text-[#2D3436] group-hover:text-[#1B5E20] transition-colors line-clamp-2 mb-2 break-words">
                   {lec.title}
                 </h3>
                 {lec.summary && (
-                  <p className="text-xs text-[#636E72] line-clamp-2 mb-4 font-body leading-relaxed">
+                  <p className="text-xs text-[#636E72] line-clamp-2 mb-4 font-body leading-relaxed break-words">
                     {lec.summary}
                   </p>
                 )}
@@ -297,7 +297,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
       <div className="py-12 space-y-16">
         {audioLessons.length > 0 && (
           <section>
-            <div className="flex justify-between items-end mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2 sm:gap-4">
               <div>
                 <span className="text-xs uppercase font-bold text-[#1B5E20] tracking-wider">Audio Curriculum</span>
                 <h2 className="font-heading text-2xl font-bold text-[#2D3436]">Kitab At-Tawheed Audio Lessons</h2>
@@ -306,7 +306,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 View all lessons &rarr;
               </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {audioLessons.map((lecture) => (
                 <LectureCard key={lecture.id} lecture={lecture} />
               ))}
@@ -316,7 +316,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         {latestArticles.length > 0 && (
           <section>
-            <div className="flex justify-between items-end mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2 sm:gap-4">
               <div>
                 <span className="text-xs uppercase font-bold text-[#1B5E20] tracking-wider">Authentic Writings</span>
                 <h2 className="font-heading text-2xl font-bold text-[#2D3436]">Hadith & Scholarly Articles</h2>
@@ -325,7 +325,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 View all articles &rarr;
               </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {latestArticles.map((article) => (
                 <ArticleCard key={article.id} article={article} />
               ))}
@@ -335,7 +335,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
 
         {upcomingEvents.length > 0 && (
           <section>
-            <div className="flex justify-between items-end mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 gap-2 sm:gap-4">
               <div>
                 <span className="text-xs uppercase font-bold text-[#1B5E20] tracking-wider">Gatherings</span>
                 <h2 className="font-heading text-2xl font-bold text-[#2D3436]">Upcoming Events & Seminars</h2>
@@ -344,7 +344,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: s
                 View all events &rarr;
               </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {upcomingEvents.map((event) => (
                 <EventCard key={event.id} event={event} />
               ))}

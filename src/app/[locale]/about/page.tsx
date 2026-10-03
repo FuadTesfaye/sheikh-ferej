@@ -40,8 +40,8 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
       <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
-        <aside className="lg:w-1/3 shrink-0 space-y-8">
-          <div className="w-full aspect-square rounded-[4px] overflow-hidden bg-[#FAF8F5] border border-[#E0D8CE] flex items-center justify-center relative">
+        <aside className="lg:w-1/3 shrink-0 space-y-6 sm:space-y-8">
+          <div className="w-full max-w-[280px] sm:max-w-[320px] lg:max-w-none mx-auto lg:mx-0 aspect-square rounded-[4px] overflow-hidden bg-[#FAF8F5] border border-[#E0D8CE] flex items-center justify-center relative shadow-sm">
             {photoUrl ? (
               <Image src={photoUrl} alt={profile.name || "Scholar"} fill className="object-cover" />
             ) : (
@@ -53,9 +53,9 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           
           <div className="space-y-6">
             <div>
-              <h1 className="font-heading text-3xl font-bold text-[#2D3436]">{profile.name}</h1>
+              <h1 className="font-heading text-2xl sm:text-3xl font-bold text-[#2D3436] break-words">{profile.name}</h1>
               {profile.headline && (
-                <p className="text-lg text-[#1B5E20] font-medium mt-1">{profile.headline}</p>
+                <p className="text-base sm:text-lg text-[#1B5E20] font-medium mt-1">{profile.headline}</p>
               )}
             </div>
 
@@ -92,7 +92,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <main className="lg:w-2/3 space-y-10">
           <div>
             <h2 className="font-heading text-2xl font-bold text-[#2D3436] mb-6 pb-4 border-b border-[#E0D8CE]">Biography</h2>
-            <article className="prose prose-slate max-w-none text-[#636E72] font-body prose-headings:font-heading prose-headings:text-[#2D3436] prose-a:text-[#1B5E20] leading-relaxed whitespace-pre-wrap text-base">
+            <article className="prose prose-slate max-w-none text-[#636E72] font-body prose-headings:font-heading prose-headings:text-[#2D3436] prose-a:text-[#1B5E20] leading-relaxed whitespace-pre-wrap text-base break-words">
               {profile.biography}
             </article>
           </div>

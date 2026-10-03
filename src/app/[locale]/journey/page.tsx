@@ -23,12 +23,12 @@ export default async function JourneyPage({ params }: { params: Promise<{ locale
         </p>
       </div>
 
-      <div className="relative border-l-2 border-[#E0D8CE] ml-4 md:ml-8 space-y-12">
+      <div className="relative border-s-2 border-[#E0D8CE] ms-3 sm:ms-6 md:ms-8 space-y-10 sm:space-y-12">
         {journeyData.map((entry, idx) => {
           const isCurrent = entry.type === "current";
           return (
-            <div key={idx} className="relative pl-8 md:pl-12">
-              <span className={`absolute -left-[9px] top-1.5 flex h-4 w-4 rounded-full ${isCurrent ? 'bg-[#1B5E20]' : 'bg-[#FAF8F5] border-2 border-[#1B5E20]'}`}>
+            <div key={idx} className="relative ps-6 sm:ps-8 md:ps-12">
+              <span className={`absolute -start-[9px] top-1.5 flex h-4 w-4 rounded-full ${isCurrent ? 'bg-[#1B5E20]' : 'bg-[#FAF8F5] border-2 border-[#1B5E20]'}`}>
               </span>
 
               <div className="flex flex-col space-y-2">
@@ -36,8 +36,8 @@ export default async function JourneyPage({ params }: { params: Promise<{ locale
                   {entry.year}
                 </span>
                 
-                <div className="bg-white border border-[#E0D8CE] p-6 rounded-[4px] shadow-sm">
-                  <h3 className="text-xl font-heading font-semibold text-[#2D3436]">
+                <div className="bg-white border border-[#E0D8CE] p-4 sm:p-6 rounded-[4px] shadow-sm">
+                  <h3 className="text-lg sm:text-xl font-heading font-semibold text-[#2D3436] break-words">
                     {entry.title}
                   </h3>
                   
@@ -47,7 +47,7 @@ export default async function JourneyPage({ params }: { params: Promise<{ locale
                     </p>
                   )}
                   
-                  <p className="text-[#636E72] mt-3 leading-relaxed">
+                  <p className="text-[#636E72] mt-3 leading-relaxed text-sm sm:text-base break-words">
                     {entry.description}
                   </p>
                 </div>

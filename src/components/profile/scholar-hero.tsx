@@ -14,40 +14,40 @@ export function ScholarHero({ name, headline, biography, photoUrl, locale }: Sch
   const t = useTranslations("Navigation");
 
   return (
-    <section className="py-12 md:py-20 border-b border-[#E0D8CE]">
-      <div className="flex flex-col-reverse md:flex-row gap-12 items-center rtl:flex-row-reverse">
-        <div className="flex-1 space-y-6">
+    <section className="py-10 md:py-20 border-b border-[#E0D8CE]">
+      <div className="flex flex-col-reverse md:flex-row gap-8 md:gap-12 items-center">
+        <div className="flex-1 space-y-5 md:space-y-6 min-w-0 w-full">
           <div>
-            <h1 className="font-heading text-4xl md:text-5xl font-bold text-[#2D3436] leading-tight">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-bold text-[#2D3436] leading-tight break-words">
               {name}
             </h1>
             {headline && (
-              <p className="mt-2 text-xl text-[#1B5E20] font-medium">{headline}</p>
+              <p className="mt-2 text-lg sm:text-xl text-[#1B5E20] font-medium">{headline}</p>
             )}
           </div>
           
           {biography && (
-            <p className="text-[#636E72] text-lg leading-relaxed max-w-2xl font-body">
+            <p className="text-[#636E72] text-base sm:text-lg leading-relaxed max-w-2xl font-body break-words">
               {biography.slice(0, 200)}...
             </p>
           )}
           
-          <div className="flex flex-wrap gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-2">
             <Link 
               href="/lectures"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-[4px] bg-[#1B5E20] text-white font-medium hover:bg-[#154a19] transition-colors shadow-sm"
+              className="inline-flex items-center justify-center px-5 sm:px-6 py-3 rounded-[4px] bg-[#1B5E20] text-white font-medium hover:bg-[#154a19] transition-colors shadow-sm text-center w-full sm:w-auto"
             >
               Explore Lectures
             </Link>
             <Link 
               href="/library"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-[4px] bg-[#FAF8F5] border border-[#1B5E20] text-[#1B5E20] font-medium hover:bg-[#1B5E20] hover:text-white transition-colors"
+              className="inline-flex items-center justify-center px-5 sm:px-6 py-3 rounded-[4px] bg-[#FAF8F5] border border-[#1B5E20] text-[#1B5E20] font-medium hover:bg-[#1B5E20] hover:text-white transition-colors text-center w-full sm:w-auto"
             >
               Public Library & Kitabs
             </Link>
             <Link 
               href="/about"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-[4px] border border-[#E0D8CE] hover:bg-[#FAF8F5] text-[#2D3436] font-medium transition-colors"
+              className="inline-flex items-center justify-center px-5 sm:px-6 py-3 rounded-[4px] border border-[#E0D8CE] hover:bg-[#FAF8F5] text-[#2D3436] font-medium transition-colors text-center w-full sm:w-auto"
             >
               About
             </Link>
@@ -94,7 +94,7 @@ export function ScholarHero({ name, headline, biography, photoUrl, locale }: Sch
           </div>
         </div>
 
-        <div className="w-48 h-48 md:w-72 md:h-72 shrink-0 rounded-[4px] overflow-hidden shadow-sm border border-[#E0D8CE] relative bg-[#FAF8F5] flex items-center justify-center">
+        <div className="w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 shrink-0 rounded-[4px] overflow-hidden shadow-sm border border-[#E0D8CE] relative bg-[#FAF8F5] flex items-center justify-center">
           {photoUrl ? (
             <Image
               src={photoUrl}

@@ -38,8 +38,8 @@ export default async function FatwasPage({
           <div className="space-y-6">
             {fatwas.map((fatwa) => (
               <Link key={fatwa.id} href={`/fatwas/${fatwa.slug}`} className="block group">
-                <div className="border border-[#E0D8CE] bg-white rounded-[4px] p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#B8860B] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="border border-[#E0D8CE] bg-white rounded-[4px] p-5 sm:p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+                  <div className="absolute start-0 top-0 bottom-0 w-1 bg-[#B8860B] opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   
                   <div className="flex flex-wrap items-center gap-3 mb-4 text-xs font-medium">
                     {fatwa.categories?.[0] && (
@@ -53,14 +53,14 @@ export default async function FatwasPage({
                     </span>
                   </div>
                   
-                  <h3 className="font-heading text-xl md:text-2xl font-bold text-[#2D3436] mb-3 group-hover:text-[#1B5E20] transition-colors">
+                  <h3 className="font-heading text-xl md:text-2xl font-bold text-[#2D3436] mb-3 group-hover:text-[#1B5E20] transition-colors break-words">
                     {fatwa.title}
                   </h3>
                   
                   {fatwa.question && (
                     <div className="bg-[#FAF8F5] border border-[#E0D8CE] rounded-[4px] p-4 mb-4">
-                      <p className="text-[#2D3436] font-medium text-sm line-clamp-2">
-                        <span className="text-[#636E72] font-bold mr-2">Q:</span>
+                      <p className="text-[#2D3436] font-medium text-sm line-clamp-2 break-words">
+                        <span className="text-[#636E72] font-bold me-2">Q:</span>
                         {fatwa.question}
                       </p>
                     </div>

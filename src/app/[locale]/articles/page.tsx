@@ -75,13 +75,13 @@ export default async function ArticlesPage({
                   />
                 </div>
               ) : (
-                <div className="aspect-[4/3] bg-[#FAF8F5] flex items-center justify-center border-r border-[#E0D8CE]">
-                  <span className="text-[#B8860B] font-heading font-bold text-xl px-8 text-center">
+                <div className="aspect-[4/3] bg-[#FAF8F5] flex items-center justify-center border-b md:border-b-0 md:border-e border-[#E0D8CE]">
+                  <span className="text-[#B8860B] font-heading font-bold text-xl px-8 text-center break-words">
                     {featuredArticle.title}
                   </span>
                 </div>
               )}
-              <div className="p-8 md:pr-12">
+              <div className="p-6 sm:p-8 md:pe-12">
                 <div className="flex items-center gap-3 mb-4 text-sm">
                   <span className="text-[#1B5E20] font-medium bg-[#FAF8F5] border border-[#E0D8CE] px-3 py-1 rounded-[4px]">
                     Featured
@@ -90,11 +90,11 @@ export default async function ArticlesPage({
                     {formatDate(featuredArticle.published_at, locale)}
                   </span>
                 </div>
-                <h2 className="font-heading text-3xl font-bold text-[#2D3436] mb-4 group-hover:text-[#1B5E20] transition-colors">
+                <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#2D3436] mb-4 group-hover:text-[#1B5E20] transition-colors break-words">
                   {featuredArticle.title}
                 </h2>
                 {featuredArticle.summary && (
-                  <p className="text-[#636E72] text-lg mb-6 line-clamp-3">
+                  <p className="text-[#636E72] text-base sm:text-lg mb-6 line-clamp-3 break-words">
                     {featuredArticle.summary}
                   </p>
                 )}
@@ -110,10 +110,10 @@ export default async function ArticlesPage({
 
       <section>
         {latestArticles.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {latestArticles.map((article) => (
               <Link key={article.id} href={`/articles/${article.slug}`} className="group block h-full">
-                <article className="border border-[#E0D8CE] bg-white rounded-[4px] p-6 h-full flex flex-col shadow-sm hover:shadow-md transition-shadow">
+                <article className="border border-[#E0D8CE] bg-white rounded-[4px] p-5 sm:p-6 h-full flex flex-col shadow-sm hover:shadow-md transition-shadow">
                   <div className="flex items-center gap-2 text-xs mb-4">
                     {article.categories?.[0] && (
                       <span className="text-[#1B5E20] font-medium bg-[#FAF8F5] border border-[#E0D8CE] px-2 py-1 rounded-[4px]">
@@ -124,7 +124,7 @@ export default async function ArticlesPage({
                       {formatDate(article.published_at, locale)}
                     </span>
                   </div>
-                  <h3 className="font-heading text-xl font-bold text-[#2D3436] mb-3 group-hover:text-[#1B5E20] transition-colors line-clamp-2">
+                  <h3 className="font-heading text-lg sm:text-xl font-bold text-[#2D3436] mb-3 group-hover:text-[#1B5E20] transition-colors line-clamp-2 break-words">
                     {article.title}
                   </h3>
                   {article.summary && (

@@ -67,25 +67,25 @@ export function CommandSearch() {
         className="flex items-center text-[#636E72] hover:text-[#2D3436] transition-colors px-3 py-1.5 rounded-md border border-[#E0D8CE] bg-white/60 text-sm shadow-xs"
         aria-label="Search content"
       >
-        <Search className="w-4 h-4 mr-2 text-[#1B5E20]" />
-        <span className="hidden sm:inline-block mr-4 font-body">Quick search...</span>
+        <Search className="w-4 h-4 me-2 text-[#1B5E20]" />
+        <span className="hidden sm:inline-block me-4 font-body">Quick search...</span>
         <kbd className="hidden sm:inline-block font-sans text-xs font-semibold px-1.5 py-0.5 bg-[#FAF8F5] border border-[#E0D8CE] rounded-sm text-[#636E72]">
           ⌘K
         </kbd>
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-[12vh] sm:pt-[15vh] px-4">
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] sm:pt-[15vh] px-3 sm:px-4">
           <div className="fixed inset-0 bg-[#2D3436]/50 backdrop-blur-xs" onClick={() => setOpen(false)} />
           <div className="relative w-full max-w-2xl bg-white rounded-xl shadow-2xl border border-[#E0D8CE] overflow-hidden">
             <Command className="w-full" label="Command Menu" shouldFilter={false}>
-              <div className="flex items-center border-b border-[#E0D8CE] px-4 py-3 bg-[#FAF8F5]">
+              <div className="flex items-center border-b border-[#E0D8CE] px-3 sm:px-4 py-3 bg-[#FAF8F5]">
                 <Search className="w-5 h-5 text-[#1B5E20] shrink-0" />
                 <Command.Input 
                   value={query}
                   onValueChange={setQuery}
                   placeholder="Search pages, lectures, kitabs, rulings..." 
-                  className="flex-1 bg-transparent border-none focus:outline-none focus:ring-0 text-base px-3 font-body text-[#2D3436] placeholder-[#636E72]/60" 
+                  className="flex-1 bg-transparent border-none focus:outline-none focus:ring-0 text-sm sm:text-base px-3 font-body text-[#2D3436] placeholder-[#636E72]/60" 
                   autoFocus
                 />
                 <button 
@@ -103,7 +103,7 @@ export function CommandSearch() {
                     onSelect={() => handleSelect(`/search?q=${encodeURIComponent(query.trim())}`)}
                     className="flex items-center px-3 py-2.5 rounded-md bg-emerald-50/70 hover:bg-emerald-100/70 cursor-pointer text-[#1B5E20] font-semibold font-body text-sm mb-2"
                   >
-                    <Search className="w-4 h-4 mr-3 shrink-0" />
+                    <Search className="w-4 h-4 me-3 shrink-0" />
                     <span>Search all portal archives for &quot;{query.trim()}&quot;</span>
                   </Command.Item>
                 )}
@@ -116,13 +116,13 @@ export function CommandSearch() {
                         <Command.Item
                           key={item.href}
                           onSelect={() => handleSelect(item.href)}
-                          className="flex items-center justify-between px-3 py-2.5 rounded-md hover:bg-[#FAF8F5] cursor-pointer text-[#2D3436] font-medium font-body text-sm transition-colors mb-0.5 group"
+                          className="flex items-center justify-between gap-2 px-3 py-2.5 rounded-md hover:bg-[#FAF8F5] cursor-pointer text-[#2D3436] font-medium font-body text-sm transition-colors mb-0.5 group"
                         >
-                          <div className="flex items-center">
-                            <Icon className="w-4 h-4 mr-3 text-[#1B5E20] shrink-0" />
-                            <span className="group-hover:text-[#1B5E20] transition-colors">{item.title}</span>
+                          <div className="flex items-center min-w-0 flex-1">
+                            <Icon className="w-4 h-4 me-3 text-[#1B5E20] shrink-0" />
+                            <span className="group-hover:text-[#1B5E20] transition-colors truncate">{item.title}</span>
                           </div>
-                          <span className="text-xs text-[#636E72] bg-[#FAF8F5] group-hover:bg-white border border-[#E0D8CE] px-2 py-0.5 rounded font-mono">
+                          <span className="text-[11px] sm:text-xs text-[#636E72] bg-[#FAF8F5] group-hover:bg-white border border-[#E0D8CE] px-2 py-0.5 rounded font-mono shrink-0">
                             {item.category}
                           </span>
                         </Command.Item>

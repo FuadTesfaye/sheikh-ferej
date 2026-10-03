@@ -51,24 +51,24 @@ export default function AskPage(props: { params: Promise<{ locale: string }> }) 
       </header>
 
       {success ? (
-        <div className="bg-[#FAF8F5] border border-[#1B5E20]/30 rounded-lg p-8 md:p-12 text-center shadow-xs">
+        <div className="bg-[#FAF8F5] border border-[#1B5E20]/30 rounded-lg p-6 sm:p-8 md:p-12 text-center shadow-xs">
            <CheckCircle className="w-16 h-16 text-[#1B5E20] mx-auto mb-6" />
            <h2 className="text-2xl font-heading font-bold text-[#2D3436] mb-4">Question Received</h2>
-           <p className="text-lg text-[#636E72] mb-6">
+           <p className="text-base sm:text-lg text-[#636E72] mb-6">
              Your question has been received. Reference: <strong className="text-[#2D3436]">#{success.id}</strong>.
            </p>
-           <p className="text-[#636E72] font-body">
+           <p className="text-[#636E72] font-body text-sm sm:text-base">
              The Sheikh&apos;s office reviews inquiries in due course. Thank you for reaching out.
            </p>
            <button 
              onClick={() => { setSuccess(null); setQuestion(''); }}
-             className="mt-8 px-6 py-2.5 border border-[#E0D8CE] bg-white rounded-md text-[#2D3436] font-medium hover:bg-[#FAF8F5] transition-colors"
+             className="mt-8 px-6 py-2.5 border border-[#E0D8CE] bg-white rounded-md text-[#2D3436] font-medium hover:bg-[#FAF8F5] transition-colors w-full sm:w-auto"
            >
              Submit Another Question
            </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="bg-white border border-[#E0D8CE] rounded-lg p-6 md:p-10 shadow-xs">
+        <form onSubmit={handleSubmit} className="bg-white border border-[#E0D8CE] rounded-lg p-5 sm:p-8 md:p-10 shadow-xs">
           <div className="mb-6">
             <label htmlFor="question" className="block text-sm font-bold text-[#2D3436] mb-2">
               Your Question <span className="text-red-500">*</span>
@@ -98,7 +98,7 @@ export default function AskPage(props: { params: Promise<{ locale: string }> }) 
                 onChange={(e) => setIsAnonymous(e.target.checked)}
                 className="w-4 h-4 text-[#1B5E20] border-[#E0D8CE] rounded focus:ring-[#1B5E20]"
               />
-              <span className="ml-2 text-sm font-medium text-[#2D3436]">Submit anonymously</span>
+              <span className="ms-2 text-sm font-medium text-[#2D3436]">Submit anonymously</span>
             </label>
           </div>
 
@@ -139,11 +139,11 @@ export default function AskPage(props: { params: Promise<{ locale: string }> }) 
             <button
               type="submit"
               disabled={isSubmitting || question.length < 10}
-              className="bg-[#1B5E20] hover:bg-[#154a19] disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 px-8 rounded-md transition-colors flex items-center shadow-xs"
+              className="w-full sm:w-auto bg-[#1B5E20] hover:bg-[#154a19] disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 px-8 rounded-md transition-colors flex items-center justify-center shadow-xs"
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  <Loader2 className="w-5 h-5 me-2 animate-spin" />
                   Submitting...
                 </>
               ) : (

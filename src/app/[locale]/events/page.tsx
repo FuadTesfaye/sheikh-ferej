@@ -38,21 +38,21 @@ export default async function EventsPage(props: { params: Promise<{ locale: stri
           return (
           <Link key={event.id} href={`/events/${event.slug}`} className="group block bg-white rounded-md border border-[#E0D8CE] overflow-hidden hover:border-[#1B5E20] transition-colors duration-200">
             <div className="flex flex-col sm:flex-row">
-              <div className="sm:w-48 bg-[#FAF8F5] flex flex-col items-center justify-center p-6 border-b sm:border-b-0 sm:border-r border-[#E0D8CE] shrink-0">
+              <div className="sm:w-48 bg-[#FAF8F5] flex flex-col items-center justify-center p-6 border-b sm:border-b-0 sm:border-e border-[#E0D8CE] shrink-0">
                 <span className="text-sm font-bold text-[#1B5E20] uppercase tracking-wider">{month}</span>
                 <span className="text-4xl font-heading font-black text-[#2D3436] mt-1 mb-2">{day}</span>
                 <div className="flex items-center text-xs text-[#636E72] font-medium mt-1">
-                  <Clock className="w-3.5 h-3.5 mr-1" />
+                  <Clock className="w-3.5 h-3.5 me-1" />
                   {time}
                 </div>
               </div>
-              <div className="p-6 sm:p-8 flex flex-col justify-center flex-grow">
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <h3 className="font-heading font-bold text-xl md:text-2xl text-[#2D3436] group-hover:text-[#1B5E20] transition-colors">
+              <div className="p-5 sm:p-8 flex flex-col justify-center flex-grow min-w-0">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-4 mb-3">
+                  <h3 className="font-heading font-bold text-xl md:text-2xl text-[#2D3436] group-hover:text-[#1B5E20] transition-colors break-words">
                     {event.title}
                   </h3>
                   {event.registration_required && (
-                    <span className="shrink-0 bg-[#FFF8E1] text-[#B8860B] border border-[#B8860B] text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                    <span className="self-start sm:self-auto shrink-0 bg-[#FFF8E1] text-[#B8860B] border border-[#B8860B] text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
                       Registration Required
                     </span>
                   )}
@@ -61,12 +61,12 @@ export default async function EventsPage(props: { params: Promise<{ locale: stri
                 <div className="flex items-center text-sm font-medium text-[#636E72]">
                   {isOnline ? (
                     <>
-                      <Video className="w-4 h-4 mr-2 text-[#1B5E20]" />
+                      <Video className="w-4 h-4 me-2 text-[#1B5E20]" />
                       Online Event
                     </>
                   ) : (
                     <>
-                      <MapPin className="w-4 h-4 mr-2 text-[#1B5E20]" />
+                      <MapPin className="w-4 h-4 me-2 text-[#1B5E20]" />
                       {event.venue_name || "Venue TBA"}
                     </>
                   )}
