@@ -114,6 +114,33 @@ export default async function CoursePage({
         </section>
       )}
 
+      {course.slug === "comprehensive-kitab-at-tawheed" && (
+        <div className="mb-10 bg-emerald-50/60 border border-[#1B5E20]/30 rounded-[4px] p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h3 className="font-heading font-bold text-lg text-[#1B5E20] mb-1">
+              Accompanying Audio Lessons & Classical PDF
+            </h3>
+            <p className="text-sm text-[#636E72]">
+              Access the complete 32-chapter audio exposition and download the full 132-page classical treatise.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-3 shrink-0">
+            <Link 
+              href="/series/kitab-at-tawheed"
+              className="px-4 py-2 bg-[#1B5E20] text-white rounded text-sm font-semibold hover:bg-[#154a19] transition-colors"
+            >
+              Listen to 32 Lessons &rarr;
+            </Link>
+            <Link 
+              href="/library/kitab-at-tawheed"
+              className="px-4 py-2 bg-white border border-[#E0D8CE] text-[#2D3436] rounded text-sm font-semibold hover:border-[#1B5E20] transition-colors"
+            >
+              Download PDF &rarr;
+            </Link>
+          </div>
+        </div>
+      )}
+
       <section>
         <h2 className="font-heading text-2xl font-bold text-[#2D3436] mb-6 border-b border-[#E0D8CE] pb-2 flex items-center justify-between">
           <span>Course Syllabus</span>

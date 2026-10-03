@@ -12,9 +12,13 @@ export default function HeaderNav({ items }: { items: NavItem[] }) {
   
   return (
     <nav className="flex items-center space-x-6">
-      {items.map((item) => {
-        const isActive = pathname.startsWith(item.href);
+      {items.map((item, idx) => {
         const hasChildren = item.children && item.children.length > 0;
+        const isChildActive = hasChildren && item.children?.some(c => 
+          pathname === c.href || (c.href !== '/' && pathname.startsWith(c.href))
+        );
+        const isActive = (item.href !== '#' && pathname.startsWith(item.href)) || Boolean(isChildActive);
+        const isLast = idx >= items.length - 2;
         
         if (hasChildren) {
           return (
@@ -23,6 +27,7 @@ export default function HeaderNav({ items }: { items: NavItem[] }) {
               item={item} 
               isActive={isActive} 
               label={t(item.labelKey as any)}
+              alignEnd={isLast}
             />
           );
         }
@@ -32,7 +37,7 @@ export default function HeaderNav({ items }: { items: NavItem[] }) {
             key={item.key}
             href={item.href}
             className={`font-body text-sm font-medium transition-colors ${
-              isActive ? 'text-[#1B5E20]' : 'text-[#636E72] hover:text-[#2D3436]'
+              isActive ? 'text-[#1B5E20] font-semibold' : 'text-[#636E72] hover:text-[#2D3436]'
             }`}
           >
             {t(item.labelKey as any)}
@@ -43,7 +48,7 @@ export default function HeaderNav({ items }: { items: NavItem[] }) {
   );
 }
 
-function DropdownNavItem({ item, isActive, label }: { item: NavItem, isActive: boolean, label: string }) {
+function DropdownNavItem({ item, isActive, label, alignEnd }: { item: NavItem, isActive: boolean, label: string, alignEnd?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const t = useTranslations();
@@ -67,7 +72,7 @@ function DropdownNavItem({ item, isActive, label }: { item: NavItem, isActive: b
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center font-body text-sm font-medium transition-colors ${
-          isActive || isOpen ? 'text-[#1B5E20]' : 'text-[#636E72] hover:text-[#2D3436]'
+          isActive || isOpen ? 'text-[#1B5E20] font-semibold' : 'text-[#636E72] hover:text-[#2D3436]'
         }`}
         aria-expanded={isOpen}
       >
@@ -76,7 +81,7 @@ function DropdownNavItem({ item, isActive, label }: { item: NavItem, isActive: b
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-48 rounded-md bg-[#FAF8F5] shadow-lg border border-[#E0D8CE] py-1 z-50">
+        <div className={`absolute top-full ${alignEnd ? 'right-0' : 'left-0'} mt-2 w-52 rounded-md bg-[#FAF8F5] shadow-lg border border-[#E0D8CE] py-1.5 z-50`}>
           {item.children?.map((child) => {
             const isChildActive = pathname === child.href;
             return (
@@ -85,7 +90,7 @@ function DropdownNavItem({ item, isActive, label }: { item: NavItem, isActive: b
                 href={child.href}
                 className={`block px-4 py-2 font-body text-sm transition-colors ${
                   isChildActive 
-                    ? 'text-[#1B5E20] bg-black/5' 
+                    ? 'text-[#1B5E20] font-semibold bg-[#1B5E20]/10' 
                     : 'text-[#636E72] hover:text-[#2D3436] hover:bg-black/5'
                 }`}
                 onClick={() => setIsOpen(false)}

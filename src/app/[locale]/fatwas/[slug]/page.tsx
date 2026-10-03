@@ -31,6 +31,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
+function formatMarkdown(content: string): string {
+  return content
+    .replace(/^### (.*$)/gim, '<h3 class="font-heading text-xl font-bold text-[#2D3436] mt-6 mb-3">$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2 class="font-heading text-2xl font-bold text-[#2D3436] mt-8 mb-4">$1</h2>')
+    .replace(/\*\*(.*?)\*\*/gim, '<strong class="font-semibold text-[#2D3436]">$1</strong>')
+    .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+    .replace(/^\s*-\s+(.*$)/gim, '<li class="ml-5 list-disc text-[#2D3436] mb-1">$1</li>')
+    .split(/\n\n+/)
+    .map(block => {
+      const trimmed = block.trim();
+      if (trimmed.startsWith('<h') || trimmed.startsWith('<li')) return trimmed;
+      return `<p class="leading-relaxed mb-4 text-[#2D3436]">${trimmed.replace(/\n/g, '<br/>')}</p>`;
+    })
+    .join('\n');
+}
+
 export default async function FatwaPage({ 
   params 
 }: { 
@@ -86,8 +102,8 @@ export default async function FatwaPage({
               Question:
             </h2>
             <div 
-              className="prose prose-lg max-w-none text-[#2D3436]"
-              dangerouslySetInnerHTML={{ __html: fatwa.question }}
+              className="prose prose-lg max-w-none text-[#2D3436] leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: formatMarkdown(fatwa.question) }}
             />
           </section>
         )}
@@ -99,7 +115,7 @@ export default async function FatwaPage({
             </h2>
             <div 
               className="prose prose-lg max-w-none prose-scholarly text-[#2D3436]"
-              dangerouslySetInnerHTML={{ __html: fatwa.answer }}
+              dangerouslySetInnerHTML={{ __html: formatMarkdown(fatwa.answer) }}
             />
           </section>
         )}

@@ -1,6 +1,7 @@
 import { setRequestLocale } from "next-intl/server";
 import { getProfile } from "@/lib/api/profile";
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -88,11 +89,62 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
           </div>
         </aside>
 
-        <main className="lg:w-2/3">
-          <h2 className="font-heading text-2xl font-bold text-[#2D3436] mb-8 pb-4 border-b border-[#E0D8CE]">Biography</h2>
-          <article className="prose prose-slate max-w-none text-[#636E72] font-body prose-headings:font-heading prose-headings:text-[#2D3436] prose-a:text-[#1B5E20] leading-relaxed whitespace-pre-wrap">
-            {profile.biography}
-          </article>
+        <main className="lg:w-2/3 space-y-10">
+          <div>
+            <h2 className="font-heading text-2xl font-bold text-[#2D3436] mb-6 pb-4 border-b border-[#E0D8CE]">Biography</h2>
+            <article className="prose prose-slate max-w-none text-[#636E72] font-body prose-headings:font-heading prose-headings:text-[#2D3436] prose-a:text-[#1B5E20] leading-relaxed whitespace-pre-wrap text-base">
+              {profile.biography}
+            </article>
+          </div>
+
+          {/* Institutional Highlights */}
+          <div className="pt-6 border-t border-[#E0D8CE]">
+            <h3 className="font-heading text-xl font-bold text-[#2D3436] mb-4">Institutional Roles & Community Service</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="bg-[#FAF8F5] border border-[#E0D8CE] p-4 rounded-md">
+                <span className="text-xs uppercase font-bold text-[#1B5E20] tracking-wider block mb-1">Islamic Banking</span>
+                <h4 className="font-heading font-bold text-[#2D3436]">Sharia Banking Consultant</h4>
+                <p className="text-xs text-[#636E72] mt-1">Wegagen Bank — Islamic Banking Window (AAOIFI Standard Governance)</p>
+              </div>
+              <div className="bg-[#FAF8F5] border border-[#E0D8CE] p-4 rounded-md">
+                <span className="text-xs uppercase font-bold text-[#1B5E20] tracking-wider block mb-1">Pan-African Dawah</span>
+                <h4 className="font-heading font-bold text-[#2D3436]">African Scholars Union</h4>
+                <p className="text-xs text-[#636E72] mt-1">Active member contributing to continental Sharia deliberations and educational initiatives.</p>
+              </div>
+              <div className="bg-[#FAF8F5] border border-[#E0D8CE] p-4 rounded-md">
+                <span className="text-xs uppercase font-bold text-[#1B5E20] tracking-wider block mb-1">Foundation Leadership</span>
+                <h4 className="font-heading font-bold text-[#2D3436]">President, Al-Fajr Islamic Foundation</h4>
+                <p className="text-xs text-[#636E72] mt-1">Overseeing Islamic education, community welfare, and educational centers in Addis Ababa.</p>
+              </div>
+              <div className="bg-[#FAF8F5] border border-[#E0D8CE] p-4 rounded-md">
+                <span className="text-xs uppercase font-bold text-[#1B5E20] tracking-wider block mb-1">Quranic Exegesis</span>
+                <h4 className="font-heading font-bold text-[#2D3436]">Tafsir Translation Committee</h4>
+                <p className="text-xs text-[#636E72] mt-1">Co-translator of the authorized Amharic Mukhtasar Tafsir (Summary Interpretation of the Holy Quran).</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Access to Scholar Modules */}
+          <div className="pt-6 border-t border-[#E0D8CE]">
+            <h3 className="font-heading text-xl font-bold text-[#2D3436] mb-4">Explore Scholarly Archives</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <Link href="/journey" className="block p-4 bg-white border border-[#E0D8CE] rounded-md hover:border-[#1B5E20] hover:shadow-xs transition-all group">
+                <div className="text-xs font-bold text-[#1B5E20] uppercase tracking-wider mb-1">Timeline</div>
+                <div className="font-heading font-bold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors">Educational Journey &rarr;</div>
+                <div className="text-xs text-[#636E72] mt-1">From Silti & Jimma Halaqat to postgraduate degrees.</div>
+              </Link>
+              <Link href="/qualifications" className="block p-4 bg-white border border-[#E0D8CE] rounded-md hover:border-[#1B5E20] hover:shadow-xs transition-all group">
+                <div className="text-xs font-bold text-[#1B5E20] uppercase tracking-wider mb-1">Credentials</div>
+                <div className="font-heading font-bold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors">Degrees & Ijazat &rarr;</div>
+                <div className="text-xs text-[#636E72] mt-1">AAOIFI auditor diploma and traditional chains.</div>
+              </Link>
+              <Link href="/library" className="block p-4 bg-white border border-[#E0D8CE] rounded-md hover:border-[#1B5E20] hover:shadow-xs transition-all group">
+                <div className="text-xs font-bold text-[#1B5E20] uppercase tracking-wider mb-1">Kitabs & Treatises</div>
+                <div className="font-heading font-bold text-[#2D3436] group-hover:text-[#1B5E20] transition-colors">Digital Library &rarr;</div>
+                <div className="text-xs text-[#636E72] mt-1">Read 132-page Kitab At-Tawheed and verified CV.</div>
+              </Link>
+            </div>
+          </div>
         </main>
       </div>
     </div>

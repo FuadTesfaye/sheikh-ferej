@@ -58,46 +58,50 @@ export function SiteFooter({ profile, navItems, locale = 'en' }: SiteFooterProps
     }
   };
 
+  const knowledgeLinks = [
+    { href: "/lectures", labelKey: "nav.lectures" },
+    { href: "/series", labelKey: "nav.series" },
+    { href: "/articles", labelKey: "nav.articles" },
+    { href: "/fatwas", labelKey: "nav.fatwas" },
+    { href: "/courses", labelKey: "nav.courses" },
+  ];
+
+  const libraryLinks = [
+    { href: "/library", labelKey: "nav.library" },
+    { href: "/events", labelKey: "nav.events" },
+    { href: "/media", labelKey: "nav.media" },
+    { href: "/ask", labelKey: "nav.ask" },
+    { href: "/search", labelKey: "nav.search" },
+  ];
+
+  const profileLinks = [
+    { href: "/about", labelKey: "nav.about" },
+    { href: "/journey", labelKey: "nav.journey" },
+    { href: "/qualifications", labelKey: "nav.qualifications" },
+    { href: "/contact", labelKey: "nav.contact" },
+  ];
+
   return (
     <footer className="w-full bg-[#F4F1EB] border-t border-[#E0D8CE] mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
           {/* Column 1: Scholar Name & Info */}
-          <div className="flex flex-col space-y-4">
-            <h2 className="font-heading text-xl font-bold text-[#2D3436]">
+          <div className="lg:col-span-2 flex flex-col space-y-4">
+            <Link href="/" className="font-heading text-xl font-bold text-[#2D3436] hover:text-[#1B5E20] transition-colors">
               {profile.name}
-            </h2>
+            </Link>
             {profile.headline && (
-              <p className="font-body text-sm text-[#636E72] max-w-sm">
+              <p className="font-body text-sm text-[#636E72] max-w-sm leading-relaxed">
                 {profile.headline}
               </p>
             )}
-          </div>
-
-          {/* Column 2: Quick Links */}
-          <div className="flex flex-col space-y-4">
-            <h3 className="font-heading text-sm font-bold text-[#2D3436] uppercase tracking-wider">
-              Navigation
-            </h3>
-            <nav className="flex flex-col space-y-2">
-              {items.map((item) => (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  className="font-body text-sm text-[#636E72] hover:text-[#1B5E20] transition-colors w-fit"
-                >
-                  {t(item.labelKey as any)}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          {/* Column 3: Socials */}
-          <div className="flex flex-col space-y-4">
-            <h3 className="font-heading text-sm font-bold text-[#2D3436] uppercase tracking-wider">
-              Connect
-            </h3>
-            <div className="flex flex-wrap gap-4">
+            <div className="pt-2 text-xs text-[#636E72] space-y-1">
+              <p>• Sharia Consultant, Wegagen Bank</p>
+              <p>• Member, African Scholars Union</p>
+              <p>• President, Al-Fajr Islamic Foundation</p>
+            </div>
+            {/* Socials */}
+            <div className="pt-2 flex flex-wrap gap-3">
               {profile.socials && Object.entries(profile.socials).map(([key, url]) => {
                 if (!url) return null;
                 const icon = renderSocialIcon(key);
@@ -108,7 +112,7 @@ export function SiteFooter({ profile, navItems, locale = 'en' }: SiteFooterProps
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#636E72] hover:text-[#1B5E20] transition-colors"
+                    className="p-2 rounded-full bg-white border border-[#E0D8CE] text-[#636E72] hover:text-[#1B5E20] hover:border-[#1B5E20] transition-colors"
                     aria-label={`Visit our ${key}`}
                   >
                     {icon}
@@ -117,12 +121,71 @@ export function SiteFooter({ profile, navItems, locale = 'en' }: SiteFooterProps
               })}
             </div>
           </div>
+
+          {/* Column 2: Profile & Journey */}
+          <div className="flex flex-col space-y-3">
+            <h3 className="font-heading text-xs font-bold text-[#2D3436] uppercase tracking-wider">
+              Scholar
+            </h3>
+            <nav className="flex flex-col space-y-2">
+              {profileLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="font-body text-sm text-[#636E72] hover:text-[#1B5E20] transition-colors w-fit"
+                >
+                  {t(link.labelKey as any)}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Column 3: Knowledge & Curriculum */}
+          <div className="flex flex-col space-y-3">
+            <h3 className="font-heading text-xs font-bold text-[#2D3436] uppercase tracking-wider">
+              {t("nav.knowledge" as any)}
+            </h3>
+            <nav className="flex flex-col space-y-2">
+              {knowledgeLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="font-body text-sm text-[#636E72] hover:text-[#1B5E20] transition-colors w-fit"
+                >
+                  {t(link.labelKey as any)}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Column 4: Library & Engagement */}
+          <div className="flex flex-col space-y-3">
+            <h3 className="font-heading text-xs font-bold text-[#2D3436] uppercase tracking-wider">
+              Resources
+            </h3>
+            <nav className="flex flex-col space-y-2">
+              {libraryLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="font-body text-sm text-[#636E72] hover:text-[#1B5E20] transition-colors w-fit"
+                >
+                  {t(link.labelKey as any)}
+                </Link>
+              ))}
+            </nav>
+          </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-[#E0D8CE] flex flex-col md:flex-row items-center justify-between">
-          <p className="font-body text-sm text-[#636E72]">
+        <div className="mt-12 pt-8 border-t border-[#E0D8CE] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="font-body text-xs text-[#636E72]">
             © {currentYear} {profile.name}. All rights reserved.
           </p>
+          <div className="flex items-center gap-6 text-xs text-[#636E72]">
+            <Link href="/about" className="hover:text-[#1B5E20] transition-colors">Biography</Link>
+            <Link href="/library/kitab-at-tawheed" className="hover:text-[#1B5E20] transition-colors">Kitab At-Tawheed</Link>
+            <Link href="/contact" className="hover:text-[#1B5E20] transition-colors">Contact</Link>
+          </div>
         </div>
       </div>
     </footer>

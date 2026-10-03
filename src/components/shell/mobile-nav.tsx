@@ -109,54 +109,51 @@ export default function MobileNav({ open, onClose, mainItems, moreItems, locale,
 
         <div className="px-4 py-6">
           <nav className="flex flex-col space-y-6">
-            <div className="space-y-3">
-              {mainItems.map((item) => (
-                <div key={item.key} className="flex flex-col">
-                  <Link
-                    href={item.href}
-                    onClick={onClose}
-                    className={`font-body text-base font-medium px-2 py-1.5 ${
-                      pathname.startsWith(item.href) ? 'text-[#1B5E20]' : 'text-[#2D3436]'
-                    }`}
-                  >
-                    {t(item.labelKey as any)}
-                  </Link>
-                  {item.children && item.children.length > 0 && (
-                    <div className="flex flex-col pl-4 mt-2 space-y-2 border-l-2 border-[#E0D8CE] ml-3">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.key}
-                          href={child.href}
-                          onClick={onClose}
-                          className={`font-body text-sm py-1 ${
-                            pathname === child.href ? 'text-[#1B5E20]' : 'text-[#636E72]'
-                          }`}
-                        >
-                          {t(child.labelKey as any)}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
+            <div className="space-y-4">
+              {mainItems.map((item) => {
+                const isGroup = item.href === '#';
+                return (
+                  <div key={item.key} className="flex flex-col">
+                    {isGroup ? (
+                      <span className="font-heading text-xs font-bold uppercase tracking-wider text-[#1B5E20] px-2 pt-2 pb-1">
+                        {t(item.labelKey as any)}
+                      </span>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={onClose}
+                        className={`font-body text-base font-medium px-2 py-1.5 rounded hover:bg-black/5 ${
+                          pathname === item.href || (item.href !== '/' && pathname.startsWith(item.href))
+                            ? 'text-[#1B5E20] font-semibold bg-emerald-50/50' 
+                            : 'text-[#2D3436]'
+                        }`}
+                      >
+                        {t(item.labelKey as any)}
+                      </Link>
+                    )}
+                    {item.children && item.children.length > 0 && (
+                      <div className="flex flex-col pl-3 mt-1 space-y-1 border-l-2 border-[#E0D8CE] ml-2">
+                        {item.children.map((child) => {
+                          const isChildActive = pathname === child.href;
+                          return (
+                            <Link
+                              key={child.key}
+                              href={child.href}
+                              onClick={onClose}
+                              className={`font-body text-sm py-1.5 px-2 rounded hover:bg-black/5 transition-colors ${
+                                isChildActive ? 'text-[#1B5E20] font-semibold bg-emerald-50' : 'text-[#636E72]'
+                              }`}
+                            >
+                              {t(child.labelKey as any)}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
-
-            {moreItems && moreItems.length > 0 && (
-              <div className="pt-6 border-t border-[#E0D8CE] space-y-3">
-                {moreItems.map((item) => (
-                  <Link
-                    key={item.key}
-                    href={item.href}
-                    onClick={onClose}
-                    className={`block font-body text-base font-medium px-2 py-1.5 ${
-                      pathname.startsWith(item.href) ? 'text-[#1B5E20]' : 'text-[#2D3436]'
-                    }`}
-                  >
-                    {t(item.labelKey as any)}
-                  </Link>
-                ))}
-              </div>
-            )}
           </nav>
         </div>
 

@@ -50,7 +50,7 @@ export default async function SearchPage(props: { params: Promise<{ locale: stri
       </header>
 
       <div className="mb-8 relative">
-        <form action="/search" method="GET" className="relative">
+        <form action={params.locale === 'en' ? '/search' : `/${params.locale}/search`} method="GET" className="relative">
            <SearchIcon className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#636E72]" />
            <input 
              type="text" 
